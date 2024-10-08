@@ -134,6 +134,9 @@
                 } else {
                   rowHtml += "<td>Invalid Date</td>";  // Handle invalid timestamps
                 }
+              } else if (columnName === "name") {
+                // Add hyperlink to the Model Name field
+                rowHtml += `<td><a href="https://openrouter.ai/models/${currentId}" target="_blank">${cleanedValue}</a></td>`;
               } else {
                 rowHtml += "<td>" + cleanedValue + "</td>";
               }
