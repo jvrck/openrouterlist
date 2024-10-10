@@ -176,6 +176,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "undi95/remm-slerp-l2-13b:extended","ReMM SLERP 13B (extended)",1689984000,6144,"0.000001125","0.000001125"
 "google/palm-2-codechat-bison","Google: PaLM 2 Code Chat",1689811200,7168,"0.000001","0.000002"
 "google/palm-2-chat-bison","Google: PaLM 2 Chat",1689811200,9216,"0.000001","0.000002"
+"gryphe/mythomax-l2-13b:free","MythoMax 13B (free)",1688256000,4096,"0","0"
 "gryphe/mythomax-l2-13b","MythoMax 13B",1688256000,4096,"0.0000001","0.0000001"
 "gryphe/mythomax-l2-13b:nitro","MythoMax 13B (nitro)",1688256000,4096,"0.0000002","0.0000002"
 "gryphe/mythomax-l2-13b:extended","MythoMax 13B (extended)",1688256000,8192,"0.000001125","0.000001125"
