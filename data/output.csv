@@ -1,5 +1,6 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
 "qwen/qwen-2.5-7b-instruct","Qwen2.5 7B Instruct",1729036800,131072,"0.00000027","0.00000027"
+"nvidia/llama-3.1-nemotron-70b-instruct","Nvidia: Llama 3.1 Nemotron 70B Instruct",1728950400,131072,"0.00000035","0.0000004"
 "x-ai/grok-2-mini","xAI: Grok 2 mini",1728691200,32768,"0.0000042","0.0000069"
 "x-ai/grok-2","xAI: Grok 2",1728691200,32768,"0.0000042","0.0000069"
 "inflection/inflection-3-productivity","Inflection: Inflection 3 Productivity",1728604800,8000,"0.0000025","0.00001"
@@ -51,7 +52,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "perplexity/llama-3.1-sonar-small-128k-online","Perplexity: Llama 3.1 Sonar 8B Online",1722470400,127072,"0.0000002","0.0000002"
 "perplexity/llama-3.1-sonar-small-128k-chat","Perplexity: Llama 3.1 Sonar 8B",1722470400,131072,"0.0000002","0.0000002"
 "meta-llama/llama-3.1-70b-instruct:free","Meta: Llama 3.1 70B Instruct (free)",1721692800,8192,"0","0"
-"meta-llama/llama-3.1-70b-instruct","Meta: Llama 3.1 70B Instruct",1721692800,131072,"0.0000003","0.0000003"
+"meta-llama/llama-3.1-70b-instruct","Meta: Llama 3.1 70B Instruct",1721692800,131072,"0.00000035","0.0000004"
 "meta-llama/llama-3.1-8b-instruct:free","Meta: Llama 3.1 8B Instruct (free)",1721692800,8192,"0","0"
 "meta-llama/llama-3.1-8b-instruct","Meta: Llama 3.1 8B Instruct",1721692800,131072,"0.000000055","0.000000055"
 "meta-llama/llama-3.1-405b-instruct:free","Meta: Llama 3.1 405B Instruct (free)",1721692800,8000,"0","0"
@@ -186,6 +187,5 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "meta-llama/llama-2-13b-chat","Meta: Llama v2 13B Chat",1687219200,4096,"0.000000198","0.000000198"
 "openai/gpt-4-0314","OpenAI: GPT-4 (older v0314)",1685232000,8191,"0.00003","0.00006"
 "openai/gpt-4","OpenAI: GPT-4",1685232000,8191,"0.00003","0.00006"
-"openai/gpt-3.5-turbo-0301","OpenAI: GPT-3.5 Turbo (older v0301)",1685232000,4095,"0.000001","0.000002"
 "openai/gpt-3.5-turbo-0125","OpenAI: GPT-3.5 Turbo 16k",1685232000,16385,"0.0000005","0.0000015"
 "openai/gpt-3.5-turbo","OpenAI: GPT-3.5 Turbo",1685232000,16385,"0.0000005","0.0000015"
