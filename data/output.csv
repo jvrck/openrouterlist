@@ -43,7 +43,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "nousresearch/hermes-3-llama-3.1-70b","Nous: Hermes 3 70B Instruct",1723939200,131072,"0.0000004","0.0000004"
 "nousresearch/hermes-3-llama-3.1-405b:free","Nous: Hermes 3 405B Instruct (free)",1723766400,8192,"0","0"
 "nousresearch/hermes-3-llama-3.1-405b","Nous: Hermes 3 405B Instruct",1723766400,131072,"0.00000179","0.00000249"
-"nousresearch/hermes-3-llama-3.1-405b:extended","Nous: Hermes 3 405B Instruct (extended)",1723766400,128000,"0.0000045","0.0000045"
+"nousresearch/hermes-3-llama-3.1-405b:extended","Nous: Hermes 3 405B Instruct (extended)",1723766400,128000,"0.00000179","0.00000249"
 "perplexity/llama-3.1-sonar-huge-128k-online","Perplexity: Llama 3.1 Sonar 405B Online",1723593600,127072,"0.000005","0.000005"
 "openai/chatgpt-4o-latest","OpenAI: ChatGPT-4o",1723593600,128000,"0.000005","0.000015"
 "sao10k/l3-lunaris-8b","Llama 3 8B Lunaris",1723507200,8192,"0.000002","0.000002"
