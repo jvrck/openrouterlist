@@ -100,8 +100,6 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "openai/gpt-4o-2024-05-13","OpenAI: GPT-4o (2024-05-13)",1715558400,128000,"0.000005","0.000015"
 "openai/gpt-4o","OpenAI: GPT-4o",1715558400,128000,"0.0000025","0.00001"
 "openai/gpt-4o:extended","OpenAI: GPT-4o (extended)",1715558400,128000,"0.000006","0.000018"
-"qwen/qwen-72b-chat","Qwen 1.5 72B Chat",1715212800,32768,"0.00000081","0.00000081"
-"qwen/qwen-110b-chat","Qwen 1.5 110B Chat",1715212800,32768,"0.00000162","0.00000162"
 "neversleep/llama-3-lumimaid-8b","Llama 3 Lumimaid 8B",1714780800,24576,"0.0000001875","0.000001125"
 "neversleep/llama-3-lumimaid-8b:extended","Llama 3 Lumimaid 8B (extended)",1714780800,24576,"0.0000001875","0.000001125"
 "sao10k/fimbulvetr-11b-v2","Fimbulvetr 11B v2",1713657600,8192,"0.000000375","0.0000015"
