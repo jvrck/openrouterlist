@@ -1,4 +1,6 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"raifle/sorcererlm-8x22b","Sorcererlm 8x22b",1731105083,16000,"0.0000045","0.0000045"
+"eva-unit-01/eva-qwen-2.5-32b","Eva Qwen2.5 32B",1731104847,0,"0.0000005","0.0000005"
 "anthropic/claude-3-5-haiku-20241022:beta","Anthropic: Claude 3.5 Haiku (2024-10-22) (self-moderated)",1730678400,200000,"0.000001","0.000005"
 "anthropic/claude-3-5-haiku-20241022","Anthropic: Claude 3.5 Haiku (2024-10-22)",1730678400,200000,"0.000001","0.000005"
 "anthropic/claude-3-5-haiku:beta","Anthropic: Claude 3.5 Haiku (self-moderated)",1730678400,200000,"0.000001","0.000005"
@@ -19,7 +21,6 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "liquid/lfm-40b","Liquid: LFM 40B MoE",1727654400,32768,"0.000001","0.000002"
 "thedrummer/rocinante-12b","Rocinante 12B",1727654400,32768,"0.00000025","0.0000005"
 "eva-unit-01/eva-qwen-2.5-14b","EVA Qwen2.5 14B",1727654400,32768,"0.00000025","0.0000005"
-"anthracite-org/magnum-v2-72b","Magnum v2 72B",1727654400,32768,"0.00000375","0.0000045"
 "meta-llama/llama-3.2-3b-instruct:free","Meta: Llama 3.2 3B Instruct (free)",1727222400,4096,"0","0"
 "meta-llama/llama-3.2-3b-instruct","Meta: Llama 3.2 3B Instruct",1727222400,131072,"0.00000003","0.00000005"
 "meta-llama/llama-3.2-1b-instruct:free","Meta: Llama 3.2 1B Instruct (free)",1727222400,4096,"0","0"
@@ -61,7 +62,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "perplexity/llama-3.1-sonar-small-128k-online","Perplexity: Llama 3.1 Sonar 8B Online",1722470400,127072,"0.0000002","0.0000002"
 "perplexity/llama-3.1-sonar-small-128k-chat","Perplexity: Llama 3.1 Sonar 8B",1722470400,131072,"0.0000002","0.0000002"
 "meta-llama/llama-3.1-70b-instruct:free","Meta: Llama 3.1 70B Instruct (free)",1721692800,8192,"0","0"
-"meta-llama/llama-3.1-70b-instruct","Meta: Llama 3.1 70B Instruct",1721692800,100000,"0.00000035","0.0000004"
+"meta-llama/llama-3.1-70b-instruct","Meta: Llama 3.1 70B Instruct",1721692800,32768,"0.00000034","0.00000039"
 "meta-llama/llama-3.1-70b-instruct:nitro","Meta: Llama 3.1 70B Instruct (nitro)",1721692800,64000,"0.00000325","0.00000325"
 "meta-llama/llama-3.1-8b-instruct:free","Meta: Llama 3.1 8B Instruct (free)",1721692800,8192,"0","0"
 "meta-llama/llama-3.1-8b-instruct","Meta: Llama 3.1 8B Instruct",1721692800,16000,"0.00000005","0.00000005"
