@@ -1,6 +1,6 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
 "raifle/sorcererlm-8x22b","Sorcererlm 8x22b",1731105083,16000,"0.0000045","0.0000045"
-"eva-unit-01/eva-qwen-2.5-32b","Eva Qwen2.5 32B",1731104847,0,"0.0000005","0.0000005"
+"eva-unit-01/eva-qwen-2.5-32b","Eva Qwen2.5 32B",1731104847,32000,"0.0000005","0.0000005"
 "anthropic/claude-3-5-haiku-20241022:beta","Anthropic: Claude 3.5 Haiku (2024-10-22) (self-moderated)",1730678400,200000,"0.000001","0.000005"
 "anthropic/claude-3-5-haiku-20241022","Anthropic: Claude 3.5 Haiku (2024-10-22)",1730678400,200000,"0.000001","0.000005"
 "anthropic/claude-3-5-haiku:beta","Anthropic: Claude 3.5 Haiku (self-moderated)",1730678400,200000,"0.000001","0.000005"
@@ -17,6 +17,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "inflection/inflection-3-pi","Inflection: Inflection 3 Pi",1728604800,8000,"0.0000025","0.00001"
 "inflection/inflection-3-productivity","Inflection: Inflection 3 Productivity",1728604800,8000,"0.0000025","0.00001"
 "google/gemini-flash-1.5-8b","Google: Gemini 1.5 Flash-8B",1727913600,1000000,"0.0000000375","0.00000015"
+"anthracite-org/magnum-v2-72b","Magnum v2 72B",1727654400,32768,"0.00000375","0.0000045"
 "liquid/lfm-40b:free","Liquid: LFM 40B MoE (free)",1727654400,8192,"0","0"
 "liquid/lfm-40b","Liquid: LFM 40B MoE",1727654400,32768,"0.000001","0.000002"
 "thedrummer/rocinante-12b","Rocinante 12B",1727654400,32768,"0.00000025","0.0000005"
