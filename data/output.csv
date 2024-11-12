@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"qwen/qwen-2.5-coder-32b-instruct","Qwen2.5 Coder 32B Instruct",1731368400,32768,"0.0000009","0.0000009"
 "raifle/sorcererlm-8x22b","Sorcererlm 8x22b",1731105083,16000,"0.0000045","0.0000045"
 "eva-unit-01/eva-qwen-2.5-32b","Eva Qwen2.5 32B",1731104847,32000,"0.0000005","0.0000005"
 "anthropic/claude-3-5-haiku-20241022:beta","Anthropic: Claude 3.5 Haiku (2024-10-22) (self-moderated)",1730678400,200000,"0.000001","0.000005"
