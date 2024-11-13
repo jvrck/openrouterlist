@@ -1,7 +1,9 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
-"qwen/qwen-2.5-coder-32b-instruct","Qwen2.5 Coder 32B Instruct",1731368400,128000,"0.0000002","0.0000002"
+"qwen/qwen-2.5-coder-32b-instruct","Qwen2.5 Coder 32B Instruct",1731368400,32768,"0.00000018","0.00000018"
 "raifle/sorcererlm-8x22b","SorcererLM 8x22B",1731105083,16000,"0.0000045","0.0000045"
 "eva-unit-01/eva-qwen-2.5-32b","EVA Qwen2.5 32B",1731104847,32000,"0.0000005","0.0000005"
+"thedrummer/unslopnemo-12b:free","Unslopnemo 12b (free)",1731103448,8192,"0","0"
+"thedrummer/unslopnemo-12b","Unslopnemo 12b",1731103448,32000,"0.0000005","0.0000005"
 "anthropic/claude-3-5-haiku-20241022:beta","Anthropic: Claude 3.5 Haiku (2024-10-22) (self-moderated)",1730678400,200000,"0.000001","0.000005"
 "anthropic/claude-3-5-haiku-20241022","Anthropic: Claude 3.5 Haiku (2024-10-22)",1730678400,200000,"0.000001","0.000005"
 "anthropic/claude-3-5-haiku:beta","Anthropic: Claude 3.5 Haiku (self-moderated)",1730678400,200000,"0.000001","0.000005"
