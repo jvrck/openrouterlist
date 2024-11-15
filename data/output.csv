@@ -101,7 +101,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "microsoft/phi-3-medium-128k-instruct","Phi-3 Medium 128K Instruct",1716508800,128000,"0.000001","0.000001"
 "neversleep/llama-3-lumimaid-70b","Llama 3 Lumimaid 70B",1715817600,8192,"0.000003375","0.0000045"
 "google/gemini-flash-1.5","Google: Gemini Flash 1.5",1715644800,1000000,"0.000000075","0.0000003"
-"deepseek/deepseek-chat","DeepSeek V2.5",1715644800,128000,"0.00000014","0.00000028"
+"deepseek/deepseek-chat","DeepSeek V2.5",1715644800,65536,"0.00000014","0.00000028"
 "perplexity/llama-3-sonar-large-32k-online","Perplexity: Llama3 Sonar 70B Online",1715644800,28000,"0.000001","0.000001"
 "perplexity/llama-3-sonar-large-32k-chat","Perplexity: Llama3 Sonar 70B",1715644800,32768,"0.000001","0.000001"
 "perplexity/llama-3-sonar-small-32k-chat","Perplexity: Llama3 Sonar 8B",1715644800,32768,"0.0000002","0.0000002"
