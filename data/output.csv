@@ -4,7 +4,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "mistralai/mistral-large-2407","Mistral Large 2407",1731978415,128000,"0.000002","0.000006"
 "mistralai/pixtral-large-2411","Mistral: Pixtral Large 2411",1731977388,128000,"0.000002","0.000006"
 "x-ai/grok-vision-beta","xAI: Grok Vision Beta",1731976624,8192,"0.000005","0.000015"
-"google/gemini-exp-1114","Google: Gemini Experimental 1114",1731714740,1000000,"0","0"
+"google/gemini-exp-1114","Google: Gemini Experimental 1114",1731714740,32678,"0","0"
 "infermatic/mn-inferor-12b","Mistral Nemo Inferor 12B",1731464428,32000,"0.00000025","0.0000005"
 "qwen/qwen-2.5-coder-32b-instruct","Qwen2.5 Coder 32B Instruct",1731368400,32768,"0.00000018","0.00000018"
 "raifle/sorcererlm-8x22b","SorcererLM 8x22B",1731105083,16000,"0.0000045","0.0000045"
