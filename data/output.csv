@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"openai/gpt-4o-2024-11-20","OpenAI: GPT-4o (2024-11-20)",1732127594,128000,"0.0000025","0.00001"
 "mistralai/mistral-large-2411","Mistral Large 2411",1731978685,128000,"0.000002","0.000006"
 "mistralai/mistral-large-2407","Mistral Large 2407",1731978415,128000,"0.000002","0.000006"
 "mistralai/pixtral-large-2411","Mistral: Pixtral Large 2411",1731977388,128000,"0.000002","0.000006"
@@ -178,7 +179,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "openai/gpt-3.5-turbo-16k","OpenAI: GPT-3.5 Turbo 16k",1693180800,16385,"0.000003","0.000004"
 "nousresearch/nous-hermes-llama2-13b","Nous: Hermes 13B",1692489600,4096,"0.00000017","0.00000017"
 "huggingfaceh4/zephyr-7b-beta:free","Hugging Face: Zephyr 7B (free)",1690934400,4096,"0","0"
-"mancer/weaver","Mancer: Weaver (alpha)",1690934400,8000,"0.000001875","0.00000225"
+"mancer/weaver","Mancer: Weaver (alpha)",1690934400,8000,"0.0000015","0.00000225"
 "anthropic/claude-2.0:beta","Anthropic: Claude v2.0 (self-moderated)",1690502400,100000,"0.000008","0.000024"
 "anthropic/claude-2.0","Anthropic: Claude v2.0",1690502400,100000,"0.000008","0.000024"
 "undi95/remm-slerp-l2-13b:extended","ReMM SLERP 13B (extended)",1689984000,6144,"0.000001125","0.000001125"
