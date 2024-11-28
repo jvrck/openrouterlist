@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"qwen/qwq-32b-preview","Qwen: QwQ 32B Preview",1732754541,32768,"0.00000015","0.0000006"
 "google/gemini-exp-1121:free","Google: Gemini Experimental 1121 (free)",1732216725,8192,"0","0"
 "google/learnlm-1.5-pro-experimental:free","Google: LearnLM 1.5 Pro Experimental (free)",1732216551,8192,"0","0"
 "eva-unit-01/eva-qwen-2.5-72b","EVA Qwen2.5 72B",1732210606,32000,"0.000004","0.000004"
