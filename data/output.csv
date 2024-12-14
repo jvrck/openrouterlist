@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"cohere/command-r7b-12-2024","Cohere: Command R7B (12-2024)",1734158152,128000,"0.0000000375","0.00000015"
 "google/gemini-2.0-flash-exp:free","Google: Gemini 2.0 Flash Experimental (free)",1733937523,1048576,"0","0"
 "google/gemini-exp-1206:free","Google: Gemini Experimental 1206 (free)",1733507713,2097152,"0","0"
 "meta-llama/llama-3.3-70b-instruct","Meta: Llama 3.3 70B Instruct",1733506137,131072,"0.00000013","0.0000004"
