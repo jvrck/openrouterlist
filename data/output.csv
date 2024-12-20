@@ -1,5 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
-"google/gemini-2.0-flash-thinking-exp:free","Google: Gemini 2.0 Flash Thinking Experimental 1219 (free)",1734650026,40000,"0","0"
+"google/gemini-2.0-flash-thinking-exp:free","Google: Gemini 2.0 Flash Thinking Experimental (free)",1734650026,40000,"0","0"
 "sao10k/l3.3-euryale-70b","Sao10K: Llama 3.3 Euryale 70B",1734535928,8000,"0.0000015","0.0000015"
 "inflatebot/mn-mag-mell-r1","Inflatebot: Mag Mell R1 12B",1734535439,16000,"0.0000009","0.0000009"
 "openai/o1","OpenAI: o1",1734459999,200000,"0.000015","0.00006"
@@ -178,7 +178,6 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "anthropic/claude-2.1:beta","Anthropic: Claude v2.1 (self-moderated)",1700611200,200000,"0.000008","0.000024"
 "anthropic/claude-2.1","Anthropic: Claude v2.1",1700611200,200000,"0.000008","0.000024"
 "teknium/openhermes-2.5-mistral-7b","OpenHermes 2.5 Mistral 7B",1700438400,4096,"0.00000017","0.00000017"
-"openai/gpt-4-vision-preview","OpenAI: GPT-4 Vision",1699833600,128000,"0.00001","0.00003"
 "lizpreciatior/lzlv-70b-fp16-hf","lzlv 70B",1699747200,4096,"0.00000035","0.0000004"
 "undi95/toppy-m-7b:free","Toppy M 7B (free)",1699574400,4096,"0","0"
 "undi95/toppy-m-7b:nitro","Toppy M 7B (nitro)",1699574400,4096,"0.00000007","0.00000007"
