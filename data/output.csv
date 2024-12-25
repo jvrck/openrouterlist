@@ -1,6 +1,6 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
 "google/gemini-2.0-flash-thinking-exp:free","Google: Gemini 2.0 Flash Thinking Experimental (free)",1734650026,40000,"0","0"
-"sao10k/l3.3-euryale-70b","Sao10K: Llama 3.3 Euryale 70B",1734535928,8000,"0.0000015","0.0000015"
+"sao10k/l3.3-euryale-70b","Sao10K: Llama 3.3 Euryale 70B",1734535928,16384,"0.0000015","0.0000015"
 "inflatebot/mn-mag-mell-r1","Inflatebot: Mag Mell R1 12B",1734535439,16000,"0.0000009","0.0000009"
 "openai/o1","OpenAI: o1",1734459999,200000,"0.000015","0.00006"
 "eva-unit-01/eva-llama-3.33-70b","EVA Llama 3.33 70b",1734377303,16384,"0.000004","0.000006"
@@ -209,7 +209,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "gryphe/mythomax-l2-13b","MythoMax 13B",1688256000,4096,"0.000000065","0.000000065"
 "gryphe/mythomax-l2-13b:nitro","MythoMax 13B (nitro)",1688256000,4096,"0.0000002","0.0000002"
 "gryphe/mythomax-l2-13b:extended","MythoMax 13B (extended)",1688256000,8192,"0.000001125","0.000001125"
-"meta-llama/llama-2-13b-chat","Meta: Llama v2 13B Chat",1687219200,4096,"0.000000198","0.000000198"
+"meta-llama/llama-2-13b-chat","Meta: Llama 2 13B Chat",1687219200,4096,"0.000000198","0.000000198"
 "openai/gpt-3.5-turbo","OpenAI: GPT-3.5 Turbo",1685232000,16385,"0.0000005","0.0000015"
 "openai/gpt-3.5-turbo-0125","OpenAI: GPT-3.5 Turbo 16k",1685232000,16385,"0.0000005","0.0000015"
 "openai/gpt-4","OpenAI: GPT-4",1685232000,8191,"0.00003","0.00006"
