@@ -1,5 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
-"deepseek/deepseek-chat","Deepseek V3",1735241320,64000,"0.00000014","0.00000028"
+"deepseek/deepseek-chat","DeepSeek V3",1735241320,64000,"0.00000014","0.00000028"
 "google/gemini-2.0-flash-thinking-exp:free","Google: Gemini 2.0 Flash Thinking Experimental (free)",1734650026,40000,"0","0"
 "sao10k/l3.3-euryale-70b","Sao10K: Llama 3.3 Euryale 70B",1734535928,16384,"0.0000015","0.0000015"
 "inflatebot/mn-mag-mell-r1","Inflatebot: Mag Mell R1 12B",1734535439,16000,"0.0000009","0.0000009"
