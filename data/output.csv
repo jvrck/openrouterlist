@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"microsoft/phi-4","Microsoft: Phi 4",1736489872,16384,"0.00000007","0.00000014"
 "sao10k/l3.1-70b-hanami-x1","Sao10K: Llama 3.1 70B Hanami x1",1736302854,16000,"0.000003","0.000003"
 "deepseek/deepseek-chat","DeepSeek V3",1735241320,64000,"0.00000014","0.00000028"
 "qwen/qvq-72b-preview","Qwen: QvQ 72B Preview",1735088567,128000,"0.00000025","0.0000005"
@@ -42,7 +43,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "x-ai/grok-beta","xAI: Grok Beta",1729382400,131072,"0.000005","0.000015"
 "mistralai/ministral-8b","Mistral: Ministral 8B",1729123200,128000,"0.0000001","0.0000001"
 "mistralai/ministral-3b","Mistral: Ministral 3B",1729123200,128000,"0.00000004","0.00000004"
-"qwen/qwen-2.5-7b-instruct","Qwen2.5 7B Instruct",1729036800,32768,"0.00000027","0.00000027"
+"qwen/qwen-2.5-7b-instruct","Qwen2.5 7B Instruct",1729036800,32768,"0.000000025","0.00000005"
 "nvidia/llama-3.1-nemotron-70b-instruct","NVIDIA: Llama 3.1 Nemotron 70B Instruct",1728950400,131000,"0.00000012","0.0000003"
 "inflection/inflection-3-pi","Inflection: Inflection 3 Pi",1728604800,8000,"0.0000025","0.00001"
 "inflection/inflection-3-productivity","Inflection: Inflection 3 Productivity",1728604800,8000,"0.0000025","0.00001"
@@ -166,6 +167,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "mistralai/mistral-small","Mistral Small",1704844800,32000,"0.0000002","0.0000006"
 "mistralai/mistral-tiny","Mistral Tiny",1704844800,32000,"0.00000025","0.00000025"
 "mistralai/mistral-medium","Mistral Medium",1704844800,32000,"0.00000275","0.0000081"
+"mistralai/mistral-7b-instruct-v0.2","Mistral: Mistral 7B Instruct v0.2",1703721600,32768,"0.00000018","0.00000018"
 "cognitivecomputations/dolphin-mixtral-8x7b","Dolphin 2.6 Mixtral 8x7B 🐬",1703116800,32768,"0.0000005","0.0000005"
 "google/gemini-pro-vision","Google: Gemini Pro Vision 1.0",1702425600,16384,"0.0000005","0.0000015"
 "google/gemini-pro","Google: Gemini Pro 1.0",1702425600,32760,"0.0000005","0.0000015"
