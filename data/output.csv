@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"mistralai/codestral-2501","Mistral: Codestral 2501",1736895522,256000,"0.0000003","0.0000009"
 "microsoft/phi-4","Microsoft: Phi 4",1736489872,16384,"0.00000007","0.00000014"
 "sao10k/l3.1-70b-hanami-x1","Sao10K: Llama 3.1 70B Hanami x1",1736302854,16000,"0.000003","0.000003"
 "deepseek/deepseek-chat","DeepSeek V3",1735241320,64000,"0.00000014","0.00000028"
