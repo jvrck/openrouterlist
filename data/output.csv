@@ -7,7 +7,6 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "qwen/qvq-72b-preview","Qwen: QvQ 72B Preview",1735088567,128000,"0.00000025","0.0000005"
 "google/gemini-2.0-flash-thinking-exp:free","Google: Gemini 2.0 Flash Thinking Experimental (free)",1734650026,40000,"0","0"
 "sao10k/l3.3-euryale-70b","Sao10K: Llama 3.3 Euryale 70B",1734535928,131072,"0.0000007","0.0000008"
-"inflatebot/mn-mag-mell-r1","Inflatebot: Mag Mell R1 12B",1734535439,16000,"0.0000009","0.0000009"
 "openai/o1","OpenAI: o1",1734459999,200000,"0.000015","0.00006"
 "eva-unit-01/eva-llama-3.33-70b","EVA Llama 3.33 70b",1734377303,16384,"0.000004","0.000006"
 "x-ai/grok-2-vision-1212","xAI: Grok 2 Vision 1212",1734237338,32768,"0.000002","0.00001"
