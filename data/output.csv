@@ -145,7 +145,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "meta-llama/llama-3-70b-instruct:nitro","Meta: Llama 3 70B Instruct (nitro)",1713398400,8192,"0.000000792","0.000000792"
 "mistralai/mixtral-8x22b-instruct","Mistral: Mixtral 8x22B Instruct",1713312000,65536,"0.0000009","0.0000009"
 "microsoft/wizardlm-2-8x22b","WizardLM-2 8x22B",1713225600,65536,"0.0000005","0.0000005"
-"microsoft/wizardlm-2-7b","WizardLM-2 7B",1713225600,32000,"0.00000006","0.00000006"
+"microsoft/wizardlm-2-7b","WizardLM-2 7B",1713225600,32000,"0.00000007","0.00000007"
 "google/gemini-pro-1.5","Google: Gemini Pro 1.5",1712620800,2000000,"0.00000125","0.000005"
 "openai/gpt-4-turbo","OpenAI: GPT-4 Turbo",1712620800,128000,"0.00001","0.00003"
 "cohere/command-r-plus","Cohere: Command R+",1712188800,128000,"0.00000285","0.00001425"
