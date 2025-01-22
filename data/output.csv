@@ -1,5 +1,6 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
 "deepseek/deepseek-r1","DeepSeek R1",1737381095,64000,"0.00000055","0.00000219"
+"sophosympatheia/rogue-rose-103b-v0.2:free","Rogue Rose 103B v0.2 (free)",1737195189,4096,"0","0"
 "minimax/minimax-01","MiniMax: MiniMax-01",1736915462,1000192,"0.0000002","0.0000011"
 "mistralai/codestral-2501","Mistral: Codestral 2501",1736895522,256000,"0.0000003","0.0000009"
 "microsoft/phi-4","Microsoft: Phi 4",1736489872,16384,"0.00000007","0.00000014"
