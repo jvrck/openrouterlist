@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"perplexity/sonar-reasoning","Perplexity: Sonar Reasoning",1738131107,127000,"0.000001","0.000005"
 "liquid/lfm-7b","Liquid: LFM 7B",1737806883,32768,"0.00000001","0.00000001"
 "liquid/lfm-3b","Liquid: LFM 3B",1737806501,32768,"0.00000002","0.00000002"
 "deepseek/deepseek-r1-distill-llama-70b","DeepSeek: DeepSeek R1 Distill Llama 70B",1737663169,131072,"0.00000023","0.00000069"
