@@ -1,5 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
-"qwen/qwen-turbo-2024-11-01","Qwen: Qwen-Turbo",1738410974,1000000,"0.00000005","0.0000002"
+"qwen/qwen-turbo","Qwen: Qwen-Turbo",1738410974,1000000,"0.00000005","0.0000002"
 "qwen/qwen-plus","Qwen: Qwen-Plus",1738409840,131072,"0.0000004","0.0000012"
 "qwen/qwen-max","Qwen: Qwen-Max ",1738402289,32768,"0.0000016","0.0000064"
 "openai/o3-mini","OpenAI: o3 Mini",1738351721,200000,"0.0000011","0.0000044"
