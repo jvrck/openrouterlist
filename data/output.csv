@@ -9,7 +9,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "google/gemini-2.0-pro-exp-02-05:free","Google: Gemini Pro 2.0 Experimental (free)",1738768044,2000000,"0","0"
 "qwen/qwen-vl-plus:free","Qwen: Qwen VL Plus (free)",1738731255,7500,"0","0"
 "aion-labs/aion-1.0","AionLabs: Aion-1.0",1738697557,32768,"0.000004","0.000008"
-"aion-labs/aion-1.0-mini","AionLabs: Aion-1.0-Mini",1738697107,32768,"0.0000008","0.0000016"
+"aion-labs/aion-1.0-mini","AionLabs: Aion-1.0-Mini",1738697107,32768,"0.0000007","0.0000014"
 "aion-labs/aion-rp-llama-3.1-8b","AionLabs: Aion-RP 1.0 (8B)",1738696718,32768,"0.0000002","0.0000002"
 "qwen/qwen-turbo","Qwen: Qwen-Turbo",1738410974,1000000,"0.00000005","0.0000002"
 "qwen/qwen2.5-vl-72b-instruct:free","Qwen: Qwen2.5 VL 72B Instruct (free)",1738410311,131072,"0","0"
