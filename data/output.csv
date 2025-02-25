@@ -41,7 +41,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "microsoft/phi-4","Microsoft: Phi 4",1736489872,16384,"0.00000007","0.00000014"
 "sao10k/l3.1-70b-hanami-x1","Sao10K: Llama 3.1 70B Hanami x1",1736302854,16000,"0.000003","0.000003"
 "deepseek/deepseek-chat:free","DeepSeek: DeepSeek V3 (free)",1735241320,131072,"0","0"
-"deepseek/deepseek-chat","DeepSeek: DeepSeek V3",1735241320,131072,"0.0000009","0.0000009"
+"deepseek/deepseek-chat","DeepSeek: DeepSeek V3",1735241320,131072,"0.00000125","0.00000125"
 "qwen/qvq-72b-preview","Qwen: QvQ 72B Preview",1735088567,32000,"0.00000025","0.0000005"
 "google/gemini-2.0-flash-thinking-exp-1219:free","Google: Gemini 2.0 Flash Thinking Experimental (free)",1734650026,40000,"0","0"
 "sao10k/l3.3-euryale-70b","Sao10K: Llama 3.3 Euryale 70B",1734535928,131072,"0.0000007","0.0000008"
