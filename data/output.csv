@@ -1,6 +1,8 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"google/gemini-2.0-flash-lite-001","Google: Gemini 2.0 Flash Lite",1740506212,1048576,"0.000000075","0.0000003"
 "anthropic/claude-3.7-sonnet:beta","Anthropic: Claude 3.7 Sonnet (self-moderated)",1740422110,200000,"0.000003","0.000015"
 "anthropic/claude-3.7-sonnet","Anthropic: Claude 3.7 Sonnet",1740422110,200000,"0.000003","0.000015"
+"anthropic/claude-3.7-sonnet:thinking","Anthropic: Claude 3.7 Sonnet (thinking)",1740422110,200000,"0.000003","0.000015"
 "perplexity/r1-1776","Perplexity: R1 1776",1740004929,128000,"0.000002","0.000008"
 "mistralai/mistral-saba","Mistral: Saba",1739803239,32000,"0.0000002","0.0000006"
 "cognitivecomputations/dolphin3.0-r1-mistral-24b:free","Dolphin3.0 R1 Mistral 24B (free)",1739462498,32768,"0","0"
