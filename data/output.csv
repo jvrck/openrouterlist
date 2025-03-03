@@ -1,5 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
-"moonshotai/moonlight-16b-a3b-instruct:free"," Moonshot AI: Moonlight 16b A3b Instruct (free)",1740719801,8192,"0","0"
+"moonshotai/moonlight-16b-a3b-instruct:free","Moonshot AI: Moonlight 16B A3B Instruct (free)",1740719801,8192,"0","0"
 "nousresearch/deephermes-3-llama-3-8b-preview:free","Nous: DeepHermes 3 Llama 3 8B Preview (free)",1740719372,131072,"0","0"
 "openai/gpt-4.5-preview","OpenAI: GPT-4.5 (Preview)",1740687810,128000,"0.000075","0.00015"
 "google/gemini-2.0-flash-lite-001","Google: Gemini 2.0 Flash Lite",1740506212,1048576,"0.000000075","0.0000003"
