@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"qwen/qwen2.5-32b-instruct","Qwen: Qwen2.5 32B Instruct",1741042744,131072,"0.00000079","0.00000079"
 "moonshotai/moonlight-16b-a3b-instruct:free","Moonshot AI: Moonlight 16B A3B Instruct (free)",1740719801,8192,"0","0"
 "nousresearch/deephermes-3-llama-3-8b-preview:free","Nous: DeepHermes 3 Llama 3 8B Preview (free)",1740719372,131072,"0","0"
 "openai/gpt-4.5-preview","OpenAI: GPT-4.5 (Preview)",1740687810,128000,"0.000075","0.00015"
@@ -47,7 +48,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "microsoft/phi-4","Microsoft: Phi 4",1736489872,16384,"0.00000007","0.00000014"
 "sao10k/l3.1-70b-hanami-x1","Sao10K: Llama 3.1 70B Hanami x1",1736302854,16000,"0.000003","0.000003"
 "deepseek/deepseek-chat:free","DeepSeek: DeepSeek V3 (free)",1735241320,131072,"0","0"
-"deepseek/deepseek-chat","DeepSeek: DeepSeek V3",1735241320,131072,"0.00000125","0.00000125"
+"deepseek/deepseek-chat","DeepSeek: DeepSeek V3",1735241320,65536,"0.0000012","0.0000012"
 "qwen/qvq-72b-preview","Qwen: QvQ 72B Preview",1735088567,32000,"0.00000025","0.0000005"
 "google/gemini-2.0-flash-thinking-exp-1219:free","Google: Gemini 2.0 Flash Thinking Experimental (free)",1734650026,40000,"0","0"
 "sao10k/l3.3-euryale-70b","Sao10K: Llama 3.3 Euryale 70B",1734535928,131072,"0.0000007","0.0000008"
@@ -163,7 +164,6 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "microsoft/phi-3-medium-128k-instruct","Microsoft: Phi-3 Medium 128K Instruct",1716508800,128000,"0.000001","0.000001"
 "neversleep/llama-3-lumimaid-70b","NeverSleep: Llama 3 Lumimaid 70B",1715817600,8192,"0.000003375","0.0000045"
 "google/gemini-flash-1.5","Google: Gemini Flash 1.5",1715644800,1000000,"0.000000075","0.0000003"
-"deepseek/deepseek-chat-v2.5","DeepSeek V2.5",1715644800,8192,"0.000002","0.000002"
 "openai/gpt-4o-2024-05-13","OpenAI: GPT-4o (2024-05-13)",1715558400,128000,"0.000005","0.000015"
 "meta-llama/llama-3-8b","Meta: Llama 3 8B (Base)",1715558400,8192,"0.00000005","0.00000008"
 "meta-llama/llama-3-70b","Meta: Llama 3 70B (Base)",1715558400,8192,"0.00000059","0.00000079"
