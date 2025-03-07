@@ -1,6 +1,9 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"perplexity/sonar-reasoning-pro","Perplexity: Sonar Reasoning Pro",1741313308,128000,"0.000002","0.000008"
+"perplexity/sonar-pro","Perplexity: Sonar Pro",1741312423,200000,"0.000003","0.000015"
+"perplexity/sonar-deep-research","Perplexity: Sonar Deep Research",1741311246,200000,"0.000002","0.000008"
 "deepseek/deepseek-r1-zero:free","DeepSeek: DeepSeek R1 Zero (free)",1741297434,163840,"0","0"
-"qwen/qwq-32b:free","Qwen: QwQ 32B (free)",1741208814,32768,"0","0"
+"qwen/qwq-32b:free","Qwen: QwQ 32B (free)",1741208814,131072,"0","0"
 "qwen/qwq-32b","Qwen: QwQ 32B",1741208814,131072,"0.00000015","0.00000045"
 "qwen/qwen2.5-32b-instruct","Qwen: Qwen2.5 32B Instruct",1741042744,131072,"0.00000079","0.00000079"
 "moonshotai/moonlight-16b-a3b-instruct:free","Moonshot AI: Moonlight 16B A3B Instruct (free)",1740719801,8192,"0","0"
