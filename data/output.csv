@@ -1,6 +1,6 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
 "thedrummer/anubis-pro-105b-v1","TheDrummer: Anubis Pro 105B V1",1741642290,64000,"0.0000008","0.0000008"
-"latitudegames/wayfarer-large-70b-llama-3.3","LatitueGames: Wayfarer Large 70B Llama 3.3",1741636885,128000,"0.0000007","0.0000007"
+"latitudegames/wayfarer-large-70b-llama-3.3","LatitudeGames: Wayfarer Large 70B Llama 3.3",1741636885,128000,"0.0000007","0.0000007"
 "thedrummer/skyfall-36b-v2","TheDrummer: Skyfall 36B V2",1741636566,32768,"0.0000005","0.0000005"
 "microsoft/phi-4-multimodal-instruct","Microsoft: Phi 4 Multimodal Instruct",1741396284,131072,"0.00000007","0.00000014"
 "perplexity/sonar-reasoning-pro","Perplexity: Sonar Reasoning Pro",1741313308,128000,"0.000002","0.000008"
