@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"google/gemma-3-27b-it:free","Google: Gemma 3 27B (free)",1741756359,131072,"0","0"
 "thedrummer/anubis-pro-105b-v1","TheDrummer: Anubis Pro 105B V1",1741642290,64000,"0.0000008","0.0000008"
 "latitudegames/wayfarer-large-70b-llama-3.3","LatitudeGames: Wayfarer Large 70B Llama 3.3",1741636885,128000,"0.0000007","0.0000007"
 "thedrummer/skyfall-36b-v2","TheDrummer: Skyfall 36B V2",1741636566,32768,"0.0000005","0.0000005"
