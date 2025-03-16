@@ -1,4 +1,7 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"open-r1/olympiccoder-7b:free","OlympicCoder 7B (free)",1742078265,32768,"0","0"
+"open-r1/olympiccoder-32b:free","OlympicCoder 32B (free)",1742077228,32768,"0","0"
+"steelskull/l3.3-electra-r1-70b","SteelSkull: L3.3 Electra R1 70B",1742067611,128000,"0.0000007","0.0000007"
 "allenai/olmo-2-0325-32b-instruct","AllenAI: Olmo 2 32B Instruct",1741988556,4096,"0.0000005","0.0000005"
 "google/gemma-3-1b-it:free","Google: Gemma 3 1B (free)",1741963556,32000,"0","0"
 "google/gemma-3-4b-it:free","Google: Gemma 3 4B (free)",1741905510,131072,"0","0"
