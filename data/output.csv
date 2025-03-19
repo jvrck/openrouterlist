@@ -1,5 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
-"mistralai/mistral-small-3.1-24b-instruct-2503","Mistral: Mistral Small 3.1 24B",1742238937,128000,"0.0000001","0.0000003"
+"mistralai/mistral-small-3.1-24b-instruct","Mistral: Mistral Small 3.1 24B",1742238937,128000,"0.0000001","0.0000003"
 "open-r1/olympiccoder-7b:free","OlympicCoder 7B (free)",1742078265,32768,"0","0"
 "open-r1/olympiccoder-32b:free","OlympicCoder 32B (free)",1742077228,32768,"0","0"
 "steelskull/l3.3-electra-r1-70b","SteelSkull: L3.3 Electra R1 70B",1742067611,128000,"0.0000007","0.0000007"
@@ -19,7 +19,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "thedrummer/anubis-pro-105b-v1","TheDrummer: Anubis Pro 105B V1",1741642290,64000,"0.0000008","0.0000008"
 "latitudegames/wayfarer-large-70b-llama-3.3","LatitudeGames: Wayfarer Large 70B Llama 3.3",1741636885,128000,"0.0000007","0.0000007"
 "thedrummer/skyfall-36b-v2","TheDrummer: Skyfall 36B V2",1741636566,32768,"0.0000005","0.0000005"
-"microsoft/phi-4-multimodal-instruct","Microsoft: Phi 4 Multimodal Instruct",1741396284,128000,"0.00000007","0.00000011"
+"microsoft/phi-4-multimodal-instruct","Microsoft: Phi 4 Multimodal Instruct",1741396284,131072,"0.00000005","0.0000001"
 "perplexity/sonar-reasoning-pro","Perplexity: Sonar Reasoning Pro",1741313308,128000,"0.000002","0.000008"
 "perplexity/sonar-pro","Perplexity: Sonar Pro",1741312423,200000,"0.000003","0.000015"
 "perplexity/sonar-deep-research","Perplexity: Sonar Deep Research",1741311246,200000,"0.000002","0.000008"
