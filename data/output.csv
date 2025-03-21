@@ -16,7 +16,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "tokyotech-llm/llama-3.1-swallow-70b-instruct-v0.3","Swallow: Llama 3.1 Swallow 70B Instruct V0.3",1741813936,16384,"0.0000006","0.0000012"
 "rekaai/reka-flash-3:free","Reka: Flash 3 (free)",1741812813,32768,"0","0"
 "google/gemma-3-27b-it:free","Google: Gemma 3 27B (free)",1741756359,96000,"0","0"
-"google/gemma-3-27b-it","Google: Gemma 3 27B",1741756359,131072,"0.0000001","0.0000002"
+"google/gemma-3-27b-it","Google: Gemma 3 27B",1741756359,128000,"0.0000003","0.0000005"
 "thedrummer/anubis-pro-105b-v1","TheDrummer: Anubis Pro 105B V1",1741642290,64000,"0.0000008","0.0000008"
 "latitudegames/wayfarer-large-70b-llama-3.3","LatitudeGames: Wayfarer Large 70B Llama 3.3",1741636885,128000,"0.0000007","0.0000007"
 "thedrummer/skyfall-36b-v2","TheDrummer: Skyfall 36B V2",1741636566,32768,"0.0000005","0.0000005"
