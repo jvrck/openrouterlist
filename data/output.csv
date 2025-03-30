@@ -66,7 +66,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "qwen/qwen-vl-max","Qwen: Qwen VL Max",1738434304,7500,"0.0000008","0.0000032"
 "qwen/qwen-turbo","Qwen: Qwen-Turbo",1738410974,1000000,"0.00000005","0.0000002"
 "qwen/qwen2.5-vl-72b-instruct:free","Qwen: Qwen2.5 VL 72B Instruct (free)",1738410311,131072,"0","0"
-"qwen/qwen2.5-vl-72b-instruct","Qwen: Qwen2.5 VL 72B Instruct",1738410311,128000,"0.0000007","0.0000007"
+"qwen/qwen2.5-vl-72b-instruct","Qwen: Qwen2.5 VL 72B Instruct",1738410311,32000,"0.0000007","0.0000007"
 "qwen/qwen-plus","Qwen: Qwen-Plus",1738409840,131072,"0.0000004","0.0000012"
 "qwen/qwen-max","Qwen: Qwen-Max ",1738402289,32768,"0.0000016","0.0000064"
 "openai/o3-mini","OpenAI: o3 Mini",1738351721,200000,"0.0000011","0.0000044"
