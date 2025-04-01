@@ -56,7 +56,6 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "cognitivecomputations/dolphin3.0-mistral-24b:free","Dolphin3.0 Mistral 24B (free)",1739462019,32768,"0","0"
 "meta-llama/llama-guard-3-8b","Llama Guard 3 8B",1739401318,8192,"0.0000002","0.0000002"
 "openai/o3-mini-high","OpenAI: o3 Mini High",1739372611,200000,"0.0000011","0.0000044"
-"allenai/llama-3.1-tulu-3-405b","Llama 3.1 Tulu 3 405B",1739053421,16384,"0.000005","0.00001"
 "deepseek/deepseek-r1-distill-llama-8b","DeepSeek: R1 Distill Llama 8B",1738937718,32000,"0.00000004","0.00000004"
 "google/gemini-2.0-flash-001","Google: Gemini Flash 2.0",1738769413,1000000,"0.0000001","0.0000004"
 "google/gemini-2.0-pro-exp-02-05:free","Google: Gemini Pro 2.0 Experimental (free)",1738768044,2000000,"0","0"
