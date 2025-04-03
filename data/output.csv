@@ -1,5 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
-"all-hands/openhands-lm-32b-v0.1","OpenHands LM 32B V0.1",1743613013,16384,"0.0000024","0.0000036"
+"all-hands/openhands-lm-32b-v0.1","OpenHands LM 32B V0.1",1743613013,16384,"0.0000026","0.0000034"
 "mistral/ministral-8b","Mistral: Ministral 8b",1743430021,131072,"0.0000001","0.0000001"
 "deepseek/deepseek-v3-base:free","DeepSeek: DeepSeek V3 Base (free)",1743272023,131072,"0","0"
 "scb10x/llama3.1-typhoon2-8b-instruct","Typhoon2 8B Instruct",1743196511,8192,"0.00000018","0.00000018"
