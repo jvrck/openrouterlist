@@ -43,7 +43,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "perplexity/sonar-deep-research","Perplexity: Sonar Deep Research",1741311246,200000,"0.000002","0.000008"
 "deepseek/deepseek-r1-zero:free","DeepSeek: DeepSeek R1 Zero (free)",1741297434,163840,"0","0"
 "qwen/qwq-32b:free","Qwen: QwQ 32B (free)",1741208814,40000,"0","0"
-"qwen/qwq-32b","Qwen: QwQ 32B",1741208814,131072,"0.00000012","0.00000018"
+"qwen/qwq-32b","Qwen: QwQ 32B",1741208814,131072,"0.00000015","0.0000002"
 "qwen/qwen2.5-32b-instruct","Qwen: Qwen2.5 32B Instruct",1741042744,131072,"0.00000079","0.00000079"
 "moonshotai/moonlight-16b-a3b-instruct:free","Moonshot AI: Moonlight 16B A3B Instruct (free)",1740719801,8192,"0","0"
 "nousresearch/deephermes-3-llama-3-8b-preview:free","Nous: DeepHermes 3 Llama 3 8B Preview (free)",1740719372,131072,"0","0"
