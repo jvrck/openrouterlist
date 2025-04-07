@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"tokyotech-llm/llama-3.1-swallow-8b-instruct-v0.3","Swallow: Llama 3.1 Swallow 8B Instruct V0.3",1743986742,16384,"0.0000001","0.0000002"
 "meta-llama/llama-4-maverick:free","Meta: Llama 4 Maverick (free)",1743881822,256000,"0","0"
 "meta-llama/llama-4-maverick","Meta: Llama 4 Maverick",1743881822,131072,"0.0000002","0.0000006"
 "meta-llama/llama-4-scout:free","Meta: Llama 4 Scout (free)",1743881519,512000,"0","0"
@@ -278,7 +279,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "openai/gpt-4-32k","OpenAI: GPT-4 32k",1693180800,32767,"0.00006","0.00012"
 "openai/gpt-4-32k-0314","OpenAI: GPT-4 32k (older v0314)",1693180800,32767,"0.00006","0.00012"
 "nousresearch/nous-hermes-llama2-13b","Nous: Hermes 13B",1692489600,4096,"0.00000018","0.00000018"
-"mancer/weaver","Mancer: Weaver (alpha)",1690934400,8000,"0.0000015","0.000001125"
+"mancer/weaver","Mancer: Weaver (alpha)",1690934400,8000,"0.000001125","0.000001125"
 "huggingfaceh4/zephyr-7b-beta:free","Hugging Face: Zephyr 7B (free)",1690934400,4096,"0","0"
 "anthropic/claude-2.0:beta","Anthropic: Claude v2.0 (self-moderated)",1690502400,100000,"0.000008","0.000024"
 "anthropic/claude-2.0","Anthropic: Claude v2.0",1690502400,100000,"0.000008","0.000024"
