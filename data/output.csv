@@ -1,4 +1,6 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"shisa-ai/shisa-v2-llama3.3-70b:free","Shisa AI: Shisa V2 Llama 3.3 70B  (free)",1744754858,32768,"0","0"
+"qwen/qwen2.5-coder-7b-instruct","Qwen: Qwen2.5 Coder 7B Instruct",1744734887,32768,"0.0000002","0.0000002"
 "openai/gpt-4.1","OpenAI: GPT-4.1",1744651385,1047576,"0.000002","0.000008"
 "openai/gpt-4.1-mini","OpenAI: GPT-4.1 Mini",1744651381,1047576,"0.0000004","0.0000016"
 "openai/gpt-4.1-nano","OpenAI: GPT-4.1 Nano",1744651369,1047576,"0.0000001","0.0000004"
@@ -12,7 +14,6 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "nvidia/llama-3.1-nemotron-nano-8b-v1:free","NVIDIA: Llama 3.1 Nemotron Nano 8B v1 (free)",1744123873,131072,"0","0"
 "nvidia/llama-3.3-nemotron-super-49b-v1:free","NVIDIA: Llama 3.3 Nemotron Super 49B v1 (free)",1744119494,131072,"0","0"
 "nvidia/llama-3.1-nemotron-ultra-253b-v1:free","NVIDIA: Llama 3.1 Nemotron Ultra 253B v1 (free)",1744115059,131072,"0","0"
-"tokyotech-llm/llama-3.1-swallow-8b-instruct-v0.3","Swallow: Llama 3.1 Swallow 8B Instruct V0.3",1743986742,16384,"0.0000001","0.0000002"
 "meta-llama/llama-4-maverick:free","Meta: Llama 4 Maverick (free)",1743881822,256000,"0","0"
 "meta-llama/llama-4-maverick","Meta: Llama 4 Maverick",1743881822,1048576,"0.00000018","0.0000006"
 "meta-llama/llama-4-scout:free","Meta: Llama 4 Scout (free)",1743881519,512000,"0","0"
@@ -48,7 +49,6 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "cohere/command-a","Cohere: Command A",1741894342,256000,"0.0000025","0.00001"
 "openai/gpt-4o-mini-search-preview","OpenAI: GPT-4o-mini Search Preview",1741818122,128000,"0.00000015","0.0000006"
 "openai/gpt-4o-search-preview","OpenAI: GPT-4o Search Preview",1741817949,128000,"0.0000025","0.00001"
-"tokyotech-llm/llama-3.1-swallow-70b-instruct-v0.3","Swallow: Llama 3.1 Swallow 70B Instruct V0.3",1741813936,16384,"0.0000006","0.0000012"
 "rekaai/reka-flash-3:free","Reka: Flash 3 (free)",1741812813,32768,"0","0"
 "google/gemma-3-27b-it:free","Google: Gemma 3 27B (free)",1741756359,96000,"0","0"
 "google/gemma-3-27b-it","Google: Gemma 3 27B",1741756359,131072,"0.0000001","0.0000002"
