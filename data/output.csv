@@ -197,6 +197,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "sao10k/l3-lunaris-8b","Sao10K: Llama 3 8B Lunaris",1723507200,8192,"0.00000002","0.00000005"
 "aetherwiing/mn-starcannon-12b","Aetherwiing: Starcannon 12B",1723507200,16384,"0.0000008","0.0000012"
 "openai/gpt-4o-2024-08-06","OpenAI: GPT-4o (2024-08-06)",1722902400,128000,"0.0000025","0.00001"
+"meta-llama/llama-3.1-405b:free","Meta: Llama 3.1 405B (base) (free)",1722556800,64000,"0","0"
 "meta-llama/llama-3.1-405b","Meta: Llama 3.1 405B (base)",1722556800,32768,"0.000002","0.000002"
 "nothingiisreal/mn-celeste-12b","Mistral Nemo 12B Celeste",1722556800,16384,"0.0000008","0.0000012"
 "perplexity/llama-3.1-sonar-small-128k-online","Perplexity: Llama 3.1 Sonar 8B Online",1722470400,127072,"0.0000002","0.0000002"
