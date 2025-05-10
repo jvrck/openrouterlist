@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"nousresearch/deephermes-3-mistral-24b-preview:free","Nous: DeepHermes 3 Mistral 24B Preview (free)",1746830904,32768,"0","0"
 "mistralai/mistral-medium-3","Mistral: Mistral Medium 3",1746627341,131072,"0.0000004","0.000002"
 "google/gemini-2.5-pro-preview","Google: Gemini 2.5 Pro Preview",1746578513,1048576,"0.00000125","0.00001"
 "arcee-ai/caller-large","Arcee AI: Caller Large",1746487869,32768,"0.00000055","0.00000085"
