@@ -19,7 +19,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "opengvlab/internvl3-14b:free","OpenGVLab: InternVL3 14B (free)",1746021355,32000,"0","0"
 "opengvlab/internvl3-2b:free","OpenGVLab: InternVL3 2B (free)",1746019807,32000,"0","0"
 "deepseek/deepseek-prover-v2:free","DeepSeek: DeepSeek Prover V2 (free)",1746013094,163840,"0","0"
-"deepseek/deepseek-prover-v2","DeepSeek: DeepSeek Prover V2",1746013094,163840,"0.0000007","0.00000218"
+"deepseek/deepseek-prover-v2","DeepSeek: DeepSeek Prover V2",1746013094,131072,"0.0000005","0.00000218"
 "meta-llama/llama-guard-4-12b","Meta: Llama Guard 4 12B",1745975193,163840,"0.00000005","0.00000005"
 "qwen/qwen3-30b-a3b:free","Qwen: Qwen3 30B A3B (free)",1745878604,40960,"0","0"
 "qwen/qwen3-30b-a3b","Qwen: Qwen3 30B A3B",1745878604,40960,"0.0000001","0.0000003"
