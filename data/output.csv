@@ -62,7 +62,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "nvidia/llama-3.3-nemotron-super-49b-v1:free","NVIDIA: Llama 3.3 Nemotron Super 49B v1 (free)",1744119494,131072,"0","0"
 "nvidia/llama-3.3-nemotron-super-49b-v1","NVIDIA: Llama 3.3 Nemotron Super 49B v1",1744119494,131072,"0.00000013","0.0000004"
 "nvidia/llama-3.1-nemotron-ultra-253b-v1:free","NVIDIA: Llama 3.1 Nemotron Ultra 253B v1 (free)",1744115059,131072,"0","0"
-"meta-llama/llama-4-maverick:free","Meta: Llama 4 Maverick (free)",1743881822,256000,"0","0"
+"meta-llama/llama-4-maverick:free","Meta: Llama 4 Maverick (free)",1743881822,128000,"0","0"
 "meta-llama/llama-4-maverick","Meta: Llama 4 Maverick",1743881822,1048576,"0.00000016","0.0000006"
 "meta-llama/llama-4-scout:free","Meta: Llama 4 Scout (free)",1743881519,256000,"0","0"
 "meta-llama/llama-4-scout","Meta: Llama 4 Scout",1743881519,1048576,"0.00000008","0.0000003"
