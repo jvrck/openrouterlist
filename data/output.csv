@@ -263,7 +263,6 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "openai/gpt-4o:extended","OpenAI: GPT-4o (extended)",1715558400,128000,"0.000006","0.000018"
 "meta-llama/llama-guard-2-8b","Meta: LlamaGuard 2 8B",1715558400,8192,"0.0000002","0.0000002"
 "allenai/olmo-7b-instruct","OLMo 7B Instruct",1715299200,2048,"0.00000008","0.00000024"
-"neversleep/llama-3-lumimaid-8b:extended","NeverSleep: Llama 3 Lumimaid 8B (extended)",1714780800,24576,"0.0000002","0.00000125"
 "neversleep/llama-3-lumimaid-8b","NeverSleep: Llama 3 Lumimaid 8B",1714780800,24576,"0.0000002","0.00000125"
 "sao10k/fimbulvetr-11b-v2","Fimbulvetr 11B v2",1713657600,4096,"0.0000008","0.0000012"
 "meta-llama/llama-3-8b-instruct","Meta: Llama 3 8B Instruct",1713398400,8192,"0.00000003","0.00000006"
