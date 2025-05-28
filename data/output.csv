@@ -242,7 +242,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "google/gemma-2-27b-it","Google: Gemma 2 27B",1720828800,8192,"0.0000001","0.0000003"
 "alpindale/magnum-72b","Magnum 72B",1720656000,16384,"0.000004","0.000006"
 "google/gemma-2-9b-it:free","Google: Gemma 2 9B (free)",1719532800,8192,"0","0"
-"google/gemma-2-9b-it","Google: Gemma 2 9B",1719532800,8192,"0.00000008","0.00000008"
+"google/gemma-2-9b-it","Google: Gemma 2 9B",1719532800,8192,"0.00000002","0.00000006"
 "01-ai/yi-large","01.AI: Yi Large",1719273600,32768,"0.000003","0.000003"
 "anthropic/claude-3.5-sonnet-20240620:beta","Anthropic: Claude 3.5 Sonnet (2024-06-20) (self-moderated)",1718841600,200000,"0.000003","0.000015"
 "anthropic/claude-3.5-sonnet-20240620","Anthropic: Claude 3.5 Sonnet (2024-06-20)",1718841600,200000,"0.000003","0.000015"
