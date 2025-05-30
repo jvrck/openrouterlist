@@ -1,4 +1,6 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"deepseek/deepseek-r1-0528-qwen3-8b:free","DeepSeek: Deepseek R1 0528 Qwen3 8B (free)",1748538543,131072,"0","0"
+"deepseek/deepseek-r1-0528-qwen3-8b","DeepSeek: Deepseek R1 0528 Qwen3 8B",1748538543,128000,"0.00000006","0.00000009"
 "google/gemma-2b-it","Google: Gemma 2 2B",1748460815,8192,"0.0000001","0.0000001"
 "deepseek/deepseek-r1-0528:free","DeepSeek: R1 0528 (free)",1748455170,163840,"0","0"
 "deepseek/deepseek-r1-0528","DeepSeek: R1 0528",1748455170,163840,"0.0000005","0.00000218"
@@ -238,7 +240,6 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "meta-llama/llama-3.1-8b-instruct","Meta: Llama 3.1 8B Instruct",1721692800,16384,"0.00000002","0.00000003"
 "meta-llama/llama-3.1-405b-instruct","Meta: Llama 3.1 405B Instruct",1721692800,32768,"0.0000008","0.0000008"
 "meta-llama/llama-3.1-70b-instruct","Meta: Llama 3.1 70B Instruct",1721692800,131072,"0.0000001","0.00000028"
-"mistralai/codestral-mamba","Mistral: Codestral Mamba",1721347200,262144,"0.00000025","0.00000025"
 "mistralai/mistral-nemo:free","Mistral: Mistral Nemo (free)",1721347200,131072,"0","0"
 "mistralai/mistral-nemo","Mistral: Mistral Nemo",1721347200,131072,"0.00000002","0.00000007"
 "openai/gpt-4o-mini","OpenAI: GPT-4o-mini",1721260800,128000,"0.00000015","0.0000006"
