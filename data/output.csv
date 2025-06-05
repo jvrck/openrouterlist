@@ -1,8 +1,9 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"sentientagi/dobby-mini-unhinged-plus-llama-3.1-8b","SentientAGI: Dobby Mini Plus Llama 3.1 8B",1748885619,131072,"0.0000002","0.0000002"
 "deepseek/deepseek-r1-distill-qwen-7b","DeepSeek: R1 Distill Qwen 7B",1748628237,131072,"0.0000001","0.0000002"
 "deepseek/deepseek-r1-0528-qwen3-8b:free","DeepSeek: Deepseek R1 0528 Qwen3 8B (free)",1748538543,131072,"0","0"
 "deepseek/deepseek-r1-0528-qwen3-8b","DeepSeek: Deepseek R1 0528 Qwen3 8B",1748538543,128000,"0.00000006","0.00000009"
-"google/gemma-2b-it","Google: Gemma 2 2B",1748460815,8192,"0.0000001","0.0000001"
+"google/gemma-2b-it","Google: Gemma 1 2B",1748460815,8192,"0.0000001","0.0000001"
 "deepseek/deepseek-r1-0528:free","DeepSeek: R1 0528 (free)",1748455170,163840,"0","0"
 "deepseek/deepseek-r1-0528","DeepSeek: R1 0528",1748455170,128000,"0.0000005","0.00000215"
 "sarvamai/sarvam-m:free","Sarvam AI: Sarvam-M (free)",1748188413,32768,"0","0"
