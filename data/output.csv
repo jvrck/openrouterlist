@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"openai/o3-pro","OpenAI: o3 Pro",1749598352,200000,"0.00002","0.00008"
 "mistralai/magistral-small-2506","Mistral: Magistral Small 2506",1749569561,40000,"0.0000005","0.0000015"
 "mistralai/magistral-medium-2506","Mistral: Magistral Medium 2506",1749354054,40960,"0.000002","0.000005"
 "mistralai/magistral-medium-2506:thinking","Mistral: Magistral Medium 2506 (thinking)",1749354054,40960,"0.000002","0.000005"
