@@ -1,4 +1,7 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"mistralai/magistral-small-2506","Mistral: Magistral Small 2506",1749569561,40000,"0.0000005","0.0000015"
+"mistralai/magistral-medium-2506","Mistral: Magistral Medium 2506",1749354054,40960,"0.000002","0.000005"
+"mistralai/magistral-medium-2506:thinking","Mistral: Magistral Medium 2506 (thinking)",1749354054,40960,"0.000002","0.000005"
 "google/gemini-2.5-pro-preview","Google: Gemini 2.5 Pro Preview 06-05",1749137257,1048576,"0.00000125","0.00001"
 "sentientagi/dobby-mini-unhinged-plus-llama-3.1-8b","SentientAGI: Dobby Mini Plus Llama 3.1 8B",1748885619,131072,"0.0000002","0.0000002"
 "deepseek/deepseek-r1-distill-qwen-7b","DeepSeek: R1 Distill Qwen 7B",1748628237,131072,"0.0000001","0.0000002"
@@ -56,7 +59,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "google/gemini-2.5-flash-preview","Google: Gemini 2.5 Flash Preview 04-17",1744914667,1048576,"0.00000015","0.0000006"
 "google/gemini-2.5-flash-preview:thinking","Google: Gemini 2.5 Flash Preview 04-17 (thinking)",1744914667,1048576,"0.00000015","0.0000035"
 "openai/o4-mini-high","OpenAI: o4 Mini High",1744824212,200000,"0.0000011","0.0000044"
-"openai/o3","OpenAI: o3",1744823457,200000,"0.00001","0.00004"
+"openai/o3","OpenAI: o3",1744823457,200000,"0.000002","0.000008"
 "openai/o4-mini","OpenAI: o4 Mini",1744820942,200000,"0.0000011","0.0000044"
 "shisa-ai/shisa-v2-llama3.3-70b:free","Shisa AI: Shisa V2 Llama 3.3 70B  (free)",1744754858,32768,"0","0"
 "openai/gpt-4.1","OpenAI: GPT-4.1",1744651385,1047576,"0.000002","0.000008"
