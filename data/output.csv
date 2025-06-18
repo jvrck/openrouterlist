@@ -245,7 +245,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "meta-llama/llama-3.1-405b-instruct","Meta: Llama 3.1 405B Instruct",1721692800,32768,"0.0000008","0.0000008"
 "meta-llama/llama-3.1-70b-instruct","Meta: Llama 3.1 70B Instruct",1721692800,131072,"0.0000001","0.00000028"
 "mistralai/mistral-nemo:free","Mistral: Mistral Nemo (free)",1721347200,131072,"0","0"
-"mistralai/mistral-nemo","Mistral: Mistral Nemo",1721347200,131072,"0.00000001","0.000000023"
+"mistralai/mistral-nemo","Mistral: Mistral Nemo",1721347200,131072,"0.00000001","0.000000022"
 "openai/gpt-4o-mini","OpenAI: GPT-4o-mini",1721260800,128000,"0.00000015","0.0000006"
 "openai/gpt-4o-mini-2024-07-18","OpenAI: GPT-4o-mini (2024-07-18)",1721260800,128000,"0.00000015","0.0000006"
 "google/gemma-2-27b-it","Google: Gemma 2 27B",1720828800,8192,"0.0000008","0.0000008"
