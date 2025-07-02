@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"openrouter/cypher-alpha:free","Cypher Alpha (free)",1751336087,1000000,"0","0"
 "baidu/ernie-4.5-300b-a47b","Baidu: ERNIE 4.5 300B A47B ",1751300139,123000,"0.0000003","0.000001"
 "thedrummer/anubis-70b-v1.1","TheDrummer: Anubis 70B V1.1",1751208347,131072,"0.0000003","0.0000008"
 "inception/mercury","Inception: Mercury",1750973026,32000,"0.00000025","0.000001"
@@ -112,7 +113,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "openai/gpt-4o-search-preview","OpenAI: GPT-4o Search Preview",1741817949,128000,"0.0000025","0.00001"
 "rekaai/reka-flash-3:free","Reka: Flash 3 (free)",1741812813,32768,"0","0"
 "google/gemma-3-27b-it:free","Google: Gemma 3 27B (free)",1741756359,96000,"0","0"
-"google/gemma-3-27b-it","Google: Gemma 3 27B",1741756359,131072,"0.0000001","0.00000018"
+"google/gemma-3-27b-it","Google: Gemma 3 27B",1741756359,32768,"0.00000009","0.00000017"
 "thedrummer/anubis-pro-105b-v1","TheDrummer: Anubis Pro 105B V1",1741642290,131072,"0.0000008","0.000001"
 "thedrummer/skyfall-36b-v2","TheDrummer: Skyfall 36B V2",1741636566,32768,"0.0000005","0.0000008"
 "microsoft/phi-4-multimodal-instruct","Microsoft: Phi 4 Multimodal Instruct",1741396284,131072,"0.00000005","0.0000001"
