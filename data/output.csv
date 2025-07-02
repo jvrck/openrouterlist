@@ -44,7 +44,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "arcee-ai/virtuoso-medium-v2","Arcee AI: Virtuoso Medium V2",1746478434,131072,"0.0000005","0.0000008"
 "arcee-ai/arcee-blitz","Arcee AI: Arcee Blitz",1746470100,32768,"0.00000045","0.00000075"
 "microsoft/phi-4-reasoning-plus","Microsoft: Phi 4 Reasoning Plus",1746130961,32768,"0.00000007","0.00000035"
-"inception/mercury-coder-small-beta","Inception: Mercury Coder Small Beta",1746033880,32000,"0.00000025","0.000001"
+"inception/mercury-coder","Inception: Mercury Coder",1746033880,32000,"0.00000025","0.000001"
 "opengvlab/internvl3-14b","OpenGVLab: InternVL3 14B",1746021355,12288,"0.0000002","0.0000004"
 "opengvlab/internvl3-2b","OpenGVLab: InternVL3 2B",1746019807,12288,"0.00000005","0.0000001"
 "deepseek/deepseek-prover-v2","DeepSeek: DeepSeek Prover V2",1746013094,131072,"0.0000005","0.00000218"
