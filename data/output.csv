@@ -1,6 +1,9 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
+"switchpoint/router","Switchpoint Router",1752272899,131072,"0.00000085","0.0000034"
+"moonshotai/kimi-k2","MoonshotAI: Kimi K2",1752263252,131072,"0.00000057","0.0000023"
+"thudm/glm-4.1v-9b-thinking","THUDM: GLM 4.1V 9B Thinking",1752244385,65536,"0.000000035","0.000000138"
 "mistralai/devstral-medium","Mistral: Devstral Medium",1752161321,131072,"0.0000004","0.000002"
-"mistralai/devstral-small","Mistral: Devstral Small 1.1",1752160751,131072,"0.0000001","0.0000003"
+"mistralai/devstral-small","Mistral: Devstral Small 1.1",1752160751,131072,"0.00000009","0.0000003"
 "cognitivecomputations/dolphin-mistral-24b-venice-edition:free","Venice: Uncensored (free)",1752094966,32768,"0","0"
 "x-ai/grok-4","xAI: Grok 4",1752087689,256000,"0.000003","0.000015"
 "google/gemma-3n-e2b-it:free","Google: Gemma 3n 2B (free)",1752074904,8192,"0","0"
