@@ -101,7 +101,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "google/gemini-2.5-pro-exp-03-25","Google: Gemini 2.5 Pro Experimental",1742922099,1048576,"0","0"
 "qwen/qwen2.5-vl-32b-instruct:free","Qwen: Qwen2.5 VL 32B Instruct (free)",1742839838,8192,"0","0"
 "qwen/qwen2.5-vl-32b-instruct","Qwen: Qwen2.5 VL 32B Instruct",1742839838,128000,"0.0000002","0.0000006"
-"deepseek/deepseek-chat-v3-0324:free","DeepSeek: DeepSeek V3 0324 (free)",1742824755,16384,"0","0"
+"deepseek/deepseek-chat-v3-0324:free","DeepSeek: DeepSeek V3 0324 (free)",1742824755,32768,"0","0"
 "deepseek/deepseek-chat-v3-0324","DeepSeek: DeepSeek V3 0324",1742824755,163840,"0.00000025","0.00000085"
 "featherless/qwerky-72b:free","Qwerky 72B (free)",1742481597,32768,"0","0"
 "openai/o1-pro","OpenAI: o1-pro",1742423211,200000,"0.00015","0.0006"
