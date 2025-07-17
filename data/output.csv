@@ -315,5 +315,6 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "anthropic/claude-2.0","Anthropic: Claude v2.0",1690502400,100000,"0.000008","0.000024"
 "undi95/remm-slerp-l2-13b","ReMM SLERP 13B",1689984000,6144,"0.0000007","0.000001"
 "gryphe/mythomax-l2-13b","MythoMax 13B",1688256000,4096,"0.00000006","0.00000006"
+"openai/gpt-3.5-turbo","OpenAI: GPT-3.5 Turbo",1685232000,16385,"0.0000005","0.0000015"
 "openai/gpt-4","OpenAI: GPT-4",1685232000,8191,"0.00003","0.00006"
 "openai/gpt-4-0314","OpenAI: GPT-4 (older v0314)",1685232000,8191,"0.00003","0.00006"
