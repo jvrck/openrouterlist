@@ -94,7 +94,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "nvidia/llama-3.3-nemotron-super-49b-v1","NVIDIA: Llama 3.3 Nemotron Super 49B v1",1744119494,131072,"0.00000013","0.0000004"
 "nvidia/llama-3.1-nemotron-ultra-253b-v1:free","NVIDIA: Llama 3.1 Nemotron Ultra 253B v1 (free)",1744115059,131072,"0","0"
 "nvidia/llama-3.1-nemotron-ultra-253b-v1","NVIDIA: Llama 3.1 Nemotron Ultra 253B v1",1744115059,131072,"0.0000006","0.0000018"
-"meta-llama/llama-4-maverick","Meta: Llama 4 Maverick",1743881822,1048576,"0.00000015","0.0000006"
+"meta-llama/llama-4-maverick","Meta: Llama 4 Maverick",1743881822,32768,"0","0"
 "meta-llama/llama-4-scout","Meta: Llama 4 Scout",1743881519,1048576,"0.00000008","0.0000003"
 "deepseek/deepseek-v3-base:free","DeepSeek: DeepSeek V3 Base (free)",1743272023,163840,"0","0"
 "scb10x/llama3.1-typhoon2-70b-instruct","Typhoon2 70B Instruct",1743196170,8192,"0.00000088","0.00000088"
