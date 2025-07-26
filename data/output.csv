@@ -1,7 +1,8 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
 "qwen/qwen3-235b-a22b-thinking-2507","Qwen: Qwen3 235B A22B Thinking 2507",1753449557,262144,"0.00000013","0.0000006"
+"z-ai/glm-4-32b","Z.AI: GLM 4 32B ",1753376617,128000,"0.0000001","0.0000001"
 "qwen/qwen3-coder:free","Qwen: Qwen3 Coder  (free)",1753230546,262144,"0","0"
-"qwen/qwen3-coder","Qwen: Qwen3 Coder ",1753230546,262144,"0.0000003024","0.0000003024"
+"qwen/qwen3-coder","Qwen: Qwen3 Coder ",1753230546,262144,"0.0000003","0.0000012"
 "bytedance/ui-tars-1.5-7b","Bytedance: UI-TARS 7B ",1753205056,128000,"0.0000001","0.0000002"
 "google/gemini-2.5-flash-lite","Google: Gemini 2.5 Flash Lite",1753200276,1048576,"0.0000001","0.0000004"
 "qwen/qwen3-235b-a22b-2507:free","Qwen: Qwen3 235B A22B Instruct 2507 (free)",1753119555,262144,"0","0"
