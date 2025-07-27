@@ -1,5 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
-"qwen/qwen3-235b-a22b-thinking-2507","Qwen: Qwen3 235B A22B Thinking 2507",1753449557,262144,"0.00000013","0.0000006"
+"qwen/qwen3-235b-a22b-thinking-2507","Qwen: Qwen3 235B A22B Thinking 2507",1753449557,262144,"0.0000001179","0.0000001179"
 "z-ai/glm-4-32b","Z.AI: GLM 4 32B ",1753376617,128000,"0.0000001","0.0000001"
 "qwen/qwen3-coder:free","Qwen: Qwen3 Coder  (free)",1753230546,262144,"0","0"
 "qwen/qwen3-coder","Qwen: Qwen3 Coder ",1753230546,262144,"0.0000003","0.0000012"
@@ -8,7 +8,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "qwen/qwen3-235b-a22b-2507:free","Qwen: Qwen3 235B A22B Instruct 2507 (free)",1753119555,262144,"0","0"
 "qwen/qwen3-235b-a22b-2507","Qwen: Qwen3 235B A22B Instruct 2507",1753119555,262144,"0.00000012","0.00000059"
 "switchpoint/router","Switchpoint Router",1752272899,131072,"0.00000085","0.0000034"
-"moonshotai/kimi-k2:free","MoonshotAI: Kimi K2 (free)",1752263252,65536,"0","0"
+"moonshotai/kimi-k2:free","MoonshotAI: Kimi K2 (free)",1752263252,32768,"0","0"
 "moonshotai/kimi-k2","MoonshotAI: Kimi K2",1752263252,63000,"0.00000014","0.00000249"
 "thudm/glm-4.1v-9b-thinking","THUDM: GLM 4.1V 9B Thinking",1752244385,65536,"0.000000035","0.000000138"
 "mistralai/devstral-medium","Mistral: Devstral Medium",1752161321,131072,"0.0000004","0.000002"
