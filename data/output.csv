@@ -1,6 +1,6 @@
 id,name,created,context_length,pricing.prompt,pricing.completion
 "openai/gpt-oss-120b","OpenAI: gpt-oss-120b",1754414231,131072,"0.00000009","0.00000045"
-"openai/gpt-oss-20b:free","OpenAI: gpt-oss-20b (free)",1754414229,134144,"0","0"
+"openai/gpt-oss-20b:free","OpenAI: gpt-oss-20b (free)",1754414229,131072,"0","0"
 "openai/gpt-oss-20b","OpenAI: gpt-oss-20b",1754414229,131072,"0.00000004","0.00000016"
 "anthropic/claude-opus-4.1","Anthropic: Claude Opus 4.1",1754411591,200000,"0.000015","0.000075"
 "openrouter/horizon-beta","Horizon Beta",1754089419,256000,"0","0"
@@ -87,6 +87,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "microsoft/mai-ds-r1:free","Microsoft: MAI DS R1 (free)",1745194100,163840,"0","0"
 "microsoft/mai-ds-r1","Microsoft: MAI DS R1",1745194100,163840,"0.0000001999188","0.000000800064"
 "thudm/glm-z1-32b:free","THUDM: GLM Z1 32B (free)",1744924148,32768,"0","0"
+"thudm/glm-z1-32b","THUDM: GLM Z1 32B",1744924148,32768,"0.00000003","0.00000003"
 "thudm/glm-4-32b","THUDM: GLM 4 32B",1744920915,32000,"0.00000024","0.00000024"
 "openai/o4-mini-high","OpenAI: o4 Mini High",1744824212,200000,"0.0000011","0.0000044"
 "openai/o3","OpenAI: o3",1744823457,200000,"0.000002","0.000008"
