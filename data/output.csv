@@ -11,7 +11,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion
 "qwen/qwen3-30b-a3b-instruct-2507","Qwen: Qwen3 30B A3B Instruct 2507",1753806965,131072,"0.0000002","0.0000008"
 "z-ai/glm-4.5","Z.AI: GLM 4.5",1753471347,98304,"0.0000001999188","0.000000800064"
 "z-ai/glm-4.5-air:free","Z.AI: GLM 4.5 Air (free)",1753471258,131072,"0","0"
-"z-ai/glm-4.5-air","Z.AI: GLM 4.5 Air",1753471258,128000,"0.0000002","0.0000011"
+"z-ai/glm-4.5-air","Z.AI: GLM 4.5 Air",1753471258,131072,"0.0000002","0.0000011"
 "qwen/qwen3-235b-a22b-thinking-2507","Qwen: Qwen3 235B A22B Thinking 2507",1753449557,262144,"0.000000077968332","0.00000031202496"
 "z-ai/glm-4-32b","Z.AI: GLM 4 32B ",1753376617,128000,"0.0000001","0.0000001"
 "qwen/qwen3-coder:free","Qwen: Qwen3 Coder  (free)",1753230546,32000,"0","0"
