@@ -191,6 +191,181 @@
       border: 1px solid var(--border-color);
     }
 
+    /* Capability Filter Styles */
+    .capability-filters {
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: var(--bg-secondary);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .capability-filters-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .capability-filters-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .filter-count-badge {
+      background-color: var(--header-bg);
+      color: white;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: bold;
+      display: none;
+    }
+
+    .filter-count-badge.active {
+      display: inline-block;
+    }
+
+    .filter-controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .filter-mode-toggle {
+      display: flex;
+      background-color: var(--bg-primary);
+      border-radius: 20px;
+      padding: 3px;
+      border: 1px solid var(--border-color);
+    }
+
+    .filter-mode-btn {
+      padding: 6px 12px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 17px;
+      color: var(--text-primary);
+      font-size: 13px;
+      transition: background-color 0.3s;
+      white-space: nowrap;
+    }
+
+    .filter-mode-btn.active {
+      background-color: var(--header-bg);
+      color: white;
+    }
+
+    .clear-filters-btn {
+      padding: 6px 12px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 13px;
+      transition: background-color 0.2s;
+    }
+
+    .clear-filters-btn:hover {
+      background-color: var(--bg-hover);
+    }
+
+    .capability-checkboxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .capability-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .capability-checkbox:hover {
+      background-color: var(--bg-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .capability-checkbox input {
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+    }
+
+    .capability-checkbox label {
+      cursor: pointer;
+      color: var(--text-primary);
+      font-size: 14px;
+      user-select: none;
+      flex: 1;
+    }
+
+    .capability-checkbox.checked {
+      background-color: var(--header-bg);
+      border-color: var(--header-bg);
+    }
+
+    .capability-checkbox.checked label {
+      color: white;
+    }
+
+    .filter-presets {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .preset-btn {
+      padding: 6px 12px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+
+    .preset-btn:hover {
+      background-color: var(--bg-hover);
+      transform: translateY(-1px);
+    }
+
+    .filter-results-info {
+      padding: 8px 12px;
+      background-color: var(--bg-primary);
+      border-radius: 5px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .filter-results-info.active {
+      display: block;
+    }
+
     .column-selector h3 {
       margin-top: 0;
       color: var(--text-primary);
@@ -568,6 +743,30 @@
       .column-selector {
         display: none;
       }
+      
+      .capability-filters {
+        padding: 12px;
+      }
+      
+      .capability-filters-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+      }
+      
+      .filter-controls {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .filter-mode-toggle {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .capability-checkboxes {
+        grid-template-columns: 1fr;
+      }
 
       body {
         padding: 10px;
@@ -603,6 +802,58 @@
       <p id="updatedDate"></p>
       <p>This table provides the latest pricing information for <a href="https://openrouter.ai/" target="_blank">OpenRouter</a> models.</p>
       <p>Data is checked every 12 hours. The repository can be found on <a href="https://github.com/jvrck/openrouterlist" target="_blank">GitHub</a>.</p>
+    </div>
+
+    <!-- Capability Filters Section -->
+    <div class="capability-filters">
+      <div class="capability-filters-header">
+        <div class="capability-filters-title">
+          <span>🎯 Filter by Capabilities</span>
+          <span class="filter-count-badge" id="filterCountBadge">0 active</span>
+        </div>
+        <div class="filter-controls">
+          <div class="filter-mode-toggle">
+            <button class="filter-mode-btn active" data-mode="all">Match All</button>
+            <button class="filter-mode-btn" data-mode="any">Match Any</button>
+          </div>
+          <button class="clear-filters-btn" id="clearFiltersBtn">Clear All</button>
+        </div>
+      </div>
+      
+      <div class="capability-checkboxes">
+        <div class="capability-checkbox" data-capability="tool_calling">
+          <input type="checkbox" id="filter-tool-calling">
+          <label for="filter-tool-calling">🔧 Tool Calling</label>
+        </div>
+        <div class="capability-checkbox" data-capability="structured_outputs">
+          <input type="checkbox" id="filter-structured-outputs">
+          <label for="filter-structured-outputs">📋 Structured Outputs</label>
+        </div>
+        <div class="capability-checkbox" data-capability="reasoning">
+          <input type="checkbox" id="filter-reasoning">
+          <label for="filter-reasoning">🧠 Reasoning</label>
+        </div>
+        <div class="capability-checkbox" data-capability="response_format">
+          <input type="checkbox" id="filter-response-format">
+          <label for="filter-response-format">📝 Response Format</label>
+        </div>
+        <div class="capability-checkbox" data-capability="web_search">
+          <input type="checkbox" id="filter-web-search">
+          <label for="filter-web-search">🌐 Web Search</label>
+        </div>
+      </div>
+      
+      <div class="filter-presets">
+        <span style="color: var(--text-secondary); font-size: 13px; margin-right: 10px;">Quick filters:</span>
+        <button class="preset-btn" data-preset="agentic">🤖 Agentic Models</button>
+        <button class="preset-btn" data-preset="reasoning">💭 Reasoning Models</button>
+        <button class="preset-btn" data-preset="structured">📊 Structured Output</button>
+        <button class="preset-btn" data-preset="web">🔍 Web-Enabled</button>
+      </div>
+      
+      <div class="filter-results-info" id="filterResultsInfo">
+        <span id="filterResultsText">0 models match your filters</span>
+      </div>
     </div>
 
     <div class="column-selector">
@@ -687,6 +938,18 @@
           <span class="shortcut-key">e</span>
         </div>
         <div class="shortcut-item">
+          <span>Focus capability filters</span>
+          <span class="shortcut-key">c</span>
+        </div>
+        <div class="shortcut-item">
+          <span>Toggle filter mode</span>
+          <span class="shortcut-key">m</span>
+        </div>
+        <div class="shortcut-item">
+          <span>Clear all filters</span>
+          <span class="shortcut-key">x</span>
+        </div>
+        <div class="shortcut-item">
           <span>Show this help</span>
           <span class="shortcut-key">?</span>
         </div>
@@ -708,6 +971,11 @@
     let currentDensity = localStorage.getItem('density') || 'comfortable';
     let columnVisibility = JSON.parse(localStorage.getItem('columnVisibility')) || {};
     let isCardView = false;
+    
+    // Capability filter variables
+    let activeCapabilityFilters = [];
+    let capabilityFilterMode = 'all'; // 'all' or 'any'
+    let isCapabilityFilterActive = false;
 
     // Theme management
     function applyTheme(theme) {
@@ -776,6 +1044,113 @@
       }
     }
 
+    // Capability filter functions
+    function updateCapabilityFilters() {
+      activeCapabilityFilters = [];
+      $('.capability-checkbox input:checked').each(function() {
+        const capability = $(this).parent().data('capability');
+        activeCapabilityFilters.push(capability);
+      });
+      
+      isCapabilityFilterActive = activeCapabilityFilters.length > 0;
+      
+      // Update UI indicators
+      updateFilterIndicators();
+      
+      // Apply filters
+      applyCapabilityFilters();
+    }
+    
+    function updateFilterIndicators() {
+      const count = activeCapabilityFilters.length;
+      
+      if (count > 0) {
+        $('#filterCountBadge').text(`${count} active`).addClass('active');
+        $('#filterResultsInfo').addClass('active');
+      } else {
+        $('#filterCountBadge').removeClass('active');
+        $('#filterResultsInfo').removeClass('active');
+      }
+      
+      // Update checkbox styling
+      $('.capability-checkbox').each(function() {
+        const isChecked = $(this).find('input').prop('checked');
+        $(this).toggleClass('checked', isChecked);
+      });
+    }
+    
+    function applyCapabilityFilters() {
+      if (dataTable) {
+        dataTable.draw();
+      }
+      
+      if (isCardView) {
+        renderCardView();
+      }
+      
+      updateFilterResultsCount();
+    }
+    
+    function updateFilterResultsCount() {
+      if (!isCapabilityFilterActive) return;
+      
+      let filteredCount = 0;
+      
+      if (dataTable) {
+        filteredCount = dataTable.rows({ search: 'applied' }).count();
+      } else {
+        filteredCount = getFilteredData().length;
+      }
+      
+      $('#filterResultsText').text(`${filteredCount} models match your filters`);
+    }
+    
+    function getFilteredData() {
+      let data = showFavoritesOnly ? 
+        allData.filter(row => favorites.includes(row.id)) : 
+        allData;
+      
+      if (!isCapabilityFilterActive) return data;
+      
+      return data.filter(row => {
+        if (capabilityFilterMode === 'all') {
+          // Match ALL selected capabilities
+          return activeCapabilityFilters.every(cap => row[cap] === 'Yes');
+        } else {
+          // Match ANY selected capability
+          return activeCapabilityFilters.some(cap => row[cap] === 'Yes');
+        }
+      });
+    }
+    
+    function clearCapabilityFilters() {
+      $('.capability-checkbox input').prop('checked', false);
+      updateCapabilityFilters();
+    }
+    
+    function applyPresetFilter(preset) {
+      clearCapabilityFilters();
+      
+      switch(preset) {
+        case 'agentic':
+          $('#filter-tool-calling').prop('checked', true);
+          $('#filter-structured-outputs').prop('checked', true);
+          break;
+        case 'reasoning':
+          $('#filter-reasoning').prop('checked', true);
+          break;
+        case 'structured':
+          $('#filter-structured-outputs').prop('checked', true);
+          $('#filter-response-format').prop('checked', true);
+          break;
+        case 'web':
+          $('#filter-web-search').prop('checked', true);
+          break;
+      }
+      
+      updateCapabilityFilters();
+    }
+
     // URL state management
     function updateURLState() {
       const params = new URLSearchParams();
@@ -788,6 +1163,12 @@
       if (showFavoritesOnly) params.set('favorites', 'true');
       if (currentTheme !== 'system') params.set('theme', currentTheme);
       if (currentDensity !== 'comfortable') params.set('density', currentDensity);
+      
+      // Add capability filters to URL
+      if (activeCapabilityFilters.length > 0) {
+        params.set('capabilities', activeCapabilityFilters.join(','));
+        params.set('capMode', capabilityFilterMode);
+      }
       
       const visibleColumns = [];
       $('.column-checkbox input:checked').each(function() {
@@ -824,6 +1205,22 @@
         applyDensity(params.get('density'));
       }
       
+      // Load capability filters from URL
+      if (params.has('capabilities')) {
+        const capabilities = params.get('capabilities').split(',');
+        capabilities.forEach(cap => {
+          $(`.capability-checkbox[data-capability="${cap}"] input`).prop('checked', true);
+        });
+        
+        if (params.has('capMode')) {
+          capabilityFilterMode = params.get('capMode');
+          $('.filter-mode-btn').removeClass('active');
+          $(`.filter-mode-btn[data-mode="${capabilityFilterMode}"]`).addClass('active');
+        }
+        
+        updateCapabilityFilters();
+      }
+      
       if (params.has('columns')) {
         const visibleColumns = params.get('columns').split(',').map(Number);
         $('.column-checkbox input').each(function() {
@@ -841,9 +1238,7 @@
       const cardContainer = $('#cardView');
       cardContainer.empty();
       
-      const dataToRender = showFavoritesOnly ? 
-        allData.filter(row => favorites.includes(row.id)) : 
-        allData;
+      const dataToRender = getFilteredData();
       
       dataToRender.forEach(row => {
         const isFavorited = favorites.includes(row.id);
@@ -949,6 +1344,22 @@
           case 'e':
             $('.dt-button.buttons-csv').click();
             break;
+          case 'c':
+            // Toggle capability filter focus
+            $('.capability-checkbox input:first').focus();
+            break;
+          case 'm':
+            // Toggle filter mode
+            const currentMode = capabilityFilterMode === 'all' ? 'any' : 'all';
+            $(`.filter-mode-btn[data-mode="${currentMode}"]`).click();
+            break;
+          case 'x':
+            // Clear all filters
+            if (isCapabilityFilterActive) {
+              clearCapabilityFilters();
+              updateURLState();
+            }
+            break;
           case '?':
             $('#shortcutsModal').show();
             break;
@@ -1004,6 +1415,40 @@
           $('.column-selector').show();
           $(this).html('📱 Card View');
         }
+      });
+      
+      // Capability filter handlers
+      $('.capability-checkbox input').on('change', function() {
+        updateCapabilityFilters();
+        updateURLState();
+      });
+      
+      $('.capability-checkbox').on('click', function(e) {
+        if (e.target.tagName !== 'INPUT') {
+          const checkbox = $(this).find('input');
+          checkbox.prop('checked', !checkbox.prop('checked'));
+          updateCapabilityFilters();
+          updateURLState();
+        }
+      });
+      
+      $('.filter-mode-btn').on('click', function() {
+        capabilityFilterMode = $(this).data('mode');
+        $('.filter-mode-btn').removeClass('active');
+        $(this).addClass('active');
+        applyCapabilityFilters();
+        updateURLState();
+      });
+      
+      $('#clearFiltersBtn').on('click', function() {
+        clearCapabilityFilters();
+        updateURLState();
+      });
+      
+      $('.preset-btn').on('click', function() {
+        const preset = $(this).data('preset');
+        applyPresetFilter(preset);
+        updateURLState();
       });
       
       // Help modal
@@ -1183,6 +1628,23 @@
           toggleFavorite(modelId);
         });
   
+        // Setup custom DataTables filter for capabilities
+        $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+          if (!isCapabilityFilterActive) return true;
+          
+          // Get the row data from our allData array
+          const rowData = allData[dataIndex];
+          if (!rowData) return true;
+          
+          if (capabilityFilterMode === 'all') {
+            // Match ALL selected capabilities
+            return activeCapabilityFilters.every(cap => rowData[cap] === 'Yes');
+          } else {
+            // Match ANY selected capability
+            return activeCapabilityFilters.some(cap => rowData[cap] === 'Yes');
+          }
+        });
+        
         // Initialize DataTables
         dataTable = $('#csvTable').DataTable({
           paging: false,
