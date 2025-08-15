@@ -465,6 +465,85 @@
       background-color: var(--bg-hover);
     }
 
+    /* Modern DataTables Button Styles */
+    .dt-buttons {
+      margin-bottom: 15px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .dt-button {
+      padding: 8px 15px !important;
+      border: 1px solid var(--border-color) !important;
+      background-color: var(--bg-secondary) !important;
+      color: var(--text-primary) !important;
+      cursor: pointer !important;
+      border-radius: 8px !important;
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      transition: all 0.2s ease !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif !important;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+    }
+
+    .dt-button:hover {
+      background-color: var(--bg-hover) !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    }
+
+    .dt-button:active {
+      transform: translateY(0) !important;
+    }
+
+    /* Add icons to buttons */
+    .dt-button.buttons-copy:before {
+      content: "📋";
+      font-size: 16px;
+    }
+
+    .dt-button.buttons-csv:before {
+      content: "📄";
+      font-size: 16px;
+    }
+
+    .dt-button.buttons-excel:before {
+      content: "📊";
+      font-size: 16px;
+    }
+
+    .dt-button.buttons-pdf:before {
+      content: "📑";
+      font-size: 16px;
+    }
+
+    .dt-button.buttons-print:before {
+      content: "🖨️";
+      font-size: 16px;
+    }
+
+    /* Button container positioning */
+    .dataTables_wrapper .dt-buttons {
+      float: none;
+      text-align: left;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .dt-buttons {
+        justify-content: center;
+      }
+      
+      .dt-button {
+        font-size: 13px !important;
+        padding: 6px 12px !important;
+      }
+    }
+
     @media (max-width: 768px) {
       .view-toggle {
         display: block;
@@ -1053,7 +1132,33 @@
         dataTable = $('#csvTable').DataTable({
           paging: false,
           dom: 'Bfrtip',
-          buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+          buttons: [
+            {
+              extend: 'copy',
+              text: 'Copy',
+              className: 'buttons-copy'
+            },
+            {
+              extend: 'csv',
+              text: 'CSV',
+              className: 'buttons-csv'
+            },
+            {
+              extend: 'excel',
+              text: 'Excel',
+              className: 'buttons-excel'
+            },
+            {
+              extend: 'pdf',
+              text: 'PDF',
+              className: 'buttons-pdf'
+            },
+            {
+              extend: 'print',
+              text: 'Print',
+              className: 'buttons-print'
+            }
+          ],
           responsive: true,
           searchHighlight: true,
           drawCallback: function() {
