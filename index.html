@@ -21,42 +21,992 @@
   <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
 
   <style>
-    th {
-      background-color: #4CAF50;
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f9f9f9;
+      --bg-hover: #f0f0f0;
+      --text-primary: #333333;
+      --text-secondary: #666666;
+      --border-color: #dddddd;
+      --header-bg: #2563eb;
+      --header-text: white;
+      --link-color: #0066cc;
+      --favorite-color: #ffa500;
+      --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #1e1e1e;
+      --bg-secondary: #2d2d2d;
+      --bg-hover: #404040;
+      --text-primary: #e8e8e8;
+      --text-secondary: #b8b8b8;
+      --border-color: #4a4a4a;
+      --header-bg: #3b82f6;
+      --header-text: #ffffff;
+      --link-color: #70b8ff;
+      --favorite-color: #ffd700;
+      --card-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    }
+
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      gap: 15px;
+    }
+
+    h1 {
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .controls {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .theme-toggle {
+      display: flex;
+      gap: 5px;
+      background-color: var(--bg-secondary);
+      border-radius: 20px;
+      padding: 5px;
+      border: 1px solid var(--border-color);
+    }
+
+    .theme-btn {
+      padding: 8px 12px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 15px;
+      color: var(--text-primary);
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+
+    .theme-btn.active {
+      background-color: var(--header-bg);
       color: white;
+    }
+
+    .density-toggle {
+      display: flex;
+      gap: 5px;
+      background-color: var(--bg-secondary);
+      border-radius: 20px;
+      padding: 5px;
+      border: 1px solid var(--border-color);
+    }
+
+    .density-btn {
+      padding: 8px 12px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 15px;
+      color: var(--text-primary);
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+
+    .density-btn.active {
+      background-color: var(--header-bg);
+      color: white;
+    }
+
+    .view-toggle {
+      display: none;
+    }
+
+    .btn {
+      padding: 8px 15px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .btn:hover {
+      background-color: var(--bg-hover);
+    }
+
+    #favoritesToggle {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .info-section {
+      background-color: var(--bg-secondary);
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    .info-section p {
+      margin: 5px 0;
+      color: var(--text-secondary);
+    }
+
+    .info-section a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+
+    .info-section a:hover {
+      text-decoration: underline;
+    }
+
+    .column-selector {
+      margin-bottom: 15px;
+      padding: 15px;
+      background-color: var(--bg-secondary);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .column-selector h3 {
+      margin-top: 0;
+      color: var(--text-primary);
+    }
+
+    .column-checkboxes {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .column-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--text-primary);
+    }
+
+    .column-checkbox input {
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      background-color: var(--bg-primary);
+    }
+
+    th {
+      background-color: var(--header-bg) !important;
+      color: var(--header-text) !important;
       padding: 10px;
       text-align: left;
     }
+
     td {
       padding: 8px;
-      border: 1px solid #ddd;
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
     }
+
+    tr {
+      background-color: var(--bg-primary) !important;
+    }
+
     tr:nth-child(even) {
-      background-color: #f2f2f2;
+      background-color: var(--bg-secondary) !important;
     }
+
+    tr:nth-child(even) td {
+      background-color: var(--bg-secondary) !important;
+    }
+
     tr:hover {
-      background-color: #ddd;
+      background-color: var(--bg-hover) !important;
+    }
+
+    tr:hover td {
+      background-color: var(--bg-hover) !important;
+    }
+
+    td a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+
+    td a:hover {
+      text-decoration: underline;
+    }
+
+    .favorite-btn {
+      cursor: pointer;
+      font-size: 18px;
+      background: none;
+      border: none;
+      padding: 0;
+      margin-right: 5px;
+      color: var(--text-secondary);
+      transition: color 0.3s;
+    }
+
+    .favorite-btn.favorited {
+      color: var(--favorite-color);
+    }
+
+    .favorite-btn:hover {
+      color: var(--favorite-color);
+    }
+
+    /* Density Styles */
+    table.density-compact td,
+    table.density-compact th {
+      padding: 4px 8px !important;
+    }
+
+    table.density-comfortable td,
+    table.density-comfortable th {
+      padding: 8px 10px !important;
+    }
+
+    table.density-spacious td,
+    table.density-spacious th {
+      padding: 12px 16px !important;
+    }
+
+    /* Mobile Card View */
+    .card-view {
+      display: none;
+    }
+
+    .model-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .model-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 10px;
+    }
+
+    .model-card-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: var(--text-primary);
+      flex: 1;
+    }
+
+    .model-card-title a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+
+    .model-card-details {
+      display: grid;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .model-card-row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .model-card-label {
+      font-weight: 500;
+    }
+
+    .model-card-value {
+      color: var(--text-primary);
+    }
+
+    /* Keyboard shortcuts modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      animation: fadeIn 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background-color: var(--bg-primary);
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      width: 80%;
+      max-width: 500px;
+      color: var(--text-primary);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .close {
+      color: var(--text-secondary);
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: var(--text-primary);
+    }
+
+    .shortcuts-list {
+      margin-top: 20px;
+    }
+
+    .shortcut-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .shortcut-key {
+      background-color: var(--bg-secondary);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-weight: bold;
+    }
+
+    /* DataTables overrides for dark mode */
+    [data-theme="dark"] table.dataTable {
+      background-color: var(--bg-primary) !important;
+    }
+
+    [data-theme="dark"] table.dataTable tbody tr {
+      background-color: var(--bg-primary) !important;
+    }
+
+    [data-theme="dark"] table.dataTable tbody tr:nth-child(even) {
+      background-color: var(--bg-secondary) !important;
+    }
+
+    [data-theme="dark"] table.dataTable tbody tr:hover {
+      background-color: var(--bg-hover) !important;
+    }
+
+    [data-theme="dark"] table.dataTable tbody td {
+      background-color: inherit !important;
+      color: var(--text-primary) !important;
+    }
+
+    [data-theme="dark"] .dataTables_wrapper .dataTables_length,
+    [data-theme="dark"] .dataTables_wrapper .dataTables_filter,
+    [data-theme="dark"] .dataTables_wrapper .dataTables_info,
+    [data-theme="dark"] .dataTables_wrapper .dataTables_processing,
+    [data-theme="dark"] .dataTables_wrapper .dataTables_paginate {
+      color: var(--text-primary);
+    }
+
+    [data-theme="dark"] .dataTables_wrapper .dataTables_paginate .paginate_button {
+      color: var(--text-primary) !important;
+    }
+
+    [data-theme="dark"] .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+      color: var(--text-secondary) !important;
+    }
+
+    [data-theme="dark"] .dataTables_wrapper .dataTables_filter input,
+    [data-theme="dark"] .dataTables_wrapper .dataTables_length select {
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    [data-theme="dark"] .dt-buttons .dt-button {
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    [data-theme="dark"] .dt-buttons .dt-button:hover {
+      background-color: var(--bg-hover);
+    }
+
+    /* Modern DataTables Button Styles */
+    .dt-buttons {
+      margin-bottom: 15px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .dt-button {
+      padding: 8px 15px !important;
+      border: 1px solid var(--border-color) !important;
+      background-color: var(--bg-secondary) !important;
+      color: var(--text-primary) !important;
+      cursor: pointer !important;
+      border-radius: 8px !important;
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      transition: all 0.2s ease !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif !important;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+    }
+
+    .dt-button:hover {
+      background-color: var(--bg-hover) !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    }
+
+    .dt-button:active {
+      transform: translateY(0) !important;
+    }
+
+    /* Add icons to buttons */
+    .dt-button.buttons-copy:before {
+      content: "📋";
+      font-size: 16px;
+    }
+
+    .dt-button.buttons-csv:before {
+      content: "📄";
+      font-size: 16px;
+    }
+
+    .dt-button.buttons-excel:before {
+      content: "📊";
+      font-size: 16px;
+    }
+
+    .dt-button.buttons-pdf:before {
+      content: "📑";
+      font-size: 16px;
+    }
+
+    .dt-button.buttons-print:before {
+      content: "🖨️";
+      font-size: 16px;
+    }
+
+    /* Button container positioning */
+    .dataTables_wrapper .dt-buttons {
+      float: none;
+      text-align: left;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .dt-buttons {
+        justify-content: center;
+      }
+      
+      .dt-button {
+        font-size: 13px !important;
+        padding: 6px 12px !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .view-toggle {
+        display: block;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .controls {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .theme-toggle,
+      .density-toggle {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .column-selector {
+        display: none;
+      }
+
+      body {
+        padding: 10px;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <div class="header">
+      <h1>Openrouter Model Pricing</h1>
+      <div class="controls">
+        <div class="theme-toggle">
+          <button class="theme-btn" data-theme="light">☀️ Light</button>
+          <button class="theme-btn" data-theme="dark">🌙 Dark</button>
+          <button class="theme-btn" data-theme="system">🖥️ System</button>
+        </div>
+        <div class="density-toggle">
+          <button class="density-btn" data-density="compact">Compact</button>
+          <button class="density-btn active" data-density="comfortable">Comfortable</button>
+          <button class="density-btn" data-density="spacious">Spacious</button>
+        </div>
+        <button id="favoritesToggle" class="btn">
+          <span>⭐</span>
+          <span>Favorites Only</span>
+        </button>
+        <button id="viewToggle" class="btn view-toggle">📱 Card View</button>
+        <button id="helpBtn" class="btn">? Help</button>
+      </div>
+    </div>
 
-  <h1>Openrouter Model Pricing</h1>
-  <p id="updatedDate"></p>
+    <div class="info-section">
+      <p id="updatedDate"></p>
+      <p>This table provides the latest pricing information for <a href="https://openrouter.ai/" target="_blank">OpenRouter</a> models.</p>
+      <p>Data is checked every 12 hours. The repository can be found on <a href="https://github.com/jvrck/openrouterlist" target="_blank">GitHub</a>.</p>
+    </div>
 
-  <p>This table provides the latest pricing information for <a href="https://openrouter.ai/" target="_blank">OpenRouter</a> models.</p>
-  <p>Data is checked every 12 hours.</p>
-  <p>The repository can be found on <a href="https://github.com/jvrck/openrouterlist" target="_blank">GitHub</a>.</p>
+    <div class="column-selector">
+      <h3>Show/Hide Columns:</h3>
+      <div class="column-checkboxes">
+        <label class="column-checkbox">
+          <input type="checkbox" data-column="0" checked> Model ID
+        </label>
+        <label class="column-checkbox">
+          <input type="checkbox" data-column="1" checked> Model Name
+        </label>
+        <label class="column-checkbox">
+          <input type="checkbox" data-column="2" checked> Created
+        </label>
+        <label class="column-checkbox">
+          <input type="checkbox" data-column="3" checked> Context Length
+        </label>
+        <label class="column-checkbox">
+          <input type="checkbox" data-column="4" checked> Prompt Cost
+        </label>
+        <label class="column-checkbox">
+          <input type="checkbox" data-column="5" checked> Completion Cost
+        </label>
+      </div>
+    </div>
 
-  <table id="csvTable" class="display" style="width:100%">
-    <thead>
-      <tr id="tableHeaders"></tr>
-    </thead>
-    <tbody id="tableBody"></tbody>
-  </table>
+    <div class="table-view">
+      <table id="csvTable" class="display" style="width:100%">
+        <thead>
+          <tr id="tableHeaders"></tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <div class="card-view" id="cardView"></div>
+  </div>
+
+  <!-- Keyboard Shortcuts Modal -->
+  <div id="shortcutsModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Keyboard Shortcuts</h2>
+      <div class="shortcuts-list">
+        <div class="shortcut-item">
+          <span>Focus search</span>
+          <span class="shortcut-key">/</span>
+        </div>
+        <div class="shortcut-item">
+          <span>Toggle favorites</span>
+          <span class="shortcut-key">f</span>
+        </div>
+        <div class="shortcut-item">
+          <span>Change theme</span>
+          <span class="shortcut-key">t</span>
+        </div>
+        <div class="shortcut-item">
+          <span>Change density</span>
+          <span class="shortcut-key">d</span>
+        </div>
+        <div class="shortcut-item">
+          <span>Toggle view (mobile)</span>
+          <span class="shortcut-key">v</span>
+        </div>
+        <div class="shortcut-item">
+          <span>Export to CSV</span>
+          <span class="shortcut-key">e</span>
+        </div>
+        <div class="shortcut-item">
+          <span>Show this help</span>
+          <span class="shortcut-key">?</span>
+        </div>
+        <div class="shortcut-item">
+          <span>Close dialogs</span>
+          <span class="shortcut-key">Esc</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
+    // Global variables
+    let dataTable;
+    let allData = [];
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    let showFavoritesOnly = false;
+    let currentTheme = localStorage.getItem('theme') || 'system';
+    let currentDensity = localStorage.getItem('density') || 'comfortable';
+    let columnVisibility = JSON.parse(localStorage.getItem('columnVisibility')) || {};
+    let isCardView = false;
+
+    // Theme management
+    function applyTheme(theme) {
+      if (theme === 'system') {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', theme);
+      }
+      
+      $('.theme-btn').removeClass('active');
+      $(`.theme-btn[data-theme="${theme}"]`).addClass('active');
+      localStorage.setItem('theme', theme);
+      currentTheme = theme;
+    }
+
+    // Density management
+    function applyDensity(density) {
+      $('#csvTable').removeClass('density-compact density-comfortable density-spacious');
+      $('#csvTable').addClass(`density-${density}`);
+      
+      $('.density-btn').removeClass('active');
+      $(`.density-btn[data-density="${density}"]`).addClass('active');
+      localStorage.setItem('density', density);
+      currentDensity = density;
+    }
+
+    // Favorites management
+    function toggleFavorite(modelId) {
+      const index = favorites.indexOf(modelId);
+      if (index > -1) {
+        favorites.splice(index, 1);
+      } else {
+        favorites.push(modelId);
+      }
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+      updateFavoriteButtons();
+      
+      if (showFavoritesOnly) {
+        filterFavorites();
+      }
+    }
+
+    function updateFavoriteButtons() {
+      $('.favorite-btn').each(function() {
+        const modelId = $(this).data('model-id');
+        if (favorites.includes(modelId)) {
+          $(this).addClass('favorited').html('★');
+        } else {
+          $(this).removeClass('favorited').html('☆');
+        }
+      });
+    }
+
+    function filterFavorites() {
+      if (dataTable) {
+        if (showFavoritesOnly) {
+          dataTable.column(0).search(favorites.join('|'), true, false).draw();
+        } else {
+          dataTable.column(0).search('').draw();
+        }
+      }
+      
+      if (isCardView) {
+        renderCardView();
+      }
+    }
+
+    // URL state management
+    function updateURLState() {
+      const params = new URLSearchParams();
+      
+      if (dataTable) {
+        const search = dataTable.search();
+        if (search) params.set('search', search);
+      }
+      
+      if (showFavoritesOnly) params.set('favorites', 'true');
+      if (currentTheme !== 'system') params.set('theme', currentTheme);
+      if (currentDensity !== 'comfortable') params.set('density', currentDensity);
+      
+      const visibleColumns = [];
+      $('.column-checkbox input:checked').each(function() {
+        visibleColumns.push($(this).data('column'));
+      });
+      if (visibleColumns.length < 6) {
+        params.set('columns', visibleColumns.join(','));
+      }
+      
+      const newURL = params.toString() ? `?${params.toString()}` : window.location.pathname;
+      window.history.replaceState({}, '', newURL);
+    }
+
+    function loadFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      
+      if (params.has('search') && dataTable) {
+        dataTable.search(params.get('search')).draw();
+      }
+      
+      if (params.has('favorites')) {
+        showFavoritesOnly = params.get('favorites') === 'true';
+        if (showFavoritesOnly) {
+          $('#favoritesToggle').addClass('active');
+          filterFavorites();
+        }
+      }
+      
+      if (params.has('theme')) {
+        applyTheme(params.get('theme'));
+      }
+      
+      if (params.has('density')) {
+        applyDensity(params.get('density'));
+      }
+      
+      if (params.has('columns')) {
+        const visibleColumns = params.get('columns').split(',').map(Number);
+        $('.column-checkbox input').each(function() {
+          const column = $(this).data('column');
+          $(this).prop('checked', visibleColumns.includes(column));
+          if (dataTable) {
+            dataTable.column(column).visible(visibleColumns.includes(column));
+          }
+        });
+      }
+    }
+
+    // Card view rendering
+    function renderCardView() {
+      const cardContainer = $('#cardView');
+      cardContainer.empty();
+      
+      const dataToRender = showFavoritesOnly ? 
+        allData.filter(row => favorites.includes(row.id)) : 
+        allData;
+      
+      dataToRender.forEach(row => {
+        const isFavorited = favorites.includes(row.id);
+        const card = $(`
+          <div class="model-card">
+            <div class="model-card-header">
+              <div class="model-card-title">
+                <a href="https://openrouter.ai/models/${row.id}" target="_blank">${row.name}</a>
+              </div>
+              <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" 
+                      data-model-id="${row.id}">${isFavorited ? '★' : '☆'}</button>
+            </div>
+            <div class="model-card-details">
+              <div class="model-card-row">
+                <span class="model-card-label">Model ID:</span>
+                <span class="model-card-value">${row.id}</span>
+              </div>
+              <div class="model-card-row">
+                <span class="model-card-label">Created:</span>
+                <span class="model-card-value">${row.created}</span>
+              </div>
+              <div class="model-card-row">
+                <span class="model-card-label">Context:</span>
+                <span class="model-card-value">${row.context_length}</span>
+              </div>
+              <div class="model-card-row">
+                <span class="model-card-label">Prompt Cost:</span>
+                <span class="model-card-value">$${row.prompt_cost}/1M tokens</span>
+              </div>
+              <div class="model-card-row">
+                <span class="model-card-label">Completion Cost:</span>
+                <span class="model-card-value">$${row.completion_cost}/1M tokens</span>
+              </div>
+            </div>
+          </div>
+        `);
+        
+        card.find('.favorite-btn').on('click', function() {
+          toggleFavorite(row.id);
+          renderCardView();
+        });
+        
+        cardContainer.append(card);
+      });
+    }
+
+    // Keyboard shortcuts
+    function setupKeyboardShortcuts() {
+      $(document).on('keydown', function(e) {
+        // Don't trigger shortcuts when typing in input fields
+        if ($(e.target).is('input, textarea')) {
+          if (e.key === 'Escape') {
+            $(e.target).blur();
+          }
+          return;
+        }
+        
+        switch(e.key) {
+          case '/':
+            e.preventDefault();
+            $('.dataTables_filter input').focus();
+            break;
+          case 'f':
+            $('#favoritesToggle').click();
+            break;
+          case 't':
+            const themes = ['light', 'dark', 'system'];
+            const currentIndex = themes.indexOf(currentTheme);
+            const nextTheme = themes[(currentIndex + 1) % themes.length];
+            applyTheme(nextTheme);
+            break;
+          case 'd':
+            const densities = ['compact', 'comfortable', 'spacious'];
+            const densityIndex = densities.indexOf(currentDensity);
+            const nextDensity = densities[(densityIndex + 1) % densities.length];
+            applyDensity(nextDensity);
+            break;
+          case 'v':
+            if (window.innerWidth <= 768) {
+              $('#viewToggle').click();
+            }
+            break;
+          case 'e':
+            $('.dt-button.buttons-csv').click();
+            break;
+          case '?':
+            $('#shortcutsModal').show();
+            break;
+          case 'Escape':
+            $('.modal').hide();
+            break;
+        }
+      });
+    }
+
     $(document).ready(function() {
+      // Apply saved theme
+      applyTheme(currentTheme);
+      
+      // Apply saved density
+      applyDensity(currentDensity);
+      
+      // Setup keyboard shortcuts
+      setupKeyboardShortcuts();
+      
+      // Theme toggle handlers
+      $('.theme-btn').on('click', function() {
+        applyTheme($(this).data('theme'));
+        updateURLState();
+      });
+      
+      // Density toggle handlers
+      $('.density-btn').on('click', function() {
+        applyDensity($(this).data('density'));
+        updateURLState();
+      });
+      
+      // Favorites toggle
+      $('#favoritesToggle').on('click', function() {
+        showFavoritesOnly = !showFavoritesOnly;
+        $(this).toggleClass('active', showFavoritesOnly);
+        filterFavorites();
+        updateURLState();
+      });
+      
+      // View toggle (mobile)
+      $('#viewToggle').on('click', function() {
+        isCardView = !isCardView;
+        if (isCardView) {
+          $('.table-view').hide();
+          $('.card-view').show();
+          $('.column-selector').hide();
+          $(this).html('📊 Table View');
+          renderCardView();
+        } else {
+          $('.table-view').show();
+          $('.card-view').hide();
+          $('.column-selector').show();
+          $(this).html('📱 Card View');
+        }
+      });
+      
+      // Help modal
+      $('#helpBtn').on('click', function() {
+        $('#shortcutsModal').show();
+      });
+      
+      $('.close').on('click', function() {
+        $('#shortcutsModal').hide();
+      });
+      
+      $(window).on('click', function(e) {
+        if ($(e.target).hasClass('modal')) {
+          $('.modal').hide();
+        }
+      });
+      
+      // Column visibility
+      $('.column-checkbox input').on('change', function() {
+        const column = $(this).data('column');
+        const isVisible = $(this).prop('checked');
+        
+        if (dataTable) {
+          dataTable.column(column).visible(isVisible);
+        }
+        
+        columnVisibility[column] = isVisible;
+        localStorage.setItem('columnVisibility', JSON.stringify(columnVisibility));
+        updateURLState();
+      });
+      
+      // Listen for system theme changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (currentTheme === 'system') {
+          applyTheme('system');
+        }
+      });
+      
       // Fetch and display the updated date
       $.get("data/updated", function(data) {
         var dateStr = data.trim();
@@ -89,7 +1039,7 @@
         var headerHtml = "";
         headers.forEach(function(header) {
           var trimmedHeader = header.trim();
-          var newHeader = headerMapping[trimmedHeader] || trimmedHeader; // Use the new header if it exists in the mapping, otherwise use the original header
+          var newHeader = headerMapping[trimmedHeader] || trimmedHeader;
           headerHtml += "<th>" + newHeader + "</th>";
         });
         $("#tableHeaders").html(headerHtml);
@@ -101,42 +1051,62 @@
   
         // Populate the table with CSV data
         for (var i = 1; i < lines.length; i++) {
-          if (lines[i].trim() !== "") {  // Skip empty lines
+          if (lines[i].trim() !== "") {
             var row = lines[i].split(",");
             var rowHtml = "<tr>";
-            var currentId = "";  // To hold the id value of the current row
+            var currentId = "";
+            var rowData = {};
   
             row.forEach(function(cell, index) {
               var columnName = headers[index].trim().toLowerCase();
-              var cleanedValue = removeQuotes(cell.trim());  // Remove quotes around the values
+              var cleanedValue = removeQuotes(cell.trim());
   
               // Capture the id for the current row
               if (columnName === "id") {
                 currentId = cleanedValue;
+                rowData.id = cleanedValue;
+              }
+              
+              if (columnName === "name") {
+                rowData.name = cleanedValue;
               }
   
-              // Check for pricing.prompt or pricing.completion columns and multiply by 1,000,000 if id is not "openrouter/auto"
+              // Check for pricing columns
               if ((columnName === "pricing.prompt" || columnName === "pricing.completion") && currentId !== "openrouter/auto") {
-                var numericValue = parseFloat(cleanedValue.replace(/,/g, ''));  // Remove commas and convert the value to a number
+                var numericValue = parseFloat(cleanedValue.replace(/,/g, ''));
                 if (!isNaN(numericValue)) {
                   var multipliedValue = numericValue * 1000000;
-                  rowHtml += "<td>" + multipliedValue.toFixed(2) + "</td>"; // Add precision to 2 decimal places
+                  var formattedValue = multipliedValue.toFixed(2);
+                  
+                  if (columnName === "pricing.prompt") {
+                    rowData.prompt_cost = formattedValue;
+                  } else {
+                    rowData.completion_cost = formattedValue;
+                  }
+                  
+                  rowHtml += "<td>" + formattedValue + "</td>";
                 } else {
-                  rowHtml += "<td>Invalid</td>";  // Handle non-numeric values or empty cells
+                  rowHtml += "<td>Invalid</td>";
                 }
               } else if (columnName === "created") {
                 // Convert Unix timestamp to YYYY-MM-DD format
                 var unixTimestamp = parseInt(cleanedValue, 10);
                 if (!isNaN(unixTimestamp)) {
-                  var date = new Date(unixTimestamp * 1000); // Convert to milliseconds
-                  var formattedDate = date.toISOString().split('T')[0]; // Extract date as YYYY-MM-DD
+                  var date = new Date(unixTimestamp * 1000);
+                  var formattedDate = date.toISOString().split('T')[0];
+                  rowData.created = formattedDate;
                   rowHtml += "<td>" + formattedDate + "</td>";
                 } else {
-                  rowHtml += "<td>Invalid Date</td>";  // Handle invalid timestamps
+                  rowData.created = "Invalid Date";
+                  rowHtml += "<td>Invalid Date</td>";
                 }
               } else if (columnName === "name") {
-                // Add hyperlink to the Model Name field
-                rowHtml += `<td><a href="https://openrouter.ai/models/${currentId}" target="_blank">${cleanedValue}</a></td>`;
+                // Add favorite button and hyperlink to the Model Name field
+                var favoriteBtn = `<button class="favorite-btn" data-model-id="${currentId}">☆</button>`;
+                rowHtml += `<td>${favoriteBtn}<a href="https://openrouter.ai/models/${currentId}" target="_blank">${cleanedValue}</a></td>`;
+              } else if (columnName === "context_length") {
+                rowData.context_length = cleanedValue;
+                rowHtml += "<td>" + cleanedValue + "</td>";
               } else {
                 rowHtml += "<td>" + cleanedValue + "</td>";
               }
@@ -144,16 +1114,70 @@
   
             rowHtml += "</tr>";
             $("#tableBody").append(rowHtml);
+            allData.push(rowData);
           }
         }
+        
+        // Update favorite buttons
+        updateFavoriteButtons();
+        
+        // Setup favorite button handlers
+        $(document).on('click', '.favorite-btn', function(e) {
+          e.stopPropagation();
+          const modelId = $(this).data('model-id');
+          toggleFavorite(modelId);
+        });
   
-        // Initialize DataTables without pagination
-        $('#csvTable').DataTable({
-          paging: false,        // Disable pagination
-          dom: 'Bfrtip',        // Display buttons
-          buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],  // Export buttons
-          responsive: true,     // Make the table responsive for smaller screens
-          searchHighlight: true // Highlight search results
+        // Initialize DataTables
+        dataTable = $('#csvTable').DataTable({
+          paging: false,
+          dom: 'Bfrtip',
+          buttons: [
+            {
+              extend: 'copy',
+              text: 'Copy',
+              className: 'buttons-copy'
+            },
+            {
+              extend: 'csv',
+              text: 'CSV',
+              className: 'buttons-csv'
+            },
+            {
+              extend: 'excel',
+              text: 'Excel',
+              className: 'buttons-excel'
+            },
+            {
+              extend: 'pdf',
+              text: 'PDF',
+              className: 'buttons-pdf'
+            },
+            {
+              extend: 'print',
+              text: 'Print',
+              className: 'buttons-print'
+            }
+          ],
+          responsive: true,
+          searchHighlight: true,
+          drawCallback: function() {
+            updateFavoriteButtons();
+          }
+        });
+        
+        // Apply saved column visibility
+        Object.keys(columnVisibility).forEach(column => {
+          dataTable.column(parseInt(column)).visible(columnVisibility[column]);
+          $(`.column-checkbox input[data-column="${column}"]`).prop('checked', columnVisibility[column]);
+        });
+        
+        // Load state from URL
+        loadFromURL();
+        
+        // Update URL on search
+        $('.dataTables_filter input').on('keyup', function() {
+          updateURLState();
         });
       });
     });
