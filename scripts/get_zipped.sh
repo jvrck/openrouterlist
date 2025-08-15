@@ -22,8 +22,42 @@ curl -X 'GET' \
     -o "$output_dir/output.json"
 
 # Add headers and convert JSON to CSV, saving to the new directory
-echo "id,name,created,context_length,pricing.prompt,pricing.completion" > "$output_dir/output.csv"
-jq -r '.data[] | [.id, .name, .created, .context_length, .pricing.prompt, .pricing.completion] | @csv' "$output_dir/output.json" >> "$output_dir/output.csv"
+echo "id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search" > "$output_dir/output.csv"
+jq -r '.data[] | 
+  # Check for tool calling (both tool_choice AND tools must be present)
+  (.supported_parameters as $params |
+   (if ($params | type == "array" and 
+        ($params | contains(["tool_choice"])) and 
+        ($params | contains(["tools"]))) 
+    then "Yes" else "No" end)) as $tool_calling |
+  
+  # Check for structured outputs
+  (.supported_parameters as $params |
+   (if ($params | type == "array" and 
+        ($params | contains(["structured_outputs"]))) 
+    then "Yes" else "No" end)) as $structured |
+  
+  # Check for reasoning (either reasoning OR include_reasoning)
+  (.supported_parameters as $params |
+   (if ($params | type == "array" and 
+        (($params | contains(["reasoning"])) or 
+         ($params | contains(["include_reasoning"])))) 
+    then "Yes" else "No" end)) as $reasoning |
+  
+  # Check for response format
+  (.supported_parameters as $params |
+   (if ($params | type == "array" and 
+        ($params | contains(["response_format"]))) 
+    then "Yes" else "No" end)) as $response_format |
+  
+  # Check for web search
+  (.supported_parameters as $params |
+   (if ($params | type == "array" and 
+        ($params | contains(["web_search_options"]))) 
+    then "Yes" else "No" end)) as $web_search |
+  
+  [.id, .name, .created, .context_length, .pricing.prompt, .pricing.completion, 
+   $tool_calling, $structured, $reasoning, $response_format, $web_search] | @csv' "$output_dir/output.json" >> "$output_dir/output.csv"
 
 # Check if there is an existing output.json in the data directory
 if [ -f "data/output.json" ]; then
