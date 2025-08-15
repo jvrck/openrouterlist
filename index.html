@@ -626,6 +626,21 @@
         <label class="column-checkbox">
           <input type="checkbox" data-column="5" checked> Completion Cost
         </label>
+        <label class="column-checkbox">
+          <input type="checkbox" data-column="6" checked> Tool Calling
+        </label>
+        <label class="column-checkbox">
+          <input type="checkbox" data-column="7" checked> Structured Outputs
+        </label>
+        <label class="column-checkbox">
+          <input type="checkbox" data-column="8" checked> Reasoning
+        </label>
+        <label class="column-checkbox">
+          <input type="checkbox" data-column="9" checked> Response Format
+        </label>
+        <label class="column-checkbox">
+          <input type="checkbox" data-column="10" checked> Web Search
+        </label>
       </div>
     </div>
 
@@ -778,7 +793,7 @@
       $('.column-checkbox input:checked').each(function() {
         visibleColumns.push($(this).data('column'));
       });
-      if (visibleColumns.length < 6) {
+      if (visibleColumns.length < 11) {
         params.set('columns', visibleColumns.join(','));
       }
       
@@ -862,6 +877,26 @@
                 <span class="model-card-label">Completion Cost:</span>
                 <span class="model-card-value">$${row.completion_cost}/1M tokens</span>
               </div>
+              ${row.tool_calling === 'Yes' ? `<div class="model-card-row">
+                <span class="model-card-label">Tool Calling:</span>
+                <span class="model-card-value">✓</span>
+              </div>` : ''}
+              ${row.structured_outputs === 'Yes' ? `<div class="model-card-row">
+                <span class="model-card-label">Structured Outputs:</span>
+                <span class="model-card-value">✓</span>
+              </div>` : ''}
+              ${row.reasoning === 'Yes' ? `<div class="model-card-row">
+                <span class="model-card-label">Reasoning:</span>
+                <span class="model-card-value">✓</span>
+              </div>` : ''}
+              ${row.response_format === 'Yes' ? `<div class="model-card-row">
+                <span class="model-card-label">Response Format:</span>
+                <span class="model-card-value">✓</span>
+              </div>` : ''}
+              ${row.web_search === 'Yes' ? `<div class="model-card-row">
+                <span class="model-card-label">Web Search:</span>
+                <span class="model-card-value">✓</span>
+              </div>` : ''}
             </div>
           </div>
         `);
@@ -1032,6 +1067,11 @@
           "context_length": "Context Length",
           "pricing.prompt": "Prompt Cost <br>$ per 1M Tokens",
           "pricing.completion": "Completion Cost <br>$ per 1M Tokens",
+          "tool_calling": "Tool Calling",
+          "structured_outputs": "Structured Outputs",
+          "reasoning": "Reasoning",
+          "response_format": "Response Format",
+          "web_search": "Web Search"
         };
   
         // Get the headers from the first row of the CSV
@@ -1107,6 +1147,21 @@
               } else if (columnName === "context_length") {
                 rowData.context_length = cleanedValue;
                 rowHtml += "<td>" + cleanedValue + "</td>";
+              } else if (columnName === "tool_calling") {
+                rowData.tool_calling = cleanedValue;
+                rowHtml += "<td>" + (cleanedValue === "Yes" ? "✓" : "-") + "</td>";
+              } else if (columnName === "structured_outputs") {
+                rowData.structured_outputs = cleanedValue;
+                rowHtml += "<td>" + (cleanedValue === "Yes" ? "✓" : "-") + "</td>";
+              } else if (columnName === "reasoning") {
+                rowData.reasoning = cleanedValue;
+                rowHtml += "<td>" + (cleanedValue === "Yes" ? "✓" : "-") + "</td>";
+              } else if (columnName === "response_format") {
+                rowData.response_format = cleanedValue;
+                rowHtml += "<td>" + (cleanedValue === "Yes" ? "✓" : "-") + "</td>";
+              } else if (columnName === "web_search") {
+                rowData.web_search = cleanedValue;
+                rowHtml += "<td>" + (cleanedValue === "Yes" ? "✓" : "-") + "</td>";
               } else {
                 rowHtml += "<td>" + cleanedValue + "</td>";
               }
