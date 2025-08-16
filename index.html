@@ -330,6 +330,7 @@
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
+      align-items: center;
       margin-top: 10px;
       padding-top: 10px;
       border-top: 1px solid var(--border-color);
@@ -585,6 +586,131 @@
       font-weight: bold;
     }
 
+    /* Tooltip Styles */
+    .tooltip-wrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .tooltip-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: var(--text-secondary);
+      color: var(--bg-primary);
+      font-size: 11px;
+      font-weight: bold;
+      cursor: help;
+      transition: background-color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .tooltip-icon:hover {
+      background-color: var(--header-bg);
+    }
+
+    .tooltip-content {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--text-primary);
+      color: var(--bg-primary);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      white-space: nowrap;
+      max-width: 250px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      z-index: 1000;
+      pointer-events: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+
+    .tooltip-content.wide {
+      white-space: normal;
+      text-align: center;
+    }
+
+    .tooltip-content::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--text-primary);
+    }
+
+    .tooltip-wrapper:hover .tooltip-content {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Dark theme tooltip adjustments */
+    [data-theme="dark"] .tooltip-content {
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    [data-theme="dark"] .tooltip-content::after {
+      border-top-color: var(--bg-secondary);
+    }
+
+    /* Capability checkbox with tooltip */
+    .capability-label-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .capability-label-wrapper label {
+      flex: 1;
+    }
+
+    /* Filter mode tooltip */
+    .filter-mode-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Preset button tooltips */
+    .preset-btn-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .preset-btn-wrapper .tooltip-content {
+      bottom: calc(100% + 4px);
+      white-space: normal;
+      min-width: 200px;
+    }
+
+    /* Mobile tooltip adjustments */
+    @media (max-width: 768px) {
+      .tooltip-content {
+        max-width: 200px;
+        font-size: 12px;
+      }
+      
+      /* On mobile, show tooltips on tap */
+      .tooltip-wrapper.mobile-active .tooltip-content {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
     /* DataTables overrides for dark mode */
     [data-theme="dark"] table.dataTable {
       background-color: var(--bg-primary) !important;
@@ -812,9 +938,15 @@
           <span class="filter-count-badge" id="filterCountBadge">0 active</span>
         </div>
         <div class="filter-controls">
-          <div class="filter-mode-toggle">
-            <button class="filter-mode-btn active" data-mode="all">Match All</button>
-            <button class="filter-mode-btn" data-mode="any">Match Any</button>
+          <div class="filter-mode-wrapper">
+            <div class="filter-mode-toggle">
+              <button class="filter-mode-btn active" data-mode="all">Match All</button>
+              <button class="filter-mode-btn" data-mode="any">Match Any</button>
+            </div>
+            <div class="tooltip-wrapper">
+              <span class="tooltip-icon">?</span>
+              <div class="tooltip-content wide">Match All: Model must have ALL selected capabilities<br>Match Any: Model needs at least ONE selected capability</div>
+            </div>
           </div>
           <button class="clear-filters-btn" id="clearFiltersBtn">Clear All</button>
         </div>
@@ -823,32 +955,74 @@
       <div class="capability-checkboxes">
         <div class="capability-checkbox" data-capability="tool_calling">
           <input type="checkbox" id="filter-tool-calling">
-          <label for="filter-tool-calling">🔧 Tool Calling</label>
+          <div class="capability-label-wrapper">
+            <label for="filter-tool-calling">🔧 Tool Calling</label>
+            <div class="tooltip-wrapper">
+              <span class="tooltip-icon">?</span>
+              <div class="tooltip-content wide">Model can call external functions/APIs to perform actions like calculations, database queries, etc.</div>
+            </div>
+          </div>
         </div>
         <div class="capability-checkbox" data-capability="structured_outputs">
           <input type="checkbox" id="filter-structured-outputs">
-          <label for="filter-structured-outputs">📋 Structured Outputs</label>
+          <div class="capability-label-wrapper">
+            <label for="filter-structured-outputs">📋 Structured Outputs</label>
+            <div class="tooltip-wrapper">
+              <span class="tooltip-icon">?</span>
+              <div class="tooltip-content wide">Model reliably returns data in specific formats like JSON, following exact schemas</div>
+            </div>
+          </div>
         </div>
         <div class="capability-checkbox" data-capability="reasoning">
           <input type="checkbox" id="filter-reasoning">
-          <label for="filter-reasoning">🧠 Reasoning</label>
+          <div class="capability-label-wrapper">
+            <label for="filter-reasoning">🧠 Reasoning</label>
+            <div class="tooltip-wrapper">
+              <span class="tooltip-icon">?</span>
+              <div class="tooltip-content wide">Model shows step-by-step thinking process, useful for complex problem-solving</div>
+            </div>
+          </div>
         </div>
         <div class="capability-checkbox" data-capability="response_format">
           <input type="checkbox" id="filter-response-format">
-          <label for="filter-response-format">📝 Response Format</label>
+          <div class="capability-label-wrapper">
+            <label for="filter-response-format">📝 Response Format</label>
+            <div class="tooltip-wrapper">
+              <span class="tooltip-icon">?</span>
+              <div class="tooltip-content wide">Model supports custom output formatting instructions and templates</div>
+            </div>
+          </div>
         </div>
         <div class="capability-checkbox" data-capability="web_search">
           <input type="checkbox" id="filter-web-search">
-          <label for="filter-web-search">🌐 Web Search</label>
+          <div class="capability-label-wrapper">
+            <label for="filter-web-search">🌐 Web Search</label>
+            <div class="tooltip-wrapper">
+              <span class="tooltip-icon">?</span>
+              <div class="tooltip-content wide">Model can actively search the internet for current information during conversations</div>
+            </div>
+          </div>
         </div>
       </div>
       
       <div class="filter-presets">
         <span style="color: var(--text-secondary); font-size: 13px; margin-right: 10px;">Quick filters:</span>
-        <button class="preset-btn" data-preset="agentic">🤖 Agentic Models</button>
-        <button class="preset-btn" data-preset="reasoning">💭 Reasoning Models</button>
-        <button class="preset-btn" data-preset="structured">📊 Structured Output</button>
-        <button class="preset-btn" data-preset="web">🔍 Web-Enabled</button>
+        <div class="preset-btn-wrapper">
+          <button class="preset-btn" data-preset="agentic">🤖 Agentic Models</button>
+          <div class="tooltip-content">Filters for models with Tool Calling + Structured Outputs capabilities</div>
+        </div>
+        <div class="preset-btn-wrapper">
+          <button class="preset-btn" data-preset="reasoning">💭 Reasoning Models</button>
+          <div class="tooltip-content">Filters for models with advanced reasoning capabilities</div>
+        </div>
+        <div class="preset-btn-wrapper">
+          <button class="preset-btn" data-preset="structured">📊 Structured Output</button>
+          <div class="tooltip-content">Filters for models supporting Structured Outputs + Response Format</div>
+        </div>
+        <div class="preset-btn-wrapper">
+          <button class="preset-btn" data-preset="web">🔍 Web-Enabled</button>
+          <div class="tooltip-content">Filters for models with web search capabilities</div>
+        </div>
       </div>
       
       <div class="filter-results-info" id="filterResultsInfo">
@@ -1379,6 +1553,19 @@
       
       // Setup keyboard shortcuts
       setupKeyboardShortcuts();
+      
+      // Setup mobile tooltip handling
+      if ('ontouchstart' in window) {
+        $('.tooltip-wrapper').on('click', function(e) {
+          e.stopPropagation();
+          $('.tooltip-wrapper').removeClass('mobile-active');
+          $(this).addClass('mobile-active');
+        });
+        
+        $(document).on('click', function() {
+          $('.tooltip-wrapper').removeClass('mobile-active');
+        });
+      }
       
       // Theme toggle handlers
       $('.theme-btn').on('click', function() {
