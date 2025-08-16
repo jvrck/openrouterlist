@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.0.4] - 2025-08-16
+### Added
+- **Interactive Tooltips for Better UX**
+  - Added helpful "?" icons with explanations for all capability filters
+  - Tooltips explain what each capability means (Tool Calling, Structured Outputs, etc.)
+  - Filter mode toggle tooltip clarifies "Match All" vs "Match Any" logic
+  - Quick filter preset tooltips describe what each preset filters for
+- **Enhanced Tooltip Features**
+  - Theme-aware tooltips that adapt to light/dark mode
+  - Mobile-friendly tooltips with tap-to-show functionality
+  - Smooth animations and positioning above elements
+  - Clear, concise explanations to help users understand filter options
+
+### Changed
+- Capability filter checkboxes restructured to accommodate tooltip icons
+- Filter mode toggle wrapped for better tooltip positioning
+- Preset buttons wrapped individually for tooltip support
+
 ## [0.0.3] - 2025-08-15
 ### Added
 - **Model Capability Columns**: Added 5 new columns displaying model capabilities
