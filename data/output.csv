@@ -2,7 +2,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "deepseek/deepseek-chat-v3.1","DeepSeek: DeepSeek V3.1",1755779628,163840,"0.0000002","0.0000008","Yes","Yes","Yes","Yes","No"
 "deepseek/deepseek-v3.1-base","DeepSeek: DeepSeek V3.1 Base",1755727017,163840,"0.0000002","0.0000008","No","No","No","No","No"
 "openai/gpt-4o-audio-preview","OpenAI: GPT-4o Audio",1755233061,128000,"0.0000025","0.00001","Yes","Yes","No","Yes","No"
-"mistralai/mistral-medium-3.1","Mistral: Mistral Medium 3.1",1755095639,131072,"0.0000004","0.000002","Yes","Yes","No","Yes","No"
+"mistralai/mistral-medium-3.1","Mistral: Mistral Medium 3.1",1755095639,262144,"0.0000004","0.000002","Yes","Yes","No","Yes","No"
 "baidu/ernie-4.5-21b-a3b","Baidu: ERNIE 4.5 21B A3B",1755034167,120000,"0.00000007","0.00000028","No","No","No","No","No"
 "baidu/ernie-4.5-vl-28b-a3b","Baidu: ERNIE 4.5 VL 28B A3B",1755032836,30000,"0.00000014","0.00000056","No","No","Yes","No","No"
 "z-ai/glm-4.5v","Z.AI: GLM 4.5V",1754922288,65536,"0.0000005","0.0000018","Yes","No","Yes","No","No"
