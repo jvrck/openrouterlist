@@ -1,7 +1,50 @@
 # Changelog
 
-## [0.0.4] - 2025-08-16
+## [0.0.5] - 2025-08-30
+
 ### Added
+
+- **Comprehensive SEO Optimization**
+  - Rich meta tags for improved search engine visibility
+  - OpenGraph and Twitter Card tags for enhanced social media sharing
+  - JSON-LD structured data for better search engine understanding
+  - Canonical URL to prevent duplicate content issues
+  - `robots.txt` file to guide search engine crawlers
+  - `sitemap.xml` for improved indexing and discoverability
+- **Semantic HTML5 Structure**
+  - Converted layout to use semantic elements (header, main, footer, section)
+  - Added ARIA labels for improved accessibility
+  - Proper heading hierarchy with descriptive H1 and H2 tags
+- **Enhanced Content & Copy**
+  - More descriptive page title optimized for search queries
+  - Keyword-rich meta description (160 characters)
+  - Informative content sections explaining the tool's purpose and features
+  - Footer with additional context and navigation links
+- **README Improvements**
+  - Professional badges for license, update status, and live website
+  - Comprehensive feature lists and use cases
+  - Data fields table with clear descriptions
+  - Contributing section to encourage community involvement
+  - Strategic keyword placement for GitHub SEO
+
+### Changed
+
+- Page title from "Open Router Models" to "OpenRouter Model Pricing & Comparison | AI Model Cost Calculator"
+- Info section expanded with detailed feature descriptions and benefits
+- All external links now include `rel="noopener"` for security
+- README restructured with emojis and better organization
+
+### Technical
+
+- Added comprehensive meta tags covering SEO, OpenGraph, and Twitter Cards
+- Implemented JSON-LD structured data schema for web applications
+- Created SEO-friendly URL structure with canonical tags
+- Optimized for crawling with robots.txt and XML sitemap
+
+## [0.0.4] - 2025-08-16
+
+### Added
+
 - **Interactive Tooltips for Better UX**
   - Added helpful "?" icons with explanations for all capability filters
   - Tooltips explain what each capability means (Tool Calling, Structured Outputs, etc.)
@@ -14,12 +57,15 @@
   - Clear, concise explanations to help users understand filter options
 
 ### Changed
+
 - Capability filter checkboxes restructured to accommodate tooltip icons
 - Filter mode toggle wrapped for better tooltip positioning
 - Preset buttons wrapped individually for tooltip support
 
 ## [0.0.3] - 2025-08-15
+
 ### Added
+
 - **Model Capability Columns**: Added 5 new columns displaying model capabilities
   - Tool Calling (144 models supported)
   - Structured Outputs (142 models supported)
@@ -40,18 +86,22 @@
   - Filter mode preference saved in URL parameters
 
 ### Changed
+
 - Updated `get_zipped.sh` script to extract capability data from OpenRouter API's `supported_parameters` field
 - Card view now respects capability filters in addition to favorites
 - Column visibility toggles extended to support new capability columns
 - Mobile interface optimized for capability filter controls
 
 ### Technical
+
 - Implemented custom DataTables search extension for capability filtering
 - Added complex jq parsing logic for capability detection in bash script
 - Enhanced state management to handle multiple filter types simultaneously
 
 ## [0.0.2] - 2025-08-15
+
 ### Added
+
 - Dark/Light theme toggle with system preference detection
 - Favorite models functionality with localStorage persistence
 - Shareable URLs that preserve filter/search state
@@ -63,16 +113,20 @@
 - Modern styled export buttons with icons
 
 ### Changed
+
 - Updated color scheme from green to modern blue (#2563eb light, #3b82f6 dark)
 - Improved dark mode with better contrast and visibility
 - Modernized UI with smooth transitions and animations
 - Enhanced DataTables button styling with icons and hover effects
 
 ### Fixed
+
 - Dark mode table cell background colors now display correctly
 - Density toggle functionality now properly changes table padding
 - Text contrast improved in dark mode for better readability
 
 ## [0.0.1] - 2024-09-21
+
 ### Added
+
 - Initial release of the project.

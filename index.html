@@ -3,7 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Open Router Models</title>
+  <title>OpenRouter Model Pricing & Comparison | AI Model Cost Calculator</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Compare AI model pricing across 400+ models on OpenRouter. Real-time pricing data for GPT-4, Claude, Llama, and more. Updated every 12 hours with prompt and completion costs per million tokens.">
+  <meta name="keywords" content="OpenRouter pricing, AI model costs, LLM pricing comparison, GPT-4 pricing, Claude pricing, AI API costs, model comparison tool, token pricing calculator, language model costs">
+  <meta name="author" content="OpenRouterList">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://openrouterlist.jvrck.com/">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="OpenRouter Model Pricing & Comparison Tool">
+  <meta property="og:description" content="Compare real-time pricing for 400+ AI models. Find the most cost-effective LLM for your needs with updated pricing data.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://openrouterlist.jvrck.com/">
+  <meta property="og:site_name" content="OpenRouterList">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OpenRouter Model Pricing & Comparison">
+  <meta name="twitter:description" content="Compare AI model pricing across 400+ models. Real-time data updated every 12 hours.">
+  <meta name="twitter:url" content="https://openrouterlist.jvrck.com/">
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "OpenRouter Model Pricing Comparison",
+    "description": "Compare and analyze pricing for AI language models available through OpenRouter API",
+    "url": "https://openrouterlist.jvrck.com/",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "creator": {
+      "@type": "Organization",
+      "name": "OpenRouterList"
+    }
+  }
+  </script>
 
   <!-- Include DataTables CSS -->
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
@@ -902,8 +944,8 @@
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <h1>Openrouter Model Pricing</h1>
+    <header class="header" role="banner">
+      <h1>OpenRouter Model Pricing Comparison Tool</h1>
       <div class="controls">
         <div class="theme-toggle">
           <button class="theme-btn" data-theme="light">☀️ Light</button>
@@ -920,18 +962,20 @@
           <span>Favorites Only</span>
         </button>
         <button id="viewToggle" class="btn view-toggle">📱 Card View</button>
-        <button id="helpBtn" class="btn">? Help</button>
+        <button id="helpBtn" class="btn" aria-label="Show keyboard shortcuts">? Help</button>
       </div>
-    </div>
+    </header>
 
-    <div class="info-section">
+    <section class="info-section" role="region" aria-label="About this tool">
+      <h2 style="font-size: 1.2em; margin-top: 0; color: var(--text-primary);">Real-Time AI Model Pricing Data</h2>
       <p id="updatedDate"></p>
-      <p>This table provides the latest pricing information for <a href="https://openrouter.ai/" target="_blank">OpenRouter</a> models.</p>
-      <p>Data is checked every 12 hours. The repository can be found on <a href="https://github.com/jvrck/openrouterlist" target="_blank">GitHub</a>.</p>
-    </div>
+      <p>Compare pricing across <strong>400+ AI language models</strong> available through <a href="https://openrouter.ai/" target="_blank" rel="noopener">OpenRouter</a>. This comprehensive pricing comparison tool helps developers and businesses find the most cost-effective AI models for their specific needs.</p>
+      <p><strong>Features:</strong> Search and filter models by name, capabilities, context length, and cost. Export data in multiple formats. Pricing shown per million tokens for both prompts and completions.</p>
+      <p>Data is automatically updated every 12 hours to ensure accuracy. Source code available on <a href="https://github.com/jvrck/openrouterlist" target="_blank" rel="noopener">GitHub</a>.</p>
+    </section>
 
     <!-- Capability Filters Section -->
-    <div class="capability-filters">
+    <section class="capability-filters" role="region" aria-label="Filter models by capabilities">
       <div class="capability-filters-header">
         <div class="capability-filters-title">
           <span>🎯 Filter by Capabilities</span>
@@ -1028,9 +1072,9 @@
       <div class="filter-results-info" id="filterResultsInfo">
         <span id="filterResultsText">0 models match your filters</span>
       </div>
-    </div>
+    </section>
 
-    <div class="column-selector">
+    <section class="column-selector" role="region" aria-label="Column visibility controls">
       <h3>Show/Hide Columns:</h3>
       <div class="column-checkboxes">
         <label class="column-checkbox">
@@ -1067,18 +1111,27 @@
           <input type="checkbox" data-column="10" checked> Web Search
         </label>
       </div>
-    </div>
+    </section>
 
-    <div class="table-view">
+    <main class="table-view" role="main">
       <table id="csvTable" class="display" style="width:100%">
         <thead>
           <tr id="tableHeaders"></tr>
         </thead>
         <tbody id="tableBody"></tbody>
       </table>
-    </div>
+    </main>
 
-    <div class="card-view" id="cardView"></div>
+    <div class="card-view" id="cardView" role="region" aria-label="Card view of models"></div>
+    
+    <footer style="margin-top: 40px; padding: 20px 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-secondary);">
+      <p>OpenRouterList - Free AI Model Pricing Comparison Tool | Updated Every 12 Hours</p>
+      <p>
+        <a href="https://github.com/jvrck/openrouterlist" target="_blank" rel="noopener" style="color: var(--link-color);">GitHub</a> | 
+        <a href="https://openrouter.ai/" target="_blank" rel="noopener" style="color: var(--link-color);">OpenRouter API</a> | 
+        <a href="https://openrouter.ai/docs" target="_blank" rel="noopener" style="color: var(--link-color);">API Documentation</a>
+      </p>
+    </footer>
   </div>
 
   <!-- Keyboard Shortcuts Modal -->
