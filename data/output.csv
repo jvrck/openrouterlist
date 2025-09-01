@@ -27,7 +27,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "mistralai/codestral-2508","Mistral: Codestral 2508",1754079630,256000,"0.0000003","0.0000009","Yes","Yes","No","Yes","No"
 "qwen/qwen3-coder-30b-a3b-instruct","Qwen: Qwen3 Coder 30B A3B Instruct",1753972379,262144,"0.0000000518308","0.000000207424","Yes","No","No","Yes","No"
 "qwen/qwen3-30b-a3b-instruct-2507","Qwen: Qwen3 30B A3B Instruct 2507",1753806965,262144,"0.0000000518308","0.000000207424","Yes","No","No","Yes","No"
-"z-ai/glm-4.5","Z.AI: GLM 4.5",1753471347,131072,"0.0000001999188","0.000000800064","Yes","No","Yes","Yes","No"
+"z-ai/glm-4.5","Z.AI: GLM 4.5",1753471347,131072,"0.00000032986602","0.0000013201056","Yes","No","Yes","Yes","No"
 "z-ai/glm-4.5-air:free","Z.AI: GLM 4.5 Air (free)",1753471258,131072,"0","0","Yes","No","Yes","No","No"
 "z-ai/glm-4.5-air","Z.AI: GLM 4.5 Air",1753471258,131072,"0.00000014","0.00000086","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3-235b-a22b-thinking-2507","Qwen: Qwen3 235B A22B Thinking 2507",1753449557,262144,"0.000000077968332","0.00000031202496","Yes","No","Yes","Yes","No"
