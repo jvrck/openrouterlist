@@ -1,5 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
-"qwen/qwen3-next-80b-a3b-thinking","Qwen: Qwen3 Next 80B A3B Thinking",1757612284,262144,"0.00000014673906","0.000000586956456","Yes","No","Yes","Yes","No"
+"qwen/qwen3-next-80b-a3b-thinking","Qwen: Qwen3 Next 80B A3B Thinking",1757612284,262144,"0.00000014","0.0000014","Yes","No","Yes","Yes","No"
 "qwen/qwen3-next-80b-a3b-instruct","Qwen: Qwen3 Next 80B A3B Instruct",1757612213,262144,"0.00000014","0.0000014","Yes","No","No","Yes","No"
 "meituan/longcat-flash-chat","Meituan: LongCat Flash Chat",1757427658,131072,"0.00000015","0.00000075","Yes","No","No","No","No"
 "qwen/qwen-plus-2025-07-28","Qwen: Qwen Plus 0728",1757347599,1000000,"0.0000004","0.0000012","Yes","Yes","No","Yes","No"
