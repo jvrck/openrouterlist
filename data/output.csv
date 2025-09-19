@@ -142,7 +142,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "agentica-org/deepcoder-14b-preview:free","Agentica: Deepcoder 14B Preview (free)",1744555395,96000,"0","0","No","No","Yes","No","No"
 "agentica-org/deepcoder-14b-preview","Agentica: Deepcoder 14B Preview",1744555395,96000,"0.000000015","0.000000015","No","No","Yes","No","No"
 "moonshotai/kimi-vl-a3b-thinking:free","MoonshotAI: Kimi VL A3B Thinking (free)",1744304841,131072,"0","0","No","No","Yes","No","No"
-"moonshotai/kimi-vl-a3b-thinking","MoonshotAI: Kimi VL A3B Thinking",1744304841,131072,"0.00000003","0.00000012","No","No","Yes","No","No"
+"moonshotai/kimi-vl-a3b-thinking","MoonshotAI: Kimi VL A3B Thinking",1744304841,131072,"0.00000002","0.00000007","No","No","Yes","No","No"
 "x-ai/grok-3-mini-beta","xAI: Grok 3 Mini Beta",1744240195,131072,"0.0000003","0.0000005","Yes","No","Yes","Yes","No"
 "x-ai/grok-3-beta","xAI: Grok 3 Beta",1744240068,131072,"0.000003","0.000015","Yes","No","No","Yes","No"
 "nvidia/llama-3.1-nemotron-ultra-253b-v1","NVIDIA: Llama 3.1 Nemotron Ultra 253B v1",1744115059,131072,"0.0000006","0.0000018","No","No","Yes","No","No"
