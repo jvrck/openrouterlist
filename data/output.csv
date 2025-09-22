@@ -71,7 +71,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "morph/morph-v3-fast","Morph: Morph V3 Fast",1751910002,81920,"0.0000009","0.0000019","No","No","No","No","No"
 "baidu/ernie-4.5-vl-424b-a47b","Baidu: ERNIE 4.5 VL 424B A47B ",1751300903,123000,"0.00000042","0.00000125","No","No","Yes","No","No"
 "baidu/ernie-4.5-300b-a47b","Baidu: ERNIE 4.5 300B A47B ",1751300139,123000,"0.00000028","0.0000011","No","Yes","No","Yes","No"
-"thedrummer/anubis-70b-v1.1","TheDrummer: Anubis 70B V1.1",1751208347,16384,"0.0000004","0.0000007","No","Yes","No","Yes","No"
+"thedrummer/anubis-70b-v1.1","TheDrummer: Anubis 70B V1.1",1751208347,4096,"0.0000004","0.0000007","No","Yes","No","Yes","No"
 "inception/mercury","Inception: Mercury",1750973026,128000,"0.00000025","0.000001","Yes","Yes","No","Yes","No"
 "mistralai/mistral-small-3.2-24b-instruct:free","Mistral: Mistral Small 3.2 24B (free)",1750443016,131072,"0","0","Yes","Yes","No","No","No"
 "mistralai/mistral-small-3.2-24b-instruct","Mistral: Mistral Small 3.2 24B",1750443016,128000,"0.000000075","0.0000002","Yes","Yes","No","Yes","No"
