@@ -68,7 +68,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "moonshotai/kimi-k2:free","MoonshotAI: Kimi K2 0711 (free)",1752263252,32768,"0","0","No","No","No","No","No"
 "moonshotai/kimi-k2","MoonshotAI: Kimi K2 0711",1752263252,63000,"0.00000014","0.00000249","Yes","Yes","No","Yes","No"
 "thudm/glm-4.1v-9b-thinking","THUDM: GLM 4.1V 9B Thinking",1752244385,65536,"0.000000035","0.000000138","No","No","Yes","No","No"
-"mistralai/devstral-medium","Mistral: Devstral Medium",1752161321,131072,"0.0000004","0.000002","Yes","Yes","No","Yes","No"
+"mistralai/devstral-medium","Mistral: Devstral Medium",1752161321,32768,"0.0000004","0.000002","Yes","Yes","No","Yes","No"
 "mistralai/devstral-small","Mistral: Devstral Small 1.1",1752160751,128000,"0.00000007","0.00000028","Yes","Yes","No","Yes","No"
 "cognitivecomputations/dolphin-mistral-24b-venice-edition:free","Venice: Uncensored (free)",1752094966,32768,"0","0","No","Yes","No","Yes","No"
 "x-ai/grok-4","xAI: Grok 4",1752087689,256000,"0.000003","0.000015","Yes","Yes","Yes","Yes","No"
