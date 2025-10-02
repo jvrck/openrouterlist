@@ -1,5 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
-"z-ai/glm-4.6","Z.AI: GLM 4.6",1759235576,202752,"0.0000006","0.000002","Yes","No","Yes","Yes","No"
+"z-ai/glm-4.6","Z.AI: GLM 4.6",1759235576,202752,"0.0000005","0.00000175","Yes","No","Yes","Yes","No"
 "anthropic/claude-sonnet-4.5","Anthropic: Claude Sonnet 4.5",1759161676,1000000,"0.000003","0.000015","Yes","No","Yes","No","No"
 "deepseek/deepseek-v3.2-exp","DeepSeek: DeepSeek V3.2 Exp",1759150481,163840,"0.00000027","0.0000004","Yes","No","Yes","Yes","No"
 "thedrummer/cydonia-24b-v4.1","TheDrummer: Cydonia 24B V4.1",1758931878,131072,"0.00000015","0.0000005","No","No","No","No","No"
@@ -176,7 +176,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "google/gemma-3-4b-it:free","Google: Gemma 3 4B (free)",1741905510,32768,"0","0","No","Yes","No","Yes","No"
 "google/gemma-3-4b-it","Google: Gemma 3 4B",1741905510,131072,"0.00000004","0.00000008","No","No","No","Yes","No"
 "google/gemma-3-12b-it:free","Google: Gemma 3 12B (free)",1741902625,32768,"0","0","No","No","No","No","No"
-"google/gemma-3-12b-it","Google: Gemma 3 12B",1741902625,96000,"0.00000004","0.00000014","No","Yes","No","Yes","No"
+"google/gemma-3-12b-it","Google: Gemma 3 12B",1741902625,131072,"0.00000004","0.00000013","No","Yes","No","Yes","No"
 "cohere/command-a","Cohere: Command A",1741894342,256000,"0.0000025","0.00001","No","Yes","No","Yes","No"
 "openai/gpt-4o-mini-search-preview","OpenAI: GPT-4o-mini Search Preview",1741818122,128000,"0.00000015","0.0000006","No","Yes","No","Yes","Yes"
 "openai/gpt-4o-search-preview","OpenAI: GPT-4o Search Preview",1741817949,128000,"0.0000025","0.00001","No","Yes","No","Yes","Yes"
