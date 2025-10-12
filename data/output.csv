@@ -92,7 +92,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "inception/mercury","Inception: Mercury",1750973026,128000,"0.00000025","0.000001","Yes","Yes","No","Yes","No"
 "mistralai/mistral-small-3.2-24b-instruct:free","Mistral: Mistral Small 3.2 24B (free)",1750443016,131072,"0","0","Yes","Yes","No","No","No"
 "mistralai/mistral-small-3.2-24b-instruct","Mistral: Mistral Small 3.2 24B",1750443016,131072,"0.00000006","0.00000018","Yes","Yes","No","Yes","No"
-"minimax/minimax-m1","MiniMax: MiniMax M1",1750200414,1000000,"0.0000003","0.00000165","Yes","Yes","Yes","No","No"
+"minimax/minimax-m1","MiniMax: MiniMax M1",1750200414,1000000,"0.0000004","0.0000022","Yes","Yes","Yes","No","No"
 "google/gemini-2.5-flash-lite-preview-06-17","Google: Gemini 2.5 Flash Lite Preview 06-17",1750173831,1048576,"0.0000001","0.0000004","Yes","Yes","Yes","Yes","No"
 "google/gemini-2.5-flash","Google: Gemini 2.5 Flash",1750172488,1048576,"0.0000003","0.0000025","Yes","Yes","Yes","Yes","No"
 "google/gemini-2.5-pro","Google: Gemini 2.5 Pro",1750169544,1048576,"0.00000125","0.00001","Yes","Yes","Yes","Yes","No"
