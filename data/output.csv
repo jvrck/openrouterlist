@@ -275,7 +275,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "qwen/qwen-2.5-vl-7b-instruct","Qwen: Qwen2.5-VL 7B Instruct",1724803200,32768,"0.0000002","0.0000002","No","Yes","No","Yes","No"
 "sao10k/l3.1-euryale-70b","Sao10K: Llama 3.1 Euryale 70B v2.2",1724803200,32768,"0.00000065","0.00000075","No","Yes","No","Yes","No"
 "microsoft/phi-3.5-mini-128k-instruct","Microsoft: Phi-3.5 Mini 128K Instruct",1724198400,128000,"0.0000001","0.0000001","Yes","No","No","No","No"
-"nousresearch/hermes-3-llama-3.1-70b","Nous: Hermes 3 70B Instruct",1723939200,65000,"0.0000003","0.0000003","Yes","Yes","No","Yes","No"
+"nousresearch/hermes-3-llama-3.1-70b","Nous: Hermes 3 70B Instruct",1723939200,65536,"0.0000003","0.0000003","Yes","Yes","No","Yes","No"
 "nousresearch/hermes-3-llama-3.1-405b","Nous: Hermes 3 405B Instruct",1723766400,131072,"0.000001","0.000001","No","No","No","Yes","No"
 "openai/chatgpt-4o-latest","OpenAI: ChatGPT-4o",1723593600,128000,"0.000005","0.000015","No","Yes","No","Yes","No"
 "sao10k/l3-lunaris-8b","Sao10K: Llama 3 8B Lunaris",1723507200,8192,"0.00000004","0.00000005","No","No","No","Yes","No"
