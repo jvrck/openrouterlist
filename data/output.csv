@@ -20,7 +20,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "relace/relace-apply-3","Relace: Relace Apply 3",1758891572,256000,"0.00000085","0.00000125","No","No","No","No","No"
 "google/gemini-2.5-flash-preview-09-2025","Google: Gemini 2.5 Flash Preview 09-2025",1758820178,1048576,"0.0000003","0.0000025","Yes","Yes","Yes","Yes","No"
 "google/gemini-2.5-flash-lite-preview-09-2025","Google: Gemini 2.5 Flash Lite Preview 09-2025",1758819686,1048576,"0.0000001","0.0000004","Yes","Yes","Yes","Yes","No"
-"qwen/qwen3-vl-235b-a22b-thinking","Qwen: Qwen3 VL 235B A22B Thinking",1758668690,262144,"0.00000045","0.0000035","Yes","Yes","Yes","Yes","No"
+"qwen/qwen3-vl-235b-a22b-thinking","Qwen: Qwen3 VL 235B A22B Thinking",1758668690,262144,"0.0000003","0.0000012","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3-vl-235b-a22b-instruct","Qwen: Qwen3 VL 235B A22B Instruct",1758668687,131072,"0.0000003","0.0000012","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3-max","Qwen: Qwen3 Max",1758662808,256000,"0.0000012","0.000006","Yes","No","No","Yes","No"
 "qwen/qwen3-coder-plus","Qwen: Qwen3 Coder Plus",1758662707,128000,"0.000001","0.000005","Yes","Yes","No","Yes","No"
