@@ -11,7 +11,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "qwen/qwen3-vl-8b-instruct","Qwen: Qwen3 VL 8B Instruct",1760463308,131072,"0.00000008","0.0000005","Yes","Yes","No","Yes","No"
 "openai/gpt-5-image","OpenAI: GPT-5 Image",1760447986,400000,"0.00001","0.00001","Yes","Yes","Yes","Yes","No"
 "inclusionai/ring-1t","inclusionAI: Ring 1T",1760384099,131072,"0.00000057","0.00000228","Yes","Yes","Yes","Yes","No"
-"inclusionai/ling-1t","inclusionAI: Ling-1T",1760316076,131072,"0.0000004","0.000002","Yes","Yes","No","Yes","No"
+"inclusionai/ling-1t","inclusionAI: Ling-1T",1760316076,131072,"0.00000057","0.00000228","Yes","Yes","No","Yes","No"
 "openai/o3-deep-research","OpenAI: o3 Deep Research",1760129661,200000,"0.00001","0.00004","Yes","Yes","Yes","Yes","No"
 "openai/o4-mini-deep-research","OpenAI: o4 Mini Deep Research",1760129642,200000,"0.000002","0.000008","Yes","Yes","Yes","Yes","No"
 "nvidia/llama-3.3-nemotron-super-49b-v1.5","NVIDIA: Llama 3.3 Nemotron Super 49B V1.5",1760101395,131072,"0.0000001","0.0000004","Yes","No","Yes","Yes","No"
