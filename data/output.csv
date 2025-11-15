@@ -85,7 +85,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "openai/gpt-5","OpenAI: GPT-5",1754587413,400000,"0.00000125","0.00001","Yes","Yes","Yes","Yes","No"
 "openai/gpt-5-mini","OpenAI: GPT-5 Mini",1754587407,400000,"0.00000025","0.000002","Yes","Yes","Yes","Yes","No"
 "openai/gpt-5-nano","OpenAI: GPT-5 Nano",1754587402,400000,"0.00000005","0.0000004","Yes","Yes","Yes","Yes","No"
-"openai/gpt-oss-120b","OpenAI: gpt-oss-120b",1754414231,131072,"0","0","Yes","Yes","Yes","Yes","No"
+"openai/gpt-oss-120b","OpenAI: gpt-oss-120b",1754414231,131072,"0.00000004","0.0000004","Yes","Yes","Yes","Yes","No"
 "openai/gpt-oss-120b:exacto","OpenAI: gpt-oss-120b (exacto)",1754414231,131072,"0.00000005","0.00000024","Yes","Yes","Yes","Yes","No"
 "openai/gpt-oss-20b:free","OpenAI: gpt-oss-20b (free)",1754414229,131072,"0","0","Yes","Yes","Yes","Yes","No"
 "openai/gpt-oss-20b","OpenAI: gpt-oss-20b",1754414229,131072,"0.00000003","0.00000014","Yes","Yes","Yes","Yes","No"
