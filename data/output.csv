@@ -193,7 +193,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "deepseek/deepseek-chat-v3-0324","DeepSeek: DeepSeek V3 0324",1742824755,163840,"0.00000024","0.00000084","Yes","Yes","Yes","Yes","No"
 "openai/o1-pro","OpenAI: o1-pro",1742423211,200000,"0.00015","0.0006","No","Yes","Yes","Yes","No"
 "mistralai/mistral-small-3.1-24b-instruct:free","Mistral: Mistral Small 3.1 24B (free)",1742238937,96000,"0","0","Yes","Yes","No","Yes","No"
-"mistralai/mistral-small-3.1-24b-instruct","Mistral: Mistral Small 3.1 24B",1742238937,131072,"0.00000005","0.00000022","Yes","Yes","No","Yes","No"
+"mistralai/mistral-small-3.1-24b-instruct","Mistral: Mistral Small 3.1 24B",1742238937,131072,"0.00000003","0.00000011","Yes","Yes","No","Yes","No"
 "allenai/olmo-2-0325-32b-instruct","AllenAI: Olmo 2 32B Instruct",1741988556,4096,"0.0000002","0.00000035","No","No","No","No","No"
 "google/gemma-3-4b-it:free","Google: Gemma 3 4B (free)",1741905510,32768,"0","0","No","Yes","No","Yes","No"
 "google/gemma-3-4b-it","Google: Gemma 3 4B",1741905510,96000,"0.00000001703012","0.0000000681536","No","No","No","Yes","No"
