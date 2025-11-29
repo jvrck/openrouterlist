@@ -3,7 +3,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "tngtech/tng-r1t-chimera:free","TNG: R1T Chimera (free)",1764184161,163840,"0","0","Yes","Yes","Yes","Yes","No"
 "tngtech/tng-r1t-chimera","TNG: R1T Chimera",1764184161,163840,"0.0000003","0.0000012","Yes","Yes","Yes","Yes","No"
 "anthropic/claude-opus-4.5","Anthropic: Claude Opus 4.5",1764010580,200000,"0.000005","0.000025","Yes","Yes","Yes","Yes","No"
-"openrouter/bert-nebulon-alpha","Bert-Nebulon Alpha",1764005058,256000,"0","0","No","Yes","No","Yes","No"
+"openrouter/bert-nebulon-alpha","Bert-Nebulon Alpha",1764005058,256000,"0","0","Yes","Yes","No","Yes","No"
 "allenai/olmo-3-32b-think","AllenAI: Olmo 3 32B Think",1763758276,65536,"0.0000003","0.00000055","No","Yes","Yes","Yes","No"
 "allenai/olmo-3-7b-instruct","AllenAI: Olmo 3 7B Instruct",1763758273,65536,"0.0000001","0.0000002","Yes","Yes","No","Yes","No"
 "allenai/olmo-3-7b-think","AllenAI: Olmo 3 7B Think",1763758270,65536,"0.00000012","0.0000002","No","Yes","Yes","Yes","No"
