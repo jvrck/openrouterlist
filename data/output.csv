@@ -1,5 +1,6 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
 "openrouter/bodybuilder","Body Builder",1764903653,128000,"-1","-1","No","No","No","No","No"
+"openai/gpt-5.1-codex-max","OpenAI: GPT-5.1-Codex-Max",1764878934,400000,"0.00000125","0.00001","Yes","Yes","Yes","Yes","No"
 "amazon/nova-2-lite-v1:free","Amazon: Nova 2 Lite (free)",1764696672,1000000,"0","0","Yes","No","Yes","No","No"
 "amazon/nova-2-lite-v1","Amazon: Nova 2 Lite",1764696672,1000000,"0.0000003","0.0000025","Yes","No","Yes","No","No"
 "mistralai/ministral-14b-2512","Mistral: Ministral 3 14B 2512",1764681735,262144,"0.0000002","0.0000002","Yes","Yes","No","Yes","No"
@@ -103,6 +104,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "openai/gpt-5","OpenAI: GPT-5",1754587413,400000,"0.00000125","0.00001","Yes","Yes","Yes","Yes","No"
 "openai/gpt-5-mini","OpenAI: GPT-5 Mini",1754587407,400000,"0.00000025","0.000002","Yes","Yes","Yes","Yes","No"
 "openai/gpt-5-nano","OpenAI: GPT-5 Nano",1754587402,400000,"0.00000005","0.0000004","Yes","Yes","Yes","Yes","No"
+"openai/gpt-oss-120b:free","OpenAI: gpt-oss-120b (free)",1754414231,131072,"0","0","Yes","No","Yes","No","No"
 "openai/gpt-oss-120b","OpenAI: gpt-oss-120b",1754414231,131072,"0.000000039","0.00000019","Yes","Yes","Yes","Yes","No"
 "openai/gpt-oss-120b:exacto","OpenAI: gpt-oss-120b (exacto)",1754414231,131072,"0.000000039","0.00000019","Yes","Yes","Yes","Yes","No"
 "openai/gpt-oss-20b:free","OpenAI: gpt-oss-20b (free)",1754414229,131072,"0","0","Yes","Yes","Yes","Yes","No"
@@ -232,7 +234,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "qwen/qwen-plus","Qwen: Qwen-Plus",1738409840,131072,"0.0000004","0.0000012","Yes","No","No","Yes","No"
 "qwen/qwen-max","Qwen: Qwen-Max ",1738402289,32768,"0.0000016","0.0000064","Yes","No","No","Yes","No"
 "openai/o3-mini","OpenAI: o3 Mini",1738351721,200000,"0.0000011","0.0000044","Yes","Yes","No","Yes","No"
-"mistralai/mistral-small-24b-instruct-2501","Mistral: Mistral Small 3",1738255409,32768,"0.00000005","0.00000008","Yes","Yes","No","Yes","No"
+"mistralai/mistral-small-24b-instruct-2501","Mistral: Mistral Small 3",1738255409,32768,"0.00000003","0.00000011","Yes","Yes","No","Yes","No"
 "deepseek/deepseek-r1-distill-qwen-32b","DeepSeek: R1 Distill Qwen 32B",1738194830,64000,"0.00000024","0.00000024","No","Yes","Yes","Yes","No"
 "deepseek/deepseek-r1-distill-qwen-14b","DeepSeek: R1 Distill Qwen 14B",1738193940,32768,"0.00000012","0.00000012","No","Yes","Yes","Yes","No"
 "perplexity/sonar-reasoning","Perplexity: Sonar Reasoning",1738131107,127000,"0.000001","0.000005","No","No","Yes","No","Yes"
