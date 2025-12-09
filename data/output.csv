@@ -1,4 +1,8 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
+"relace/relace-search","Relace: Relace Search",1765213560,256000,"0.000001","0.000003","Yes","No","No","No","No"
+"z-ai/glm-4.6v","Z.AI: GLM 4.6V",1765207462,131072,"0.0000003","0.0000009","No","No","Yes","No","No"
+"essentialai/rnj-1-instruct","EssentialAI: Rnj 1 Instruct",1765094847,32768,"0.00000015","0.00000015","No","Yes","No","Yes","No"
+"openrouter/bodybuilder","Body Builder",1764903653,128000,"-1","-1","No","No","No","No","No"
 "openai/gpt-5.1-codex-max","OpenAI: GPT-5.1-Codex-Max",1764878934,400000,"0.00000125","0.00001","Yes","Yes","Yes","Yes","No"
 "amazon/nova-2-lite-v1:free","Amazon: Nova 2 Lite (free)",1764696672,1000000,"0","0","Yes","No","Yes","No","No"
 "amazon/nova-2-lite-v1","Amazon: Nova 2 Lite",1764696672,1000000,"0.0000003","0.0000025","Yes","No","Yes","No","No"
@@ -207,7 +211,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "openai/gpt-4o-mini-search-preview","OpenAI: GPT-4o-mini Search Preview",1741818122,128000,"0.00000015","0.0000006","No","Yes","No","Yes","Yes"
 "openai/gpt-4o-search-preview","OpenAI: GPT-4o Search Preview",1741817949,128000,"0.0000025","0.00001","No","Yes","No","Yes","Yes"
 "google/gemma-3-27b-it:free","Google: Gemma 3 27B (free)",1741756359,131072,"0","0","No","Yes","No","Yes","No"
-"google/gemma-3-27b-it","Google: Gemma 3 27B",1741756359,131072,"0.00000008","0.00000045","Yes","Yes","No","Yes","No"
+"google/gemma-3-27b-it","Google: Gemma 3 27B",1741756359,96000,"0.00000005","0.00000022","Yes","Yes","No","Yes","No"
 "thedrummer/skyfall-36b-v2","TheDrummer: Skyfall 36B V2",1741636566,32768,"0.00000055","0.0000008","No","No","No","No","No"
 "microsoft/phi-4-multimodal-instruct","Microsoft: Phi 4 Multimodal Instruct",1741396284,131072,"0.00000005","0.0000001","No","No","No","Yes","No"
 "perplexity/sonar-reasoning-pro","Perplexity: Sonar Reasoning Pro",1741313308,128000,"0.000002","0.000008","No","No","Yes","No","Yes"
