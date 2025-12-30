@@ -1,7 +1,7 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
 "bytedance-seed/seed-1.6-flash","ByteDance Seed: Seed 1.6 Flash",1766505011,262144,"0.000000075","0.0000003","Yes","Yes","Yes","Yes","No"
 "bytedance-seed/seed-1.6","ByteDance Seed: Seed 1.6",1766504997,262144,"0.00000025","0.000002","Yes","Yes","Yes","Yes","No"
-"minimax/minimax-m2.1","MiniMax: MiniMax M2.1",1766454997,204800,"0.0000003","0.0000012","Yes","No","Yes","Yes","No"
+"minimax/minimax-m2.1","MiniMax: MiniMax M2.1",1766454997,204800,"0.0000003","0.0000012","Yes","Yes","Yes","Yes","No"
 "z-ai/glm-4.7","Z.AI: GLM 4.7",1766378014,202752,"0.0000004","0.0000015","Yes","Yes","Yes","Yes","No"
 "google/gemini-3-flash-preview","Google: Gemini 3 Flash Preview",1765987078,1048576,"0.0000005","0.000003","Yes","Yes","Yes","Yes","No"
 "mistralai/mistral-small-creative","Mistral: Mistral Small Creative",1765908653,32768,"0.0000001","0.0000003","Yes","No","No","No","No"
@@ -71,7 +71,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "qwen/qwen3-vl-30b-a3b-thinking","Qwen: Qwen3 VL 30B A3B Thinking",1759794479,131072,"0.00000016","0.0000008","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3-vl-30b-a3b-instruct","Qwen: Qwen3 VL 30B A3B Instruct",1759794476,262144,"0.00000015","0.0000006","Yes","Yes","No","Yes","No"
 "openai/gpt-5-pro","OpenAI: GPT-5 Pro",1759776663,400000,"0.000015","0.00012","Yes","Yes","Yes","Yes","No"
-"z-ai/glm-4.6","Z.AI: GLM 4.6",1759235576,204800,"0.00000039","0.0000019","Yes","Yes","Yes","Yes","No"
+"z-ai/glm-4.6","Z.AI: GLM 4.6",1759235576,202752,"0.00000035","0.0000015","Yes","Yes","Yes","Yes","No"
 "z-ai/glm-4.6:exacto","Z.AI: GLM 4.6 (exacto)",1759235576,204800,"0.00000044","0.00000176","Yes","Yes","Yes","Yes","No"
 "anthropic/claude-sonnet-4.5","Anthropic: Claude Sonnet 4.5",1759161676,1000000,"0.000003","0.000015","Yes","Yes","Yes","Yes","No"
 "deepseek/deepseek-v3.2-exp","DeepSeek: DeepSeek V3.2 Exp",1759150481,163840,"0.00000021","0.00000032","Yes","Yes","Yes","Yes","No"
