@@ -46,7 +46,6 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "openai/gpt-5.1-chat","OpenAI: GPT-5.1 Chat",1763060302,128000,"0.00000125","0.00001","Yes","Yes","No","Yes","No"
 "openai/gpt-5.1-codex","OpenAI: GPT-5.1-Codex",1763060298,400000,"0.00000125","0.00001","Yes","Yes","Yes","Yes","No"
 "openai/gpt-5.1-codex-mini","OpenAI: GPT-5.1-Codex-Mini",1763057820,400000,"0.00000025","0.000002","Yes","Yes","Yes","Yes","No"
-"kwaipilot/kat-coder-pro:free","Kwaipilot: KAT-Coder-Pro V1 (free)",1762745912,256000,"0","0","Yes","Yes","No","Yes","No"
 "kwaipilot/kat-coder-pro","Kwaipilot: KAT-Coder-Pro V1",1762745912,256000,"0.000000207","0.000000828","Yes","Yes","No","Yes","No"
 "moonshotai/kimi-k2-thinking","MoonshotAI: Kimi K2 Thinking",1762440622,262144,"0.0000004","0.00000175","Yes","Yes","Yes","Yes","No"
 "amazon/nova-premier-v1","Amazon: Nova Premier 1.0",1761950332,1000000,"0.0000025","0.0000125","No","No","No","No","No"
