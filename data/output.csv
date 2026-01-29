@@ -1,6 +1,6 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
 "arcee-ai/trinity-large-preview:free","Arcee AI: Trinity Large Preview (free)",1769552670,131000,"0","0","No","Yes","No","Yes","No"
-"moonshotai/kimi-k2.5","MoonshotAI: Kimi K2.5",1769487076,262144,"0.00000057","0.00000285","Yes","Yes","Yes","Yes","No"
+"moonshotai/kimi-k2.5","MoonshotAI: Kimi K2.5",1769487076,262144,"0.0000005","0.0000025","Yes","Yes","Yes","Yes","No"
 "upstage/solar-pro-3:free","Upstage: Solar Pro 3 (free)",1769481200,128000,"0","0","Yes","Yes","Yes","Yes","No"
 "minimax/minimax-m2-her","MiniMax: MiniMax M2-her",1769177239,65536,"0.0000003","0.0000012","No","No","No","No","No"
 "writer/palmyra-x5","Writer: Palmyra X5",1769003823,1040000,"0.0000006","0.000006","No","No","No","No","No"
