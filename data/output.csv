@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
+"openrouter/free","Free Router",1769917427,200000,"-1","-1","No","No","No","No","No"
 "arcee-ai/trinity-large-preview:free","Arcee AI: Trinity Large Preview (free)",1769552670,131000,"0","0","No","Yes","No","Yes","No"
 "moonshotai/kimi-k2.5","MoonshotAI: Kimi K2.5",1769487076,262144,"0.0000005","0.0000028","Yes","Yes","Yes","Yes","No"
 "upstage/solar-pro-3:free","Upstage: Solar Pro 3 (free)",1769481200,128000,"0","0","Yes","Yes","Yes","Yes","No"
@@ -253,7 +254,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "mistralai/mistral-small-24b-instruct-2501","Mistral: Mistral Small 3",1738255409,32768,"0.00000003","0.00000011","Yes","Yes","No","Yes","No"
 "deepseek/deepseek-r1-distill-qwen-32b","DeepSeek: R1 Distill Qwen 32B",1738194830,32768,"0.00000029","0.00000029","No","Yes","Yes","Yes","No"
 "perplexity/sonar","Perplexity: Sonar",1738013808,127072,"0.000001","0.000001","No","No","No","No","Yes"
-"deepseek/deepseek-r1-distill-llama-70b","DeepSeek: R1 Distill Llama 70B",1737663169,131072,"0.00000003","0.00000011","Yes","Yes","Yes","Yes","No"
+"deepseek/deepseek-r1-distill-llama-70b","DeepSeek: R1 Distill Llama 70B",1737663169,131072,"0.00000003","0.00000011","No","Yes","Yes","Yes","No"
 "deepseek/deepseek-r1","DeepSeek: R1",1737381095,64000,"0.0000007","0.0000025","Yes","No","Yes","No","No"
 "minimax/minimax-01","MiniMax: MiniMax-01",1736915462,1000192,"0.0000002","0.0000011","No","No","No","No","No"
 "microsoft/phi-4","Microsoft: Phi 4",1736489872,16384,"0.00000006","0.00000014","No","Yes","No","Yes","No"
