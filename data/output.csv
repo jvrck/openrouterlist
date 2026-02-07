@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
+"openrouter/pony-alpha","Pony Alpha",1770393855,200000,"0","0","No","Yes","Yes","Yes","No"
 "anthropic/claude-opus-4.6","Anthropic: Claude Opus 4.6",1770219050,1000000,"0.000005","0.000025","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3-coder-next","Qwen: Qwen3 Coder Next",1770164101,262144,"0.00000007","0.0000003","Yes","Yes","No","Yes","No"
 "openrouter/free","Free Models Router",1769917427,200000,"0","0","Yes","Yes","Yes","Yes","No"
@@ -12,7 +13,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "liquid/lfm-2.5-1.2b-instruct:free","LiquidAI: LFM2.5-1.2B-Instruct (free)",1768927521,32768,"0","0","No","No","No","No","No"
 "openai/gpt-audio","OpenAI: GPT Audio",1768862569,128000,"0.0000025","0.00001","No","Yes","No","Yes","No"
 "openai/gpt-audio-mini","OpenAI: GPT Audio Mini",1768859419,128000,"0.0000006","0.0000024","No","Yes","No","Yes","No"
-"z-ai/glm-4.7-flash","Z.AI: GLM 4.7 Flash",1768833913,200000,"0.00000007","0.0000004","Yes","Yes","Yes","Yes","No"
+"z-ai/glm-4.7-flash","Z.AI: GLM 4.7 Flash",1768833913,202752,"0.00000006","0.0000004","Yes","Yes","Yes","Yes","No"
 "openai/gpt-5.2-codex","OpenAI: GPT-5.2-Codex",1768409315,400000,"0.00000175","0.000014","Yes","Yes","Yes","Yes","No"
 "allenai/molmo-2-8b","AllenAI: Molmo2 8B",1767996672,36864,"0.0000002","0.0000002","No","No","No","No","No"
 "allenai/olmo-3.1-32b-instruct","AllenAI: Olmo 3.1 32B Instruct",1767728554,65536,"0.0000002","0.0000006","Yes","Yes","No","Yes","No"
@@ -147,7 +148,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "qwen/qwen3-235b-a22b-thinking-2507","Qwen: Qwen3 235B A22B Thinking 2507",1753449557,262144,"0.00000011","0.0000006","Yes","Yes","Yes","Yes","No"
 "z-ai/glm-4-32b","Z.AI: GLM 4 32B ",1753376617,128000,"0.0000001","0.0000001","Yes","No","No","No","No"
 "qwen/qwen3-coder:free","Qwen: Qwen3 Coder 480B A35B (free)",1753230546,262000,"0","0","Yes","No","No","No","No"
-"qwen/qwen3-coder","Qwen: Qwen3 Coder 480B A35B",1753230546,262144,"0.00000022","0.00000095","Yes","Yes","Yes","Yes","No"
+"qwen/qwen3-coder","Qwen: Qwen3 Coder 480B A35B",1753230546,262144,"0.00000022","0.000001","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3-coder:exacto","Qwen: Qwen3 Coder 480B A35B (exacto)",1753230546,262144,"0.00000022","0.0000018","Yes","Yes","No","Yes","No"
 "bytedance/ui-tars-1.5-7b","ByteDance: UI-TARS 7B ",1753205056,128000,"0.0000001","0.0000002","No","No","No","No","No"
 "google/gemini-2.5-flash-lite","Google: Gemini 2.5 Flash Lite",1753200276,1048576,"0.0000001","0.0000004","Yes","Yes","Yes","Yes","No"
