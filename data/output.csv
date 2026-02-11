@@ -6,6 +6,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "qwen/qwen3-coder-next","Qwen: Qwen3 Coder Next",1770164101,262144,"0.00000007","0.0000003","Yes","Yes","No","Yes","No"
 "openrouter/free","Free Models Router",1769917427,200000,"0","0","Yes","Yes","Yes","Yes","No"
 "stepfun/step-3.5-flash:free","StepFun: Step 3.5 Flash (free)",1769728337,256000,"0","0","No","No","Yes","No","No"
+"stepfun/step-3.5-flash","StepFun: Step 3.5 Flash",1769728337,256000,"0.0000001","0.0000003","No","No","Yes","No","No"
 "arcee-ai/trinity-large-preview:free","Arcee AI: Trinity Large Preview (free)",1769552670,131000,"0","0","No","Yes","No","Yes","No"
 "moonshotai/kimi-k2.5","MoonshotAI: Kimi K2.5",1769487076,262144,"0.00000045","0.00000225","Yes","Yes","Yes","Yes","No"
 "upstage/solar-pro-3:free","Upstage: Solar Pro 3 (free)",1769481200,128000,"0","0","Yes","Yes","Yes","Yes","No"
