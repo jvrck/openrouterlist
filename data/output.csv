@@ -1,5 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
-"minimax/minimax-m2.5","MiniMax: MiniMax M2.5",1770908502,204800,"0.0000003","0.0000012","Yes","No","Yes","Yes","No"
+"minimax/minimax-m2.5","MiniMax: MiniMax M2.5",1770908502,196608,"0.0000002","0.000001","Yes","Yes","Yes","Yes","No"
 "z-ai/glm-5","Z.ai: GLM 5",1770829182,204800,"0.00000075","0.00000255","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3-max-thinking","Qwen: Qwen3 Max Thinking",1770671901,262144,"0.0000012","0.000006","Yes","Yes","Yes","Yes","No"
 "openrouter/aurora-alpha","Aurora Alpha",1770611225,128000,"0","0","Yes","Yes","Yes","Yes","No"
