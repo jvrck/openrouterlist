@@ -1,6 +1,6 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
 "qwen/qwen3.5-plus-02-15","Qwen: Qwen3.5 Plus 2026-02-15",1771229416,1000000,"0.0000004","0.0000024","Yes","Yes","Yes","Yes","No"
-"qwen/qwen3.5-397b-a17b","Qwen: Qwen3.5 397B A17B",1771223018,256000,"0.0000006","0.0000036","Yes","No","Yes","Yes","No"
+"qwen/qwen3.5-397b-a17b","Qwen: Qwen3.5 397B A17B",1771223018,262144,"0.0000006","0.0000036","Yes","No","Yes","Yes","No"
 "minimax/minimax-m2.5","MiniMax: MiniMax M2.5",1770908502,196608,"0.0000003","0.0000012","Yes","Yes","Yes","Yes","No"
 "z-ai/glm-5","Z.ai: GLM 5",1770829182,204800,"0.0000003","0.00000255","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3-max-thinking","Qwen: Qwen3 Max Thinking",1770671901,262144,"0.0000012","0.000006","Yes","Yes","Yes","Yes","No"
@@ -51,7 +51,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "arcee-ai/trinity-mini:free","Arcee AI: Trinity Mini (free)",1764601720,131072,"0","0","Yes","Yes","Yes","Yes","No"
 "arcee-ai/trinity-mini","Arcee AI: Trinity Mini",1764601720,131072,"0.000000045","0.00000015","Yes","Yes","Yes","Yes","No"
 "deepseek/deepseek-v3.2-speciale","DeepSeek: DeepSeek V3.2 Speciale",1764594837,163840,"0.00000027","0.00000041","No","Yes","Yes","Yes","No"
-"deepseek/deepseek-v3.2","DeepSeek: DeepSeek V3.2",1764594642,163840,"0.00000025","0.00000038","Yes","Yes","Yes","Yes","No"
+"deepseek/deepseek-v3.2","DeepSeek: DeepSeek V3.2",1764594642,163840,"0.00000026","0.00000038","Yes","Yes","Yes","Yes","No"
 "prime-intellect/intellect-3","Prime Intellect: INTELLECT-3",1764212534,131072,"0.0000002","0.0000011","Yes","Yes","Yes","Yes","No"
 "tngtech/tng-r1t-chimera","TNG: R1T Chimera",1764184161,163840,"0.00000025","0.00000085","Yes","Yes","Yes","Yes","No"
 "anthropic/claude-opus-4.5","Anthropic: Claude Opus 4.5",1764010580,200000,"0.000005","0.000025","Yes","Yes","Yes","Yes","No"
