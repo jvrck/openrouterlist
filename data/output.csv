@@ -202,7 +202,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "qwen/qwen3-4b:free","Qwen: Qwen3 4B (free)",1746031104,40960,"0","0","Yes","Yes","Yes","Yes","No"
 "meta-llama/llama-guard-4-12b","Meta: Llama Guard 4 12B",1745975193,163840,"0.00000018","0.00000018","No","No","No","Yes","No"
 "qwen/qwen3-30b-a3b","Qwen: Qwen3 30B A3B",1745878604,40960,"0.00000008","0.00000028","Yes","Yes","Yes","Yes","No"
-"qwen/qwen3-8b","Qwen: Qwen3 8B",1745876632,32000,"0.00000005","0.0000004","Yes","Yes","Yes","Yes","No"
+"qwen/qwen3-8b","Qwen: Qwen3 8B",1745876632,40960,"0.00000005","0.0000004","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3-14b","Qwen: Qwen3 14B",1745876478,40960,"0.00000006","0.00000024","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3-32b","Qwen: Qwen3 32B",1745875945,40960,"0.00000008","0.00000024","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3-235b-a22b","Qwen: Qwen3 235B A22B",1745875757,131072,"0.000000455","0.00000182","Yes","No","Yes","Yes","No"
