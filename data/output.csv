@@ -118,7 +118,6 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "x-ai/grok-4-fast","xAI: Grok 4 Fast",1758240090,2000000,"0.0000002","0.0000005","Yes","Yes","Yes","Yes","No"
 "alibaba/tongyi-deepresearch-30b-a3b","Tongyi DeepResearch 30B A3B",1758210804,131072,"0.00000009","0.00000045","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3-coder-flash","Qwen: Qwen3 Coder Flash",1758115536,1000000,"0.0000003","0.0000015","Yes","No","No","Yes","No"
-"opengvlab/internvl3-78b","OpenGVLab: InternVL3 78B",1757962555,32768,"0.00000015","0.0000006","No","Yes","No","Yes","No"
 "qwen/qwen3-next-80b-a3b-thinking","Qwen: Qwen3 Next 80B A3B Thinking",1757612284,128000,"0.00000015","0.0000012","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3-next-80b-a3b-instruct:free","Qwen: Qwen3 Next 80B A3B Instruct (free)",1757612213,262144,"0","0","Yes","Yes","No","Yes","No"
 "qwen/qwen3-next-80b-a3b-instruct","Qwen: Qwen3 Next 80B A3B Instruct",1757612213,262144,"0.00000009","0.0000011","Yes","Yes","No","Yes","No"
