@@ -61,7 +61,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "mistralai/mistral-large-2512","Mistral: Mistral Large 3 2512",1764624472,262144,"0.0000005","0.0000015","Yes","Yes","No","Yes","No"
 "arcee-ai/trinity-mini:free","Arcee AI: Trinity Mini (free)",1764601720,131072,"0","0","Yes","Yes","Yes","Yes","No"
 "deepseek/deepseek-v3.2-speciale","DeepSeek: DeepSeek V3.2 Speciale",1764594837,163840,"0.0000004","0.0000012","No","Yes","Yes","Yes","No"
-"deepseek/deepseek-v3.2","DeepSeek: DeepSeek V3.2",1764594642,163840,"0.00000025","0.0000004","Yes","Yes","Yes","Yes","No"
+"deepseek/deepseek-v3.2","DeepSeek: DeepSeek V3.2",1764594642,163840,"0.00000026","0.00000038","Yes","Yes","Yes","Yes","No"
 "prime-intellect/intellect-3","Prime Intellect: INTELLECT-3",1764212534,131072,"0.0000002","0.0000011","Yes","Yes","Yes","Yes","No"
 "anthropic/claude-opus-4.5","Anthropic: Claude Opus 4.5",1764010580,200000,"0.000005","0.000025","Yes","Yes","Yes","Yes","No"
 "allenai/olmo-3-32b-think","AllenAI: Olmo 3 32B Think",1763758276,65536,"0.00000015","0.0000005","No","Yes","Yes","Yes","No"
