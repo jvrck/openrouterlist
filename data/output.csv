@@ -1,4 +1,7 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
+"openai/gpt-5.4-pro","OpenAI: GPT-5.4 Pro",1772734366,1050000,"0.00003","0.00018","Yes","Yes","Yes","Yes","No"
+"openai/gpt-5.4","OpenAI: GPT-5.4",1772734352,1050000,"0.0000025","0.000015","Yes","Yes","Yes","Yes","No"
+"inception/mercury-2","Inception: Mercury 2",1772636275,128000,"0.00000025","0.00000075","Yes","Yes","Yes","Yes","No"
 "openai/gpt-5.3-chat","OpenAI: GPT-5.3 Chat",1772564061,128000,"0.00000175","0.000014","Yes","Yes","No","Yes","No"
 "google/gemini-3.1-flash-lite-preview","Google: Gemini 3.1 Flash Lite Preview",1772512673,1048576,"0.00000025","0.0000015","Yes","Yes","Yes","Yes","No"
 "bytedance-seed/seed-2.0-mini","ByteDance Seed: Seed-2.0-Mini",1772131107,262144,"0.0000001","0.0000004","Yes","Yes","Yes","Yes","No"
@@ -190,7 +193,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "google/gemini-2.5-pro-preview","Google: Gemini 2.5 Pro Preview 06-05",1749137257,1048576,"0.00000125","0.00001","Yes","Yes","Yes","Yes","No"
 "deepseek/deepseek-r1-0528","DeepSeek: R1 0528",1748455170,163840,"0.00000045","0.00000215","Yes","Yes","Yes","Yes","No"
 "anthropic/claude-opus-4","Anthropic: Claude Opus 4",1747931245,200000,"0.000015","0.000075","Yes","No","Yes","No","No"
-"anthropic/claude-sonnet-4","Anthropic: Claude Sonnet 4",1747930371,1000000,"0.000003","0.000015","Yes","No","Yes","No","No"
+"anthropic/claude-sonnet-4","Anthropic: Claude Sonnet 4",1747930371,200000,"0.000003","0.000015","Yes","No","Yes","No","No"
 "google/gemma-3n-e4b-it:free","Google: Gemma 3n 4B (free)",1747776824,8192,"0","0","No","No","No","Yes","No"
 "google/gemma-3n-e4b-it","Google: Gemma 3n 4B",1747776824,32768,"0.00000002","0.00000004","No","No","No","No","No"
 "mistralai/mistral-medium-3","Mistral: Mistral Medium 3",1746627341,131072,"0.0000004","0.000002","Yes","Yes","No","Yes","No"
