@@ -237,7 +237,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "openai/gpt-4o-mini-search-preview","OpenAI: GPT-4o-mini Search Preview",1741818122,128000,"0.00000015","0.0000006","No","Yes","No","Yes","Yes"
 "openai/gpt-4o-search-preview","OpenAI: GPT-4o Search Preview",1741817949,128000,"0.0000025","0.00001","No","Yes","No","Yes","Yes"
 "google/gemma-3-27b-it:free","Google: Gemma 3 27B (free)",1741756359,131072,"0","0","Yes","No","No","Yes","No"
-"google/gemma-3-27b-it","Google: Gemma 3 27B",1741756359,128000,"0.00000004","0.00000015","Yes","Yes","No","Yes","No"
+"google/gemma-3-27b-it","Google: Gemma 3 27B",1741756359,128000,"0.00000003","0.00000011","Yes","Yes","No","Yes","No"
 "thedrummer/skyfall-36b-v2","TheDrummer: Skyfall 36B V2",1741636566,32768,"0.00000055","0.0000008","No","No","No","No","No"
 "perplexity/sonar-reasoning-pro","Perplexity: Sonar Reasoning Pro",1741313308,128000,"0.000002","0.000008","No","No","Yes","No","Yes"
 "perplexity/sonar-pro","Perplexity: Sonar Pro",1741312423,200000,"0.000003","0.000015","No","No","No","No","Yes"
