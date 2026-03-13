@@ -1,4 +1,6 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
+"x-ai/grok-4.20-multi-agent-beta","xAI: Grok 4.20 Multi-Agent Beta",1773325367,2000000,"0.000002","0.000006","No","Yes","Yes","Yes","No"
+"x-ai/grok-4.20-beta","xAI: Grok 4.20 Beta",1773325354,2000000,"0.000002","0.000006","Yes","Yes","Yes","Yes","No"
 "openrouter/hunter-alpha","Hunter Alpha",1773260671,1048576,"0","0","Yes","No","Yes","Yes","No"
 "openrouter/healer-alpha","Healer Alpha",1773260668,262144,"0","0","Yes","No","Yes","Yes","No"
 "nvidia/nemotron-3-super-120b-a12b:free","NVIDIA: Nemotron 3 Super (free)",1773245239,262144,"0","0","Yes","Yes","Yes","Yes","No"
