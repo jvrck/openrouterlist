@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
+"z-ai/glm-5-turbo","Z.ai: GLM 5 Turbo",1773583573,202752,"0.00000096","0.0000032","Yes","No","Yes","Yes","No"
 "x-ai/grok-4.20-multi-agent-beta","xAI: Grok 4.20 Multi-Agent Beta",1773325367,2000000,"0.000002","0.000006","No","Yes","Yes","Yes","No"
 "x-ai/grok-4.20-beta","xAI: Grok 4.20 Beta",1773325354,2000000,"0.000002","0.000006","Yes","Yes","Yes","Yes","No"
 "openrouter/hunter-alpha","Hunter Alpha",1773260671,1048576,"0","0","Yes","No","Yes","Yes","No"
@@ -25,6 +26,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "anthropic/claude-sonnet-4.6","Anthropic: Claude Sonnet 4.6",1771342990,1000000,"0.000003","0.000015","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3.5-plus-02-15","Qwen: Qwen3.5 Plus 2026-02-15",1771229416,1000000,"0.00000026","0.00000156","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3.5-397b-a17b","Qwen: Qwen3.5 397B A17B",1771223018,262144,"0.00000039","0.00000234","Yes","Yes","Yes","Yes","No"
+"minimax/minimax-m2.5:free","MiniMax: MiniMax M2.5 (free)",1770908502,196608,"0","0","No","No","Yes","Yes","No"
 "minimax/minimax-m2.5","MiniMax: MiniMax M2.5",1770908502,196608,"0.00000025","0.0000012","Yes","Yes","Yes","Yes","No"
 "z-ai/glm-5","Z.ai: GLM 5",1770829182,202752,"0.00000072","0.0000023","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3-max-thinking","Qwen: Qwen3 Max Thinking",1770671901,262144,"0.00000078","0.0000039","Yes","Yes","Yes","Yes","No"
