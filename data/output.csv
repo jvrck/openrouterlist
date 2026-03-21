@@ -163,7 +163,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "openai/gpt-oss-120b:free","OpenAI: gpt-oss-120b (free)",1754414231,131072,"0","0","Yes","No","Yes","No","No"
 "openai/gpt-oss-120b","OpenAI: gpt-oss-120b",1754414231,131072,"0.000000039","0.00000019","Yes","Yes","Yes","Yes","No"
 "openai/gpt-oss-20b:free","OpenAI: gpt-oss-20b (free)",1754414229,131072,"0","0","Yes","No","Yes","No","No"
-"openai/gpt-oss-20b","OpenAI: gpt-oss-20b",1754414229,131072,"0.00000003","0.00000014","Yes","Yes","Yes","Yes","No"
+"openai/gpt-oss-20b","OpenAI: gpt-oss-20b",1754414229,131072,"0.00000003","0.00000011","Yes","Yes","Yes","Yes","No"
 "anthropic/claude-opus-4.1","Anthropic: Claude Opus 4.1",1754411591,200000,"0.000015","0.000075","Yes","Yes","Yes","Yes","No"
 "mistralai/codestral-2508","Mistral: Codestral 2508",1754079630,256000,"0.0000003","0.0000009","Yes","Yes","No","Yes","No"
 "qwen/qwen3-coder-30b-a3b-instruct","Qwen: Qwen3 Coder 30B A3B Instruct",1753972379,160000,"0.00000007","0.00000027","Yes","Yes","No","Yes","No"
