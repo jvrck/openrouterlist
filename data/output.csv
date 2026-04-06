@@ -67,7 +67,6 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "z-ai/glm-4.7","Z.ai: GLM 4.7",1766378014,202752,"0.00000039","0.00000175","Yes","Yes","Yes","Yes","No"
 "google/gemini-3-flash-preview","Google: Gemini 3 Flash Preview",1765987078,1048576,"0.0000005","0.000003","Yes","Yes","Yes","Yes","No"
 "mistralai/mistral-small-creative","Mistral: Mistral Small Creative",1765908653,32768,"0.0000001","0.0000003","Yes","No","No","No","No"
-"allenai/olmo-3.1-32b-think","AllenAI: Olmo 3.1 32B Think",1765907719,65536,"0.00000015","0.0000005","No","Yes","Yes","Yes","No"
 "xiaomi/mimo-v2-flash","Xiaomi: MiMo-V2-Flash",1765731308,262144,"0.00000009","0.00000029","Yes","Yes","Yes","Yes","No"
 "nvidia/nemotron-3-nano-30b-a3b:free","NVIDIA: Nemotron 3 Nano 30B A3B (free)",1765731275,256000,"0","0","Yes","No","Yes","No","No"
 "nvidia/nemotron-3-nano-30b-a3b","NVIDIA: Nemotron 3 Nano 30B A3B",1765731275,262144,"0.00000005","0.0000002","Yes","No","Yes","Yes","No"
