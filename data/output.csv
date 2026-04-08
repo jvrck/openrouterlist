@@ -1,7 +1,10 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
+"anthropic/claude-opus-4.6-fast","Anthropic: Claude Opus 4.6 (Fast)",1775592472,1000000,"0.00003","0.00015","Yes","Yes","Yes","Yes","No"
+"z-ai/glm-5.1","Z.ai: GLM 5.1",1775578025,202752,"0.00000126","0.00000396","Yes","Yes","Yes","Yes","No"
+"google/gemma-4-26b-a4b-it:free","Google: Gemma 4 26B A4B  (free)",1775227989,262144,"0","0","Yes","No","Yes","Yes","No"
 "google/gemma-4-26b-a4b-it","Google: Gemma 4 26B A4B ",1775227989,262144,"0.00000013","0.0000004","Yes","Yes","Yes","Yes","No"
+"google/gemma-4-31b-it:free","Google: Gemma 4 31B (free)",1775148486,262144,"0","0","Yes","No","Yes","Yes","No"
 "google/gemma-4-31b-it","Google: Gemma 4 31B",1775148486,262144,"0.00000014","0.0000004","Yes","Yes","Yes","Yes","No"
-"qwen/qwen3.6-plus:free","Qwen: Qwen3.6 Plus (free)",1775133557,1000000,"0","0","Yes","Yes","Yes","Yes","No"
 "z-ai/glm-5v-turbo","Z.ai: GLM 5V Turbo",1775061458,202752,"0.0000012","0.000004","Yes","No","Yes","Yes","No"
 "arcee-ai/trinity-large-thinking","Arcee AI: Trinity Large Thinking",1775058318,262144,"0.00000022","0.00000085","Yes","Yes","Yes","Yes","No"
 "x-ai/grok-4.20-multi-agent","xAI: Grok 4.20 Multi-Agent",1774979158,2000000,"0.000002","0.000006","No","Yes","Yes","Yes","No"
