@@ -259,7 +259,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "mistralai/mistral-saba","Mistral: Saba",1739803239,32768,"0.0000002","0.0000006","Yes","Yes","No","Yes","No"
 "meta-llama/llama-guard-3-8b","Llama Guard 3 8B",1739401318,131072,"0.00000048","0.00000003","No","No","No","No","No"
 "openai/o3-mini-high","OpenAI: o3 Mini High",1739372611,200000,"0.0000011","0.0000044","Yes","Yes","Yes","Yes","No"
-"google/gemini-2.0-flash-001","Google: Gemini 2.0 Flash",1738769413,1048576,"0.0000001","0.0000004","Yes","Yes","No","Yes","No"
+"google/gemini-2.0-flash-001","Google: Gemini 2.0 Flash",1738769413,1000000,"0.0000001","0.0000004","Yes","Yes","No","Yes","No"
 "qwen/qwen-vl-plus","Qwen: Qwen VL Plus",1738731255,131072,"0.0000001365","0.0000004095","No","No","No","Yes","No"
 "aion-labs/aion-1.0","AionLabs: Aion-1.0",1738697557,131072,"0.000004","0.000008","No","No","Yes","No","No"
 "aion-labs/aion-1.0-mini","AionLabs: Aion-1.0-Mini",1738697107,131072,"0.0000007","0.0000014","No","No","Yes","No","No"
