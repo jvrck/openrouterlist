@@ -33,7 +33,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "openai/gpt-5.4-image-2","OpenAI: GPT-5.4 Image 2",1776797528,272000,"0.000008","0.000015","No","Yes","Yes","Yes","No"
 "inclusionai/ling-2.6-flash","inclusionAI: Ling-2.6-flash",1776795886,262144,"0.00000008","0.00000024","Yes","Yes","No","Yes","No"
 "~anthropic/claude-opus-latest","Anthropic: Claude Opus Latest",1776795361,1000000,"0.000005","0.000025","Yes","Yes","Yes","Yes","No"
-"openrouter/pareto-code","Pareto Code Router",1776747900,200000,"-1","-1","No","No","No","No","No"
+"openrouter/pareto-code","Pareto Code Router",1776747900,2000000,"-1","-1","No","No","No","No","No"
 "baidu/qianfan-ocr-fast:free","Baidu: Qianfan-OCR-Fast (free)",1776707472,65536,"0","0","No","No","Yes","No","No"
 "moonshotai/kimi-k2.6","MoonshotAI: Kimi K2.6",1776699402,262144,"0.00000075","0.0000035","Yes","Yes","Yes","Yes","No"
 "anthropic/claude-opus-4.7","Anthropic: Claude Opus 4.7",1776351100,1000000,"0.000005","0.000025","Yes","Yes","Yes","Yes","No"
