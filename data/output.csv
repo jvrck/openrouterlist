@@ -55,7 +55,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "rekaai/reka-edge","Reka Edge",1774026965,16384,"0.0000001","0.0000001","Yes","Yes","No","No","No"
 "xiaomi/mimo-v2-omni","Xiaomi: MiMo-V2-Omni",1773863703,262144,"0.0000004","0.000002","Yes","No","Yes","Yes","No"
 "xiaomi/mimo-v2-pro","Xiaomi: MiMo-V2-Pro",1773863643,1048576,"0.000001","0.000003","Yes","No","Yes","Yes","No"
-"minimax/minimax-m2.7","MiniMax: MiniMax M2.7",1773836697,196608,"0.000000299","0.0000012","Yes","Yes","Yes","Yes","No"
+"minimax/minimax-m2.7","MiniMax: MiniMax M2.7",1773836697,196608,"0.0000002","0.0000012","Yes","Yes","Yes","Yes","No"
 "openai/gpt-5.4-nano","OpenAI: GPT-5.4 Nano",1773748187,400000,"0.0000002","0.00000125","Yes","Yes","Yes","Yes","No"
 "openai/gpt-5.4-mini","OpenAI: GPT-5.4 Mini",1773748178,400000,"0.00000075","0.0000045","Yes","Yes","Yes","Yes","No"
 "mistralai/mistral-small-2603","Mistral: Mistral Small 4",1773695685,262144,"0.00000015","0.0000006","Yes","Yes","Yes","Yes","No"
