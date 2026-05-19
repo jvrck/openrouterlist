@@ -74,7 +74,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "google/gemini-3.1-flash-lite-preview","Google: Gemini 3.1 Flash Lite Preview",1772512673,1048576,"0.00000025","0.0000015","Yes","Yes","Yes","Yes","No"
 "bytedance-seed/seed-2.0-mini","ByteDance Seed: Seed-2.0-Mini",1772131107,262144,"0.0000001","0.0000004","Yes","Yes","Yes","Yes","No"
 "google/gemini-3.1-flash-image-preview","Google: Nano Banana 2 (Gemini 3.1 Flash Image Preview)",1772119558,131072,"0.0000005","0.000003","No","Yes","Yes","Yes","No"
-"qwen/qwen3.5-35b-a3b","Qwen: Qwen3.5-35B-A3B",1772053822,262144,"0.00000014","0.000001","Yes","Yes","Yes","Yes","No"
+"qwen/qwen3.5-35b-a3b","Qwen: Qwen3.5-35B-A3B",1772053822,262144,"0.000000139","0.000001","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3.5-27b","Qwen: Qwen3.5-27B",1772053810,262144,"0.000000195","0.00000156","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3.5-122b-a10b","Qwen: Qwen3.5-122B-A10B",1772053789,262144,"0.00000026","0.00000208","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3.5-flash-02-23","Qwen: Qwen3.5-Flash",1772053776,1000000,"0.000000065","0.00000026","Yes","Yes","Yes","Yes","No"
