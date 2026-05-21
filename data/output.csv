@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
+"x-ai/grok-build-0.1","xAI: Grok Build 0.1",1779298123,256000,"0.000001","0.000002","Yes","Yes","Yes","Yes","No"
 "google/gemini-3.5-flash","Google: Gemini 3.5 Flash",1779193800,1048576,"0.0000015","0.000009","Yes","Yes","Yes","Yes","No"
 "anthropic/claude-opus-4.7-fast","Anthropic: Claude Opus 4.7 (Fast)",1778613011,1000000,"0.00003","0.00015","Yes","Yes","Yes","Yes","No"
 "perceptron/perceptron-mk1","Perceptron: Perceptron Mk1",1778597029,32768,"0.00000015","0.0000015","No","Yes","Yes","No","No"
@@ -30,7 +31,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "deepseek/deepseek-v4-pro","DeepSeek: DeepSeek V4 Pro",1777000679,1048576,"0.000000435","0.00000087","Yes","Yes","Yes","Yes","No"
 "deepseek/deepseek-v4-flash:free","DeepSeek: DeepSeek V4 Flash (free)",1777000666,1048576,"0","0","Yes","No","Yes","No","No"
 "deepseek/deepseek-v4-flash","DeepSeek: DeepSeek V4 Flash",1777000666,1048576,"0.000000112","0.000000224","Yes","Yes","Yes","Yes","No"
-"inclusionai/ling-2.6-1t","inclusionAI: Ling-2.6-1T",1776948238,262144,"0.0000003","0.0000025","Yes","Yes","No","Yes","No"
+"inclusionai/ling-2.6-1t","inclusionAI: Ling-2.6-1T",1776948238,262144,"0.000000075","0.000000625","Yes","Yes","No","Yes","No"
 "tencent/hy3-preview","Tencent: Hy3 preview",1776878150,262144,"0.000000066","0.00000026","Yes","No","Yes","No","No"
 "xiaomi/mimo-v2.5-pro","Xiaomi: MiMo-V2.5-Pro",1776874273,1048576,"0.000001","0.000003","Yes","Yes","Yes","Yes","No"
 "xiaomi/mimo-v2.5","Xiaomi: MiMo-V2.5",1776874269,1048576,"0.0000004","0.000002","Yes","No","Yes","Yes","No"
@@ -94,7 +95,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "anthropic/claude-opus-4.6","Anthropic: Claude Opus 4.6",1770219050,1000000,"0.000005","0.000025","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3-coder-next","Qwen: Qwen3 Coder Next",1770164101,262144,"0.00000011","0.0000008","Yes","Yes","No","Yes","No"
 "openrouter/free","Free Models Router",1769917427,200000,"0","0","Yes","Yes","Yes","Yes","No"
-"stepfun/step-3.5-flash","StepFun: Step 3.5 Flash",1769728337,262144,"0.0000001","0.0000003","Yes","No","Yes","Yes","No"
+"stepfun/step-3.5-flash","StepFun: Step 3.5 Flash",1769728337,262144,"0.00000009","0.0000003","Yes","No","Yes","Yes","No"
 "arcee-ai/trinity-large-preview","Arcee AI: Trinity Large Preview",1769552670,131000,"0.00000015","0.00000045","No","Yes","No","Yes","No"
 "moonshotai/kimi-k2.5","MoonshotAI: Kimi K2.5",1769487076,262144,"0.0000004","0.0000019","Yes","Yes","Yes","Yes","No"
 "upstage/solar-pro-3","Upstage: Solar Pro 3",1769481200,128000,"0.00000015","0.0000006","Yes","Yes","Yes","Yes","No"
