@@ -210,7 +210,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "qwen/qwen3-30b-a3b-instruct-2507","Qwen: Qwen3 30B A3B Instruct 2507",1753806965,262144,"0.00000009","0.0000003","Yes","Yes","No","Yes","No"
 "z-ai/glm-4.5","Z.ai: GLM 4.5",1753471347,131072,"0.0000006","0.0000022","Yes","No","Yes","Yes","No"
 "z-ai/glm-4.5-air:free","Z.ai: GLM 4.5 Air (free)",1753471258,131072,"0","0","Yes","No","Yes","No","No"
-"z-ai/glm-4.5-air","Z.ai: GLM 4.5 Air",1753471258,131072,"0.00000013","0.00000085","Yes","No","Yes","No","No"
+"z-ai/glm-4.5-air","Z.ai: GLM 4.5 Air",1753471258,131072,"0.00000013","0.00000085","Yes","No","Yes","Yes","No"
 "qwen/qwen3-235b-a22b-thinking-2507","Qwen: Qwen3 235B A22B Thinking 2507",1753449557,262144,"0.0000001495","0.000001495","Yes","Yes","Yes","Yes","No"
 "z-ai/glm-4-32b","Z.ai: GLM 4 32B ",1753376617,128000,"0.0000001","0.0000001","Yes","No","No","No","No"
 "qwen/qwen3-coder:free","Qwen: Qwen3 Coder 480B A35B (free)",1753230546,1048576,"0","0","Yes","No","No","No","No"
