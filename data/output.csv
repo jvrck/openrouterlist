@@ -219,7 +219,6 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "morph/morph-v3-large","Morph: Morph V3 Large",1751910858,262144,"0.0000009","0.0000019","No","No","No","No","No"
 "morph/morph-v3-fast","Morph: Morph V3 Fast",1751910002,81920,"0.0000008","0.0000012","No","No","No","No","No"
 "baidu/ernie-4.5-vl-424b-a47b","Baidu: ERNIE 4.5 VL 424B A47B ",1751300903,131072,"0.00000042","0.00000125","No","No","Yes","No","No"
-"baidu/ernie-4.5-300b-a47b","Baidu: ERNIE 4.5 300B A47B ",1751300139,131072,"0.00000028","0.0000011","No","No","No","Yes","No"
 "mistralai/mistral-small-3.2-24b-instruct","Mistral: Mistral Small 3.2 24B",1750443016,128000,"0.000000075","0.0000002","Yes","Yes","No","Yes","No"
 "minimax/minimax-m1","MiniMax: MiniMax M1",1750200414,1000000,"0.0000004","0.0000022","Yes","No","Yes","No","No"
 "google/gemini-2.5-flash","Google: Gemini 2.5 Flash",1750172488,1048576,"0.0000003","0.0000025","Yes","Yes","Yes","Yes","No"
