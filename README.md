@@ -14,6 +14,7 @@ A comprehensive, real-time pricing comparison tool for 400+ AI language models a
 - **400+ AI Models**: Comprehensive coverage of all available models including GPT-4, Claude 3, Llama 3, and more
 - **Advanced Filtering**: Filter by capabilities (tool calling, structured outputs, reasoning, web search)
 - **Cost Calculator**: Pricing shown per million tokens for both prompts and completions
+- **Price History & Trends**: Per-model price charts, 30-day change badges, and a searchable archive of discontinued models — backfilled from 20+ months of git history
 - **Export Options**: Download data as CSV, Excel, PDF, or print for offline analysis
 - **Dark Mode**: Eye-friendly dark theme for extended use
 - **Mobile Responsive**: Optimized for all devices with card and table views
@@ -29,8 +30,10 @@ A comprehensive, real-time pricing comparison tool for 400+ AI language models a
 
 - `index.html` - Interactive web interface with advanced filtering and search
 - `scripts/get_zipped.sh` - Data fetching script that pulls latest pricing from OpenRouter API
+- `scripts/backfill_history.py` - Builds/maintains the price-history ledger (incremental daily; `--rebuild` walks full git history)
 - `.github/workflows/daily_run.yml` - Automated GitHub Actions workflow for data updates
 - `data/` - Current model pricing data in JSON and CSV formats
+- `data/history/prices.json` - Compact per-model price-history ledger (change-points + first/last seen)
 - `robots.txt` - Search engine crawler instructions
 - `sitemap.xml` - Sitemap for better SEO indexing
 
@@ -66,6 +69,7 @@ The pricing data is automatically refreshed every 12 hours using GitHub Actions:
 - Updates run at midnight and noon UTC daily
 - Latest pricing data is fetched directly from OpenRouter's API
 - Changes are automatically committed to the repository
+- The price-history ledger (`data/history/prices.json`) is updated incrementally on every change
 - Historical data is archived in timestamped zip files
 
 ## 📈 Data Fields
@@ -96,6 +100,7 @@ The website features:
 - Dark/light theme toggle
 - Mobile-responsive design
 - Keyboard shortcuts for power users
+- Price-history charts and a discontinued-models archive
 
 ## 🤝 Contributing
 

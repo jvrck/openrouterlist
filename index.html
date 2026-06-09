@@ -940,6 +940,73 @@
         padding: 10px;
       }
     }
+
+    /* Price history: trend badges, history button, sparkline modal, discontinued archive */
+    .price-badge {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 1px 5px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+    .price-badge.down { background-color: rgba(22,163,74,0.15); color: #16a34a; }
+    .price-badge.up   { background-color: rgba(220,38,38,0.15); color: #dc2626; }
+    .price-badge.free { background-color: rgba(37,99,235,0.15); color: var(--header-bg); }
+    [data-theme="dark"] .price-badge.down { color: #4ade80; }
+    [data-theme="dark"] .price-badge.up   { color: #f87171; }
+
+    .history-btn {
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      margin-left: 6px;
+      font-size: 14px;
+      opacity: 0.7;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .history-btn:hover { opacity: 1; transform: translateY(-1px); }
+
+    .history-meta { color: var(--text-secondary); font-size: 14px; margin: 4px 0 14px; line-height: 1.5; }
+    .history-chart { width: 100%; overflow-x: auto; }
+    .history-chart svg { width: 100%; height: auto; display: block; }
+    .spark-line-prompt { fill: none; stroke: #2563eb; stroke-width: 2; }
+    .spark-line-completion { fill: none; stroke: #f59e0b; stroke-width: 2; }
+    .spark-dot-prompt { fill: #2563eb; }
+    .spark-dot-completion { fill: #f59e0b; }
+    .spark-axis { stroke: var(--border-color); stroke-width: 1; }
+    .spark-label { fill: var(--text-secondary); font-size: 11px; }
+    .history-empty { color: var(--text-secondary); }
+    .history-legend { display: flex; gap: 16px; font-size: 13px; color: var(--text-secondary); margin-top: 10px; }
+    .history-legend .swatch { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 5px; vertical-align: middle; }
+
+    .modal-content.wide { max-width: 760px; }
+    .discontinued-search {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px 12px;
+      margin: 10px 0;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      font-size: 14px;
+    }
+    .discontinued-list { max-height: 50vh; overflow-y: auto; }
+    .discontinued-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 4px;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 14px;
+    }
+    .discontinued-item .d-name a { color: var(--link-color); text-decoration: none; }
+    .discontinued-item .d-name a:hover { text-decoration: underline; }
+    .discontinued-item .d-meta { color: var(--text-secondary); white-space: nowrap; font-size: 13px; }
   </style>
 </head>
 <body>
@@ -962,6 +1029,7 @@
           <span>Favorites Only</span>
         </button>
         <button id="viewToggle" class="btn view-toggle">📱 Card View</button>
+        <button id="discontinuedBtn" class="btn" style="display:none;" aria-label="Show discontinued models">🗑️ Discontinued</button>
         <button id="helpBtn" class="btn" aria-label="Show keyboard shortcuts">? Help</button>
       </div>
     </header>
@@ -1188,6 +1256,31 @@
     </div>
   </div>
 
+  <!-- Price History Modal -->
+  <div id="historyModal" class="modal">
+    <div class="modal-content wide">
+      <span class="close">&times;</span>
+      <h2 id="historyTitle">Price History</h2>
+      <p id="historyMeta" class="history-meta"></p>
+      <div id="historyChart" class="history-chart"></div>
+      <div class="history-legend">
+        <span><span class="swatch" style="background:#2563eb;"></span>Prompt $/1M</span>
+        <span><span class="swatch" style="background:#f59e0b;"></span>Completion $/1M</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Discontinued Models Archive Modal -->
+  <div id="discontinuedModal" class="modal">
+    <div class="modal-content wide">
+      <span class="close">&times;</span>
+      <h2>Discontinued Models <span style="color:var(--text-secondary);font-weight:normal;font-size:0.7em;">(<span id="discontinuedCount">0</span>)</span></h2>
+      <p class="history-meta">Models removed from OpenRouter since this tracker began (2024-09-21), newest first. Final last-seen date and price shown.</p>
+      <input id="discontinuedSearch" class="discontinued-search" type="text" placeholder="Filter discontinued models&hellip;" aria-label="Filter discontinued models">
+      <div id="discontinuedList" class="discontinued-list"></div>
+    </div>
+  </div>
+
   <script>
     // Global variables
     let dataTable;
@@ -1203,6 +1296,131 @@
     let activeCapabilityFilters = [];
     let capabilityFilterMode = 'all'; // 'all' or 'any'
     let isCapabilityFilterActive = false;
+
+    // Price history (from data/history/prices.json; degrades gracefully if absent)
+    let priceHistory = {};       // id -> {name, first_seen, last_seen, present_now, points:[[date,prompt,completion]]}
+    let historyAsOfMs = Date.now();
+    const DAY_MS = 86400000;
+    const CHANGE_THRESHOLD = 1;  // hide trend badges below ±1% (provider precision noise)
+
+    // Escape untrusted strings (model names/ids from the API) before injecting as HTML.
+    const escHtml = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    // Value of `field` (prompt|completion) as of `whenMs`, reading the step-held series.
+    // fallbackEarliest: when no point predates whenMs, use the earliest known price.
+    function priceAsOf(points, field, whenMs, fallbackEarliest) {
+      const idx = field === 'prompt' ? 1 : 2;
+      let val = null;
+      for (const pt of points) {
+        const t = Date.parse(pt[0]);
+        if (t > whenMs) break;
+        if (pt[idx] !== null) val = pt[idx];
+      }
+      if (val === null && fallbackEarliest) {   // series starts after whenMs: use earliest known
+        for (const pt of points) { if (pt[idx] !== null) { val = pt[idx]; break; } }
+      }
+      return val;
+    }
+
+    // {from,to,pct} for a field over the last `days`, or null if not meaningful.
+    function historyChange(points, field, days) {
+      if (!points || !points.length) return null;
+      const to = priceAsOf(points, field, historyAsOfMs, true);
+      // `from` takes NO earliest fallback: a model younger than the window has no real
+      // price `days` ago, so it gets no (misleading) "Nd" badge.
+      const from = priceAsOf(points, field, historyAsOfMs - days * DAY_MS, false);
+      if (from === null || to === null || from === to) return null;
+      const pct = from === 0 ? null : (to - from) / from * 100;
+      return { from: from, to: to, pct: pct };
+    }
+
+    // 30-day trend badge HTML for a model's price field, or '' if nothing notable.
+    function priceBadge(modelId, field) {
+      const rec = priceHistory[modelId];
+      if (!rec) return '';
+      const ch = historyChange(rec.points, field, 30);
+      if (!ch) return '';
+      if (ch.to === 0) return ` <span class="price-badge free" title="30d: $${ch.from} → free">▼ free</span>`;
+      if (ch.pct === null) return '';           // came from free; % not meaningful
+      if (Math.abs(ch.pct) < CHANGE_THRESHOLD) return '';
+      const down = ch.pct < 0;
+      const disp = Math.abs(ch.pct) >= 1000 ? '>999' : Math.abs(ch.pct).toFixed(0);
+      return ` <span class="price-badge ${down ? 'down' : 'up'}" title="30d: $${ch.from} → $${ch.to}/1M">${down ? '▼' : '▲'} ${disp}%</span>`;
+    }
+
+    // Dependency-free step-line SVG price chart (prompt + completion), 0-baselined.
+    function sparklineSVG(points, w, h) {
+      const pad = { l: 8, r: 8, t: 12, b: 18 };
+      const iw = w - pad.l - pad.r, ih = h - pad.t - pad.b;
+      const times = points.map(p => Date.parse(p[0]));
+      const tMin = times[0];
+      const tMax = Math.max(historyAsOfMs, times[times.length - 1]);
+      const tSpan = Math.max(1, tMax - tMin);
+      let vMax = 0;
+      points.forEach(p => { if (p[1] !== null) vMax = Math.max(vMax, p[1]); if (p[2] !== null) vMax = Math.max(vMax, p[2]); });
+      vMax = vMax || 1;
+      const x = t => pad.l + (t - tMin) / tSpan * iw;
+      const y = v => pad.t + ih - (v / vMax) * ih;
+      function series(idx, cls) {
+        const pts = [];
+        let last = null;
+        points.forEach(p => {
+          const v = p[idx]; if (v === null) return;
+          const px = x(Date.parse(p[0]));
+          if (last !== null) pts.push([px, y(last)]);     // step: hold prior price to this date
+          pts.push([px, y(v)]);
+          last = v;
+        });
+        if (last !== null) pts.push([x(tMax), y(last)]);  // hold final price to as_of
+        if (!pts.length) return '';
+        const line = pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
+        const dots = points.filter(p => p[idx] !== null)
+          .map(p => `<circle class="spark-dot-${cls}" cx="${x(Date.parse(p[0])).toFixed(1)}" cy="${y(p[idx]).toFixed(1)}" r="2.5"><title>${escHtml(p[0])}: $${p[idx]}/1M</title></circle>`).join('');
+        return `<polyline class="spark-line-${cls}" points="${line}"/>${dots}`;
+      }
+      const fmtDate = ms => new Date(ms).toISOString().slice(0, 10);
+      const baseY = (pad.t + ih).toFixed(1);
+      return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img" aria-label="price over time">` +
+        `<line class="spark-axis" x1="${pad.l}" y1="${baseY}" x2="${(w - pad.r).toFixed(1)}" y2="${baseY}"/>` +
+        `<text class="spark-label" x="${pad.l}" y="10">$${+vMax.toFixed(2)}/1M</text>` +
+        series(1, 'prompt') + series(2, 'completion') +
+        `<text class="spark-label" x="${pad.l}" y="${h - 5}">${fmtDate(tMin)}</text>` +
+        `<text class="spark-label" x="${w - pad.r}" y="${h - 5}" text-anchor="end">${fmtDate(tMax)}</text>` +
+        `</svg>`;
+    }
+
+    function openHistoryModal(modelId) {
+      const rec = priceHistory[modelId];
+      if (!rec) return;
+      $('#historyTitle').text(rec.name);
+      const p30 = historyChange(rec.points, 'prompt', 30), c30 = historyChange(rec.points, 'completion', 30);
+      const fmtCh = ch => !ch ? 'no change' : (ch.to === 0 ? 'now free' : (ch.pct === null ? 'newly priced' : (ch.pct < 0 ? '▼ ' : '▲ ') + Math.abs(ch.pct).toFixed(0) + '%'));
+      const status = rec.present_now ? '' : ` &middot; <strong>discontinued</strong> (last seen ${escHtml(rec.last_seen)})`;
+      $('#historyMeta').html(`Tracked ${escHtml(rec.first_seen)} &rarr; ${escHtml(rec.last_seen)}${status}<br>30-day: prompt ${fmtCh(p30)}, completion ${fmtCh(c30)}`);
+      if (rec.points.length < 2) {
+        $('#historyChart').html('<p class="history-empty">Price has not changed since this model was first listed.</p>');
+      } else {
+        $('#historyChart').html(sparklineSVG(rec.points, 700, 220));
+      }
+      $('#historyModal').show();
+    }
+
+    function renderDiscontinued(filter) {
+      const q = (filter || '').toLowerCase();
+      const items = Object.keys(priceHistory)
+        .filter(id => !priceHistory[id].present_now)
+        .filter(id => !q || id.toLowerCase().includes(q) || (priceHistory[id].name || '').toLowerCase().includes(q))
+        .sort((a, b) => priceHistory[b].last_seen.localeCompare(priceHistory[a].last_seen));
+      const html = items.map(id => {
+        const r = priceHistory[id];
+        const last = r.points[r.points.length - 1];
+        const price = (!last || last[1] === null) ? 'n/a' : `$${last[1]}/$${last[2]}/1M`;
+        const url = 'https://openrouter.ai/models/' + id.split('/').map(encodeURIComponent).join('/');
+        return `<div class="discontinued-item"><span class="d-name"><a href="${escHtml(url)}" target="_blank" rel="noopener">${escHtml(r.name)}</a></span><span class="d-meta">${escHtml(r.last_seen)} &middot; ${price}</span></div>`;
+      }).join('');
+      $('#discontinuedList').html(html || '<p class="history-empty">No matches.</p>');
+      $('#discontinuedCount').text(items.length);
+    }
 
     // Theme management
     function applyTheme(theme) {
@@ -1477,6 +1695,7 @@
               </div>
               <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" 
                       data-model-id="${row.id}">${isFavorited ? '★' : '☆'}</button>
+              ${priceHistory[row.id] ? `<button class="history-btn" data-model-id="${row.id}" title="Price history">📈</button>` : ''}
             </div>
             <div class="model-card-details">
               <div class="model-card-row">
@@ -1697,9 +1916,23 @@
       });
       
       $('.close').on('click', function() {
-        $('#shortcutsModal').hide();
+        $(this).closest('.modal').hide();
       });
       
+      // Price-history handlers
+      $(document).on('click', '.history-btn', function(e) {
+        e.stopPropagation();
+        openHistoryModal($(this).data('model-id'));
+      });
+      $('#discontinuedBtn').on('click', function() {
+        $('#discontinuedSearch').val('');
+        renderDiscontinued('');
+        $('#discontinuedModal').show();
+      });
+      $('#discontinuedSearch').on('input', function() {
+        renderDiscontinued($(this).val());
+      });
+
       $(window).on('click', function(e) {
         if ($(e.target).hasClass('modal')) {
           $('.modal').hide();
@@ -1740,7 +1973,19 @@
         $("#updatedDate").text(formattedDate);
       });
 
+      // Load price history first (for trend badges + sparklines), then render the table.
+      function loadHistoryThenTable() {
+        $.getJSON("data/history/prices.json").always(function(h) {
+          priceHistory = (h && typeof h === 'object' && h.models) ? h.models : {};
+          if (h && h.as_of) { const ms = Date.parse(h.as_of); if (!isNaN(ms)) historyAsOfMs = ms; }
+          const discCount = Object.keys(priceHistory).filter(function(id) { return !priceHistory[id].present_now; }).length;
+          if (discCount > 0) $('#discontinuedBtn').text('🗑️ Discontinued (' + discCount + ')').show();
+          renderTableFromCSV();
+        });
+      }
+
       // Fetch and display the CSV data
+      function renderTableFromCSV() {
       $.get("data/output.csv", function(data) {
         var lines = data.split("\n");
   
@@ -1809,7 +2054,8 @@
                     rowData.completion_cost = formattedValue;
                   }
                   
-                  rowHtml += "<td>" + formattedValue + "</td>";
+                  var pfield = (columnName === "pricing.prompt") ? 'prompt' : 'completion';
+                  rowHtml += "<td>" + formattedValue + priceBadge(currentId, pfield) + "</td>";
                 } else {
                   rowHtml += "<td>Invalid</td>";
                 }
@@ -1828,7 +2074,8 @@
               } else if (columnName === "name") {
                 // Add favorite button and hyperlink to the Model Name field
                 var favoriteBtn = `<button class="favorite-btn" data-model-id="${currentId}">☆</button>`;
-                rowHtml += `<td>${favoriteBtn}<a href="https://openrouter.ai/models/${currentId}" target="_blank">${cleanedValue}</a></td>`;
+                var histBtn = priceHistory[currentId] ? `<button class="history-btn" data-model-id="${currentId}" title="Price history" aria-label="Price history">📈</button>` : '';
+                rowHtml += `<td>${favoriteBtn}<a href="https://openrouter.ai/models/${currentId}" target="_blank">${cleanedValue}</a>${histBtn}</td>`;
               } else if (columnName === "context_length") {
                 rowData.context_length = cleanedValue;
                 rowHtml += "<td>" + cleanedValue + "</td>";
@@ -1937,6 +2184,9 @@
           updateURLState();
         });
       });
+      }
+
+      loadHistoryThenTable();
     });
   </script>
 
