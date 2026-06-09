@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
+"nex-agi/nex-n2-pro:free","Nex AGI: Nex-N2-Pro (free)",1780937140,262144,"0","0","Yes","Yes","Yes","Yes","No"
 "nvidia/nemotron-3.5-content-safety:free","NVIDIA: Nemotron 3.5 Content Safety (free)",1780581864,128000,"0","0","No","No","Yes","No","No"
 "nvidia/nemotron-3-ultra-550b-a55b:free","NVIDIA: Nemotron 3 Ultra (free)",1780551208,1000000,"0","0","Yes","No","Yes","No","No"
 "nvidia/nemotron-3-ultra-550b-a55b","NVIDIA: Nemotron 3 Ultra",1780551208,1000000,"0.0000005","0.0000025","Yes","Yes","Yes","Yes","No"
