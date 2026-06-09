@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.0.6] - 2026-06-09
+
+### Added
+
+- **Price History & Trends** (closes #10; also delivers the abandoned #2)
+  - Per-model price-history charts (dependency-free inline SVG, prompt + completion series) opened via a 📈 button on each table row and card
+  - 30-day price-change badges (▲/▼ %) shown inline next to prompt and completion costs, with a "▼ free" badge when a model becomes free
+  - Discontinued-models archive: a searchable list of every model removed from OpenRouter since tracking began (2024-09-21)
+  - Backfilled from the repository's own git history — 957 commits / ~20 months of `data/output.json` — so the charts are populated from day one
+- **Price-history ledger** `data/history/prices.json`: a compact change-point series per model (first/last seen, present/discontinued, prompt/completion in USD per 1M tokens)
+- **`scripts/backfill_history.py`**: maintains the ledger. Incremental by default (folds the current snapshot; safe under a shallow CI checkout); `--rebuild` reconstructs it from full git history
+
+### Changed
+
+- `scripts/get_zipped.sh` now updates the price-history ledger after each data change (non-fatal — it can never block the core pricing update)
+- The frontend loads `data/history/prices.json` before rendering the table; the feature degrades gracefully if the ledger is absent
+
+### Technical
+
+- Trend math reads a step-held price series (a price holds until the next recorded change); change badges threshold out sub-1% provider precision noise
+- SVG charts use step-after interpolation and extend the latest price to the dataset's `as_of` date
+
 ## [0.0.5] - 2025-08-30
 
 ### Added

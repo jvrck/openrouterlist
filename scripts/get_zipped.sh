@@ -73,6 +73,16 @@ if [ -f "data/output.json" ]; then
 
         # Output the timestamp to a file named updated only if there was a change in data
         echo "$timestamp" > ./data/updated
+
+        # Fold the new snapshot into the price-history ledger (incremental; reads the
+        # working tree only, so it is safe under a shallow CI checkout). Non-fatal:
+        # the history feature must never break the core pricing update. To rebuild the
+        # ledger from full git history, run: python3 scripts/backfill_history.py --rebuild
+        if command -v python3 >/dev/null 2>&1; then
+            python3 scripts/backfill_history.py || echo "WARN: price-history update failed (non-fatal)"
+        else
+            echo "WARN: python3 not found; skipping price-history update"
+        fi
     fi
 fi
 
