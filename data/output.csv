@@ -7,7 +7,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "nvidia/nemotron-3-ultra-550b-a55b:free","NVIDIA: Nemotron 3 Ultra (free)",1780551208,1000000,"0","0","Yes","No","Yes","No","No"
 "nvidia/nemotron-3-ultra-550b-a55b","NVIDIA: Nemotron 3 Ultra",1780551208,1000000,"0.0000005","0.0000025","Yes","Yes","Yes","Yes","No"
 "qwen/qwen3.7-plus","Qwen: Qwen3.7 Plus",1780491783,1000000,"0.00000032","0.00000128","Yes","Yes","Yes","Yes","No"
-"minimax/minimax-m3","MiniMax: MiniMax M3",1780245374,1048576,"0.0000003","0.0000012","Yes","No","Yes","Yes","No"
+"minimax/minimax-m3","MiniMax: MiniMax M3",1780245374,1048576,"0.0000003","0.0000012","Yes","Yes","Yes","Yes","No"
 "stepfun/step-3.7-flash","StepFun: Step 3.7 Flash",1779985069,256000,"0.0000002","0.00000115","No","Yes","Yes","Yes","No"
 "anthropic/claude-opus-4.8-fast","Anthropic: Claude Opus 4.8 (Fast)",1779913703,1000000,"0.00001","0.00005","Yes","Yes","Yes","Yes","No"
 "anthropic/claude-opus-4.8","Anthropic: Claude Opus 4.8",1779905091,1000000,"0.000005","0.000025","Yes","Yes","Yes","Yes","No"
