@@ -33,9 +33,3 @@ jobs:
         fi
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@main
-      with:
-        name: results-zip
-        path: results/*.zip
