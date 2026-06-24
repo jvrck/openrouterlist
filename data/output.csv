@@ -1,4 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search
+"sakana/fugu-ultra","Sakana: Fugu Ultra",1782276303,1000000,"0.000005","0.00003","Yes","Yes","Yes","No","Yes"
 "google/gemini-3.1-flash-image","Google: Nano Banana 2 (Gemini 3.1 Flash Image)",1781754065,131072,"0.0000005","0.000003","No","Yes","Yes","Yes","No"
 "google/gemini-3-pro-image","Google: Nano Banana Pro (Gemini 3 Pro Image)",1781754054,65536,"0.000002","0.000012","Yes","Yes","Yes","Yes","No"
 "cohere/north-mini-code:free","Cohere: North Mini Code (free)",1781723748,256000,"0","0","Yes","No","Yes","No","No"
