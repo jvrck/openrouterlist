@@ -1402,10 +1402,14 @@
     // Cost calculator state. Price fields are raw USD/token values parsed from the CSV;
     // prompt_cost/completion_cost remain the existing rounded $/1M table display values.
     let calculatorModelIds = [];
+    let calculatorSelectionInitialized = false;
+    let calculatorTrigger = null;
+    let calculatorCopyResetTimer = null;
     const CALCULATOR_LIMIT = 10;
     function calculatorNumber(selector) {
-      const value = Number($(selector).val());
-      return Number.isFinite(value) && value >= 0 ? Math.floor(value) : NaN;
+      const raw = String($(selector).val()).trim();
+      const value = Number(raw);
+      return raw && Number.isFinite(value) && value >= 0 && Number.isInteger(value) ? value : NaN;
     }
 
     function calculatorModel(id) {
@@ -1447,7 +1451,8 @@
     function calculatorDefaultModelIds() {
       const favoriteRows = allData.filter(row => favorites.includes(row.id));
       if (favoriteRows.length) return favoriteRows.slice(0, CALCULATOR_LIMIT).map(row => row.id);
-      const toolRows = allData.filter(row => row.tool_calling === 'Yes' && hasUsableCalculatorPrice(row))
+      const toolRows = allData.filter(row => row.tool_calling === 'Yes' && hasUsableCalculatorPrice(row) &&
+        !(row.prompt_usd === 0 && row.completion_usd === 0))
         .sort((a, b) => (a.prompt_usd + a.completion_usd) - (b.prompt_usd + b.completion_usd));
       if (toolRows.length) return toolRows.slice(0, 5).map(row => row.id);
       const visibleRows = dataTable ? dataTable.rows({ search: 'applied' }).data().toArray()
@@ -1456,17 +1461,23 @@
       return visibleRows.filter(hasUsableCalculatorPrice).slice(0, 5).map(row => row.id);
     }
 
-    function openCalculator() {
-      if (!calculatorModelIds.length) calculatorModelIds = calculatorDefaultModelIds();
+    function openCalculator(trigger) {
+      if (trigger) calculatorTrigger = trigger;
+      if (!calculatorSelectionInitialized) {
+        calculatorModelIds = calculatorDefaultModelIds();
+        calculatorSelectionInitialized = true;
+      }
       renderCalculator();
       $('#calculatorModal').show().attr('aria-hidden', 'false');
       updateURLState();
+      window.setTimeout(() => $('#calcPromptTokens').trigger('focus'), 0);
     }
 
     function closeCalculator() {
       $('#calculatorModal :focus').blur();
       $('#calculatorModal').hide().attr('aria-hidden', 'true');
       updateURLState();
+      if (calculatorTrigger && document.contains(calculatorTrigger)) calculatorTrigger.focus();
     }
 
     function renderCalculatorPicker() {
@@ -1483,13 +1494,11 @@
 
     function calculatorRows() {
       const values = calculatorValues();
-      return calculatorModelIds.map(calculatorModel).filter(Boolean).map(row => ({
-        row: row,
-        usable: hasUsableCalculatorPrice(row),
-        perRequest: hasUsableCalculatorPrice(row) ? calculatorCost(row, values) : NaN,
-        estimable: hasUsableCalculatorPrice(row) && Number.isFinite(calculatorCost(row, values)),
-        values: values
-      })).sort((a, b) => (Number.isFinite(a.perRequest) ? a.perRequest : Infinity) - (Number.isFinite(b.perRequest) ? b.perRequest : Infinity));
+      return calculatorModelIds.map(calculatorModel).filter(Boolean).map(row => {
+        const usable = hasUsableCalculatorPrice(row);
+        const perRequest = usable ? calculatorCost(row, values) : NaN;
+        return { row: row, usable: usable, perRequest: perRequest, estimable: Number.isFinite(perRequest), values: values };
+      }).sort((a, b) => (Number.isFinite(a.perRequest) ? a.perRequest : Infinity) - (Number.isFinite(b.perRequest) ? b.perRequest : Infinity));
     }
 
     function renderCalculator() {
@@ -1528,6 +1537,11 @@
       return header + '\n\n' + rows.join('\n');
     }
 
+    function formatCalculatorCSVNumber(value) {
+      const text = String(Number(value.toPrecision(15)));
+      return /e/i.test(text) || !text.includes('.') ? text : text.replace(/0+$/, '').replace(/\.$/, '');
+    }
+
     function calculatorCSV() {
       const values = calculatorValues();
       const quote = value => {
@@ -1536,7 +1550,7 @@
       };
       const lines = [['Model ID', 'Model', 'Status', 'Per request USD', 'Per day USD', 'Per month (30d) USD', 'Per year (365d) USD', 'Batch total USD']];
       calculatorRows().forEach(item => {
-        const valuesForRow = item.estimable ? [item.perRequest, item.perRequest * values.requests, item.perRequest * values.requests * 30, item.perRequest * values.requests * 365, item.perRequest * values.batch].map(value => value.toFixed(12).replace(/0+$/, '').replace(/\.$/, '')) : ['n/a', 'n/a', 'n/a', 'n/a', 'n/a'];
+        const valuesForRow = item.estimable ? [item.perRequest, item.perRequest * values.requests, item.perRequest * values.requests * 30, item.perRequest * values.requests * 365, item.perRequest * values.batch].map(formatCalculatorCSVNumber) : ['n/a', 'n/a', 'n/a', 'n/a', 'n/a'];
         const status = !item.usable ? 'n/a (variable/router pricing)' : !item.estimable ? 'n/a (invalid workload)' : (item.row.prompt_usd === 0 && item.row.completion_usd === 0 ? 'free' : 'priced');
         lines.push([item.row.id, item.row.name || item.row.id, status, ...valuesForRow]);
       });
@@ -1863,11 +1877,10 @@
       if ($('#calculatorModal').is(':visible')) {
         const values = calculatorValues();
         params.set('calc', '1');
-        params.set('cp', values.prompt);
-        params.set('cc', values.completion);
-        params.set('cr', values.requests);
-        params.set('cb', values.batch);
-        if (calculatorModelIds.length) params.set('cm', calculatorModelIds.join(','));
+        [['cp', values.prompt], ['cc', values.completion], ['cr', values.requests], ['cb', values.batch]].forEach(([param, value]) => {
+          if (Number.isFinite(value)) params.set(param, value);
+        });
+        params.set('cm', calculatorModelIds.join(','));
       }
       
       const newURL = params.toString() ? `?${params.toString()}` : window.location.pathname;
@@ -1927,10 +1940,12 @@
       if (params.get('calc') === '1') {
         const numericParams = [['cp', '#calcPromptTokens'], ['cc', '#calcCompletionTokens'], ['cr', '#calcRequestsDay'], ['cb', '#calcBatchRequests']];
         numericParams.forEach(([param, selector]) => {
-          const value = Number(params.get(param));
-          if (params.has(param) && Number.isFinite(value) && value >= 0) $(selector).val(value);
+          const raw = String(params.get(param) || '').trim();
+          const value = Number(raw);
+          if (raw && Number.isFinite(value) && value >= 0 && Number.isInteger(value)) $(selector).val(value);
         });
-        calculatorModelIds = (params.get('cm') || '').split(',').filter(id => allData.some(row => row.id === id)).slice(0, CALCULATOR_LIMIT);
+        calculatorSelectionInitialized = params.has('cm');
+        calculatorModelIds = calculatorSelectionInitialized ? params.get('cm').split(',').filter(id => allData.some(row => row.id === id)).slice(0, CALCULATOR_LIMIT) : [];
         openCalculator();
       }
     }
@@ -2065,7 +2080,7 @@
             }
             break;
           case 'k':
-            openCalculator();
+            openCalculator(document.getElementById('calculatorBtn'));
             break;
           case '?':
             $('#shortcutsModal').show();
@@ -2178,8 +2193,8 @@
       });
 
       // Cost calculator controls
-      $('#calculatorBtn').on('click', openCalculator);
-      $('#calcPromptTokens, #calcCompletionTokens, #calcRequestsDay, #calcBatchRequests').on('input change', function() {
+      $('#calculatorBtn').on('click', function() { openCalculator(this); });
+      $('#calcPromptTokens, #calcCompletionTokens, #calcRequestsDay, #calcBatchRequests').on('input', function() {
         renderCalculator();
         if ($('#calculatorModal').is(':visible')) updateURLState();
       });
@@ -2205,6 +2220,7 @@
       $(document).on('click', '.calculator-picker-result', function() {
         const id = String($(this).attr('data-model-id'));
         if (!calculatorModelIds.includes(id) && calculatorModelIds.length < CALCULATOR_LIMIT) calculatorModelIds.push(id);
+        calculatorSelectionInitialized = true;
         $('#calcModelPicker').val('');
         renderCalculator();
         updateURLState();
@@ -2216,6 +2232,7 @@
         updateURLState();
       });
       $('#calcCopy').on('click', function() {
+        clearTimeout(calculatorCopyResetTimer);
         const text = calculatorPlainText();
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(text).then(() => $(this).text('Copied!'), () => $(this).text('Copy unavailable'));
@@ -2224,7 +2241,7 @@
           try { $(this).text(document.execCommand('copy') ? 'Copied!' : 'Copy unavailable'); } catch (_) { $(this).text('Copy unavailable'); }
           copyArea.remove();
         }
-        setTimeout(() => $(this).text('Copy estimate'), 1600);
+        calculatorCopyResetTimer = setTimeout(() => $(this).text('Copy estimate'), 1600);
       });
       $('#calcDownload').on('click', function() {
         const blob = new Blob([calculatorCSV()], { type: 'text/csv;charset=utf-8' });
