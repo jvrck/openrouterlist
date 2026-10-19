@@ -1306,9 +1306,8 @@
     // Escape untrusted strings (model names/ids from the API) before injecting as HTML.
     const escHtml = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-    // Router/variable-price models use -1, rather than a fixed per-token price.
-    function isUnpriced(value) {
-      const numericValue = parseFloat(String(value).replace(/,/g, ''));
+    // Negative or unparseable values do not represent a fixed per-token price.
+    function isUnpriced(numericValue) {
       return isNaN(numericValue) || numericValue < 0;
     }
 
@@ -2051,14 +2050,17 @@
               if (columnName === "pricing.prompt" || columnName === "pricing.completion") {
                 var numericValue = parseFloat(cleanedValue.replace(/,/g, ''));
                 var isPrompt = columnName === "pricing.prompt";
-                if (isUnpriced(cleanedValue)) {
+                if (isUnpriced(numericValue)) {
                   if (isPrompt) {
                     rowData.prompt_cost = null;
                   } else {
                     rowData.completion_cost = null;
                   }
                   rowData.unpriced = true;
-                  rowHtml += '<td data-order="n/a" title="Variable/router pricing — not a fixed per-token price">n/a</td>';
+                  var unpricedTitle = isNaN(numericValue) ?
+                    'Price missing or unparseable in source data' :
+                    'Variable/router pricing — not a fixed per-token price';
+                  rowHtml += '<td data-order="n/a" title="' + unpricedTitle + '">n/a</td>';
                 } else {
                   var multipliedValue = numericValue * 1000000;
                   var formattedValue = multipliedValue.toFixed(2);
@@ -2146,16 +2148,15 @@
         });
         
         // Initialize DataTables
-        $.fn.dataTable.ext.type.order['price-unpriced-last-asc'] = function(a, b) {
-          if (a === 'n/a') return b === 'n/a' ? 0 : 1;
-          if (b === 'n/a') return -1;
-          return parseFloat(a) - parseFloat(b);
-        };
-        $.fn.dataTable.ext.type.order['price-unpriced-last-desc'] = function(a, b) {
-          if (a === 'n/a') return b === 'n/a' ? 0 : 1;
-          if (b === 'n/a') return -1;
-          return parseFloat(b) - parseFloat(a);
-        };
+        function priceUnpricedLastComparator(direction) {
+          return function(a, b) {
+            if (a === 'n/a') return b === 'n/a' ? 0 : 1;
+            if (b === 'n/a') return -1;
+            return direction * (parseFloat(a) - parseFloat(b));
+          };
+        }
+        $.fn.dataTable.ext.type.order['price-unpriced-last-asc'] = priceUnpricedLastComparator(1);
+        $.fn.dataTable.ext.type.order['price-unpriced-last-desc'] = priceUnpricedLastComparator(-1);
         dataTable = $('#csvTable').DataTable({
           paging: false,
           dom: 'Bfrtip',

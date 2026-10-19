@@ -5,6 +5,7 @@
 ### Fixed
 
 - Router/variable-price models (`-1` placeholder) show **n/a** instead of `-1000000.00`; sort last (7 models).
+- Prompt/Completion columns now sort numerically (previously text order).
 
 ## [0.0.6] - 2026-06-09
 
