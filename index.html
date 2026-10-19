@@ -1409,7 +1409,7 @@
     function calculatorNumber(selector) {
       const raw = String($(selector).val()).trim();
       const value = Number(raw);
-      return raw && Number.isFinite(value) && value >= 0 && Number.isInteger(value) ? value : NaN;
+      return raw && Number.isSafeInteger(value) && value >= 0 ? value : NaN;
     }
 
     function calculatorModel(id) {
@@ -1942,7 +1942,7 @@
         numericParams.forEach(([param, selector]) => {
           const raw = String(params.get(param) || '').trim();
           const value = Number(raw);
-          if (raw && Number.isFinite(value) && value >= 0 && Number.isInteger(value)) $(selector).val(value);
+          if (raw && Number.isSafeInteger(value) && value >= 0) $(selector).val(value);
         });
         calculatorSelectionInitialized = params.has('cm');
         calculatorModelIds = calculatorSelectionInitialized ? params.get('cm').split(',').filter(id => allData.some(row => row.id === id)).slice(0, CALCULATOR_LIMIT) : [];
