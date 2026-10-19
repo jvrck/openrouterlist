@@ -4,7 +4,7 @@
 
 ### Fixed
 
-- Router/variable-price models (`-1` placeholder) show **n/a** instead of `-1000000.00`; sort last (7 models).
+- Router/variable-price models (`-1` placeholder) show **n/a** instead of `-1000000.00` and sort last (7 models); any negative or unparseable price is also shown as n/a.
 - Prompt/Completion columns now sort numerically (previously text order).
 
 ## [0.0.6] - 2026-06-09
