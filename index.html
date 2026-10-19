@@ -1945,7 +1945,12 @@
           if (raw && Number.isSafeInteger(value) && value >= 0) $(selector).val(value);
         });
         calculatorSelectionInitialized = params.has('cm');
-        calculatorModelIds = calculatorSelectionInitialized ? params.get('cm').split(',').filter(id => allData.some(row => row.id === id)).slice(0, CALCULATOR_LIMIT) : [];
+        const restoredModelIds = new Set();
+        calculatorModelIds = calculatorSelectionInitialized ? params.get('cm').split(',').filter(id => {
+          if (restoredModelIds.has(id) || !allData.some(row => row.id === id)) return false;
+          restoredModelIds.add(id);
+          return true;
+        }).slice(0, CALCULATOR_LIMIT) : [];
         openCalculator();
       }
     }
