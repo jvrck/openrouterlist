@@ -605,6 +605,8 @@
       cursor: pointer;
     }
 
+    button.close { background: none; border: 0; padding: 0; line-height: 1; }
+
     .close:hover {
       color: var(--text-primary);
     }
@@ -1007,6 +1009,47 @@
     .discontinued-item .d-name a { color: var(--link-color); text-decoration: none; }
     .discontinued-item .d-name a:hover { text-decoration: underline; }
     .discontinued-item .d-meta { color: var(--text-secondary); white-space: nowrap; font-size: 13px; }
+
+    /* Cost calculator */
+    .calculator-modal { margin: 4vh auto; max-height: 88vh; overflow-y: auto; }
+    .calculator-intro, .calculator-note { color: var(--text-secondary); font-size: 14px; line-height: 1.45; }
+    .calculator-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 14px 0; }
+    .calculator-grid label, .calculator-batch label { display: flex; flex-direction: column; gap: 5px; font-size: 13px; font-weight: 600; }
+    .calculator-grid input, .calculator-batch input, .calculator-text, .calculator-picker {
+      box-sizing: border-box; width: 100%; padding: 8px 10px; border: 1px solid var(--border-color);
+      border-radius: 6px; background: var(--bg-secondary); color: var(--text-primary); font: inherit;
+    }
+    .calculator-section { border-top: 1px solid var(--border-color); padding-top: 14px; margin-top: 16px; }
+    .calculator-section h3 { margin: 0 0 8px; font-size: 16px; }
+    .calculator-presets { display: flex; gap: 8px; flex-wrap: wrap; }
+    .calculator-preset { font-size: 13px; }
+    .calculator-batch { margin-top: 12px; max-width: 260px; }
+    .calculator-text { min-height: 70px; resize: vertical; }
+    .calculator-text-row { display: flex; gap: 8px; align-items: center; }
+    .calculator-picker-results { max-height: 150px; overflow-y: auto; border: 1px solid var(--border-color); border-top: 0; border-radius: 0 0 6px 6px; }
+    .calculator-picker-result { display: flex; justify-content: space-between; gap: 10px; width: 100%; padding: 7px 9px; border: 0; border-bottom: 1px solid var(--border-color); background: var(--bg-primary); color: var(--text-primary); text-align: left; cursor: pointer; }
+    .calculator-picker-result:hover { background: var(--bg-hover); }
+    .calculator-picker-result small { color: var(--text-secondary); white-space: nowrap; }
+    .calculator-model { padding: 12px 0; border-bottom: 1px solid var(--border-color); }
+    .calculator-model-header { display: flex; gap: 8px; align-items: baseline; justify-content: space-between; }
+    .calculator-model-name { font-weight: 700; }
+    .calculator-model-id { color: var(--text-secondary); font-size: 12px; margin-left: 6px; overflow-wrap: anywhere; }
+    .calculator-remove { padding: 3px 8px; font-size: 12px; }
+    .calculator-costs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin: 10px 0 7px; }
+    .calculator-cost { background: var(--bg-secondary); border-radius: 6px; padding: 7px; min-width: 0; }
+    .calculator-cost-label { color: var(--text-secondary); display: block; font-size: 11px; }
+    .calculator-cost-value { font-weight: 700; font-size: 14px; overflow-wrap: anywhere; }
+    .calculator-bar { height: 7px; border-radius: 6px; overflow: hidden; background: var(--bg-secondary); }
+    .calculator-bar span { display: block; height: 100%; background: var(--header-bg); border-radius: inherit; }
+    .calculator-status { color: var(--text-secondary); margin: 8px 0 0; font-size: 14px; }
+    .calculator-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .calculator-empty { color: var(--text-secondary); }
+    @media (max-width: 768px) {
+      .calculator-modal { box-sizing: border-box; width: calc(100% - 20px); max-width: none; padding: 14px; margin: 2vh auto; max-height: 92vh; }
+      .calculator-grid, .calculator-costs { grid-template-columns: 1fr; }
+      .calculator-cost:last-child { grid-column: auto; }
+      .calculator-text-row { align-items: stretch; flex-direction: column; }
+    }
   </style>
 </head>
 <body>
@@ -1030,6 +1073,7 @@
         </button>
         <button id="viewToggle" class="btn view-toggle">📱 Card View</button>
         <button id="discontinuedBtn" class="btn" style="display:none;" aria-label="Show discontinued models">🗑️ Discontinued</button>
+        <button id="calculatorBtn" class="btn" aria-label="Open cost calculator">🧮 Cost Calculator</button>
         <button id="helpBtn" class="btn" aria-label="Show keyboard shortcuts">? Help</button>
       </div>
     </header>
@@ -1245,6 +1289,10 @@
           <span class="shortcut-key">x</span>
         </div>
         <div class="shortcut-item">
+          <span>Open cost calculator</span>
+          <span class="shortcut-key">k</span>
+        </div>
+        <div class="shortcut-item">
           <span>Show this help</span>
           <span class="shortcut-key">?</span>
         </div>
@@ -1267,6 +1315,46 @@
         <span><span class="swatch" style="background:#2563eb;"></span>Prompt $/1M</span>
         <span><span class="swatch" style="background:#f59e0b;"></span>Completion $/1M</span>
       </div>
+    </div>
+  </div>
+
+  <!-- Cost Calculator Modal -->
+  <div id="calculatorModal" class="modal" aria-hidden="true">
+    <div class="modal-content wide calculator-modal" role="dialog" aria-modal="true" aria-labelledby="calculatorTitle">
+      <button class="close" type="button" aria-label="Close cost calculator">&times;</button>
+      <h2 id="calculatorTitle">Cost Calculator</h2>
+      <p class="calculator-intro">Compare token costs using the current OpenRouter prompt and completion prices. Prices are calculated from raw USD/token values, not the rounded table display.</p>
+      <div class="calculator-grid">
+        <label>Prompt tokens / request<input id="calcPromptTokens" type="number" min="0" step="1" value="1000" inputmode="numeric"></label>
+        <label>Completion tokens / request<input id="calcCompletionTokens" type="number" min="0" step="1" value="500" inputmode="numeric"></label>
+        <label>Requests / day<input id="calcRequestsDay" type="number" min="0" step="1" value="100" inputmode="numeric"></label>
+      </div>
+
+      <div class="calculator-section">
+        <h3>Quick presets</h3>
+        <div class="calculator-presets">
+          <button class="btn calculator-preset" data-prompt="1000" data-completion="500" data-requests="100">Chat app <small>1k / 500 × 100/day</small></button>
+          <button class="btn calculator-preset" data-prompt="4000" data-completion="300" data-requests="250">Document processing <small>4k / 300 × 250/day</small></button>
+          <button class="btn calculator-preset" data-prompt="20000" data-completion="800" data-requests="50">RAG / long context <small>20k / 800 × 50/day</small></button>
+          <button class="btn calculator-preset" data-prompt="2000" data-completion="200" data-requests="10000">Batch job <small>2k / 200 × 10k/day</small></button>
+          <button class="btn calculator-preset" data-prompt="8000" data-completion="2000" data-requests="100">1M tokens/day <small>8k / 2k × 100/day</small></button>
+        </div>
+        <div class="calculator-batch"><label>One-off batch requests<input id="calcBatchRequests" type="number" min="0" step="1" value="1000" inputmode="numeric"></label></div>
+      </div>
+
+      <div class="calculator-section">
+        <h3>Estimate prompt tokens from text</h3>
+        <div class="calculator-text-row"><textarea id="calcText" class="calculator-text" placeholder="Paste text, then use the rough estimate (characters ÷ 4)"></textarea><button id="calcTextEstimate" class="btn">Use estimate</button></div>
+        <p id="calcTextNote" class="calculator-note">Rough estimate only; this uses ceil(characters / 4), not a tokenizer.</p>
+      </div>
+
+      <div class="calculator-section">
+        <h3>Models <span id="calcModelCount" class="calculator-note"></span></h3>
+        <input id="calcModelPicker" class="calculator-picker" type="search" placeholder="Search 400+ models to add (up to 10)" aria-label="Search models to add">
+        <div id="calcModelPickerResults" class="calculator-picker-results"></div>
+        <div id="calcResults"></div>
+      </div>
+      <div class="calculator-actions"><button id="calcCopy" class="btn">Copy estimate</button><button id="calcDownload" class="btn">Download CSV</button></div>
     </div>
   </div>
 
@@ -1309,6 +1397,150 @@
     // Negative or unparseable values do not represent a fixed per-token price.
     function isUnpriced(numericValue) {
       return isNaN(numericValue) || numericValue < 0;
+    }
+
+    // Cost calculator state. Price fields are raw USD/token values parsed from the CSV;
+    // prompt_cost/completion_cost remain the existing rounded $/1M table display values.
+    let calculatorModelIds = [];
+    const CALCULATOR_LIMIT = 10;
+    function calculatorNumber(selector) {
+      const value = Number($(selector).val());
+      return Number.isFinite(value) && value >= 0 ? Math.floor(value) : NaN;
+    }
+
+    function calculatorModel(id) {
+      return allData.find(row => row.id === id);
+    }
+
+    function hasUsableCalculatorPrice(row) {
+      return row && Number.isFinite(row.prompt_usd) && Number.isFinite(row.completion_usd) && row.prompt_usd >= 0 && row.completion_usd >= 0;
+    }
+
+    function calculatorValues() {
+      return {
+        prompt: calculatorNumber('#calcPromptTokens'),
+        completion: calculatorNumber('#calcCompletionTokens'),
+        requests: calculatorNumber('#calcRequestsDay'),
+        batch: calculatorNumber('#calcBatchRequests')
+      };
+    }
+
+    function calculatorCost(row, values) {
+      const cost = values.prompt * row.prompt_usd + values.completion * row.completion_usd;
+      return Number.isFinite(cost) ? cost : NaN;
+    }
+
+    function formatCalculatorCost(value, perRequest) {
+      if (value === 0) return '$0.00';
+      if (!Number.isFinite(value)) return 'n/a';
+      const decimals = perRequest ? 4 : 2;
+      if (!perRequest && Math.abs(value) < 0.01) return '<$0.01';
+      const factor = Math.pow(10, decimals);
+      // Avoid binary floating-point ties (for example 0.155) rounding a cent down.
+      const rounded = Math.round((value + Number.EPSILON * Math.abs(value)) * factor) / factor;
+      if (perRequest && rounded === 0) return '<$0.0001';
+      return '$' + rounded.toFixed(decimals);
+    }
+
+    const calculatorCostHtml = (value, perRequest) => escHtml(formatCalculatorCost(value, perRequest));
+
+    function calculatorDefaultModelIds() {
+      const favoriteRows = allData.filter(row => favorites.includes(row.id));
+      if (favoriteRows.length) return favoriteRows.slice(0, CALCULATOR_LIMIT).map(row => row.id);
+      const toolRows = allData.filter(row => row.tool_calling === 'Yes' && hasUsableCalculatorPrice(row))
+        .sort((a, b) => (a.prompt_usd + a.completion_usd) - (b.prompt_usd + b.completion_usd));
+      if (toolRows.length) return toolRows.slice(0, 5).map(row => row.id);
+      const visibleRows = dataTable ? dataTable.rows({ search: 'applied' }).data().toArray()
+        .map(tableRow => allData.find(row => row.id === String(tableRow[0])))
+        .filter(Boolean) : getFilteredData();
+      return visibleRows.filter(hasUsableCalculatorPrice).slice(0, 5).map(row => row.id);
+    }
+
+    function openCalculator() {
+      if (!calculatorModelIds.length) calculatorModelIds = calculatorDefaultModelIds();
+      renderCalculator();
+      $('#calculatorModal').show().attr('aria-hidden', 'false');
+      updateURLState();
+    }
+
+    function closeCalculator() {
+      $('#calculatorModal :focus').blur();
+      $('#calculatorModal').hide().attr('aria-hidden', 'true');
+      updateURLState();
+    }
+
+    function renderCalculatorPicker() {
+      const query = ($('#calcModelPicker').val() || '').trim().toLowerCase();
+      const matches = allData.filter(row => !calculatorModelIds.includes(row.id) &&
+        (!query || row.id.toLowerCase().includes(query) || (row.name || '').toLowerCase().includes(query))).slice(0, 12);
+      const disabled = calculatorModelIds.length >= CALCULATOR_LIMIT;
+      const html = matches.map(row => {
+        const status = hasUsableCalculatorPrice(row) ? (row.prompt_usd === 0 && row.completion_usd === 0 ? 'free' : 'priced') : 'n/a (variable/router pricing)';
+        return `<button class="calculator-picker-result" data-model-id="${escHtml(row.id)}" ${disabled ? 'disabled' : ''}><span>${escHtml(row.name || row.id)} <small>${escHtml(row.id)}</small></span><small>${status}</small></button>`;
+      }).join('');
+      $('#calcModelPickerResults').html(html || '<p class="calculator-empty">No matching models.</p>');
+    }
+
+    function calculatorRows() {
+      const values = calculatorValues();
+      return calculatorModelIds.map(calculatorModel).filter(Boolean).map(row => ({
+        row: row,
+        usable: hasUsableCalculatorPrice(row),
+        perRequest: hasUsableCalculatorPrice(row) ? calculatorCost(row, values) : NaN,
+        estimable: hasUsableCalculatorPrice(row) && Number.isFinite(calculatorCost(row, values)),
+        values: values
+      })).sort((a, b) => (Number.isFinite(a.perRequest) ? a.perRequest : Infinity) - (Number.isFinite(b.perRequest) ? b.perRequest : Infinity));
+    }
+
+    function renderCalculator() {
+      if (!$('#calculatorModal').length) return;
+      const rows = calculatorRows();
+      const maxCost = Math.max(0, ...rows.filter(item => item.estimable).map(item => item.perRequest));
+      $('#calcModelCount').text(`(${calculatorModelIds.length}/${CALCULATOR_LIMIT})`);
+      const html = rows.map(item => {
+        const row = item.row;
+        if (!item.usable) {
+          return `<div class="calculator-model"><div class="calculator-model-header"><div><span class="calculator-model-name">${escHtml(row.name || row.id)}</span><span class="calculator-model-id">${escHtml(row.id)}</span></div><button class="btn calculator-remove" data-model-id="${escHtml(row.id)}">Remove</button></div><p class="calculator-status">n/a (variable/router pricing) — excluded from totals and comparison bars.</p></div>`;
+        }
+        if (!item.estimable) {
+          return `<div class="calculator-model"><div class="calculator-model-header"><div><span class="calculator-model-name">${escHtml(row.name || row.id)}</span><span class="calculator-model-id">${escHtml(row.id)}</span></div><button class="btn calculator-remove" data-model-id="${escHtml(row.id)}">Remove</button></div><p class="calculator-status">n/a (invalid workload) — use finite, non-negative whole-number inputs.</p></div>`;
+        }
+        const day = item.perRequest * item.values.requests;
+        const month = day * 30;
+        const year = day * 365;
+        const batch = item.perRequest * item.values.batch;
+        const free = row.prompt_usd === 0 && row.completion_usd === 0;
+        const bar = maxCost === 0 || item.perRequest === 0 ? 0 : Math.max(2, item.perRequest / maxCost * 100);
+        return `<div class="calculator-model"><div class="calculator-model-header"><div><span class="calculator-model-name">${escHtml(row.name || row.id)}</span><span class="calculator-model-id">${escHtml(row.id)}</span>${free ? ' <small>free</small>' : ''}</div><button class="btn calculator-remove" data-model-id="${escHtml(row.id)}">Remove</button></div><div class="calculator-costs"><div class="calculator-cost"><span class="calculator-cost-label">Per request</span><span class="calculator-cost-value">${calculatorCostHtml(item.perRequest, true)}</span></div><div class="calculator-cost"><span class="calculator-cost-label">Per day</span><span class="calculator-cost-value">${calculatorCostHtml(day)}</span></div><div class="calculator-cost"><span class="calculator-cost-label">Per month (30d)</span><span class="calculator-cost-value">${calculatorCostHtml(month)}</span></div><div class="calculator-cost"><span class="calculator-cost-label">Per year (365d)</span><span class="calculator-cost-value">${calculatorCostHtml(year)}</span></div><div class="calculator-cost"><span class="calculator-cost-label">Batch total</span><span class="calculator-cost-value">${calculatorCostHtml(batch)}</span></div></div><div class="calculator-bar" title="Relative per-request cost"><span style="width:${bar}%"></span></div></div>`;
+      }).join('');
+      $('#calcResults').html(html || '<p class="calculator-empty">Add a priced model to compare costs.</p>');
+      renderCalculatorPicker();
+    }
+
+    function calculatorPlainText() {
+      const values = calculatorValues();
+      const header = `OpenRouter Cost Calculator\nPrompt tokens/request: ${values.prompt}\nCompletion tokens/request: ${values.completion}\nRequests/day: ${values.requests}\nBatch requests: ${values.batch}`;
+      const rows = calculatorRows().map(item => {
+        if (!item.usable) return `${item.row.name || item.row.id} (${item.row.id}): n/a (variable/router pricing)`;
+        if (!item.estimable) return `${item.row.name || item.row.id} (${item.row.id}): n/a (invalid workload)`;
+        return `${item.row.name || item.row.id} (${item.row.id}): per request ${formatCalculatorCost(item.perRequest, true)}; day ${formatCalculatorCost(item.perRequest * values.requests)}; month ${formatCalculatorCost(item.perRequest * values.requests * 30)}; year ${formatCalculatorCost(item.perRequest * values.requests * 365)}; batch ${formatCalculatorCost(item.perRequest * values.batch)}`;
+      });
+      return header + '\n\n' + rows.join('\n');
+    }
+
+    function calculatorCSV() {
+      const values = calculatorValues();
+      const quote = value => {
+        const text = String(value);
+        return '"' + (text.match(/^[=+\-@\t\r\n]/) ? "'" : '') + text.replace(/"/g, '""') + '"';
+      };
+      const lines = [['Model ID', 'Model', 'Status', 'Per request USD', 'Per day USD', 'Per month (30d) USD', 'Per year (365d) USD', 'Batch total USD']];
+      calculatorRows().forEach(item => {
+        const valuesForRow = item.estimable ? [item.perRequest, item.perRequest * values.requests, item.perRequest * values.requests * 30, item.perRequest * values.requests * 365, item.perRequest * values.batch].map(value => value.toFixed(12).replace(/0+$/, '').replace(/\.$/, '')) : ['n/a', 'n/a', 'n/a', 'n/a', 'n/a'];
+        const status = !item.usable ? 'n/a (variable/router pricing)' : !item.estimable ? 'n/a (invalid workload)' : (item.row.prompt_usd === 0 && item.row.completion_usd === 0 ? 'free' : 'priced');
+        lines.push([item.row.id, item.row.name || item.row.id, status, ...valuesForRow]);
+      });
+      return lines.map(line => line.map(quote).join(',')).join('\n');
     }
 
     // Value of `field` (prompt|completion) as of `whenMs`, reading the step-held series.
@@ -1627,6 +1859,16 @@
       if (visibleColumns.length < 11) {
         params.set('columns', visibleColumns.join(','));
       }
+
+      if ($('#calculatorModal').is(':visible')) {
+        const values = calculatorValues();
+        params.set('calc', '1');
+        params.set('cp', values.prompt);
+        params.set('cc', values.completion);
+        params.set('cr', values.requests);
+        params.set('cb', values.batch);
+        if (calculatorModelIds.length) params.set('cm', calculatorModelIds.join(','));
+      }
       
       const newURL = params.toString() ? `?${params.toString()}` : window.location.pathname;
       window.history.replaceState({}, '', newURL);
@@ -1680,6 +1922,16 @@
             dataTable.column(column).visible(visibleColumns.includes(column));
           }
         });
+      }
+
+      if (params.get('calc') === '1') {
+        const numericParams = [['cp', '#calcPromptTokens'], ['cc', '#calcCompletionTokens'], ['cr', '#calcRequestsDay'], ['cb', '#calcBatchRequests']];
+        numericParams.forEach(([param, selector]) => {
+          const value = Number(params.get(param));
+          if (params.has(param) && Number.isFinite(value) && value >= 0) $(selector).val(value);
+        });
+        calculatorModelIds = (params.get('cm') || '').split(',').filter(id => allData.some(row => row.id === id)).slice(0, CALCULATOR_LIMIT);
+        openCalculator();
       }
     }
 
@@ -1762,7 +2014,8 @@
         // Don't trigger shortcuts when typing in input fields
         if ($(e.target).is('input, textarea')) {
           if (e.key === 'Escape') {
-            $(e.target).blur();
+            if ($('#calculatorModal').is(':visible')) closeCalculator();
+            else $(e.target).blur();
           }
           return;
         }
@@ -1811,11 +2064,15 @@
               updateURLState();
             }
             break;
+          case 'k':
+            openCalculator();
+            break;
           case '?':
             $('#shortcutsModal').show();
             break;
           case 'Escape':
-            $('.modal').hide();
+            if ($('#calculatorModal').is(':visible')) closeCalculator();
+            $('.modal').not('#calculatorModal').hide();
             break;
         }
       });
@@ -1919,9 +2176,74 @@
       $('#helpBtn').on('click', function() {
         $('#shortcutsModal').show();
       });
+
+      // Cost calculator controls
+      $('#calculatorBtn').on('click', openCalculator);
+      $('#calcPromptTokens, #calcCompletionTokens, #calcRequestsDay, #calcBatchRequests').on('input change', function() {
+        renderCalculator();
+        if ($('#calculatorModal').is(':visible')) updateURLState();
+      });
+      $('.calculator-preset').on('click', function() {
+        $('#calcPromptTokens').val($(this).data('prompt'));
+        $('#calcCompletionTokens').val($(this).data('completion'));
+        $('#calcRequestsDay').val($(this).data('requests'));
+        renderCalculator();
+        updateURLState();
+      });
+      function applyTextEstimate() {
+        const chars = $('#calcText').val().length;
+        const estimate = Math.ceil(chars / 4);
+        $('#calcPromptTokens').val(estimate);
+        $('#calcTextNote').text(`Rough estimate: ${chars} characters ÷ 4 = ${estimate} prompt tokens.`);
+        renderCalculator();
+        updateURLState();
+      }
+      $('#calcTextEstimate').on('click', function() {
+        applyTextEstimate();
+      });
+      $('#calcModelPicker').on('input', renderCalculatorPicker);
+      $(document).on('click', '.calculator-picker-result', function() {
+        const id = String($(this).attr('data-model-id'));
+        if (!calculatorModelIds.includes(id) && calculatorModelIds.length < CALCULATOR_LIMIT) calculatorModelIds.push(id);
+        $('#calcModelPicker').val('');
+        renderCalculator();
+        updateURLState();
+      });
+      $(document).on('click', '.calculator-remove', function() {
+        const id = String($(this).attr('data-model-id'));
+        calculatorModelIds = calculatorModelIds.filter(modelId => modelId !== id);
+        renderCalculator();
+        updateURLState();
+      });
+      $('#calcCopy').on('click', function() {
+        const text = calculatorPlainText();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => $(this).text('Copied!'), () => $(this).text('Copy unavailable'));
+        } else {
+          const copyArea = $('<textarea>').val(text).appendTo('body').select();
+          try { $(this).text(document.execCommand('copy') ? 'Copied!' : 'Copy unavailable'); } catch (_) { $(this).text('Copy unavailable'); }
+          copyArea.remove();
+        }
+        setTimeout(() => $(this).text('Copy estimate'), 1600);
+      });
+      $('#calcDownload').on('click', function() {
+        const blob = new Blob([calculatorCSV()], { type: 'text/csv;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'openrouter-cost-estimate.csv';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 0);
+      });
       
       $('.close').on('click', function() {
-        $(this).closest('.modal').hide();
+        if ($(this).closest('.modal').attr('id') === 'calculatorModal') {
+          closeCalculator();
+        } else {
+          $(this).closest('.modal').hide();
+        }
       });
       
       // Price-history handlers
@@ -1940,7 +2262,8 @@
 
       $(window).on('click', function(e) {
         if ($(e.target).hasClass('modal')) {
-          $('.modal').hide();
+          if ($(e.target).attr('id') === 'calculatorModal') closeCalculator();
+          else $(e.target).hide();
         }
       });
       
@@ -2046,7 +2369,6 @@
                 rowData.name = cleanedValue;
               }
   
-              // Check for pricing columns
               if (columnName === "pricing.prompt" || columnName === "pricing.completion") {
                 var numericValue = parseFloat(cleanedValue.replace(/,/g, ''));
                 var isPrompt = columnName === "pricing.prompt";
@@ -2062,6 +2384,7 @@
                     'Variable/router pricing — not a fixed per-token price';
                   rowHtml += '<td data-order="n/a" title="' + unpricedTitle + '">n/a</td>';
                 } else {
+                  rowData[isPrompt ? 'prompt_usd' : 'completion_usd'] = numericValue;
                   var multipliedValue = numericValue * 1000000;
                   var formattedValue = multipliedValue.toFixed(2);
                   

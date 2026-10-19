@@ -7,6 +7,18 @@
 - Router/variable-price models (`-1` placeholder) show **n/a** instead of `-1000000.00` and sort last (7 models); any negative or unparseable price is also shown as n/a.
 - Prompt/Completion columns now sort numerically (previously text order).
 
+## [0.0.7] - 2026-10-20
+
+### Added
+
+- **Cost Calculator** (closes #4)
+  - Compare prompt/completion token costs per request, day, 30-day month, 365-day year, and one-off batch across up to 10 models
+  - Includes workload presets, a rough text-to-token estimate, favorites-aware defaults, shareable estimates, copy output, and CSV download
+
+### Technical
+
+- Calculator preserves raw USD/token pricing alongside the rounded table display, treats negative/router prices as n/a, and stores calculator state in URL parameters
+
 ## [0.0.6] - 2026-06-09
 
 ### Added

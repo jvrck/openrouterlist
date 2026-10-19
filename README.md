@@ -13,7 +13,7 @@ A comprehensive, real-time pricing comparison tool for 400+ AI language models a
 - **Real-Time Pricing Data**: Automatically updated every 12 hours from OpenRouter's API
 - **400+ AI Models**: Comprehensive coverage of all available models including GPT-4, Claude 3, Llama 3, and more
 - **Advanced Filtering**: Filter by capabilities (tool calling, structured outputs, reasoning, web search)
-- **Cost Calculator**: Pricing shown per million tokens for both prompts and completions
+- **Interactive Cost Calculator**: Estimate and compare raw-precision prompt/completion costs per request, day, month, year, or batch
 - **Price History & Trends**: Per-model price charts, 30-day change badges, and a searchable archive of discontinued models — backfilled from 20+ months of git history
 - **Export Options**: Download data as CSV, Excel, PDF, or print for offline analysis
 - **Dark Mode**: Eye-friendly dark theme for extended use
