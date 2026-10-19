@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.9] - 2026-10-20
+
+### Added
+
+- **Cloudflare Web Analytics** (free tier, cookieless, edge-injected; closes #17)
+
 ## [0.0.8] - 2026-10-20
 
 ### Fixed
