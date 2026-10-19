@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.8] - 2026-10-20
+
+### Fixed
+
+- Router/variable-price models (`-1` placeholder) show **n/a** instead of `-1000000.00`; sort last (7 models).
+
 ## [0.0.6] - 2026-06-09
 
 ### Added
