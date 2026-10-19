@@ -1306,6 +1306,11 @@
     // Escape untrusted strings (model names/ids from the API) before injecting as HTML.
     const escHtml = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+    // Negative or unparseable values do not represent a fixed per-token price.
+    function isUnpriced(numericValue) {
+      return isNaN(numericValue) || numericValue < 0;
+    }
+
     // Value of `field` (prompt|completion) as of `whenMs`, reading the step-held series.
     // fallbackEarliest: when no point predates whenMs, use the earliest known price.
     function priceAsOf(points, field, whenMs, fallbackEarliest) {
@@ -1712,11 +1717,11 @@
               </div>
               <div class="model-card-row">
                 <span class="model-card-label">Prompt Cost:</span>
-                <span class="model-card-value">$${row.prompt_cost}/1M tokens</span>
+                <span class="model-card-value">${row.prompt_cost === null ? 'n/a' : '$' + row.prompt_cost + '/1M tokens'}</span>
               </div>
               <div class="model-card-row">
                 <span class="model-card-label">Completion Cost:</span>
-                <span class="model-card-value">$${row.completion_cost}/1M tokens</span>
+                <span class="model-card-value">${row.completion_cost === null ? 'n/a' : '$' + row.completion_cost + '/1M tokens'}</span>
               </div>
               ${row.tool_calling === 'Yes' ? `<div class="model-card-row">
                 <span class="model-card-label">Tool Calling:</span>
@@ -2042,22 +2047,32 @@
               }
   
               // Check for pricing columns
-              if ((columnName === "pricing.prompt" || columnName === "pricing.completion") && currentId !== "openrouter/auto") {
+              if (columnName === "pricing.prompt" || columnName === "pricing.completion") {
                 var numericValue = parseFloat(cleanedValue.replace(/,/g, ''));
-                if (!isNaN(numericValue)) {
+                var isPrompt = columnName === "pricing.prompt";
+                if (isUnpriced(numericValue)) {
+                  if (isPrompt) {
+                    rowData.prompt_cost = null;
+                  } else {
+                    rowData.completion_cost = null;
+                  }
+                  rowData.unpriced = true;
+                  var unpricedTitle = isNaN(numericValue) ?
+                    'Price missing or unparseable in source data' :
+                    'Variable/router pricing — not a fixed per-token price';
+                  rowHtml += '<td data-order="n/a" title="' + unpricedTitle + '">n/a</td>';
+                } else {
                   var multipliedValue = numericValue * 1000000;
                   var formattedValue = multipliedValue.toFixed(2);
                   
-                  if (columnName === "pricing.prompt") {
+                  if (isPrompt) {
                     rowData.prompt_cost = formattedValue;
                   } else {
                     rowData.completion_cost = formattedValue;
                   }
                   
-                  var pfield = (columnName === "pricing.prompt") ? 'prompt' : 'completion';
-                  rowHtml += "<td>" + formattedValue + priceBadge(currentId, pfield) + "</td>";
-                } else {
-                  rowHtml += "<td>Invalid</td>";
+                  var pfield = isPrompt ? 'prompt' : 'completion';
+                  rowHtml += '<td data-order="' + formattedValue + '">' + formattedValue + priceBadge(currentId, pfield) + '</td>';
                 }
               } else if (columnName === "created") {
                 // Convert Unix timestamp to YYYY-MM-DD format
@@ -2133,6 +2148,15 @@
         });
         
         // Initialize DataTables
+        function priceUnpricedLastComparator(direction) {
+          return function(a, b) {
+            if (a === 'n/a') return b === 'n/a' ? 0 : 1;
+            if (b === 'n/a') return -1;
+            return direction * (parseFloat(a) - parseFloat(b));
+          };
+        }
+        $.fn.dataTable.ext.type.order['price-unpriced-last-asc'] = priceUnpricedLastComparator(1);
+        $.fn.dataTable.ext.type.order['price-unpriced-last-desc'] = priceUnpricedLastComparator(-1);
         dataTable = $('#csvTable').DataTable({
           paging: false,
           dom: 'Bfrtip',
@@ -2165,6 +2189,9 @@
           ],
           responsive: true,
           searchHighlight: true,
+          columnDefs: [
+            { targets: [4, 5], type: 'price-unpriced-last' }
+          ],
           drawCallback: function() {
             updateFavoriteButtons();
           }
