@@ -21,7 +21,7 @@ python3 -m http.server
 
 ## Data flow and files
 
-`scripts/get_zipped.sh` first creates an empty `data/output.json` when it is missing. It fetches OpenRouter's `/api/v1/models`, writes `output.json` and the jq-built 13-column `output.csv` into a timestamped `results/output_<ts>/` directory, then compares that JSON with `data/output.json`. Only when `cmp` finds a difference does the script copy both files into `data/`, write `data/updated`, and invoke the incremental `backfill_history.py` update (non-fatally). It then zips the results directory and deletes `results/output_<ts>/`. `results/` is local and gitignored.
+`scripts/get_zipped.sh` first creates an empty `data/output.json` when it is missing. It fetches OpenRouter's `/api/v1/models`, writes `output.json` and the jq-built 13-column `output.csv` into a timestamped `results/output_<ts>/` directory, then compares that JSON with `data/output.json`. Only when `cmp` finds a difference does the script copy both files into `data/`, write `data/updated`, and invoke the incremental `backfill_history.py` update and `build_changes.py` derivation (both non-fatally). `build_changes.py` turns the ledger and current snapshot into `data/changes.json` and `feed.xml`. It then zips the results directory and deletes `results/output_<ts>/`. `results/` is local and gitignored.
 
 `data/output.csv` has these 13 columns, in order:
 
@@ -45,7 +45,7 @@ The data bot can commit immediately after a merge. Rebase before merging, and ne
 
 The `$.fn.dataTable.ext.search` predicate is the single capability and advanced-filter path. Cards derive from the table's applied rows. Features include capability filters (All/Any), quick filters, Clear All, advanced context/price/modality filters and Text-only, favourites, column toggles, themes, density, and a card view at 768 px or narrower. Favourites use an escaped, anchored exact-ID match.
 
-`#finderModal` ranks up to 10 matching models by a 3:1 prompt-to-completion blend. `#calculatorModal` compares costs for up to 10 models. `#compareModal` holds up to 4 models. `#historyModal` shows each model's price chart, tracked first/last-seen range, and 30-day change; its 30-day trend badges render in the table's price cells. `#discontinuedModal` lists models no longer present. The available exports are Copy, CSV, Excel, and Print; there is no PDF or Flash export.
+`#changesStrip` independently loads `data/changes.json` for its movers, new, and retiring lists, and links to `feed.xml`; it stays hidden until generated data exists. `#finderModal` ranks up to 10 matching models by a 3:1 prompt-to-completion blend. `#calculatorModal` compares costs for up to 10 models. `#compareModal` holds up to 4 models. `#historyModal` shows each model's price chart, tracked first/last-seen range, and 30-day change; its 30-day trend badges render in the table's price cells. `#discontinuedModal` lists models no longer present. The available exports are Copy, CSV, Excel, and Print; there is no PDF or Flash export.
 
 Keyboard shortcuts: `/` focuses search; `f` toggles favourites; `t` cycles theme; `d` cycles density; `v` toggles card view only at 768 px or narrower; `e` exports CSV; `c` focuses the first capability filter; `m` toggles All/Any; `x` clears all filters; `k` opens the calculator; `g` opens the finder; `?` shows `#shortcutsModal`; Escape closes the calculator, finder, compare, and other modals.
 

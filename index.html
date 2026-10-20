@@ -12,6 +12,7 @@
   <meta name="author" content="OpenRouterList">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://openrouterlist.jvrck.com/">
+  <link rel="alternate" type="application/atom+xml" title="OpenRouterList price changes" href="/feed.xml">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -233,6 +234,18 @@
     .info-section a:hover {
       text-decoration: underline;
     }
+
+    #changesStrip { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 20px; padding: 12px 15px; }
+    .changes-strip-head { align-items: baseline; display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; }
+    .changes-strip-head h2 { font-size: 1.05em; margin: 0; }
+    .changes-strip-head a, .changes-list a { color: var(--link-color); text-decoration: none; }
+    .changes-strip-head a:hover, .changes-list a:hover { text-decoration: underline; }
+    .changes-grid { display: grid; gap: 12px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 9px; }
+    .changes-group { min-width: 0; }
+    .changes-group h3 { font-size: 13px; margin: 0 0 4px; }
+    .changes-list { color: var(--text-secondary); font-size: 13px; line-height: 1.4; list-style: none; margin: 0; padding: 0; }
+    .changes-list li { overflow-wrap: anywhere; padding: 1px 0; }
+    .changes-label { color: var(--text-secondary); margin-left: 3px; }
 
     .column-selector {
       margin-bottom: 15px;
@@ -1101,6 +1114,7 @@
     .finder-snippet { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 6px; box-sizing: border-box; color: var(--text-primary); display: block; font-family: monospace; font-size: 12px; line-height: 1.45; margin: 8px 0; max-height: 250px; overflow: auto; padding: 10px; white-space: pre-wrap; word-break: break-word; }
     .finder-tab.active { background: var(--header-bg); color: white; }
     @media (max-width: 768px) {
+      .changes-grid { grid-template-columns: 1fr; gap: 8px; }
       .calculator-modal { box-sizing: border-box; width: calc(100% - 20px); max-width: none; padding: 14px; margin: 2vh auto; max-height: 92vh; }
       .calculator-grid, .calculator-costs { grid-template-columns: 1fr; }
       .calculator-cost:last-child { grid-column: auto; }
@@ -1148,6 +1162,15 @@
         <button id="helpBtn" class="btn" aria-label="Show keyboard shortcuts">? Help</button>
       </div>
     </header>
+
+    <section id="changesStrip" hidden aria-label="What changed">
+      <div class="changes-strip-head"><h2>What changed</h2><a href="/feed.xml">Feed</a></div>
+      <div class="changes-grid">
+        <div class="changes-group"><h3>Movers</h3><ul id="changesMovers" class="changes-list"></ul></div>
+        <div class="changes-group"><h3>New</h3><ul id="changesNew" class="changes-list"></ul></div>
+        <div class="changes-group"><h3>Retiring</h3><ul id="changesRetiring" class="changes-list"></ul></div>
+      </div>
+    </section>
 
     <section class="info-section" role="region" aria-label="About this tool">
       <h2 style="font-size: 1.2em; margin-top: 0; color: var(--text-primary);">Real-Time AI Model Pricing Data</h2>
@@ -2932,6 +2955,80 @@
         renderUpdatedDate();
       });
       setInterval(renderUpdatedDate, 60000);
+
+      function changesDate(value) {
+        const match = typeof value === 'string' && value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+        return match ? Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3])) : NaN;
+      }
+
+      function changesPrice(value) {
+        return typeof value === 'number' && isFinite(value) ? value : null;
+      }
+
+      function renderChangesStrip(data) {
+        const strip = $('#changesStrip');
+        strip.attr('hidden', true);
+        if (!data || typeof data !== 'object' || Array.isArray(data)) return;
+        const asOf = changesDate(data.as_of);
+        if (isNaN(asOf)) return;
+        const weekStart = asOf - 7 * 86400000;
+        const lists = { movers: [], fresh: [], retiring: [] };
+        const grouped = {};
+        (Array.isArray(data.price_changes) ? data.price_changes : []).forEach(function(change) {
+          if (!change || typeof change.id !== 'string' || !change.id || typeof change.name !== 'string') return;
+          const when = changesDate(change.date);
+          if (isNaN(when) || when <= weekStart || when > asOf || !Array.isArray(change.prompt) || !Array.isArray(change.completion)) return;
+          (grouped[change.id] = grouped[change.id] || []).push(change);
+        });
+        Object.keys(grouped).forEach(function(id) {
+          const events = grouped[id].sort(function(a, b) { return String(a.date).localeCompare(String(b.date)); });
+          const first = events[0], last = events[events.length - 1];
+          const oldPrompt = changesPrice(first.prompt[0]), oldCompletion = changesPrice(first.completion[0]);
+          const newPrompt = changesPrice(last.prompt[1]), newCompletion = changesPrice(last.completion[1]);
+          if (newPrompt === null || newCompletion === null) return;
+          const oldBlend = oldPrompt === null || oldCompletion === null ? null : (3 * oldPrompt + oldCompletion) / 4;
+          const newBlend = (3 * newPrompt + newCompletion) / 4;
+          const delta = oldBlend === null ? null : newBlend - oldBlend;
+          const pct = oldBlend === null || oldBlend < 0.01 ? null : delta / oldBlend * 100;
+          if (pct !== null && Math.abs(pct) < 1 && Math.abs(delta) < 0.01) return;
+          let label;
+          if (oldBlend !== null && oldBlend > 0 && Math.abs(newBlend) < 1e-12) label = 'went free';
+          else if (pct === null) label = 'became priced';
+          else label = (pct < 0 ? '↓ ' : '↑ ') + Math.abs(pct).toFixed(0) + '%';
+          lists.movers.push({ id: id, name: last.name, label: label, pct: pct });
+        });
+        lists.movers.sort(function(a, b) {
+          if (a.pct === null && b.pct !== null) return 1;
+          if (b.pct === null && a.pct !== null) return -1;
+          if (a.pct !== null && b.pct !== null && Math.abs(b.pct) !== Math.abs(a.pct)) return Math.abs(b.pct) - Math.abs(a.pct);
+          return a.id.localeCompare(b.id);
+        });
+        (Array.isArray(data.new_models) ? data.new_models : []).forEach(function(item) {
+          const when = item && changesDate(item.first_seen);
+          if (item && typeof item.id === 'string' && item.id && typeof item.name === 'string' && !isNaN(when) && when > weekStart && when <= asOf) lists.fresh.push(item);
+        });
+        lists.fresh.sort(function(a, b) { return String(b.first_seen).localeCompare(String(a.first_seen)) || a.id.localeCompare(b.id); });
+        (Array.isArray(data.retiring) ? data.retiring : []).forEach(function(item) {
+          const when = item && changesDate(item.expiration_date);
+          if (item && typeof item.id === 'string' && item.id && typeof item.name === 'string' && !isNaN(when) && when >= asOf && when <= asOf + 30 * 86400000) lists.retiring.push(item);
+        });
+        lists.retiring.sort(function(a, b) { return String(a.expiration_date).localeCompare(String(b.expiration_date)) || a.id.localeCompare(b.id); });
+        function listHtml(items) {
+          return items.slice(0, 5).map(function(item) {
+            const suffix = item.label || item.expiration_date || item.first_seen || '';
+            return `<li><a href="?search=${encodeURIComponent(item.id)}">${escHtml(item.name)}</a><span class="changes-label">${escHtml(suffix)}</span></li>`;
+          }).join('');
+        }
+        $('#changesMovers').html(listHtml(lists.movers));
+        $('#changesNew').html(listHtml(lists.fresh));
+        $('#changesRetiring').html(listHtml(lists.retiring));
+        if (lists.movers.length || lists.fresh.length || lists.retiring.length) strip.removeAttr('hidden');
+      }
+
+      // Independent of history/table loading; unavailable data is optional.
+      $.getJSON('data/changes.json').done(renderChangesStrip).fail(function() {
+        $('#changesStrip').attr('hidden', true);
+      });
 
       // Load price history first (for trend badges + sparklines), then render the table.
       function loadHistoryThenTable() {

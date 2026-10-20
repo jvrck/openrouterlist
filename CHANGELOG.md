@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.14] - 2026-10-21
+
+### Added
+
+- Price-changes Atom feed and “What changed” strip (closes #29)
+
 ## [0.0.13] - 2026-10-20
 
 ### Changed
