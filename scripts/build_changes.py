@@ -6,6 +6,7 @@ read-only derivation: validate everything before atomically replacing outputs.
 """
 import datetime as dt
 import html
+import itertools
 import json
 import math
 import os
@@ -20,6 +21,8 @@ CHANGES = os.path.join(ROOT, "data", "changes.json")
 FEED = os.path.join(ROOT, "feed.xml")
 WINDOW_DAYS = 30
 EPSILON = 1e-12
+MIN_PCT = 1
+MIN_ABS = 0.01
 SITE = "https://openrouterlist.jvrck.com"
 
 
@@ -61,7 +64,7 @@ def zero(value):
 
 def significant_component_move(old, new):
     delta = new - old
-    return abs(delta) >= 0.01 or (old > EPSILON and abs(delta) / old * 100 >= 1)
+    return abs(delta) >= MIN_ABS or (old > EPSILON and abs(delta) / old * 100 >= MIN_PCT)
 
 
 def price_text(value):
@@ -154,7 +157,7 @@ def build_changes(ledger, snapshot):
             else:
                 true_pct = ((new_blended - old_blended) / old_blended) * 100
                 kind = "increase" if new_blended > old_blended else "decrease"
-                if abs(true_pct) < 1 and abs(new_blended - old_blended) < 0.01:
+                if abs(true_pct) < MIN_PCT and abs(new_blended - old_blended) < MIN_ABS:
                     prompt_delta = new[0] - old[0]
                     completion_delta = new[1] - old[1]
                     opposite_directions = ((prompt_delta > EPSILON and completion_delta < -EPSILON) or
@@ -200,20 +203,15 @@ def feed_for(changes):
         events.append((item["last_seen"], item["id"], "removed_model", item))
     events.sort(key=lambda event: (-parse_day(event[0], "feed event date").toordinal(), event[1], event[2]))
     dated_events = []
-    index = 0
-    while index < len(events):
-        day = events[index][0]
-        end = index
-        while end < len(events) and events[end][0] == day:
-            end += 1
-        count = end - index
+    for day, group in itertools.groupby(events, key=lambda event: event[0]):
+        day_events = list(group)
+        count = len(day_events)
         if count > 86400:
             fail(f"too many feed events for {day}")
-        for offset, event in enumerate(events[index:end]):
-            updated = dt.datetime.combine(parse_day(day, "feed event date"), dt.time(), dt.timezone.utc)
-            updated += dt.timedelta(seconds=count - 1 - offset)
+        base = dt.datetime.combine(parse_day(day, "feed event date"), dt.time(), dt.timezone.utc)
+        for index, event in enumerate(day_events):
+            updated = base + dt.timedelta(seconds=count - 1 - index)
             dated_events.append((*event, updated.strftime("%Y-%m-%dT%H:%M:%SZ")))
-        index = end
     text = lambda value: html.escape(str(value), quote=True)
     entries = []
     for day, model_id, kind, item, updated in dated_events[:50]:
@@ -235,6 +233,7 @@ def feed_for(changes):
                        f"    <link rel=\"alternate\" href=\"{text(href)}\"/>\n"
                        f"    <summary>{text(summary)}</summary>\n"
                        "  </entry>")
+    # Fixed-format UTC ISO strings sort chronologically.
     feed_updated = max(f"{as_of}T00:00:00Z", dated_events[0][4] if dated_events else "")
     return ("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
             "<feed xmlns=\"http://www.w3.org/2005/Atom\">\n"
