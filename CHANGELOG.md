@@ -5,6 +5,7 @@
 ### Added
 
 - Favicon set for browser tabs, bookmarks, and Apple touch icons (closes #27)
+- Static share image for Open Graph and Twitter link previews (closes #31)
 
 ## [0.0.11] - 2026-10-20
 
