@@ -1694,7 +1694,9 @@
     function finderPrice(value) {
       const perMillion = value * 1000000;
       if (perMillion === 0) return '$0.00';
-      return '$' + perMillion.toFixed(4).replace(/0+$/, '').replace(/\.$/, '');
+      const fixed = perMillion.toFixed(4);
+      if (Number(fixed) === 0) return '$' + perMillion.toPrecision(2);
+      return '$' + fixed.replace(/0+$/, '').replace(/\.$/, '');
     }
 
     function finderEmptyHint(state) {
@@ -1710,10 +1712,12 @@
     function renderFinderSnippets() {
       const row = allData.find(item => item.id === finderSelectedId);
       if (!row) { $('#finderSnippets').prop('hidden', true); return; }
+      const requestBody = JSON.stringify({ model: row.id, messages: [{ role: 'user', content: 'Hello' }] });
+      const shellRequestBody = requestBody.replace(/'/g, `'"'"'`);
       const snippets = {
-        curl: `curl https://openrouter.ai/api/v1/chat/completions \\\n+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \\\n+  -H "Content-Type: application/json" \\\n+  -d '{"model":"${row.id}","messages":[{"role":"user","content":"Hello"}]}'`,
-        js: `const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {\n  method: "POST",\n  headers: {\n    "Authorization": "Bearer " + process.env.OPENROUTER_API_KEY,\n    "Content-Type": "application/json"\n  },\n  body: JSON.stringify({\n    model: "${row.id}",\n    messages: [{ role: "user", content: "Hello" }]\n  })\n});\nconst data = await response.json();`,
-        python: `import os\nfrom openai import OpenAI\n\nclient = OpenAI(\n    base_url="https://openrouter.ai/api/v1",\n    api_key=os.environ["OPENROUTER_API_KEY"],\n)\nresponse = client.chat.completions.create(\n    model="${row.id}",\n    messages=[{"role": "user", "content": "Hello"}],\n)`
+        curl: `curl https://openrouter.ai/api/v1/chat/completions \\\n  -H "Authorization: Bearer $OPENROUTER_API_KEY" \\\n  -H "Content-Type: application/json" \\\n  -d '${shellRequestBody}'`,
+        js: `const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {\n  method: "POST",\n  headers: {\n    "Authorization": "Bearer " + process.env.OPENROUTER_API_KEY,\n    "Content-Type": "application/json"\n  },\n  body: JSON.stringify({\n    model: ${JSON.stringify(row.id)},\n    messages: [{ role: "user", content: "Hello" }]\n  })\n});\nconst data = await response.json();`,
+        python: `import os\nfrom openai import OpenAI\n\nclient = OpenAI(\n    base_url="https://openrouter.ai/api/v1",\n    api_key=os.environ["OPENROUTER_API_KEY"],\n)\nresponse = client.chat.completions.create(\n    model=${JSON.stringify(row.id)},\n    messages=[{"role": "user", "content": "Hello"}],\n)`
       };
       $('#finderSelectedName').text(`— ${row.name || row.id}`);
       $('#finderSnippetCode').text(snippets[finderSnippetKind]);
@@ -1740,7 +1744,7 @@
       const html = visible.map((row, index) => {
         const badges = [];
         if (index === 0) badges.push('Cheapest match');
-        if (cheapestHighContext && row.id === cheapestHighContext.id) badges.push('Cheapest with ≥200k context');
+        if (index !== 0 && cheapestHighContext && row.id === cheapestHighContext.id) badges.push('Cheapest with ≥200k context');
         if (row.prompt_usd === 0 && row.completion_usd === 0) badges.push('Free');
         const ticks = FINDER_CAPABILITIES.filter(cap => row[cap] === 'Yes').map(cap => `✓ ${labels[cap]}`).join(' · ') || 'No listed capabilities';
         return `<article class="finder-result"><div class="finder-result-head"><div><span class="finder-result-name">${escHtml(row.name || row.id)}</span><span class="finder-result-id">${escHtml(row.id)}</span></div><button class="btn finder-select" data-model-id="${escHtml(row.id)}">API snippets</button></div><div class="finder-result-meta"><span>${escHtml(String(row.context_length))} context</span><span>Prompt ${escHtml(finderPrice(row.prompt_usd))}/1M</span><span>Completion ${escHtml(finderPrice(row.completion_usd))}/1M</span><span>Blended ${escHtml(finderPrice(finderBlendedCost(row) / 1000000))}/1M</span></div><div>${badges.map(badge => `<span class="finder-badge">${escHtml(badge)}</span>`).join(' ')}</div><div class="finder-cap-ticks">${escHtml(ticks)}</div></article>`;
@@ -2294,9 +2298,12 @@
         // Don't trigger shortcuts when typing in input fields
         if ($(e.target).is('input, textarea')) {
           if (e.key === 'Escape') {
+            const calculatorOpen = $('#calculatorModal').is(':visible');
+            const finderOpen = $('#finderModal').is(':visible');
             if ($('#calculatorModal').is(':visible')) closeCalculator();
-            else if ($('#finderModal').is(':visible')) closeFinder();
-            else $(e.target).blur();
+            if ($('#finderModal').is(':visible')) closeFinder();
+            $('.modal').not('#calculatorModal, #finderModal').hide();
+            if (!calculatorOpen && !finderOpen) $(e.target).blur();
           }
           return;
         }
@@ -2356,8 +2363,8 @@
             break;
           case 'Escape':
             if ($('#calculatorModal').is(':visible')) closeCalculator();
-            else if ($('#finderModal').is(':visible')) closeFinder();
-            else $('.modal').hide();
+            if ($('#finderModal').is(':visible')) closeFinder();
+            $('.modal').not('#calculatorModal, #finderModal').hide();
             break;
         }
       });
