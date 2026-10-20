@@ -81,6 +81,7 @@ if [ -f "data/output.json" ]; then
         # ledger from full git history, run: python3 scripts/backfill_history.py --rebuild
         if command -v python3 >/dev/null 2>&1; then
             python3 scripts/backfill_history.py || echo "WARN: price-history update failed (non-fatal)"
+            python3 scripts/build_changes.py || echo "WARN: changes feed failed (non-fatal)"
         else
             echo "WARN: python3 not found; skipping price-history update"
         fi
