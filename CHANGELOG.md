@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.12] - 2026-10-20
+
+### Added
+
+- Favicon set for browser tabs, bookmarks, and Apple touch icons (closes #27)
+
 ## [0.0.11] - 2026-10-20
 
 ### Added
