@@ -1044,11 +1044,44 @@
     .calculator-status { color: var(--text-secondary); margin: 8px 0 0; font-size: 14px; }
     .calculator-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
     .calculator-empty { color: var(--text-secondary); }
+
+    /* Model finder */
+    .finder-modal { margin: 3vh auto; max-height: 92vh; overflow-x: hidden; overflow-y: auto; }
+    .finder-intro, .finder-note, .finder-empty { color: var(--text-secondary); font-size: 14px; line-height: 1.45; }
+    .finder-presets, .finder-actions, .finder-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+    .finder-presets .btn { font-size: 13px; }
+    .finder-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 12px 0; }
+    .finder-grid label, .finder-capabilities label { display: flex; flex-direction: column; gap: 5px; font-size: 13px; font-weight: 600; }
+    .finder-grid select, .finder-grid input { box-sizing: border-box; width: 100%; padding: 8px 10px; border: 1px solid var(--border-color); border-radius: 6px; background: var(--bg-secondary); color: var(--text-primary); font: inherit; }
+    .finder-query { grid-column: span 3; }
+    .finder-capabilities { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
+    .finder-capabilities label { flex-direction: row; align-items: center; font-weight: normal; }
+    .finder-status { color: var(--text-secondary); font-size: 14px; margin: 12px 0; }
+    .finder-results { display: grid; gap: 10px; }
+    .finder-result { border: 1px solid var(--border-color); border-radius: 7px; padding: 11px; }
+    .finder-result-head { display: flex; gap: 10px; justify-content: space-between; align-items: flex-start; }
+    .finder-result-name { font-weight: 700; }
+    .finder-result-id { color: var(--text-secondary); display: block; font-family: monospace; font-size: 12px; overflow-wrap: anywhere; }
+    .finder-result-meta { display: flex; gap: 10px; flex-wrap: wrap; margin: 7px 0; font-size: 13px; color: var(--text-secondary); }
+    .finder-badge { background: rgba(37,99,235,0.15); color: var(--header-bg); border-radius: 10px; font-size: 11px; font-weight: 600; padding: 2px 6px; white-space: nowrap; }
+    .finder-cap-ticks { font-size: 12px; color: var(--text-secondary); }
+    .finder-snippets { border-top: 1px solid var(--border-color); margin-top: 16px; padding-top: 12px; }
+    .finder-snippet { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 6px; box-sizing: border-box; color: var(--text-primary); display: block; font-family: monospace; font-size: 12px; line-height: 1.45; margin: 8px 0; max-height: 250px; overflow: auto; padding: 10px; white-space: pre-wrap; word-break: break-word; }
+    .finder-tab.active { background: var(--header-bg); color: white; }
     @media (max-width: 768px) {
       .calculator-modal { box-sizing: border-box; width: calc(100% - 20px); max-width: none; padding: 14px; margin: 2vh auto; max-height: 92vh; }
       .calculator-grid, .calculator-costs { grid-template-columns: 1fr; }
       .calculator-cost:last-child { grid-column: auto; }
       .calculator-text-row { align-items: stretch; flex-direction: column; }
+      .finder-modal { box-sizing: border-box; width: calc(100% - 20px); max-width: none; padding: 14px; margin: 2vh auto; }
+      .finder-grid { grid-template-columns: 1fr; }
+      .finder-query { grid-column: auto; }
+      .finder-result-head { flex-direction: column; }
+      .finder-presets { display: grid; grid-template-columns: minmax(0, 1fr); }
+      .finder-presets .btn { box-sizing: border-box; max-width: 100%; text-align: left; white-space: normal; width: 100%; }
+      .finder-capabilities { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .finder-capabilities strong { grid-column: 1 / -1; }
+      .finder-capabilities label { max-width: 100%; }
     }
   </style>
 </head>
@@ -1074,6 +1107,7 @@
         <button id="viewToggle" class="btn view-toggle">📱 Card View</button>
         <button id="discontinuedBtn" class="btn" style="display:none;" aria-label="Show discontinued models">🗑️ Discontinued</button>
         <button id="calculatorBtn" class="btn" aria-label="Open cost calculator">🧮 Cost Calculator</button>
+        <button id="finderBtn" class="btn" aria-label="Open model finder">🧭 Model Finder</button>
         <button id="helpBtn" class="btn" aria-label="Show keyboard shortcuts">? Help</button>
       </div>
     </header>
@@ -1293,6 +1327,10 @@
           <span class="shortcut-key">k</span>
         </div>
         <div class="shortcut-item">
+          <span>Open model finder</span>
+          <span class="shortcut-key">g</span>
+        </div>
+        <div class="shortcut-item">
           <span>Show this help</span>
           <span class="shortcut-key">?</span>
         </div>
@@ -1300,6 +1338,48 @@
           <span>Close dialogs</span>
           <span class="shortcut-key">Esc</span>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Model Finder Modal -->
+  <div id="finderModal" class="modal" aria-hidden="true">
+    <div class="modal-content wide finder-modal" role="dialog" aria-modal="true" aria-labelledby="finderTitle">
+      <button class="close" type="button" aria-label="Close model finder">&times;</button>
+      <h2 id="finderTitle">Model Finder</h2>
+      <p class="finder-intro">Find the lowest blended-price matches using a 3:1 prompt:completion mix per 1M tokens. Results use raw OpenRouter USD/token prices; variable/router pricing is never ranked.</p>
+      <h3>Use-case presets <span class="finder-note">— editable after applying</span></h3>
+      <div class="finder-presets" aria-label="Use-case presets">
+        <button class="btn finder-preset" data-usecase="support">Customer-support chatbot <small>≥32k · Tool Calling</small></button>
+        <button class="btn finder-preset" data-usecase="code">Code generation / agentic coding <small>≥128k · Tool Calling + Structured Outputs</small></button>
+        <button class="btn finder-preset" data-usecase="rag">Long-document analysis / RAG <small>≥200k</small></button>
+        <button class="btn finder-preset" data-usecase="extraction">Structured data extraction <small>Structured Outputs + Response Format</small></button>
+        <button class="btn finder-preset" data-usecase="reasoning">Reasoning-heavy tasks <small>Reasoning</small></button>
+        <button class="btn finder-preset" data-usecase="web">Web research <small>Web Search</small></button>
+        <button class="btn finder-preset" data-usecase="free">Budget / free experimentation <small>Free only</small></button>
+      </div>
+      <div class="finder-grid">
+        <label>Minimum context<select id="finderContext" aria-label="Minimum context"><option value="0">Any</option><option value="32768">32k</option><option value="131072">128k</option><option value="204800">200k</option><option value="1048576">1M</option></select></label>
+        <label>Max prompt $/1M (optional)<input id="finderMaxPrompt" type="number" min="0" step="any" inputmode="decimal" placeholder="Any"></label>
+        <label>Max completion $/1M (optional)<input id="finderMaxCompletion" type="number" min="0" step="any" inputmode="decimal" placeholder="Any"></label>
+        <label class="finder-query">Match model ID or name (optional)<input id="finderQuery" type="search" placeholder="e.g. anthropic/"></label>
+      </div>
+      <div class="finder-capabilities" aria-label="Required capabilities (all required)">
+        <strong>Required capabilities (all):</strong>
+        <label><input type="checkbox" value="tool_calling"> Tool Calling</label>
+        <label><input type="checkbox" value="structured_outputs"> Structured Outputs</label>
+        <label><input type="checkbox" value="reasoning"> Reasoning</label>
+        <label><input type="checkbox" value="response_format"> Response Format</label>
+        <label><input type="checkbox" value="web_search"> Web Search</label>
+        <label><input id="finderFreeOnly" type="checkbox"> Free only</label>
+      </div>
+      <p id="finderStatus" class="finder-status"></p>
+      <div id="finderResults" class="finder-results"></div>
+      <div id="finderSnippets" class="finder-snippets" hidden>
+        <h3>API snippets <span id="finderSelectedName" class="finder-note"></span></h3>
+        <div class="finder-tabs" role="tablist"><button class="btn finder-tab active" data-finder-snippet="curl" role="tab">curl</button><button class="btn finder-tab" data-finder-snippet="js" role="tab">JavaScript (fetch)</button><button class="btn finder-tab" data-finder-snippet="python" role="tab">Python (openai SDK)</button></div>
+        <pre id="finderSnippetCode" class="finder-snippet"></pre>
+        <div class="finder-actions"><button id="finderCopy" class="btn">Copy snippet</button><button id="finderShowTable" class="btn">Show in table</button><button id="finderCompare" class="btn">Compare costs in calculator</button></div>
       </div>
     </div>
   </div>
@@ -1555,6 +1635,146 @@
         lines.push([item.row.id, item.row.name || item.row.id, status, ...valuesForRow]);
       });
       return lines.map(line => line.map(quote).join(',')).join('\n');
+    }
+
+    // Model finder: price-only ranking from the raw per-token values already parsed for the calculator.
+    const FINDER_CAPABILITIES = ['tool_calling', 'structured_outputs', 'reasoning', 'response_format', 'web_search'];
+    const FINDER_PRESETS = {
+      support: { context: 32768, caps: ['tool_calling'] },
+      code: { context: 131072, caps: ['tool_calling', 'structured_outputs'] },
+      rag: { context: 204800, caps: [] },
+      extraction: { context: 0, caps: ['structured_outputs', 'response_format'] },
+      reasoning: { context: 0, caps: ['reasoning'] },
+      web: { context: 0, caps: ['web_search'] },
+      free: { context: 0, caps: [], free: true }
+    };
+    let finderPreset = '';
+    let finderSelectedId = '';
+    let finderTrigger = null;
+    let finderSnippetKind = 'curl';
+    let finderCopyResetTimer = null;
+
+    function finderFiniteNonNegative(selector) {
+      const raw = String($(selector).val() || '').trim();
+      if (!raw) return null;
+      const value = Number(raw);
+      return Number.isFinite(value) && value >= 0 ? value : null;
+    }
+
+    function finderState() {
+      return {
+        context: Number($('#finderContext').val()) || 0,
+        caps: $('.finder-capabilities input[type="checkbox"][value]:checked').map(function() { return $(this).val(); }).get(),
+        prompt: finderFiniteNonNegative('#finderMaxPrompt'),
+        completion: finderFiniteNonNegative('#finderMaxCompletion'),
+        free: $('#finderFreeOnly').prop('checked'),
+        query: String($('#finderQuery').val() || '').trim()
+      };
+    }
+
+    function finderBlendedCost(row) {
+      // 3 prompt tokens + 1 completion token, normalized to one million tokens.
+      return (3 * row.prompt_usd + row.completion_usd) * 1000000 / 4;
+    }
+
+    function finderMatches() {
+      const state = finderState();
+      const query = state.query.toLowerCase();
+      return allData.filter(row => {
+        if (!hasUsableCalculatorPrice(row)) return false;
+        if ((Number(row.context_length) || 0) < state.context) return false;
+        if (state.caps.some(cap => row[cap] !== 'Yes')) return false;
+        if (state.prompt !== null && row.prompt_usd * 1000000 > state.prompt) return false;
+        if (state.completion !== null && row.completion_usd * 1000000 > state.completion) return false;
+        if (state.free && !(row.prompt_usd === 0 && row.completion_usd === 0)) return false;
+        return !query || row.id.toLowerCase().includes(query) || String(row.name || '').toLowerCase().includes(query);
+      }).sort((a, b) => finderBlendedCost(a) - finderBlendedCost(b) || a.id.localeCompare(b.id));
+    }
+
+    function finderPrice(value) {
+      const perMillion = value * 1000000;
+      if (perMillion === 0) return '$0.00';
+      return '$' + perMillion.toFixed(4).replace(/0+$/, '').replace(/\.$/, '');
+    }
+
+    function finderEmptyHint(state) {
+      const filters = [];
+      if (state.free) filters.push('free-only');
+      if (state.caps.length) filters.push('required capabilities');
+      if (state.context) filters.push('minimum context');
+      if (state.prompt !== null || state.completion !== null) filters.push('price limits');
+      if (state.query) filters.push('text match');
+      return filters.length ? `Try loosening ${filters.join(', ')}.` : 'Try a broader text match.';
+    }
+
+    function renderFinderSnippets() {
+      const row = allData.find(item => item.id === finderSelectedId);
+      if (!row) { $('#finderSnippets').prop('hidden', true); return; }
+      const snippets = {
+        curl: `curl https://openrouter.ai/api/v1/chat/completions \\\n+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \\\n+  -H "Content-Type: application/json" \\\n+  -d '{"model":"${row.id}","messages":[{"role":"user","content":"Hello"}]}'`,
+        js: `const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {\n  method: "POST",\n  headers: {\n    "Authorization": "Bearer " + process.env.OPENROUTER_API_KEY,\n    "Content-Type": "application/json"\n  },\n  body: JSON.stringify({\n    model: "${row.id}",\n    messages: [{ role: "user", content: "Hello" }]\n  })\n});\nconst data = await response.json();`,
+        python: `import os\nfrom openai import OpenAI\n\nclient = OpenAI(\n    base_url="https://openrouter.ai/api/v1",\n    api_key=os.environ["OPENROUTER_API_KEY"],\n)\nresponse = client.chat.completions.create(\n    model="${row.id}",\n    messages=[{"role": "user", "content": "Hello"}],\n)`
+      };
+      $('#finderSelectedName').text(`— ${row.name || row.id}`);
+      $('#finderSnippetCode').text(snippets[finderSnippetKind]);
+      $('.finder-tab').removeClass('active').attr('aria-selected', 'false');
+      $(`.finder-tab[data-finder-snippet="${finderSnippetKind}"]`).addClass('active').attr('aria-selected', 'true');
+      $('#finderSnippets').prop('hidden', false);
+    }
+
+    function renderFinder() {
+      if (!$('#finderModal').length || !allData.length) return;
+      const state = finderState();
+      const matches = finderMatches();
+      const visible = matches.slice(0, CALCULATOR_LIMIT);
+      const routerCount = allData.filter(row => !hasUsableCalculatorPrice(row)).length;
+      $('#finderStatus').text(`${matches.length} of ${allData.length} match · showing up to ${CALCULATOR_LIMIT} cheapest by a 3:1 prompt:completion blended $/1M cost · ${routerCount} n/a — variable/router pricing excluded`);
+      if (!matches.length) {
+        $('#finderResults').html(`<p class="finder-empty">No priced models match. ${escHtml(finderEmptyHint(state))}</p>`);
+        finderSelectedId = '';
+        renderFinderSnippets();
+        return;
+      }
+      const cheapestHighContext = matches.filter(row => (Number(row.context_length) || 0) >= 204800)[0];
+      const labels = { tool_calling: 'Tool', structured_outputs: 'Structured', reasoning: 'Reasoning', response_format: 'Format', web_search: 'Web' };
+      const html = visible.map((row, index) => {
+        const badges = [];
+        if (index === 0) badges.push('Cheapest match');
+        if (cheapestHighContext && row.id === cheapestHighContext.id) badges.push('Cheapest with ≥200k context');
+        if (row.prompt_usd === 0 && row.completion_usd === 0) badges.push('Free');
+        const ticks = FINDER_CAPABILITIES.filter(cap => row[cap] === 'Yes').map(cap => `✓ ${labels[cap]}`).join(' · ') || 'No listed capabilities';
+        return `<article class="finder-result"><div class="finder-result-head"><div><span class="finder-result-name">${escHtml(row.name || row.id)}</span><span class="finder-result-id">${escHtml(row.id)}</span></div><button class="btn finder-select" data-model-id="${escHtml(row.id)}">API snippets</button></div><div class="finder-result-meta"><span>${escHtml(String(row.context_length))} context</span><span>Prompt ${escHtml(finderPrice(row.prompt_usd))}/1M</span><span>Completion ${escHtml(finderPrice(row.completion_usd))}/1M</span><span>Blended ${escHtml(finderPrice(finderBlendedCost(row) / 1000000))}/1M</span></div><div>${badges.map(badge => `<span class="finder-badge">${escHtml(badge)}</span>`).join(' ')}</div><div class="finder-cap-ticks">${escHtml(ticks)}</div></article>`;
+      }).join('');
+      $('#finderResults').html(html);
+      if (finderSelectedId && !visible.some(row => row.id === finderSelectedId)) finderSelectedId = '';
+      renderFinderSnippets();
+    }
+
+    function applyFinderPreset(preset) {
+      const values = FINDER_PRESETS[preset];
+      if (!values) return false;
+      finderPreset = preset;
+      $('#finderContext').val(String(values.context));
+      $('.finder-capabilities input[type="checkbox"][value]').prop('checked', false);
+      values.caps.forEach(cap => $(`.finder-capabilities input[value="${cap}"]`).prop('checked', true));
+      $('#finderMaxPrompt, #finderMaxCompletion, #finderQuery').val('');
+      $('#finderFreeOnly').prop('checked', Boolean(values.free));
+      return true;
+    }
+
+    function openFinder(trigger) {
+      if (trigger) finderTrigger = trigger;
+      renderFinder();
+      $('#finderModal').show().attr('aria-hidden', 'false');
+      updateURLState();
+      window.setTimeout(() => $('#finderContext').trigger('focus'), 0);
+    }
+
+    function closeFinder() {
+      $('#finderModal :focus').blur();
+      $('#finderModal').hide().attr('aria-hidden', 'true');
+      updateURLState();
+      if (finderTrigger && document.contains(finderTrigger)) finderTrigger.focus();
     }
 
     // Value of `field` (prompt|completion) as of `whenMs`, reading the step-held series.
@@ -1882,6 +2102,19 @@
         });
         params.set('cm', calculatorModelIds.join(','));
       }
+
+      if ($('#finderModal').is(':visible')) {
+        const finder = finderState();
+        params.set('finder', '1');
+        if (finderPreset) params.set('fu', finderPreset);
+        if (finder.context) params.set('fx', finder.context);
+        if (finder.caps.length) params.set('fk', finder.caps.join(','));
+        if (finder.prompt !== null) params.set('fpp', finder.prompt);
+        if (finder.completion !== null) params.set('fpc', finder.completion);
+        if (finder.free) params.set('ff', '1');
+        if (finder.query) params.set('fq', finder.query);
+        if (finderSelectedId) params.set('fs', finderSelectedId);
+      }
       
       const newURL = params.toString() ? `?${params.toString()}` : window.location.pathname;
       window.history.replaceState({}, '', newURL);
@@ -1952,6 +2185,33 @@
           return true;
         }).slice(0, CALCULATOR_LIMIT) : [];
         openCalculator();
+      }
+
+      if (params.get('finder') === '1') {
+        finderPreset = '';
+        $('#finderContext').val('0');
+        $('.finder-capabilities input[type="checkbox"]').prop('checked', false);
+        $('#finderMaxPrompt, #finderMaxCompletion, #finderQuery').val('');
+        if (FINDER_PRESETS[params.get('fu')]) applyFinderPreset(params.get('fu'));
+        const context = Number(params.get('fx'));
+        if (params.has('fx') && [0, 32768, 131072, 204800, 1048576].includes(context)) $('#finderContext').val(String(context));
+        const restoredCaps = new Set();
+        String(params.get('fk') || '').split(',').forEach(cap => {
+          if (FINDER_CAPABILITIES.includes(cap) && !restoredCaps.has(cap)) {
+            restoredCaps.add(cap);
+            $(`.finder-capabilities input[value="${cap}"]`).prop('checked', true);
+          }
+        });
+        [['fpp', '#finderMaxPrompt'], ['fpc', '#finderMaxCompletion']].forEach(([param, selector]) => {
+          const raw = String(params.get(param) || '').trim();
+          const value = Number(raw);
+          if (raw && Number.isFinite(value) && value >= 0) $(selector).val(value);
+        });
+        $('#finderFreeOnly').prop('checked', params.get('ff') === '1');
+        if (params.has('fq')) $('#finderQuery').val(params.get('fq'));
+        const selectedId = String(params.get('fs') || '');
+        finderSelectedId = allData.some(row => row.id === selectedId) ? selectedId : '';
+        openFinder();
       }
     }
 
@@ -2035,6 +2295,7 @@
         if ($(e.target).is('input, textarea')) {
           if (e.key === 'Escape') {
             if ($('#calculatorModal').is(':visible')) closeCalculator();
+            else if ($('#finderModal').is(':visible')) closeFinder();
             else $(e.target).blur();
           }
           return;
@@ -2087,12 +2348,16 @@
           case 'k':
             openCalculator(document.getElementById('calculatorBtn'));
             break;
+          case 'g':
+            openFinder(document.getElementById('finderBtn'));
+            break;
           case '?':
             $('#shortcutsModal').show();
             break;
           case 'Escape':
             if ($('#calculatorModal').is(':visible')) closeCalculator();
-            $('.modal').not('#calculatorModal').hide();
+            else if ($('#finderModal').is(':visible')) closeFinder();
+            else $('.modal').hide();
             break;
         }
       });
@@ -2259,10 +2524,65 @@
         link.remove();
         setTimeout(() => URL.revokeObjectURL(url), 0);
       });
+
+      // Model finder controls
+      $('#finderBtn').on('click', function() { openFinder(this); });
+      $('#finderContext, #finderMaxPrompt, #finderMaxCompletion, #finderQuery, .finder-capabilities input').on('input change', function() {
+        finderPreset = '';
+        finderSelectedId = '';
+        renderFinder();
+        if ($('#finderModal').is(':visible')) updateURLState();
+      });
+      $('.finder-preset').on('click', function() {
+        applyFinderPreset($(this).data('usecase'));
+        finderSelectedId = '';
+        renderFinder();
+        updateURLState();
+      });
+      $(document).on('click', '.finder-select', function() {
+        finderSelectedId = String($(this).attr('data-model-id'));
+        finderSnippetKind = 'curl';
+        renderFinderSnippets();
+        updateURLState();
+        $('#finderSnippets')[0].scrollIntoView({ block: 'nearest' });
+      });
+      $('.finder-tab').on('click', function() {
+        finderSnippetKind = $(this).data('finder-snippet');
+        renderFinderSnippets();
+      });
+      $('#finderCopy').on('click', function() {
+        clearTimeout(finderCopyResetTimer);
+        const text = $('#finderSnippetCode').text();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => $(this).text('Copied!'), () => $(this).text('Copy unavailable'));
+        } else {
+          const copyArea = $('<textarea>').val(text).appendTo('body').select();
+          try { $(this).text(document.execCommand('copy') ? 'Copied!' : 'Copy unavailable'); } catch (_) { $(this).text('Copy unavailable'); }
+          copyArea.remove();
+        }
+        finderCopyResetTimer = setTimeout(() => $(this).text('Copy snippet'), 1600);
+      });
+      $('#finderShowTable').on('click', function() {
+        const id = finderSelectedId;
+        if (!id || !dataTable) return;
+        closeFinder();
+        dataTable.search(id).draw();
+        updateURLState();
+      });
+      $('#finderCompare').on('click', function() {
+        const ids = finderMatches().slice(0, CALCULATOR_LIMIT).map(row => row.id);
+        if (!ids.length) return;
+        calculatorModelIds = ids;
+        calculatorSelectionInitialized = true;
+        closeFinder();
+        openCalculator(document.getElementById('calculatorBtn'));
+      });
       
       $('.close').on('click', function() {
         if ($(this).closest('.modal').attr('id') === 'calculatorModal') {
           closeCalculator();
+        } else if ($(this).closest('.modal').attr('id') === 'finderModal') {
+          closeFinder();
         } else {
           $(this).closest('.modal').hide();
         }
@@ -2285,6 +2605,7 @@
       $(window).on('click', function(e) {
         if ($(e.target).hasClass('modal')) {
           if ($(e.target).attr('id') === 'calculatorModal') closeCalculator();
+          else if ($(e.target).attr('id') === 'finderModal') closeFinder();
           else $(e.target).hide();
         }
       });

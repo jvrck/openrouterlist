@@ -16,6 +16,7 @@ Privacy: visitor analytics for jvrck.com sites use Cloudflare Web Analytics (fre
 - **400+ AI Models**: Comprehensive coverage of all available models including GPT-4, Claude 3, Llama 3, and more
 - **Advanced Filtering**: Filter by capabilities (tool calling, structured outputs, reasoning, web search)
 - **Interactive Cost Calculator**: Estimate and compare raw-precision prompt/completion costs per request, day, month, year, or batch
+- **Model Finder & Use-Case Presets**: Match requirements to the lowest-priced models and copy ready-to-use API snippets
 - **Price History & Trends**: Per-model price charts, 30-day change badges, and a searchable archive of discontinued models — backfilled from 20+ months of git history
 - **Export Options**: Download data as CSV, Excel, PDF, or print for offline analysis
 - **Dark Mode**: Eye-friendly dark theme for extended use

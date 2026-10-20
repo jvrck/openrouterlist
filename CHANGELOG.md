@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.0.10] - 2026-10-20
+
+### Added
+
+- **Model Finder & use-case presets** (closes #7)
+  - Find up to 10 lowest-cost models by context, required capabilities, price limits, free-only status, and model ID/name
+  - Includes editable presets for support, coding, RAG, extraction, reasoning, web research, and free experimentation
+  - Copy-ready curl, JavaScript fetch, and Python OpenAI SDK snippets for a selected model
+
+### Technical
+
+- Finder state is shareable in compact URL parameters; ranking uses raw 3:1 prompt:completion prices and excludes variable/router pricing
+
 ## [0.0.9] - 2026-10-20
 
 ### Added
