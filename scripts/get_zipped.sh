@@ -65,6 +65,8 @@ if [ -f "data/output.json" ]; then
     # Compare the newly fetched data with the existing data
     if cmp -s "$output_dir/output.json" "data/output.json"; then
         echo "No change in data, skipping update."
+        # First run after merge, so the ID links never point at missing pages.
+        [ -d m ] || bash scripts/build_model_pages.sh || echo "WARN: model pages failed (non-fatal)"
     else
         echo "Data has changed, updating files."
 

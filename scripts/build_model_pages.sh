@@ -47,8 +47,6 @@ jq -e '
     and (.name | type == "string")
     and ((.description == null) or (.description | type == "string"))
     and (.pricing | type == "object")
-    and (.pricing.prompt | type == "string")
-    and (.pricing.completion | type == "string")
     and ((.architecture == null) or (.architecture | type == "object"))
     and ((.expiration_date == null) or (.expiration_date | type == "string"))
     and ((.hugging_face_id == null) or (.hugging_face_id | type == "string"))
@@ -69,7 +67,7 @@ jq -e '
 ' "$history" >/dev/null || fail "invalid $history"
 
 slug_for() {
-    printf '%s' "$1" | sed 's#[^A-Za-z0-9._/-]#-#g'
+    jq -nr --arg id "$1" '$id | gsub("[^A-Za-z0-9._/-]"; "-")'
 }
 
 safe_slug() {
@@ -90,7 +88,10 @@ safe_slug() {
 
 # Case-insensitive collisions would overwrite a page on case-insensitive file
 # systems.  Check before creating any replacement output.
-collisions=$(jq -r '.data[].id' "$output" | while IFS= read -r id; do
+collisions=$(jq -r '
+  def numeric_string: type == "string" and ([tonumber?] | length == 1);
+  .data[] | select((.pricing.prompt | numeric_string) and (.pricing.completion | numeric_string)) | .id
+' "$output" | while IFS= read -r id; do
     slug=$(slug_for "$id")
     if safe_slug "$slug"; then
         printf '%s\n' "$slug" | tr '[:upper:]' '[:lower:]'
@@ -105,6 +106,14 @@ jq -r '.data[].id' "$output" | while IFS= read -r id; do
     slug=$(slug_for "$id")
     if ! safe_slug "$slug"; then
         printf '%s\n' "WARN: build_model_pages: skipping unsafe id $id" >&2
+        continue
+    fi
+    if ! jq -e --arg id "$id" '
+        .data[] | select(.id == $id)
+        | ((.pricing.prompt | type == "string" and ([tonumber?] | length == 1))
+           and (.pricing.completion | type == "string" and ([tonumber?] | length == 1)))
+    ' "$output" >/dev/null; then
+        printf '%s\n' "WARN: build_model_pages: skipping model with invalid pricing $id" >&2
         continue
     fi
     page_dir="$tmp/m/$slug"
@@ -140,7 +149,8 @@ jq -r '.data[].id' "$output" | while IFS= read -r id; do
         end;
       def context_text($v): if $v == null then "—" else (($v | tostring | group_digits) + " tokens") end;
       def xpos($day; $first; $last): if $last == $first then 50 else 50 + (510 * ($day - $first) / ($last - $first)) end;
-      def ypos($value; $max): 160 - (140 * $value / $max);
+      def ypos($value; $max): 160 - (132 * $value / $max);
+      def chart_css: "<style>.grid{stroke:#d8dee8;stroke-width:1}@media (prefers-color-scheme:dark){.grid{stroke:#374151}}</style>";
       def segment_paths($series; $max; $colour):
         reduce $series[] as $point ({segments: [], current: []};
           if $point.v == null then
@@ -184,11 +194,11 @@ jq -r '.data[].id' "$output" | while IFS= read -r id; do
         ($points[-1].day) as $last_day |
         ([range(0; $points|length) as $i | {i: $i, v: $points[$i].prompt, x: xpos($points[$i].day; $first_day; $last_day), hold: (if $i == ($points|length)-1 then 600 else xpos($points[$i + 1].day; $first_day; $last_day) end)}]) as $prompt_series |
         ([range(0; $points|length) as $i | {i: $i, v: $points[$i].completion, x: xpos($points[$i].day; $first_day; $last_day), hold: (if $i == ($points|length)-1 then 600 else xpos($points[$i + 1].day; $first_day; $last_day) end)}]) as $completion_series |
-        "<section class=\"history\"><h2>Price history</h2><svg viewBox=\"0 0 640 200\" role=\"img\" aria-label=\"Prompt and completion price history\"><line class=\"grid\" x1=\"50\" y1=\"20\" x2=\"600\" y2=\"20\"/><line class=\"axis\" x1=\"50\" y1=\"160\" x2=\"600\" y2=\"160\"/><text x=\"44\" y=\"24\" text-anchor=\"end\">" + (price_per_m($rawmax) | h) + "</text><text x=\"44\" y=\"164\" text-anchor=\"end\">$0</text><text x=\"50\" y=\"198\">$ per 1M tokens</text><text x=\"50\" y=\"184\">" + ($points[0].date | h) + "</text><text x=\"560\" y=\"184\" text-anchor=\"end\">" + ($points[-1].date | h) + "</text><g class=\"legend\"><line class=\"prompt\" x1=\"50\" y1=\"12\" x2=\"72\" y2=\"12\"/><text x=\"78\" y=\"16\">Prompt</text><line class=\"completion\" x1=\"145\" y1=\"12\" x2=\"167\" y2=\"12\"/><text x=\"173\" y=\"16\">Completion</text></g>"
+        chart_css + "<section class=\"history\"><h2>Price history</h2><svg viewBox=\"0 0 640 200\" role=\"img\" aria-label=\"Prompt and completion price history\"><line class=\"grid\" x1=\"50\" y1=\"28\" x2=\"600\" y2=\"28\"/><line class=\"axis\" x1=\"50\" y1=\"160\" x2=\"600\" y2=\"160\"/><text x=\"44\" y=\"32\" text-anchor=\"end\">" + (price_per_m($rawmax) | h) + "</text><text x=\"44\" y=\"164\" text-anchor=\"end\">$0</text><text x=\"50\" y=\"198\">$ per 1M tokens</text><text x=\"50\" y=\"184\">" + ($points[0].date | h) + "</text><text x=\"560\" y=\"184\" text-anchor=\"end\">" + ($points[-1].date | h) + "</text><g class=\"legend\"><line class=\"prompt\" x1=\"50\" y1=\"8\" x2=\"72\" y2=\"8\"/><text x=\"78\" y=\"12\">Prompt</text><line class=\"completion\" x1=\"145\" y1=\"8\" x2=\"167\" y2=\"8\"/><text x=\"173\" y=\"12\">Completion</text></g>"
         + ([segment_paths($prompt_series; $max; "#2563eb")] | join(""))
         + ([segment_paths($completion_series; $max; "#d946ef")] | join(""))
         + "</svg></section>"
-       else "<section class=\"history\"><h2>Price history</h2><p>No price changes recorded</p></section>" end | gsub("<line class=\"grid\""; "<line class=\"grid\" stroke=\"#d8dee8\"")) as $chart |
+       else chart_css + "<section class=\"history\"><h2>Price history</h2><p>No price changes recorded</p></section>" end) as $chart |
       "<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>" + $name + " pricing: OpenRouterList</title>\n<meta name=\"description\" content=\"" + $description + "\">\n<link rel=\"canonical\" href=\"https://openrouterlist.jvrck.com/m/" + $slug_path + "/\">\n<meta property=\"og:title\" content=\"" + $name + " pricing: OpenRouterList\">\n<meta property=\"og:description\" content=\"" + $description + "\">\n<meta property=\"og:url\" content=\"https://openrouterlist.jvrck.com/m/" + $slug_path + "/\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:image\" content=\"https://openrouterlist.jvrck.com/og-image.png\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">\n<meta name=\"twitter:title\" content=\"" + $name + " pricing: OpenRouterList\">\n<meta name=\"twitter:description\" content=\"" + $description + "\">\n<meta name=\"twitter:image\" content=\"https://openrouterlist.jvrck.com/og-image.png\">\n<link rel=\"icon\" href=\"/favicon.ico\" sizes=\"any\">\n<link rel=\"icon\" href=\"/favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"apple-touch-icon\" href=\"/apple-touch-icon.png\">\n<style>body{max-width:760px;margin:2rem auto;padding:0 1rem;font:16px/1.55 system-ui,sans-serif;color:#172033;background:#fff}a{color:#174ea6}header{border-bottom:1px solid #d8dee8;margin-bottom:1.5rem}.id{color:#52606d;overflow-wrap:anywhere}.badge{display:inline-block;padding:.15rem .5rem;border-radius:1rem;background:#fff3cd;color:#664d03;font-weight:600}dl{display:grid;grid-template-columns:max-content 1fr;gap:.45rem 1rem}dt{font-weight:600}dd{margin:0}.description{white-space:pre-wrap}.history{margin-top:2rem}svg{width:100%;height:auto;overflow:visible}.axis{stroke:#8795a8}.series,.legend line{fill:none;stroke-width:2}.prompt{stroke:#2563eb}.completion{stroke:#d946ef}svg text{font-size:12px;fill:#52606d}@media (prefers-color-scheme:dark){body{color:#e5e7eb;background:#111827}a{color:#93c5fd}header{border-color:#374151}.id,svg text{color:#aab6c8;fill:#aab6c8}.badge{background:#4b3b08;color:#fde68a}.axis{stroke:#64748b}}</style>\n</head>\n<body>\n<header><p><a href=\"/?search=" + ($m.id | @uri) + "\">← All models</a></p><h1>" + $name + "</h1><p class=\"id\">" + $id_html + "</p>"
       + (if $m.expiration_date == null or $m.expiration_date == "" then "" else "<p><span class=\"badge\">Retires on " + ($m.expiration_date | h) + "</span></p>" end)
       + "</header>\n<main><dl><dt>Prompt price</dt><dd>" + price_row($m.prompt) + "</dd><dt>Completion price</dt><dd>" + price_row($m.completion) + "</dd><dt>Context</dt><dd>" + (context_text($m.context_length) | h) + "</dd><dt>Input modalities</dt><dd>" + $input + "</dd><dt>Output modalities</dt><dd>" + $output + "</dd><dt>Tokenizer</dt><dd>" + ($m.tokenizer | field(.)) + "</dd><dt>Instruct type</dt><dd>" + ($m.instruct_type | field(.)) + "</dd><dt>Knowledge cutoff</dt><dd>" + ($m.knowledge_cutoff | field(.)) + "</dd>"
@@ -203,7 +213,8 @@ jq -r --arg date "$lastmod" '
   def slug: gsub("[^A-Za-z0-9._/-]"; "-");
   def pathuri: split("/") | map(@uri) | join("/");
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url><loc>https://openrouterlist.jvrck.com/</loc><lastmod>\($date)</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>",
-  (.data | map(.id | {slug: slug}) | map(select(.slug | split("/") | all(.[]; length > 0 and . != "." and . != ".." and (startswith(".") | not)))) | sort_by(.slug)[] | "  <url><loc>https://openrouterlist.jvrck.com/m/\(.slug | pathuri)/</loc><lastmod>\($date)</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>"),
+  (def numeric_string: type == "string" and ([tonumber?] | length == 1);
+   .data | map(select((.pricing.prompt | numeric_string) and (.pricing.completion | numeric_string)) | .id | {slug: slug}) | map(select(.slug | split("/") | all(.[]; length > 0 and . != "." and . != ".." and (startswith(".") | not)))) | sort_by(.slug)[] | "  <url><loc>https://openrouterlist.jvrck.com/m/\(.slug | pathuri)/</loc><lastmod>\($date)</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>"),
   "</urlset>"
 ' "$output" > "$tmp/sitemap.xml" || fail "could not render sitemap"
 
