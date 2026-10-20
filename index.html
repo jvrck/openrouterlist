@@ -2123,7 +2123,8 @@
     function filterFavorites() {
       if (dataTable) {
         if (showFavoritesOnly) {
-          dataTable.column(0).search(favorites.join('|'), true, false).draw();
+          const exactIds = favorites.map(id => String(id).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+          dataTable.column(0).search(exactIds.length ? `^(?:${exactIds.join('|')})$` : '(?!)', true, false).draw();
         } else {
           dataTable.column(0).search('').draw();
         }
