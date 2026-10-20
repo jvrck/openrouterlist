@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.11] - 2026-10-20
+
+### Added
+
+- **Advanced filters & side-by-side compare** (closes #3)
+  - Context buckets, inclusive prompt/completion price bounds, input/output modality filters, and shareable filter state
+  - Compare up to four models with raw prices, capabilities, modalities, price trends, and calculator hand-off
+
+### Technical
+
+- Shared epsilon price helper, URL-only advanced-filter state, and CSV input/output modality columns
+
 ## [0.0.10] - 2026-10-20
 
 ### Added

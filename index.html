@@ -409,6 +409,31 @@
       display: block;
     }
 
+    .advanced-filter-toggle { width: 100%; margin-top: 12px; text-align: left; }
+    .advanced-filter-panel { display: none; margin-top: 10px; padding-top: 14px; border-top: 1px solid var(--border-color); }
+    .advanced-filter-panel.open { display: block; }
+    .advanced-filter-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .advanced-filter-group { min-width: 0; }
+    .advanced-filter-group h3 { font-size: 14px; margin: 0 0 7px; }
+    .advanced-filter-group p { color: var(--text-secondary); font-size: 12px; margin: 4px 0 8px; }
+    .advanced-options { display: flex; flex-wrap: wrap; gap: 7px; }
+    .advanced-options label { border: 1px solid var(--border-color); border-radius: 5px; cursor: pointer; font-size: 13px; padding: 5px 7px; }
+    .advanced-options input { margin-right: 4px; }
+    .price-range { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .price-range input { box-sizing: border-box; min-width: 0; padding: 6px; border: 1px solid var(--border-color); border-radius: 5px; background: var(--bg-primary); color: var(--text-primary); }
+    .price-range input[type=range] { grid-column: span 2; padding: 0; }
+    .modality-unavailable { color: var(--text-secondary); font-size: 13px; margin: 8px 0; }
+    .compare-tray { background: var(--header-bg); border-radius: 7px; bottom: 12px; box-shadow: var(--card-shadow); color: white; display: none; left: 50%; padding: 9px 12px; position: fixed; transform: translateX(-50%); z-index: 20; }
+    .compare-tray.open { display: flex; gap: 8px; align-items: center; }
+    .compare-tray button { background: white; border: 0; border-radius: 4px; color: #1e40af; cursor: pointer; padding: 5px 8px; }
+    .compare-btn { margin-left: 6px; font-size: 11px; padding: 2px 5px; }
+    .compare-message { color: #b91c1c; font-size: 13px; margin: 8px 0; min-height: 1em; }
+    .compare-modal { max-height: 88vh; overflow: auto; }
+    .compare-table { border-collapse: collapse; font-size: 13px; width: 100%; }
+    .compare-table th, .compare-table td { border: 1px solid var(--border-color); padding: 7px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+    .compare-table th { background: var(--bg-secondary); }
+    .compare-different { background: rgba(37, 99, 235, .12); }
+
     .column-selector h3 {
       margin-top: 0;
       color: var(--text-primary);
@@ -1082,6 +1107,11 @@
       .finder-capabilities { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .finder-capabilities strong { grid-column: 1 / -1; }
       .finder-capabilities label { max-width: 100%; }
+      .advanced-filter-grid { grid-template-columns: 1fr; }
+      .compare-table, .compare-table tbody, .compare-table tr, .compare-table th, .compare-table td { display: block; width: auto; }
+      .compare-table tr { border: 1px solid var(--border-color); margin: 10px 0; }
+      .compare-table th { border: 0; }
+      .compare-table td { border-width: 1px 0 0; }
     }
   </style>
 </head>
@@ -1213,6 +1243,22 @@
           <button class="preset-btn" data-preset="web">🔍 Web-Enabled</button>
           <div class="tooltip-content">Filters for models with web search capabilities</div>
         </div>
+      </div>
+
+      <button id="advancedFilterToggle" class="btn advanced-filter-toggle" type="button" aria-expanded="false">Advanced filters <span id="advancedFilterBadge"></span></button>
+      <div id="advancedFilterPanel" class="advanced-filter-panel">
+        <div class="advanced-filter-grid">
+          <div class="advanced-filter-group"><h3>Context length</h3><p>Exact edges: &lt;32k, 32k–131071, 131072–262143, ≥262144. Selects OR together.</p><div class="advanced-options" id="contextFilters">
+            <label><input type="checkbox" value="lt32">&lt;32k <span></span></label><label><input type="checkbox" value="32-128">32k–128k <span></span></label><label><input type="checkbox" value="128-256">128k–256k <span></span></label><label><input type="checkbox" value="ge256">≥256k <span></span></label>
+          </div></div>
+          <div class="advanced-filter-group"><h3>Price $/1M</h3><p>Inclusive bounds; free models match $0. Router/variable pricing is n/a.</p>
+            <div class="price-range"><label>Prompt min<input id="ppmin" type="number" min="0" step="any" placeholder="Any"></label><label>Prompt max<input id="ppmax" type="number" min="0" step="any" placeholder="Any"></label><input id="ppMinRange" type="range" min="0" max="100" step="0.01" value="0" aria-label="Prompt minimum price"><input id="ppMaxRange" type="range" min="0" max="100" step="0.01" value="100" aria-label="Prompt maximum price"></div>
+            <div class="price-range"><label>Completion min<input id="pcmin" type="number" min="0" step="any" placeholder="Any"></label><label>Completion max<input id="pcmax" type="number" min="0" step="any" placeholder="Any"></label><input id="pcMinRange" type="range" min="0" max="100" step="0.01" value="0" aria-label="Completion minimum price"><input id="pcMaxRange" type="range" min="0" max="100" step="0.01" value="100" aria-label="Completion maximum price"></div>
+          </div>
+          <div class="advanced-filter-group" id="modalityFilters"><h3>Input modalities</h3><div class="advanced-options" id="inputModalities"><label><input type="checkbox" value="text">Text</label><label><input type="checkbox" value="image">Image</label><label><input type="checkbox" value="file">File</label><label><input type="checkbox" value="audio">Audio</label><label><input type="checkbox" value="video">Video</label></div><h3>Output modalities</h3><div class="advanced-options" id="outputModalities"><label><input type="checkbox" value="text">Text</label><label><input type="checkbox" value="image">Image</label><label><input type="checkbox" value="audio">Audio</label></div><button id="textOnlyFilter" type="button" class="btn" style="margin-top:8px">Text-only</button></div>
+        </div>
+        <p id="modalityUnavailable" class="modality-unavailable" hidden>Modality data appears after the next data refresh.</p>
+        <p id="routerPriceNote" class="modality-unavailable" hidden></p>
       </div>
       
       <div class="filter-results-info" id="filterResultsInfo">
@@ -1438,6 +1484,9 @@
     </div>
   </div>
 
+  <div id="compareModal" class="modal" aria-hidden="true"><div class="modal-content wide compare-modal" role="dialog" aria-modal="true" aria-labelledby="compareTitle"><button class="close" type="button" aria-label="Close model comparison">&times;</button><h2 id="compareTitle">Compare models</h2><p id="compareMessage" class="compare-message"></p><div id="compareResults"></div><div class="calculator-actions"><button id="compareToCalculator" class="btn">Compare costs in calculator</button><button id="compareCopy" class="btn">Copy Markdown</button></div></div></div>
+  <div id="compareTray" class="compare-tray"><button id="openCompare" type="button">Compare (0)</button><button id="clearCompare" type="button">Clear</button></div>
+
   <!-- Discontinued Models Archive Modal -->
   <div id="discontinuedModal" class="modal">
     <div class="modal-content wide">
@@ -1464,6 +1513,84 @@
     let activeCapabilityFilters = [];
     let capabilityFilterMode = 'all'; // 'all' or 'any'
     let isCapabilityFilterActive = false;
+    const CONTEXT_BUCKETS = ['lt32', '32-128', '128-256', 'ge256'];
+    const INPUT_MODALITIES = ['text', 'image', 'file', 'audio', 'video'];
+    const OUTPUT_MODALITIES = ['text', 'image', 'audio'];
+    let advancedFilters = { ctx: [], ppmin: null, ppmax: null, pcmin: null, pcmax: null, min: [], mout: [] };
+    let advancedPanelOpen = false;
+    let modalityAvailable = false;
+    let compareModelIds = [];
+    let compareTrigger = null;
+    const COMPARE_LIMIT = 4;
+
+    function finiteNonNegative(value) {
+      const text = String(value == null ? '' : value).trim();
+      const number = Number(text);
+      return text && Number.isFinite(number) && number >= 0 ? number : null;
+    }
+    function priceWithinBounds(price, min, max) {
+      if (!Number.isFinite(price) || price < 0) return false;
+      const tolerance = limit => Number.EPSILON * Math.max(1, Math.abs(limit));
+      return (min === null || price >= min - tolerance(min)) && (max === null || price <= max + tolerance(max));
+    }
+    function contextBucketMatches(value, bucket) {
+      const context = Number(value) || 0;
+      return bucket === 'lt32' ? context < 32768 : bucket === '32-128' ? context >= 32768 && context < 131072 : bucket === '128-256' ? context >= 131072 && context < 262144 : context >= 262144;
+    }
+    function rowMatchesAdvancedFilters(row) {
+      const f = advancedFilters;
+      if (f.ctx.length && !f.ctx.some(bucket => contextBucketMatches(row.context_length, bucket))) return false;
+      const hasPriceBound = [f.ppmin, f.ppmax, f.pcmin, f.pcmax].some(value => value !== null);
+      if (hasPriceBound && !hasUsableCalculatorPrice(row)) return false;
+      if (!priceWithinBounds(row.prompt_usd * 1000000, f.ppmin, f.ppmax) && (f.ppmin !== null || f.ppmax !== null)) return false;
+      if (!priceWithinBounds(row.completion_usd * 1000000, f.pcmin, f.pcmax) && (f.pcmin !== null || f.pcmax !== null)) return false;
+      if (f.min.length && !f.min.every(value => (row.input_modalities || []).includes(value))) return false;
+      if (f.mout.length && !f.mout.every(value => (row.output_modalities || []).includes(value))) return false;
+      return true;
+    }
+    function rowMatchesCapabilityFilters(row) {
+      if (!isCapabilityFilterActive) return true;
+      return capabilityFilterMode === 'all' ? activeCapabilityFilters.every(cap => row[cap] === 'Yes') : activeCapabilityFilters.some(cap => row[cap] === 'Yes');
+    }
+    function activeAdvancedCount() {
+      return advancedFilters.ctx.length + advancedFilters.min.length + advancedFilters.mout.length + ['ppmin', 'ppmax', 'pcmin', 'pcmax'].filter(key => advancedFilters[key] !== null).length;
+    }
+    function logSliderPrice(value) { return value <= 0 ? 0 : Math.pow(10, -4 + Number(value) * .06); }
+    function priceSliderValue(price) { return price <= 0 ? 0 : Math.max(0, Math.min(100, (Math.log10(price) + 4) / .06)); }
+    function setAdvancedPanel(open) {
+      advancedPanelOpen = !!open;
+      $('#advancedFilterPanel').toggleClass('open', advancedPanelOpen);
+      $('#advancedFilterToggle').attr('aria-expanded', advancedPanelOpen);
+    }
+    function updateContextCounts() {
+      CONTEXT_BUCKETS.forEach(bucket => $('#contextFilters input[value="' + bucket + '"]').siblings('span').text('(' + allData.filter(row => contextBucketMatches(row.context_length, bucket)).length + ')'));
+    }
+    function updateAdvancedIndicators() {
+      const count = activeAdvancedCount();
+      $('#advancedFilterBadge').text(count ? `(${count} active)` : '');
+      const anything = count || isCapabilityFilterActive;
+      $('#filterResultsInfo').toggleClass('active', !!anything);
+      $('#routerPriceNote').prop('hidden', !['ppmin', 'ppmax', 'pcmin', 'pcmax'].some(key => advancedFilters[key] !== null)).text(`${allData.filter(row => !hasUsableCalculatorPrice(row)).length} n/a (variable/router pricing) hidden by price filter`);
+    }
+    function applyAdvancedFilters() {
+      updateAdvancedIndicators();
+      if (dataTable) dataTable.draw();
+      if (isCardView) renderCardView();
+      updateFilterResultsCount();
+    }
+    function readAdvancedControls() {
+      advancedFilters.ctx = $('#contextFilters input:checked').map(function() { return this.value; }).get();
+      advancedFilters.min = modalityAvailable ? $('#inputModalities input:checked').map(function() { return this.value; }).get() : [];
+      advancedFilters.mout = modalityAvailable ? $('#outputModalities input:checked').map(function() { return this.value; }).get() : [];
+      ['ppmin', 'ppmax', 'pcmin', 'pcmax'].forEach(key => advancedFilters[key] = finiteNonNegative($('#' + key).val()));
+      applyAdvancedFilters();
+    }
+    function clearAdvancedFilters() {
+      $('#contextFilters input, #inputModalities input, #outputModalities input').prop('checked', false);
+      $('#ppmin,#ppmax,#pcmin,#pcmax').val('');
+      $('#ppMinRange,#pcMinRange').val(0); $('#ppMaxRange,#pcMaxRange').val(100);
+      readAdvancedControls();
+    }
 
     // Price history (from data/history/prices.json; degrades gracefully if absent)
     let priceHistory = {};       // id -> {name, first_seen, last_seen, present_now, points:[[date,prompt,completion]]}
@@ -1527,6 +1654,39 @@
     }
 
     const calculatorCostHtml = (value, perRequest) => escHtml(formatCalculatorCost(value, perRequest));
+
+    function renderCompareTray() {
+      $('#compareTray').toggleClass('open', compareModelIds.length > 0);
+      $('#openCompare').text(`Compare (${compareModelIds.length})`);
+    }
+    function addCompareModel(id, trigger) {
+      if (compareModelIds.includes(id)) { compareModelIds = compareModelIds.filter(item => item !== id); }
+      else if (compareModelIds.length >= COMPARE_LIMIT) { $('#compareMessage').text('Compare holds up to 4 models. Remove one to add another.'); }
+      else { compareModelIds.push(id); compareTrigger = trigger || null; }
+      renderCompareTray(); updateURLState(); if (isCardView) renderCardView();
+    }
+    function comparisonPrice(row, field) { return hasUsableCalculatorPrice(row) ? '$' + (row[field] * 1000000).toString() : 'n/a'; }
+    function renderCompare() {
+      const rows = compareModelIds.map(id => allData.find(row => row.id === id)).filter(Boolean);
+      const caps = [['tool_calling', 'Tool calling'], ['structured_outputs', 'Structured outputs'], ['reasoning', 'Reasoning'], ['response_format', 'Response format'], ['web_search', 'Web search']];
+      const fields = [
+        ['Model', row => row.name || row.id], ['ID', row => row.id], ['Created', row => row.created], ['Context', row => row.context_length],
+        ['Prompt $/1M', row => comparisonPrice(row, 'prompt_usd')], ['Completion $/1M', row => comparisonPrice(row, 'completion_usd')],
+        ['3:1 blended $/1M', row => hasUsableCalculatorPrice(row) ? '$' + finderBlendedCost(row).toString() : 'n/a'],
+        ...caps.map(([key, label]) => [label, row => row[key] === 'Yes' ? '✓' : '—'])
+      ];
+      if (modalityAvailable) fields.push(['Input modalities', row => (row.input_modalities || []).join('|') || '—'], ['Output modalities', row => (row.output_modalities || []).join('|') || '—']);
+      fields.push(['30-day price change', row => { const p = priceHistory[row.id] && historyChange(priceHistory[row.id].points, 'prompt', 30); return p && p.pct !== null ? (p.pct < 0 ? '▼ ' : '▲ ') + Math.abs(p.pct).toFixed(0) + '%' : '—'; }]);
+      const html = `<table class="compare-table"><thead><tr><th>Field</th>${rows.map(row => `<th>${escHtml(row.name || row.id)}<br><button class="btn compare-remove" data-model-id="${escHtml(row.id)}">Remove</button></th>`).join('')}</tr></thead><tbody>${fields.map(([label, value]) => { const values = rows.map(row => value(row)); const different = new Set(values).size > 1; return `<tr><th>${escHtml(label)}</th>${values.map(item => `<td class="${different ? 'compare-different' : ''}">${escHtml(item)}</td>`).join('')}</tr>`; }).join('')}</tbody></table>`;
+      $('#compareResults').html(rows.length ? html : '<p class="calculator-empty">Choose 2–4 models to compare.</p>');
+    }
+    function openCompare(trigger) { compareTrigger = trigger || compareTrigger; renderCompare(); $('#compareModal').show().attr('aria-hidden', 'false'); setTimeout(() => $('#compareModal .close').focus(), 0); }
+    function closeCompare() { $('#compareModal').hide().attr('aria-hidden', 'true'); if (compareTrigger && document.contains(compareTrigger)) compareTrigger.focus(); }
+    function compareMarkdown() {
+      const rows = compareModelIds.map(id => allData.find(row => row.id === id)).filter(Boolean);
+      const fields = [['Model', row => row.name || row.id], ['ID', row => row.id], ['Context', row => row.context_length], ['Prompt $/1M', row => comparisonPrice(row, 'prompt_usd')], ['Completion $/1M', row => comparisonPrice(row, 'completion_usd')], ['3:1 blended $/1M', row => hasUsableCalculatorPrice(row) ? '$' + finderBlendedCost(row) : 'n/a']];
+      return '| Field | ' + rows.map(row => (row.name || row.id).replace(/\|/g, '\\|')).join(' | ') + ' |\n|---|' + rows.map(() => '---').join('|') + '|\n' + fields.map(([label, value]) => '| ' + label + ' | ' + rows.map(row => String(value(row)).replace(/\|/g, '\\|')).join(' | ') + ' |').join('\n');
+    }
 
     function calculatorDefaultModelIds() {
       const favoriteRows = allData.filter(row => favorites.includes(row.id));
@@ -1684,8 +1844,8 @@
         if (!hasUsableCalculatorPrice(row)) return false;
         if ((Number(row.context_length) || 0) < state.context) return false;
         if (state.caps.some(cap => row[cap] !== 'Yes')) return false;
-        if (state.prompt !== null && row.prompt_usd * 1000000 > state.prompt + Number.EPSILON * Math.max(1, Math.abs(state.prompt))) return false;
-        if (state.completion !== null && row.completion_usd * 1000000 > state.completion + Number.EPSILON * Math.max(1, Math.abs(state.completion))) return false;
+        if (!priceWithinBounds(row.prompt_usd * 1000000, null, state.prompt)) return false;
+        if (!priceWithinBounds(row.completion_usd * 1000000, null, state.completion)) return false;
         if (state.free && !(row.prompt_usd === 0 && row.completion_usd === 0)) return false;
         return !query || row.id.toLowerCase().includes(query) || String(row.name || '').toLowerCase().includes(query);
       }).sort((a, b) => finderBlendedCost(a) - finderBlendedCost(b) || a.id.localeCompare(b.id));
@@ -1997,6 +2157,7 @@
         const isChecked = $(this).find('input').prop('checked');
         $(this).toggleClass('checked', isChecked);
       });
+      updateAdvancedIndicators();
     }
     
     function applyCapabilityFilters() {
@@ -2012,7 +2173,7 @@
     }
     
     function updateFilterResultsCount() {
-      if (!isCapabilityFilterActive) return;
+      if (!isCapabilityFilterActive && !activeAdvancedCount()) return;
       
       let filteredCount = 0;
       
@@ -2029,18 +2190,8 @@
       let data = showFavoritesOnly ? 
         allData.filter(row => favorites.includes(row.id)) : 
         allData;
-      
-      if (!isCapabilityFilterActive) return data;
-      
-      return data.filter(row => {
-        if (capabilityFilterMode === 'all') {
-          // Match ALL selected capabilities
-          return activeCapabilityFilters.every(cap => row[cap] === 'Yes');
-        } else {
-          // Match ANY selected capability
-          return activeCapabilityFilters.some(cap => row[cap] === 'Yes');
-        }
-      });
+      const search = dataTable ? String(dataTable.search() || '').trim().toLowerCase() : '';
+      return data.filter(row => rowMatchesCapabilityFilters(row) && rowMatchesAdvancedFilters(row) && (!search || Object.values(row).join(' ').toLowerCase().includes(search)));
     }
     
     function clearCapabilityFilters() {
@@ -2089,6 +2240,13 @@
         params.set('capabilities', activeCapabilityFilters.join(','));
         params.set('capMode', capabilityFilterMode);
       }
+
+      if (advancedFilters.ctx.length) params.set('ctx', advancedFilters.ctx.join(','));
+      [['ppmin', advancedFilters.ppmin], ['ppmax', advancedFilters.ppmax], ['pcmin', advancedFilters.pcmin], ['pcmax', advancedFilters.pcmax]].forEach(([key, value]) => { if (value !== null) params.set(key, value); });
+      if (advancedFilters.min.length) params.set('min', advancedFilters.min.join(','));
+      if (advancedFilters.mout.length) params.set('mout', advancedFilters.mout.join(','));
+      if (advancedPanelOpen) params.set('afx', '1');
+      if (compareModelIds.length) params.set('cmp', compareModelIds.join(','));
       
       const visibleColumns = [];
       $('.column-checkbox input:checked').each(function() {
@@ -2162,6 +2320,27 @@
         
         updateCapabilityFilters();
       }
+
+      const uniqueKnown = (raw, values) => {
+        const seen = new Set();
+        return String(raw || '').split(',').filter(value => values.includes(value) && !seen.has(value) && seen.add(value));
+      };
+      advancedFilters.ctx = uniqueKnown(params.get('ctx'), CONTEXT_BUCKETS);
+      advancedFilters.min = modalityAvailable ? uniqueKnown(params.get('min'), INPUT_MODALITIES) : [];
+      advancedFilters.mout = modalityAvailable ? uniqueKnown(params.get('mout'), OUTPUT_MODALITIES) : [];
+      [['ppmin', '#ppmin'], ['ppmax', '#ppmax'], ['pcmin', '#pcmin'], ['pcmax', '#pcmax']].forEach(([key, selector]) => {
+        const value = finiteNonNegative(params.get(key));
+        advancedFilters[key] = value;
+        if (value !== null) $(selector).val(value);
+      });
+      advancedFilters.ctx.forEach(value => $('#contextFilters input[value="' + value + '"]').prop('checked', true));
+      advancedFilters.min.forEach(value => $('#inputModalities input[value="' + value + '"]').prop('checked', true));
+      advancedFilters.mout.forEach(value => $('#outputModalities input[value="' + value + '"]').prop('checked', true));
+      [['ppmin', '#ppMinRange'], ['ppmax', '#ppMaxRange'], ['pcmin', '#pcMinRange'], ['pcmax', '#pcMaxRange']].forEach(([key, selector]) => { if (advancedFilters[key] !== null) $(selector).val(priceSliderValue(advancedFilters[key])); });
+      compareModelIds = uniqueKnown(params.get('cmp'), allData.map(row => row.id)).slice(0, COMPARE_LIMIT);
+      setAdvancedPanel(params.get('afx') === '1' || activeAdvancedCount() > 0);
+      applyAdvancedFilters();
+      renderCompareTray();
       
       if (params.has('columns')) {
         const visibleColumns = params.get('columns').split(',').map(Number);
@@ -2236,6 +2415,7 @@
               </div>
               <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" 
                       data-model-id="${row.id}">${isFavorited ? '★' : '☆'}</button>
+              <button class="btn compare-btn" data-model-id="${row.id}">Compare</button>
               ${priceHistory[row.id] ? `<button class="history-btn" data-model-id="${row.id}" title="Price history">📈</button>` : ''}
             </div>
             <div class="model-card-details">
@@ -2279,6 +2459,7 @@
                 <span class="model-card-label">Web Search:</span>
                 <span class="model-card-value">✓</span>
               </div>` : ''}
+              ${modalityAvailable ? `<div class="model-card-row"><span class="model-card-label">Modalities:</span><span class="model-card-value">${(row.input_modalities || []).join('|') || '—'} → ${(row.output_modalities || []).join('|') || '—'}</span></div>` : ''}
             </div>
           </div>
         `);
@@ -2300,10 +2481,12 @@
           if (e.key === 'Escape') {
             const calculatorOpen = $('#calculatorModal').is(':visible');
             const finderOpen = $('#finderModal').is(':visible');
+            const compareOpen = $('#compareModal').is(':visible');
             if ($('#calculatorModal').is(':visible')) closeCalculator();
             if ($('#finderModal').is(':visible')) closeFinder();
-            $('.modal').not('#calculatorModal, #finderModal').hide();
-            if (!calculatorOpen && !finderOpen) $(e.target).blur();
+            if ($('#compareModal').is(':visible')) closeCompare();
+            $('.modal').not('#calculatorModal, #finderModal, #compareModal').hide();
+            if (!calculatorOpen && !finderOpen && !compareOpen) $(e.target).blur();
           }
           return;
         }
@@ -2347,8 +2530,9 @@
             break;
           case 'x':
             // Clear all filters
-            if (isCapabilityFilterActive) {
+            if (isCapabilityFilterActive || activeAdvancedCount()) {
               clearCapabilityFilters();
+              clearAdvancedFilters();
               updateURLState();
             }
             break;
@@ -2364,7 +2548,8 @@
           case 'Escape':
             if ($('#calculatorModal').is(':visible')) closeCalculator();
             if ($('#finderModal').is(':visible')) closeFinder();
-            $('.modal').not('#calculatorModal, #finderModal').hide();
+            if ($('#compareModal').is(':visible')) closeCompare();
+            $('.modal').not('#calculatorModal, #finderModal, #compareModal').hide();
             break;
         }
       });
@@ -2455,8 +2640,26 @@
       
       $('#clearFiltersBtn').on('click', function() {
         clearCapabilityFilters();
+        clearAdvancedFilters();
         updateURLState();
       });
+
+      $('#advancedFilterToggle').on('click', function() { setAdvancedPanel(!advancedPanelOpen); updateURLState(); });
+      $('#contextFilters input, #inputModalities input, #outputModalities input, #ppmin, #ppmax, #pcmin, #pcmax').on('input change', function() {
+        const key = this.id;
+        if (key === 'ppmin' || key === 'ppmax' || key === 'pcmin' || key === 'pcmax') $('#' + key.replace('min', 'MinRange').replace('max', 'MaxRange')).val(priceSliderValue(finiteNonNegative(this.value) || 0));
+        readAdvancedControls(); updateURLState();
+      });
+      [['ppMinRange', 'ppmin'], ['ppMaxRange', 'ppmax'], ['pcMinRange', 'pcmin'], ['pcMaxRange', 'pcmax']].forEach(([range, number]) => {
+        $('#' + range).on('input change', function() { $('#' + number).val(logSliderPrice(this.value)); readAdvancedControls(); updateURLState(); });
+      });
+      $('#textOnlyFilter').on('click', function() { if (!modalityAvailable) return; $('#inputModalities input, #outputModalities input').prop('checked', false); $('#inputModalities input[value="text"], #outputModalities input[value="text"]').prop('checked', true); readAdvancedControls(); updateURLState(); });
+      $(document).on('click', '.compare-btn', function(e) { e.preventDefault(); e.stopPropagation(); addCompareModel(String($(this).data('model-id')), this); });
+      $('#openCompare').on('click', function() { openCompare(this); });
+      $('#clearCompare').on('click', function() { compareModelIds = []; renderCompareTray(); updateURLState(); if (isCardView) renderCardView(); });
+      $(document).on('click', '.compare-remove', function() { compareModelIds = compareModelIds.filter(id => id !== String($(this).data('model-id'))); renderCompare(); renderCompareTray(); updateURLState(); });
+      $('#compareToCalculator').on('click', function() { calculatorModelIds = compareModelIds.slice(0, CALCULATOR_LIMIT); calculatorSelectionInitialized = true; closeCompare(); openCalculator(document.getElementById('calculatorBtn')); });
+      $('#compareCopy').on('click', function() { const text = compareMarkdown(); if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text); else { const area = $('<textarea>').val(text).appendTo('body').select(); document.execCommand('copy'); area.remove(); } $(this).text('Copied!'); setTimeout(() => $(this).text('Copy Markdown'), 1600); });
       
       $('.preset-btn').on('click', function() {
         const preset = $(this).data('preset');
@@ -2590,6 +2793,8 @@
           closeCalculator();
         } else if ($(this).closest('.modal').attr('id') === 'finderModal') {
           closeFinder();
+        } else if ($(this).closest('.modal').attr('id') === 'compareModal') {
+          closeCompare();
         } else {
           $(this).closest('.modal').hide();
         }
@@ -2613,6 +2818,7 @@
         if ($(e.target).hasClass('modal')) {
           if ($(e.target).attr('id') === 'calculatorModal') closeCalculator();
           else if ($(e.target).attr('id') === 'finderModal') closeFinder();
+          else if ($(e.target).attr('id') === 'compareModal') closeCompare();
           else $(e.target).hide();
         }
       });
@@ -2685,7 +2891,7 @@
         // Get the headers from the first row of the CSV
         var headers = lines[0].split(",");
         var headerHtml = "";
-        headers.forEach(function(header) {
+        headers.filter(function(header) { return !['input_modalities', 'output_modalities'].includes(header.trim().toLowerCase()); }).forEach(function(header) {
           var trimmedHeader = header.trim();
           var newHeader = headerMapping[trimmedHeader] || trimmedHeader;
           headerHtml += "<th>" + newHeader + "</th>";
@@ -2717,6 +2923,10 @@
               
               if (columnName === "name") {
                 rowData.name = cleanedValue;
+              }
+              if (columnName === 'input_modalities' || columnName === 'output_modalities') {
+                rowData[columnName] = cleanedValue ? cleanedValue.split('|').filter(Boolean) : [];
+                modalityAvailable = true;
               }
   
               if (columnName === "pricing.prompt" || columnName === "pricing.completion") {
@@ -2763,7 +2973,8 @@
                 // Add favorite button and hyperlink to the Model Name field
                 var favoriteBtn = `<button class="favorite-btn" data-model-id="${currentId}">☆</button>`;
                 var histBtn = priceHistory[currentId] ? `<button class="history-btn" data-model-id="${currentId}" title="Price history" aria-label="Price history">📈</button>` : '';
-                rowHtml += `<td>${favoriteBtn}<a href="https://openrouter.ai/models/${currentId}" target="_blank">${cleanedValue}</a>${histBtn}</td>`;
+                var compareBtn = `<button class="btn compare-btn" data-model-id="${currentId}">Compare</button>`;
+                rowHtml += `<td>${favoriteBtn}<a href="https://openrouter.ai/models/${currentId}" target="_blank">${cleanedValue}</a>${histBtn}${compareBtn}</td>`;
               } else if (columnName === "context_length") {
                 rowData.context_length = cleanedValue;
                 rowHtml += "<td>" + cleanedValue + "</td>";
@@ -2782,7 +2993,7 @@
               } else if (columnName === "web_search") {
                 rowData.web_search = cleanedValue;
                 rowHtml += "<td>" + (cleanedValue === "Yes" ? "✓" : "-") + "</td>";
-              } else {
+              } else if (columnName !== 'input_modalities' && columnName !== 'output_modalities') {
                 rowHtml += "<td>" + cleanedValue + "</td>";
               }
             });
@@ -2803,21 +3014,14 @@
           toggleFavorite(modelId);
         });
   
-        // Setup custom DataTables filter for capabilities
+        $('#modalityFilters').prop('hidden', !modalityAvailable);
+        $('#modalityUnavailable').prop('hidden', modalityAvailable);
+        updateContextCounts();
+        // Shared table predicate: capability and advanced filters must match the card path.
         $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
-          if (!isCapabilityFilterActive) return true;
-          
-          // Get the row data from our allData array
           const rowData = allData[dataIndex];
           if (!rowData) return true;
-          
-          if (capabilityFilterMode === 'all') {
-            // Match ALL selected capabilities
-            return activeCapabilityFilters.every(cap => rowData[cap] === 'Yes');
-          } else {
-            // Match ANY selected capability
-            return activeCapabilityFilters.some(cap => rowData[cap] === 'Yes');
-          }
+          return rowMatchesCapabilityFilters(rowData) && rowMatchesAdvancedFilters(rowData);
         });
         
         // Initialize DataTables
