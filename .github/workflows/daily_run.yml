@@ -25,7 +25,11 @@ jobs:
         stamp="$( (tr -d '[:space:]' < data/updated) 2>/dev/null || true)"
         if printf '%s' "$stamp" | grep -Eq '^[0-9]{8}_[0-9]{6}$'; then
           d="${stamp:0:4}-${stamp:4:2}-${stamp:6:2}"
-          sed -i.bak -E "s#<lastmod>[^<]*</lastmod>#<lastmod>${d}</lastmod>#" sitemap.xml && rm -f sitemap.xml.bak
+          if [ "$(date -u -d "$d" +%F 2>/dev/null)" = "$d" ]; then
+            sed -i.bak -E "s#<lastmod>[^<]*</lastmod>#<lastmod>${d}</lastmod>#" sitemap.xml && rm -f sitemap.xml.bak
+          else
+            echo "data/updated calendar date invalid; sitemap unchanged"
+          fi
         else
           echo "data/updated missing or malformed; sitemap unchanged"
         fi
