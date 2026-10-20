@@ -1684,8 +1684,8 @@
         if (!hasUsableCalculatorPrice(row)) return false;
         if ((Number(row.context_length) || 0) < state.context) return false;
         if (state.caps.some(cap => row[cap] !== 'Yes')) return false;
-        if (state.prompt !== null && row.prompt_usd * 1000000 > state.prompt) return false;
-        if (state.completion !== null && row.completion_usd * 1000000 > state.completion) return false;
+        if (state.prompt !== null && row.prompt_usd * 1000000 > state.prompt + Number.EPSILON * Math.max(1, Math.abs(state.prompt))) return false;
+        if (state.completion !== null && row.completion_usd * 1000000 > state.completion + Number.EPSILON * Math.max(1, Math.abs(state.completion))) return false;
         if (state.free && !(row.prompt_usd === 0 && row.completion_usd === 0)) return false;
         return !query || row.id.toLowerCase().includes(query) || String(row.name || '').toLowerCase().includes(query);
       }).sort((a, b) => finderBlendedCost(a) - finderBlendedCost(b) || a.id.localeCompare(b.id));
