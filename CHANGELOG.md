@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.13] - 2026-10-20
+
+### Changed
+
+- Refreshed CLAUDE.md to the current architecture (closes #24)
+
 ## [0.0.12] - 2026-10-20
 
 ### Added
