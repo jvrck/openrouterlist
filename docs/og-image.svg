@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">OpenRouterList</title>
+  <desc id="description">Compare pricing for 400 plus AI models.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#eff6ff"/>
+      <stop offset="1" stop-color="#dbeafe"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#1e3a8a" flood-opacity=".16"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <circle cx="1080" cy="100" r="260" fill="#bfdbfe" opacity=".58"/>
+  <circle cx="90" cy="580" r="210" fill="#dbeafe"/>
+  <g transform="translate(110 104)">
+    <rect width="980" height="422" rx="28" fill="#fff" filter="url(#shadow)"/>
+    <rect width="980" height="76" rx="28" fill="#2563eb"/>
+    <rect y="48" width="980" height="28" fill="#2563eb"/>
+    <g fill="#fff">
+      <rect x="42" y="25" width="25" height="25" rx="5" opacity=".95"/>
+      <path d="M49 33h11M49 41h11M49 49h6" stroke="#2563eb" stroke-linecap="round" stroke-width="3"/>
+      <text x="88" y="51" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">OpenRouterList</text>
+    </g>
+    <text x="68" y="171" fill="#172554" font-family="Arial, Helvetica, sans-serif" font-size="57" font-weight="700">Compare pricing for</text>
+    <text x="68" y="245" fill="#2563eb" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="800">400+ AI models</text>
+    <g transform="translate(68 290)" fill="#bfdbfe">
+      <rect width="842" height="12" rx="6"/>
+      <rect y="40" width="530" height="12" rx="6"/>
+      <rect y="80" width="680" height="12" rx="6"/>
+    </g>
+  </g>
+  <text x="600" y="589" text-anchor="middle" fill="#1e3a8a" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="600">openrouterlist.jvrck.com</text>
+</svg>

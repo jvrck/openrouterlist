@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-labelledby="title">
+  <title>OpenRouterList</title>
+  <rect width="180" height="180" rx="36" fill="#2563eb"/>
+  <path d="M44 46h92v88H44z" fill="#fff" opacity=".14"/>
+  <path d="M57 65h66M57 90h66M57 115h38" stroke="#fff" stroke-linecap="round" stroke-width="12"/>
+  <circle cx="128" cy="115" r="15" fill="#93c5fd"/>
+</svg>

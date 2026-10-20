@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.0.12] - 2026-10-20
+
+### Added
+
+- Favicon set for browser tabs, bookmarks, and Apple touch icons (closes #27)
+- Static share image for Open Graph and Twitter link previews (closes #31)
+- Relative, local-time display for the data update timestamp (closes #32)
+
+### Changed
+
+- Sitemap `lastmod` now tracks the data update date (closes #33)
+
+### Fixed
+
+- Visible model count now follows the loaded data; meta description no longer names GPT-4 (closes #34)
+
+### Removed
+
+- Broken PDF export button and dead Flash export plugin (closes #23)
+
 ## [0.0.11] - 2026-10-20
 
 ### Added

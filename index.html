@@ -6,11 +6,15 @@
   <title>OpenRouter Model Pricing & Comparison | AI Model Cost Calculator</title>
   
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Compare AI model pricing across 400+ models on OpenRouter. Real-time pricing data for GPT-4, Claude, Llama, and more. Updated every 12 hours with prompt and completion costs per million tokens.">
+  <!-- Static "400+" copies in metadata, share imagery, and the load-failure fallback are intentionally approximate; the visible count is set live from the CSV. -->
+  <meta name="description" content="Compare AI model pricing across 400+ models on OpenRouter. Real-time prompt and completion prices per 1M tokens, updated every 12 hours.">
   <meta name="keywords" content="OpenRouter pricing, AI model costs, LLM pricing comparison, GPT-4 pricing, Claude pricing, AI API costs, model comparison tool, token pricing calculator, language model costs">
   <meta name="author" content="OpenRouterList">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://openrouterlist.jvrck.com/">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="OpenRouter Model Pricing & Comparison Tool">
@@ -18,12 +22,18 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://openrouterlist.jvrck.com/">
   <meta property="og:site_name" content="OpenRouterList">
+  <meta property="og:image" content="https://openrouterlist.jvrck.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="OpenRouterList: compare pricing for 400+ AI models">
   
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="OpenRouter Model Pricing & Comparison">
   <meta name="twitter:description" content="Compare AI model pricing across 400+ models. Real-time data updated every 12 hours.">
   <meta name="twitter:url" content="https://openrouterlist.jvrck.com/">
+  <meta name="twitter:image" content="https://openrouterlist.jvrck.com/og-image.png">
+  <meta name="twitter:image:alt" content="OpenRouterList: compare pricing for 400+ AI models">
   
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
@@ -57,7 +67,6 @@
   <!-- Include DataTables JS -->
   <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.flash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
@@ -889,11 +898,6 @@
       font-size: 16px;
     }
 
-    .dt-button.buttons-pdf:before {
-      content: "📑";
-      font-size: 16px;
-    }
-
     .dt-button.buttons-print:before {
       content: "🖨️";
       font-size: 16px;
@@ -1148,7 +1152,7 @@
     <section class="info-section" role="region" aria-label="About this tool">
       <h2 style="font-size: 1.2em; margin-top: 0; color: var(--text-primary);">Real-Time AI Model Pricing Data</h2>
       <p id="updatedDate"></p>
-      <p>Compare pricing across <strong>400+ AI language models</strong> available through <a href="https://openrouter.ai/" target="_blank" rel="noopener">OpenRouter</a>. This comprehensive pricing comparison tool helps developers and businesses find the most cost-effective AI models for their specific needs.</p>
+      <p>Compare pricing across <strong><span id="modelCount">400+</span> AI language models</strong> available through <a href="https://openrouter.ai/" target="_blank" rel="noopener">OpenRouter</a>. This comprehensive pricing comparison tool helps developers and businesses find the most cost-effective AI models for their specific needs.</p>
       <p><strong>Features:</strong> Search and filter models by name, capabilities, context length, and cost. Export data in multiple formats. Pricing shown per million tokens for both prompts and completions.</p>
       <p>Data is automatically updated every 12 hours to ensure accuracy. Source code available on <a href="https://github.com/jvrck/openrouterlist" target="_blank" rel="noopener">GitHub</a>.</p>
     </section>
@@ -2864,18 +2868,70 @@
         }
       });
       
-      // Fetch and display the updated date
-      $.get("data/updated", function(data) {
-        var dateStr = data.trim();
-        var year = dateStr.substring(0, 4);
-        var month = dateStr.substring(4, 6);
-        var day = dateStr.substring(6, 8);
-        var hour = dateStr.substring(9, 11);
-        var minute = dateStr.substring(11, 13);
-        var second = dateStr.substring(13, 15);
-        var formattedDate = `Updated - Date: ${year}-${month}-${day} ${hour}:${minute}:${second} UTC`;
-        $("#updatedDate").text(formattedDate);
+      function parseUpdatedStamp(stamp) {
+        const match = String(stamp || '').trim().match(/^(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})$/);
+        if (!match) return null;
+        const date = new Date(Date.UTC(
+          Number(match[1]), Number(match[2]) - 1, Number(match[3]),
+          Number(match[4]), Number(match[5]), Number(match[6])
+        ));
+        return date.getUTCFullYear() === Number(match[1]) &&
+          date.getUTCMonth() === Number(match[2]) - 1 &&
+          date.getUTCDate() === Number(match[3]) &&
+          date.getUTCHours() === Number(match[4]) &&
+          date.getUTCMinutes() === Number(match[5]) &&
+          date.getUTCSeconds() === Number(match[6]) ? date : null;
+      }
+
+      function formatUpdatedRelative(dateUtc, now) {
+        const differenceMs = now.getTime() - dateUtc.getTime();
+        if (differenceMs < 60000) return 'just now';
+        const minutes = Math.floor(differenceMs / 60000);
+        const rtf = new Intl.RelativeTimeFormat(undefined, { numeric: 'always' });
+        if (minutes < 60) return rtf.format(-minutes, 'minute');
+        const hours = Math.floor(minutes / 60);
+        if (hours < 24) return rtf.format(-hours, 'hour');
+        const days = Math.floor(hours / 24);
+        if (days < 30) return rtf.format(-days, 'day');
+        const months = Math.floor(days / 30);
+        if (months < 12) return rtf.format(-months, 'month');
+        return rtf.format(-Math.max(1, Math.floor(days / 365)), 'year');
+      }
+
+      function formatUpdatedTitle(dateUtc) {
+        const localDateTime = dateUtc.toLocaleString(undefined, {
+          dateStyle: 'medium', timeStyle: 'short'
+        });
+        const timeZoneName = new Intl.DateTimeFormat(undefined, { timeZoneName: 'short' })
+          .formatToParts(dateUtc)
+          .find(part => part.type === 'timeZoneName');
+        return `${localDateTime} ${timeZoneName ? timeZoneName.value : ''}`.trim();
+      }
+
+      let updatedDateUtc = null;
+      function renderUpdatedDate() {
+        const updatedDate = $('#updatedDate');
+        if (!updatedDateUtc) {
+          updatedDate.hide();
+          return;
+        }
+        const time = $('<time>', {
+          id: 'updatedTime',
+          datetime: updatedDateUtc.toISOString(),
+          title: formatUpdatedTitle(updatedDateUtc)
+        }).text(`Updated ${formatUpdatedRelative(updatedDateUtc, new Date())}`);
+        updatedDate.empty().append(time).show();
+      }
+
+      // data/updated is an explicitly UTC timestamp and means data last changed.
+      $.get('data/updated').done(function(data) {
+        updatedDateUtc = parseUpdatedStamp(data);
+        renderUpdatedDate();
+      }).fail(function() {
+        updatedDateUtc = null;
+        renderUpdatedDate();
       });
+      setInterval(renderUpdatedDate, 60000);
 
       // Load price history first (for trend badges + sparklines), then render the table.
       function loadHistoryThenTable() {
@@ -3024,6 +3080,9 @@
             allData.push(rowData);
           }
         }
+
+        $('#modelCount').text(allData.length);
+        $('#calcModelPicker').attr('placeholder', `Search ${allData.length} models to add (up to 10)`);
         
         // Update favorite buttons
         updateFavoriteButtons();
@@ -3073,11 +3132,6 @@
               extend: 'excel',
               text: 'Excel',
               className: 'buttons-excel'
-            },
-            {
-              extend: 'pdf',
-              text: 'PDF',
-              className: 'buttons-pdf'
             },
             {
               extend: 'print',
