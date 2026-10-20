@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.15] - 2026-10-21
+
+### Fixed
+
+- Report significant offsetting prompt/completion price moves and give Atom feed entries distinct deterministic update times (closes #40)
+
 ## [0.0.14] - 2026-10-21
 
 ### Added

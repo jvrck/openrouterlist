@@ -59,6 +59,11 @@ def zero(value):
     return abs(value) < EPSILON
 
 
+def significant_component_move(old, new):
+    delta = new - old
+    return abs(delta) >= 0.01 or (old > EPSILON and abs(delta) / old * 100 >= 1)
+
+
 def price_text(value):
     if value is None:
         return "n/a"
@@ -149,8 +154,16 @@ def build_changes(ledger, snapshot):
             else:
                 true_pct = ((new_blended - old_blended) / old_blended) * 100
                 kind = "increase" if new_blended > old_blended else "decrease"
-            if true_pct is not None and abs(true_pct) < 1 and abs(new_blended - old_blended) < 0.01:
-                continue
+                if abs(true_pct) < 1 and abs(new_blended - old_blended) < 0.01:
+                    prompt_delta = new[0] - old[0]
+                    completion_delta = new[1] - old[1]
+                    opposite_directions = ((prompt_delta > EPSILON and completion_delta < -EPSILON) or
+                                           (prompt_delta < -EPSILON and completion_delta > EPSILON))
+                    if (opposite_directions and significant_component_move(old[0], new[0]) and
+                            significant_component_move(old[1], new[1])):
+                        kind, true_pct = "mixed", None
+                    else:
+                        continue
             pct = None if old_blended is None or old_blended < 0.01 else true_pct
             price_changes.append({"id": model_id, "name": name, "date": new_day.isoformat(), "kind": kind,
                                   "prompt": [old[0], new[0]], "completion": [old[1], new[1]], "pct": pct})
@@ -186,9 +199,24 @@ def feed_for(changes):
     for item in changes["removed_models"]:
         events.append((item["last_seen"], item["id"], "removed_model", item))
     events.sort(key=lambda event: (-parse_day(event[0], "feed event date").toordinal(), event[1], event[2]))
+    dated_events = []
+    index = 0
+    while index < len(events):
+        day = events[index][0]
+        end = index
+        while end < len(events) and events[end][0] == day:
+            end += 1
+        count = end - index
+        if count > 86400:
+            fail(f"too many feed events for {day}")
+        for offset, event in enumerate(events[index:end]):
+            updated = dt.datetime.combine(parse_day(day, "feed event date"), dt.time(), dt.timezone.utc)
+            updated += dt.timedelta(seconds=count - 1 - offset)
+            dated_events.append((*event, updated.strftime("%Y-%m-%dT%H:%M:%SZ")))
+        index = end
     text = lambda value: html.escape(str(value), quote=True)
     entries = []
-    for day, model_id, kind, item in events[:50]:
+    for day, model_id, kind, item, updated in dated_events[:50]:
         if kind in ("new_model", "removed_model"):
             action = "new model" if kind == "new_model" else "removed model"
             title = f"{item['name']}: {action}"
@@ -203,16 +231,17 @@ def feed_for(changes):
         entries.append("  <entry>\n"
                        f"    <id>tag:openrouterlist.jvrck.com,{text(day)}:{text(kind)}:{text(tag_id)}</id>\n"
                        f"    <title>{text(title)}</title>\n"
-                       f"    <updated>{text(day)}T00:00:00Z</updated>\n"
+                       f"    <updated>{text(updated)}</updated>\n"
                        f"    <link rel=\"alternate\" href=\"{text(href)}\"/>\n"
                        f"    <summary>{text(summary)}</summary>\n"
                        "  </entry>")
+    feed_updated = max(f"{as_of}T00:00:00Z", dated_events[0][4] if dated_events else "")
     return ("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
             "<feed xmlns=\"http://www.w3.org/2005/Atom\">\n"
             "  <title>OpenRouterList price changes</title>\n"
             "  <subtitle>Recent OpenRouter model pricing, additions, and removals</subtitle>\n"
             "  <id>tag:openrouterlist.jvrck.com,2026:feed</id>\n"
-            f"  <updated>{as_of}T00:00:00Z</updated>\n"
+            f"  <updated>{feed_updated}</updated>\n"
             "  <author><name>OpenRouterList</name></author>\n"
             f"  <link rel=\"self\" href=\"{SITE}/feed.xml\"/>\n"
             f"  <link rel=\"alternate\" href=\"{SITE}/\"/>\n"
