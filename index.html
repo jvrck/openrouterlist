@@ -423,10 +423,13 @@
     .price-range input { box-sizing: border-box; min-width: 0; padding: 6px; border: 1px solid var(--border-color); border-radius: 5px; background: var(--bg-primary); color: var(--text-primary); }
     .price-range input[type=range] { grid-column: span 2; padding: 0; }
     .modality-unavailable { color: var(--text-secondary); font-size: 13px; margin: 8px 0; }
+    #textOnlyFilter.active { background: var(--header-bg); color: white; }
     .compare-tray { background: var(--header-bg); border-radius: 7px; bottom: 12px; box-shadow: var(--card-shadow); color: white; display: none; left: 50%; padding: 9px 12px; position: fixed; transform: translateX(-50%); z-index: 20; }
     .compare-tray.open { display: flex; gap: 8px; align-items: center; }
     .compare-tray button { background: white; border: 0; border-radius: 4px; color: #1e40af; cursor: pointer; padding: 5px 8px; }
-    .compare-btn { margin-left: 6px; font-size: 11px; padding: 2px 5px; }
+    .compare-btn { margin-left: 6px; font-size: 14px; padding: 1px 4px; }
+    .compare-btn.selected { background: var(--header-bg); color: white; }
+    .compare-tray-message { font-size: 12px; font-weight: 600; max-width: 180px; }
     .compare-message { color: #b91c1c; font-size: 13px; margin: 8px 0; min-height: 1em; }
     .compare-modal { max-height: 88vh; overflow: auto; }
     .compare-table { border-collapse: collapse; font-size: 13px; width: 100%; }
@@ -1255,7 +1258,7 @@
             <div class="price-range"><label>Prompt min<input id="ppmin" type="number" min="0" step="any" placeholder="Any"></label><label>Prompt max<input id="ppmax" type="number" min="0" step="any" placeholder="Any"></label><input id="ppMinRange" type="range" min="0" max="100" step="0.01" value="0" aria-label="Prompt minimum price"><input id="ppMaxRange" type="range" min="0" max="100" step="0.01" value="100" aria-label="Prompt maximum price"></div>
             <div class="price-range"><label>Completion min<input id="pcmin" type="number" min="0" step="any" placeholder="Any"></label><label>Completion max<input id="pcmax" type="number" min="0" step="any" placeholder="Any"></label><input id="pcMinRange" type="range" min="0" max="100" step="0.01" value="0" aria-label="Completion minimum price"><input id="pcMaxRange" type="range" min="0" max="100" step="0.01" value="100" aria-label="Completion maximum price"></div>
           </div>
-          <div class="advanced-filter-group" id="modalityFilters"><h3>Input modalities</h3><div class="advanced-options" id="inputModalities"><label><input type="checkbox" value="text">Text</label><label><input type="checkbox" value="image">Image</label><label><input type="checkbox" value="file">File</label><label><input type="checkbox" value="audio">Audio</label><label><input type="checkbox" value="video">Video</label></div><h3>Output modalities</h3><div class="advanced-options" id="outputModalities"><label><input type="checkbox" value="text">Text</label><label><input type="checkbox" value="image">Image</label><label><input type="checkbox" value="audio">Audio</label></div><button id="textOnlyFilter" type="button" class="btn" style="margin-top:8px">Text-only</button></div>
+          <div class="advanced-filter-group" id="modalityFilters"><h3>Input modalities</h3><div class="advanced-options" id="inputModalities"><label><input type="checkbox" value="text">Text</label><label><input type="checkbox" value="image">Image</label><label><input type="checkbox" value="file">File</label><label><input type="checkbox" value="audio">Audio</label><label><input type="checkbox" value="video">Video</label></div><h3>Output modalities</h3><div class="advanced-options" id="outputModalities"><label><input type="checkbox" value="text">Text</label><label><input type="checkbox" value="image">Image</label><label><input type="checkbox" value="audio">Audio</label></div><button id="textOnlyFilter" type="button" class="btn" style="margin-top:8px" aria-pressed="false">Text-only</button></div>
         </div>
         <p id="modalityUnavailable" class="modality-unavailable" hidden>Modality data appears after the next data refresh.</p>
         <p id="routerPriceNote" class="modality-unavailable" hidden></p>
@@ -1485,7 +1488,7 @@
   </div>
 
   <div id="compareModal" class="modal" aria-hidden="true"><div class="modal-content wide compare-modal" role="dialog" aria-modal="true" aria-labelledby="compareTitle"><button class="close" type="button" aria-label="Close model comparison">&times;</button><h2 id="compareTitle">Compare models</h2><p id="compareMessage" class="compare-message"></p><div id="compareResults"></div><div class="calculator-actions"><button id="compareToCalculator" class="btn">Compare costs in calculator</button><button id="compareCopy" class="btn">Copy Markdown</button></div></div></div>
-  <div id="compareTray" class="compare-tray"><button id="openCompare" type="button">Compare (0)</button><button id="clearCompare" type="button">Clear</button></div>
+  <div id="compareTray" class="compare-tray"><button id="openCompare" type="button">Compare (0)</button><button id="clearCompare" type="button">Clear</button><span id="compareTrayMessage" class="compare-tray-message" aria-live="polite"></span></div>
 
   <!-- Discontinued Models Archive Modal -->
   <div id="discontinuedModal" class="modal">
@@ -1516,7 +1519,7 @@
     const CONTEXT_BUCKETS = ['lt32', '32-128', '128-256', 'ge256'];
     const INPUT_MODALITIES = ['text', 'image', 'file', 'audio', 'video'];
     const OUTPUT_MODALITIES = ['text', 'image', 'audio'];
-    let advancedFilters = { ctx: [], ppmin: null, ppmax: null, pcmin: null, pcmax: null, min: [], mout: [] };
+    let advancedFilters = { ctx: [], ppmin: null, ppmax: null, pcmin: null, pcmax: null, min: [], mout: [], textOnly: false };
     let advancedPanelOpen = false;
     let modalityAvailable = false;
     let compareModelIds = [];
@@ -1534,7 +1537,8 @@
       return (min === null || price >= min - tolerance(min)) && (max === null || price <= max + tolerance(max));
     }
     function contextBucketMatches(value, bucket) {
-      const context = Number(value) || 0;
+      const context = Number(value);
+      if (!Number.isFinite(context) || context <= 0) return false;
       return bucket === 'lt32' ? context < 32768 : bucket === '32-128' ? context >= 32768 && context < 131072 : bucket === '128-256' ? context >= 131072 && context < 262144 : context >= 262144;
     }
     function rowMatchesAdvancedFilters(row) {
@@ -1546,6 +1550,7 @@
       if (!priceWithinBounds(row.completion_usd * 1000000, f.pcmin, f.pcmax) && (f.pcmin !== null || f.pcmax !== null)) return false;
       if (f.min.length && !f.min.every(value => (row.input_modalities || []).includes(value))) return false;
       if (f.mout.length && !f.mout.every(value => (row.output_modalities || []).includes(value))) return false;
+      if (f.textOnly && ((row.input_modalities || []).length !== 1 || row.input_modalities[0] !== 'text' || (row.output_modalities || []).length !== 1 || row.output_modalities[0] !== 'text')) return false;
       return true;
     }
     function rowMatchesCapabilityFilters(row) {
@@ -1553,9 +1558,9 @@
       return capabilityFilterMode === 'all' ? activeCapabilityFilters.every(cap => row[cap] === 'Yes') : activeCapabilityFilters.some(cap => row[cap] === 'Yes');
     }
     function activeAdvancedCount() {
-      return advancedFilters.ctx.length + advancedFilters.min.length + advancedFilters.mout.length + ['ppmin', 'ppmax', 'pcmin', 'pcmax'].filter(key => advancedFilters[key] !== null).length;
+      return advancedFilters.ctx.length + advancedFilters.min.length + advancedFilters.mout.length + (advancedFilters.textOnly ? 1 : 0) + ['ppmin', 'ppmax', 'pcmin', 'pcmax'].filter(key => advancedFilters[key] !== null).length;
     }
-    function logSliderPrice(value) { return value <= 0 ? 0 : Math.pow(10, -4 + Number(value) * .06); }
+    function logSliderPrice(value) { return value <= 0 ? 0 : Number(Math.pow(10, -4 + Number(value) * .06).toPrecision(3)); }
     function priceSliderValue(price) { return price <= 0 ? 0 : Math.max(0, Math.min(100, (Math.log10(price) + 4) / .06)); }
     function setAdvancedPanel(open) {
       advancedPanelOpen = !!open;
@@ -1571,6 +1576,7 @@
       const anything = count || isCapabilityFilterActive;
       $('#filterResultsInfo').toggleClass('active', !!anything);
       $('#routerPriceNote').prop('hidden', !['ppmin', 'ppmax', 'pcmin', 'pcmax'].some(key => advancedFilters[key] !== null)).text(`${allData.filter(row => !hasUsableCalculatorPrice(row)).length} n/a (variable/router pricing) hidden by price filter`);
+      $('#textOnlyFilter').toggleClass('active', advancedFilters.textOnly).attr('aria-pressed', advancedFilters.textOnly);
     }
     function applyAdvancedFilters() {
       updateAdvancedIndicators();
@@ -1589,6 +1595,7 @@
       $('#contextFilters input, #inputModalities input, #outputModalities input').prop('checked', false);
       $('#ppmin,#ppmax,#pcmin,#pcmax').val('');
       $('#ppMinRange,#pcMinRange').val(0); $('#ppMaxRange,#pcMaxRange').val(100);
+      advancedFilters.textOnly = false;
       readAdvancedControls();
     }
 
@@ -1658,21 +1665,24 @@
     function renderCompareTray() {
       $('#compareTray').toggleClass('open', compareModelIds.length > 0);
       $('#openCompare').text(`Compare (${compareModelIds.length})`);
+      $('.compare-btn').each(function() { const selected = compareModelIds.includes(String($(this).data('model-id'))); $(this).toggleClass('selected', selected).attr('aria-pressed', selected); });
     }
+    function setCompareMessage(message) { $('#compareMessage, #compareTrayMessage').text(message || ''); }
     function addCompareModel(id, trigger) {
       if (compareModelIds.includes(id)) { compareModelIds = compareModelIds.filter(item => item !== id); }
-      else if (compareModelIds.length >= COMPARE_LIMIT) { $('#compareMessage').text('Compare holds up to 4 models. Remove one to add another.'); }
+      else if (compareModelIds.length >= COMPARE_LIMIT) { setCompareMessage('Compare holds up to 4 models. Remove one to add another.'); }
       else { compareModelIds.push(id); compareTrigger = trigger || null; }
+      if (compareModelIds.length < COMPARE_LIMIT) setCompareMessage('');
       renderCompareTray(); updateURLState(); if (isCardView) renderCardView();
     }
-    function comparisonPrice(row, field) { return hasUsableCalculatorPrice(row) ? '$' + (row[field] * 1000000).toString() : 'n/a'; }
+    function comparisonPrice(row, field) { return hasUsableCalculatorPrice(row) ? finderPrice(row[field]) : 'n/a'; }
     function renderCompare() {
       const rows = compareModelIds.map(id => allData.find(row => row.id === id)).filter(Boolean);
       const caps = [['tool_calling', 'Tool calling'], ['structured_outputs', 'Structured outputs'], ['reasoning', 'Reasoning'], ['response_format', 'Response format'], ['web_search', 'Web search']];
       const fields = [
         ['Model', row => row.name || row.id], ['ID', row => row.id], ['Created', row => row.created], ['Context', row => row.context_length],
         ['Prompt $/1M', row => comparisonPrice(row, 'prompt_usd')], ['Completion $/1M', row => comparisonPrice(row, 'completion_usd')],
-        ['3:1 blended $/1M', row => hasUsableCalculatorPrice(row) ? '$' + finderBlendedCost(row).toString() : 'n/a'],
+        ['3:1 blended $/1M', row => hasUsableCalculatorPrice(row) ? finderPrice((3 * row.prompt_usd + row.completion_usd) / 4) : 'n/a'],
         ...caps.map(([key, label]) => [label, row => row[key] === 'Yes' ? '✓' : '—'])
       ];
       if (modalityAvailable) fields.push(['Input modalities', row => (row.input_modalities || []).join('|') || '—'], ['Output modalities', row => (row.output_modalities || []).join('|') || '—']);
@@ -1684,7 +1694,7 @@
     function closeCompare() { $('#compareModal').hide().attr('aria-hidden', 'true'); if (compareTrigger && document.contains(compareTrigger)) compareTrigger.focus(); }
     function compareMarkdown() {
       const rows = compareModelIds.map(id => allData.find(row => row.id === id)).filter(Boolean);
-      const fields = [['Model', row => row.name || row.id], ['ID', row => row.id], ['Context', row => row.context_length], ['Prompt $/1M', row => comparisonPrice(row, 'prompt_usd')], ['Completion $/1M', row => comparisonPrice(row, 'completion_usd')], ['3:1 blended $/1M', row => hasUsableCalculatorPrice(row) ? '$' + finderBlendedCost(row) : 'n/a']];
+      const fields = [['Model', row => row.name || row.id], ['ID', row => row.id], ['Context', row => row.context_length], ['Prompt $/1M', row => comparisonPrice(row, 'prompt_usd')], ['Completion $/1M', row => comparisonPrice(row, 'completion_usd')], ['3:1 blended $/1M', row => hasUsableCalculatorPrice(row) ? finderPrice((3 * row.prompt_usd + row.completion_usd) / 4) : 'n/a']];
       return '| Field | ' + rows.map(row => (row.name || row.id).replace(/\|/g, '\\|')).join(' | ') + ' |\n|---|' + rows.map(() => '---').join('|') + '|\n' + fields.map(([label, value]) => '| ' + label + ' | ' + rows.map(row => String(value(row)).replace(/\|/g, '\\|')).join(' | ') + ' |').join('\n');
     }
 
@@ -2187,11 +2197,12 @@
     }
     
     function getFilteredData() {
-      let data = showFavoritesOnly ? 
-        allData.filter(row => favorites.includes(row.id)) : 
-        allData;
-      const search = dataTable ? String(dataTable.search() || '').trim().toLowerCase() : '';
-      return data.filter(row => rowMatchesCapabilityFilters(row) && rowMatchesAdvancedFilters(row) && (!search || Object.values(row).join(' ').toLowerCase().includes(search)));
+      if (dataTable) {
+        const visibleIds = new Set(dataTable.rows({ search: 'applied' }).data().toArray().map(tableRow => String(tableRow[0])));
+        return allData.filter(row => visibleIds.has(row.id));
+      }
+      const data = showFavoritesOnly ? allData.filter(row => favorites.includes(row.id)) : allData;
+      return data.filter(row => rowMatchesCapabilityFilters(row) && rowMatchesAdvancedFilters(row));
     }
     
     function clearCapabilityFilters() {
@@ -2245,6 +2256,7 @@
       [['ppmin', advancedFilters.ppmin], ['ppmax', advancedFilters.ppmax], ['pcmin', advancedFilters.pcmin], ['pcmax', advancedFilters.pcmax]].forEach(([key, value]) => { if (value !== null) params.set(key, value); });
       if (advancedFilters.min.length) params.set('min', advancedFilters.min.join(','));
       if (advancedFilters.mout.length) params.set('mout', advancedFilters.mout.join(','));
+      if (advancedFilters.textOnly) params.set('mto', '1');
       if (advancedPanelOpen) params.set('afx', '1');
       if (compareModelIds.length) params.set('cmp', compareModelIds.join(','));
       
@@ -2328,6 +2340,7 @@
       advancedFilters.ctx = uniqueKnown(params.get('ctx'), CONTEXT_BUCKETS);
       advancedFilters.min = modalityAvailable ? uniqueKnown(params.get('min'), INPUT_MODALITIES) : [];
       advancedFilters.mout = modalityAvailable ? uniqueKnown(params.get('mout'), OUTPUT_MODALITIES) : [];
+      advancedFilters.textOnly = modalityAvailable && params.get('mto') === '1';
       [['ppmin', '#ppmin'], ['ppmax', '#ppmax'], ['pcmin', '#pcmin'], ['pcmax', '#pcmax']].forEach(([key, selector]) => {
         const value = finiteNonNegative(params.get(key));
         advancedFilters[key] = value;
@@ -2407,21 +2420,22 @@
       
       dataToRender.forEach(row => {
         const isFavorited = favorites.includes(row.id);
+        const isCompared = compareModelIds.includes(row.id);
         const card = $(`
           <div class="model-card">
             <div class="model-card-header">
               <div class="model-card-title">
-                <a href="https://openrouter.ai/models/${row.id}" target="_blank">${row.name}</a>
+                <a href="https://openrouter.ai/models/${escHtml(row.id)}" target="_blank">${escHtml(row.name)}</a>
               </div>
               <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" 
-                      data-model-id="${row.id}">${isFavorited ? '★' : '☆'}</button>
-              <button class="btn compare-btn" data-model-id="${row.id}">Compare</button>
+                      data-model-id="${escHtml(row.id)}">${isFavorited ? '★' : '☆'}</button>
+              <button class="btn compare-btn ${isCompared ? 'selected' : ''}" data-model-id="${escHtml(row.id)}" title="Compare" aria-label="Compare ${escHtml(row.name || row.id)}" aria-pressed="${isCompared}">⇄</button>
               ${priceHistory[row.id] ? `<button class="history-btn" data-model-id="${row.id}" title="Price history">📈</button>` : ''}
             </div>
             <div class="model-card-details">
               <div class="model-card-row">
                 <span class="model-card-label">Model ID:</span>
-                <span class="model-card-value">${row.id}</span>
+                <span class="model-card-value">${escHtml(row.id)}</span>
               </div>
               <div class="model-card-row">
                 <span class="model-card-label">Created:</span>
@@ -2459,7 +2473,7 @@
                 <span class="model-card-label">Web Search:</span>
                 <span class="model-card-value">✓</span>
               </div>` : ''}
-              ${modalityAvailable ? `<div class="model-card-row"><span class="model-card-label">Modalities:</span><span class="model-card-value">${(row.input_modalities || []).join('|') || '—'} → ${(row.output_modalities || []).join('|') || '—'}</span></div>` : ''}
+              ${modalityAvailable ? `<div class="model-card-row"><span class="model-card-label">Modalities:</span><span class="model-card-value">${escHtml((row.input_modalities || []).join('|') || '—')} → ${escHtml((row.output_modalities || []).join('|') || '—')}</span></div>` : ''}
             </div>
           </div>
         `);
@@ -2647,19 +2661,24 @@
       $('#advancedFilterToggle').on('click', function() { setAdvancedPanel(!advancedPanelOpen); updateURLState(); });
       $('#contextFilters input, #inputModalities input, #outputModalities input, #ppmin, #ppmax, #pcmin, #pcmax').on('input change', function() {
         const key = this.id;
-        if (key === 'ppmin' || key === 'ppmax' || key === 'pcmin' || key === 'pcmax') $('#' + key.replace('min', 'MinRange').replace('max', 'MaxRange')).val(priceSliderValue(finiteNonNegative(this.value) || 0));
+        if (key === 'ppmin' || key === 'ppmax' || key === 'pcmin' || key === 'pcmax') {
+          const value = finiteNonNegative(this.value);
+          const isMin = key.endsWith('min');
+          $('#' + key.replace('min', 'MinRange').replace('max', 'MaxRange')).val(value === null ? (isMin ? 0 : 100) : priceSliderValue(value));
+        }
+        if (key === 'inputModalities' || key === 'outputModalities' || $(this).closest('#inputModalities, #outputModalities').length) advancedFilters.textOnly = false;
         readAdvancedControls(); updateURLState();
       });
       [['ppMinRange', 'ppmin'], ['ppMaxRange', 'ppmax'], ['pcMinRange', 'pcmin'], ['pcMaxRange', 'pcmax']].forEach(([range, number]) => {
-        $('#' + range).on('input change', function() { $('#' + number).val(logSliderPrice(this.value)); readAdvancedControls(); updateURLState(); });
+        $('#' + range).on('input change', function() { const atEmptyEnd = (number.endsWith('min') && Number(this.value) === 0) || (number.endsWith('max') && Number(this.value) === 100); $('#' + number).val(atEmptyEnd ? '' : logSliderPrice(this.value)); readAdvancedControls(); updateURLState(); });
       });
-      $('#textOnlyFilter').on('click', function() { if (!modalityAvailable) return; $('#inputModalities input, #outputModalities input').prop('checked', false); $('#inputModalities input[value="text"], #outputModalities input[value="text"]').prop('checked', true); readAdvancedControls(); updateURLState(); });
+      $('#textOnlyFilter').on('click', function() { if (!modalityAvailable) return; advancedFilters.textOnly = !advancedFilters.textOnly; $('#inputModalities input, #outputModalities input').prop('checked', false); readAdvancedControls(); updateURLState(); });
       $(document).on('click', '.compare-btn', function(e) { e.preventDefault(); e.stopPropagation(); addCompareModel(String($(this).data('model-id')), this); });
       $('#openCompare').on('click', function() { openCompare(this); });
-      $('#clearCompare').on('click', function() { compareModelIds = []; renderCompareTray(); updateURLState(); if (isCardView) renderCardView(); });
-      $(document).on('click', '.compare-remove', function() { compareModelIds = compareModelIds.filter(id => id !== String($(this).data('model-id'))); renderCompare(); renderCompareTray(); updateURLState(); });
+      $('#clearCompare').on('click', function() { compareModelIds = []; setCompareMessage(''); renderCompareTray(); updateURLState(); if (isCardView) renderCardView(); });
+      $(document).on('click', '.compare-remove', function() { compareModelIds = compareModelIds.filter(id => id !== String($(this).data('model-id'))); if (compareModelIds.length < COMPARE_LIMIT) setCompareMessage(''); renderCompare(); renderCompareTray(); updateURLState(); });
       $('#compareToCalculator').on('click', function() { calculatorModelIds = compareModelIds.slice(0, CALCULATOR_LIMIT); calculatorSelectionInitialized = true; closeCompare(); openCalculator(document.getElementById('calculatorBtn')); });
-      $('#compareCopy').on('click', function() { const text = compareMarkdown(); if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text); else { const area = $('<textarea>').val(text).appendTo('body').select(); document.execCommand('copy'); area.remove(); } $(this).text('Copied!'); setTimeout(() => $(this).text('Copy Markdown'), 1600); });
+      $('#compareCopy').on('click', function() { const button = $(this); const finish = ok => { button.text(ok ? 'Copied!' : 'Copy unavailable'); setTimeout(() => button.text('Copy Markdown'), 1600); }; const text = compareMarkdown(); if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(() => finish(true), () => finish(false)); else { const area = $('<textarea>').val(text).appendTo('body').select(); try { finish(document.execCommand('copy')); } catch (_) { finish(false); } area.remove(); } });
       
       $('.preset-btn').on('click', function() {
         const preset = $(this).data('preset');
@@ -2973,7 +2992,8 @@
                 // Add favorite button and hyperlink to the Model Name field
                 var favoriteBtn = `<button class="favorite-btn" data-model-id="${currentId}">☆</button>`;
                 var histBtn = priceHistory[currentId] ? `<button class="history-btn" data-model-id="${currentId}" title="Price history" aria-label="Price history">📈</button>` : '';
-                var compareBtn = `<button class="btn compare-btn" data-model-id="${currentId}">Compare</button>`;
+                var compared = compareModelIds.includes(currentId);
+                var compareBtn = `<button class="btn compare-btn ${compared ? 'selected' : ''}" data-model-id="${escHtml(currentId)}" title="Compare" aria-label="Compare ${escHtml(cleanedValue || currentId)}" aria-pressed="${compared}">⇄</button>`;
                 rowHtml += `<td>${favoriteBtn}<a href="https://openrouter.ai/models/${currentId}" target="_blank">${cleanedValue}</a>${histBtn}${compareBtn}</td>`;
               } else if (columnName === "context_length") {
                 rowData.context_length = cleanedValue;
@@ -3071,6 +3091,7 @@
           ],
           drawCallback: function() {
             updateFavoriteButtons();
+            renderCompareTray();
           }
         });
         
