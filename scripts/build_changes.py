@@ -131,22 +131,27 @@ def build_changes(ledger, snapshot):
         for (old_day, old), (new_day, new) in zip(daily, daily[1:]):
             if not cutoff < new_day <= as_of:
                 continue
+            if old == new:
+                continue
             old_blended, new_blended = blended(old), blended(new)
             if new_blended is None:
                 continue
             if old_blended is None:
                 if new_blended <= EPSILON:
                     continue
-                kind, pct = "became_priced", None
-            elif zero(old_blended) and new_blended > EPSILON:
-                kind, pct = "became_priced", None
+                kind, true_pct = "became_priced", None
+            elif zero(old_blended):
+                if zero(new_blended):
+                    continue
+                kind, true_pct = "became_priced", None
             elif old_blended > EPSILON and zero(new_blended):
-                kind, pct = "went_free", ((new_blended - old_blended) / old_blended) * 100
+                kind, true_pct = "went_free", ((new_blended - old_blended) / old_blended) * 100
             else:
-                pct = None if old_blended < 0.01 else ((new_blended - old_blended) / old_blended) * 100
+                true_pct = ((new_blended - old_blended) / old_blended) * 100
                 kind = "increase" if new_blended > old_blended else "decrease"
-            if pct is not None and abs(pct) < 1 and abs(new_blended - old_blended) < 0.01:
+            if true_pct is not None and abs(true_pct) < 1 and abs(new_blended - old_blended) < 0.01:
                 continue
+            pct = None if old_blended is None or old_blended < 0.01 else true_pct
             price_changes.append({"id": model_id, "name": name, "date": new_day.isoformat(), "kind": kind,
                                   "prompt": [old[0], new[0]], "completion": [old[1], new[1]], "pct": pct})
 
@@ -155,7 +160,11 @@ def build_changes(ledger, snapshot):
         expiration = item.get("expiration_date")
         if expiration is None:
             continue
-        expiration_day = parse_day(expiration, f"output.json {model_id}.expiration_date")
+        try:
+            expiration_day = parse_day(expiration, f"output.json {model_id}.expiration_date")
+        except ValueError:
+            print(f"WARN: skipping invalid expiration_date for {model_id}: {expiration!r}", file=sys.stderr)
+            continue
         if expiration_day >= as_of:
             name = item.get("name") if isinstance(item.get("name"), str) and item["name"] else model_id
             retiring.append({"id": model_id, "name": name, "expiration_date": expiration_day.isoformat()})
@@ -210,12 +219,12 @@ def feed_for(changes):
             + ("\n".join(entries) + "\n" if entries else "") + "</feed>\n")
 
 
-def atomic_write(path, content):
+def write_temp(path, content):
     descriptor, temporary = tempfile.mkstemp(prefix=".build_changes-", dir=os.path.dirname(path))
     try:
         with os.fdopen(descriptor, "w", encoding="utf-8", newline="\n") as handle:
             handle.write(content)
-        os.replace(temporary, path)
+        return temporary
     except Exception:
         try:
             os.unlink(temporary)
@@ -224,12 +233,30 @@ def atomic_write(path, content):
         raise
 
 
+def atomic_write_pair(first_path, first_content, second_path, second_content):
+    """Prepare both complete files before replacing either generated output."""
+    first_temp = second_temp = None
+    try:
+        first_temp = write_temp(first_path, first_content)
+        second_temp = write_temp(second_path, second_content)
+        os.replace(first_temp, first_path)
+        first_temp = None
+        os.replace(second_temp, second_path)
+        second_temp = None
+    finally:
+        for temporary in (first_temp, second_temp):
+            if temporary:
+                try:
+                    os.unlink(temporary)
+                except OSError:
+                    pass
+
+
 def main():
     changes = build_changes(load_json(LEDGER, "data/history/prices.json"), load_json(SNAPSHOT, "data/output.json"))
     changes_text = json.dumps(changes, separators=(",", ":"), sort_keys=True, ensure_ascii=False) + "\n"
     feed_text = feed_for(changes)
-    atomic_write(CHANGES, changes_text)
-    atomic_write(FEED, feed_text)
+    atomic_write_pair(CHANGES, changes_text, FEED, feed_text)
     print(f"wrote {CHANGES} and {FEED} ({len(changes['price_changes'])} price changes)")
 
 

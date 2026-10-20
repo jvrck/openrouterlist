@@ -2988,12 +2988,17 @@
           if (newPrompt === null || newCompletion === null) return;
           const oldBlend = oldPrompt === null || oldCompletion === null ? null : (3 * oldPrompt + oldCompletion) / 4;
           const newBlend = (3 * newPrompt + newCompletion) / 4;
+          if (newBlend < 1e-12) {
+            if (oldBlend === null || Math.abs(oldBlend) < 1e-12) return;
+          }
           const delta = oldBlend === null ? null : newBlend - oldBlend;
-          const pct = oldBlend === null || oldBlend < 0.01 ? null : delta / oldBlend * 100;
-          if (pct !== null && Math.abs(pct) < 1 && Math.abs(delta) < 0.01) return;
+          const truePct = oldBlend !== null && oldBlend > 1e-12 ? delta / oldBlend * 100 : null;
+          const pct = oldBlend === null || oldBlend < 0.01 ? null : truePct;
+          if (truePct !== null && Math.abs(truePct) < 1 && Math.abs(delta) < 0.01) return;
           let label;
           if (oldBlend !== null && oldBlend > 0 && Math.abs(newBlend) < 1e-12) label = 'went free';
-          else if (pct === null) label = 'became priced';
+          else if (oldBlend === null || Math.abs(oldBlend) < 1e-12) label = 'became priced';
+          else if (pct === null) label = delta < 0 ? '↓' : '↑';
           else label = (pct < 0 ? '↓ ' : '↑ ') + Math.abs(pct).toFixed(0) + '%';
           lists.movers.push({ id: id, name: last.name, label: label, pct: pct });
         });
