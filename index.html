@@ -1634,6 +1634,8 @@
 
     // Escape untrusted strings (model names/ids from the API) before injecting as HTML.
     const escHtml = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const modelPageSlug = id => String(id).replace(/[^A-Za-z0-9._/-]/g, '-');
+    const modelPageLink = id => '<a class="model-page-link" ' + 'href="/m/' + modelPageSlug(id) + '/">' + escHtml(id) + '</a>';
 
     // Negative or unparseable values do not represent a fixed per-token price.
     function isUnpriced(numericValue) {
@@ -2463,7 +2465,7 @@
             <div class="model-card-details">
               <div class="model-card-row">
                 <span class="model-card-label">Model ID:</span>
-                <span class="model-card-value">${escHtml(row.id)}</span>
+                <span class="model-card-value">${modelPageLink(row.id)}</span>
               </div>
               <div class="model-card-row">
                 <span class="model-card-label">Created:</span>
@@ -3097,6 +3099,7 @@
               if (columnName === "id") {
                 currentId = cleanedValue;
                 rowData.id = cleanedValue;
+                rowHtml += '<td>' + modelPageLink(cleanedValue) + '</td>';
               }
               
               if (columnName === "name") {
@@ -3172,7 +3175,7 @@
               } else if (columnName === "web_search") {
                 rowData.web_search = cleanedValue;
                 rowHtml += "<td>" + (cleanedValue === "Yes" ? "✓" : "-") + "</td>";
-              } else if (columnName !== 'input_modalities' && columnName !== 'output_modalities') {
+              } else if (columnName !== 'id' && columnName !== 'input_modalities' && columnName !== 'output_modalities') {
                 rowHtml += "<td>" + cleanedValue + "</td>";
               }
             });

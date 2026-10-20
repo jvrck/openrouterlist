@@ -41,6 +41,7 @@ Privacy: visitor analytics for jvrck.com sites use Cloudflare Web Analytics (fre
 - `data/history/prices.json` - Compact per-model price-history ledger (change-points + first/last seen)
 - `robots.txt` - Search engine crawler instructions
 - `sitemap.xml` - Sitemap for better SEO indexing
+- `scripts/build_model_pages.sh` - Generates static per-model pages in `m/` and the sitemap from current pricing data
 
 ## 🚀 Quick Start
 
