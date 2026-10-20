@@ -19,7 +19,7 @@ Privacy: visitor analytics for jvrck.com sites use Cloudflare Web Analytics (fre
 - **Interactive Cost Calculator**: Estimate and compare raw-precision prompt/completion costs per request, day, month, year, or batch
 - **Model Finder & Use-Case Presets**: Match requirements to the lowest-priced models and copy ready-to-use API snippets
 - **Price History & Trends**: Per-model price charts, 30-day change badges, and a searchable archive of discontinued models — backfilled from 20+ months of git history
-- **Export Options**: Download data as CSV, Excel, PDF, or print for offline analysis
+- **Export Options**: Download data as CSV or Excel, or print for offline analysis
 - **Dark Mode**: Eye-friendly dark theme for extended use
 - **Mobile Responsive**: Optimized for all devices with card and table views
 
@@ -100,7 +100,7 @@ Access the tool online: **[https://openrouterlist.jvrck.com/](https://openrouter
 
 The website features:
 - Real-time search and filtering
-- Export to CSV, Excel, PDF
+- Export to CSV or Excel, or print
 - Dark/light theme toggle
 - Mobile-responsive design
 - Keyboard shortcuts for power users
