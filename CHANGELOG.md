@@ -12,6 +12,10 @@
 
 - Sitemap `lastmod` now tracks the data update date (closes #33)
 
+### Fixed
+
+- Visible model count now follows the loaded data; meta description no longer names GPT-4 (closes #34)
+
 ## [0.0.11] - 2026-10-20
 
 ### Added

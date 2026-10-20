@@ -6,7 +6,7 @@
   <title>OpenRouter Model Pricing & Comparison | AI Model Cost Calculator</title>
   
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Compare AI model pricing across 400+ models on OpenRouter. Real-time pricing data for GPT-4, Claude, Llama, and more. Updated every 12 hours with prompt and completion costs per million tokens.">
+  <meta name="description" content="Compare AI model pricing across 400+ models on OpenRouter. Real-time prompt and completion prices per 1M tokens, updated every 12 hours.">
   <meta name="keywords" content="OpenRouter pricing, AI model costs, LLM pricing comparison, GPT-4 pricing, Claude pricing, AI API costs, model comparison tool, token pricing calculator, language model costs">
   <meta name="author" content="OpenRouterList">
   <meta name="robots" content="index, follow">
@@ -1157,7 +1157,7 @@
     <section class="info-section" role="region" aria-label="About this tool">
       <h2 style="font-size: 1.2em; margin-top: 0; color: var(--text-primary);">Real-Time AI Model Pricing Data</h2>
       <p id="updatedDate"></p>
-      <p>Compare pricing across <strong>400+ AI language models</strong> available through <a href="https://openrouter.ai/" target="_blank" rel="noopener">OpenRouter</a>. This comprehensive pricing comparison tool helps developers and businesses find the most cost-effective AI models for their specific needs.</p>
+      <p>Compare pricing across <strong><span id="modelCount">400+</span> AI language models</strong> available through <a href="https://openrouter.ai/" target="_blank" rel="noopener">OpenRouter</a>. This comprehensive pricing comparison tool helps developers and businesses find the most cost-effective AI models for their specific needs.</p>
       <p><strong>Features:</strong> Search and filter models by name, capabilities, context length, and cost. Export data in multiple formats. Pricing shown per million tokens for both prompts and completions.</p>
       <p>Data is automatically updated every 12 hours to ensure accuracy. Source code available on <a href="https://github.com/jvrck/openrouterlist" target="_blank" rel="noopener">GitHub</a>.</p>
     </section>
@@ -3091,6 +3091,9 @@
             allData.push(rowData);
           }
         }
+
+        $('#modelCount').text(allData.length);
+        $('#calcModelPicker').attr('placeholder', `Search ${allData.length} models to add (up to 10)`);
         
         // Update favorite buttons
         updateFavoriteButtons();
