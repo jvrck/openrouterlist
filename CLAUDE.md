@@ -21,7 +21,7 @@ python3 -m http.server
 
 ## Data flow and files
 
-`scripts/get_zipped.sh` first creates an empty `data/output.json` when it is missing. It fetches OpenRouter's `/api/v1/models`, writes `output.json` and the jq-built 13-column `output.csv` into a timestamped `results/output_<ts>/` directory, then compares that JSON with `data/output.json`. Only when `cmp` finds a difference does the script copy both files into `data/`, write `data/updated`, and invoke the incremental `backfill_history.py` update (non-fatally). It then zips the results directory. `results/` is local and gitignored.
+`scripts/get_zipped.sh` first creates an empty `data/output.json` when it is missing. It fetches OpenRouter's `/api/v1/models`, writes `output.json` and the jq-built 13-column `output.csv` into a timestamped `results/output_<ts>/` directory, then compares that JSON with `data/output.json`. Only when `cmp` finds a difference does the script copy both files into `data/`, write `data/updated`, and invoke the incremental `backfill_history.py` update (non-fatally). It then zips the results directory and deletes `results/output_<ts>/`. `results/` is local and gitignored.
 
 `data/output.csv` has these 13 columns, in order:
 
