@@ -2,7 +2,7 @@
 
 ## [0.0.13] - 2026-10-20
 
-### Documentation
+### Changed
 
 - Refreshed CLAUDE.md to the current architecture (closes #24)
 
