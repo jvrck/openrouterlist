@@ -22,7 +22,7 @@ curl -X 'GET' \
     -o "$output_dir/output.json"
 
 # Add headers and convert JSON to CSV, saving to the new directory
-echo "id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search" > "$output_dir/output.csv"
+echo "id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search,input_modalities,output_modalities" > "$output_dir/output.csv"
 jq -r '.data[] | 
   # Check for tool calling (both tool_choice AND tools must be present)
   (.supported_parameters as $params |
@@ -57,7 +57,8 @@ jq -r '.data[] |
     then "Yes" else "No" end)) as $web_search |
   
   [.id, .name, .created, .context_length, .pricing.prompt, .pricing.completion, 
-   $tool_calling, $structured, $reasoning, $response_format, $web_search] | @csv' "$output_dir/output.json" >> "$output_dir/output.csv"
+   $tool_calling, $structured, $reasoning, $response_format, $web_search,
+   ((.architecture.input_modalities // []) | join("|")), ((.architecture.output_modalities // []) | join("|"))] | @csv' "$output_dir/output.json" >> "$output_dir/output.csv"
 
 # Check if there is an existing output.json in the data directory
 if [ -f "data/output.json" ]; then
