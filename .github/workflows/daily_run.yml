@@ -20,6 +20,16 @@ jobs:
     - name: Run get_zipped.sh script
       run: bash ./scripts/get_zipped.sh
 
+    - name: Update sitemap lastmod
+      run: |
+        stamp="$( (tr -d '[:space:]' < data/updated) 2>/dev/null || true)"
+        if printf '%s' "$stamp" | grep -Eq '^[0-9]{8}_[0-9]{6}$'; then
+          d="${stamp:0:4}-${stamp:4:2}-${stamp:6:2}"
+          sed -i.bak -E "s#<lastmod>[^<]*</lastmod>#<lastmod>${d}</lastmod>#" sitemap.xml && rm -f sitemap.xml.bak
+        else
+          echo "data/updated missing or malformed; sitemap unchanged"
+        fi
+
     - name: Commit and push changes
       run: |
         git config --global user.name 'github-actions[bot]'
