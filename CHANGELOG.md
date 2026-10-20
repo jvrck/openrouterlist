@@ -6,6 +6,7 @@
 
 - Favicon set for browser tabs, bookmarks, and Apple touch icons (closes #27)
 - Static share image for Open Graph and Twitter link previews (closes #31)
+- Relative, local-time display for the data update timestamp (closes #32)
 
 ## [0.0.11] - 2026-10-20
 
