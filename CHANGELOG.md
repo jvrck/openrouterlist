@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.15] - 2026-10-21
+
+### Fixed
+
+- Report opposite-direction prompt/completion moves (each significant) whose 3:1 blended change is under the drop threshold as `mixed`; larger blended moves remain `increase`/`decrease`, and Atom feed entries have distinct deterministic update times (closes #40)
+
 ## [0.0.14] - 2026-10-21
 
 ### Added
