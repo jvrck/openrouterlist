@@ -6,6 +6,7 @@ read-only derivation: validate everything before atomically replacing outputs.
 """
 import datetime as dt
 import html
+import itertools
 import json
 import math
 import os
@@ -20,6 +21,8 @@ CHANGES = os.path.join(ROOT, "data", "changes.json")
 FEED = os.path.join(ROOT, "feed.xml")
 WINDOW_DAYS = 30
 EPSILON = 1e-12
+MIN_PCT = 1
+MIN_ABS = 0.01
 SITE = "https://openrouterlist.jvrck.com"
 
 
@@ -57,6 +60,11 @@ def blended(point):
 
 def zero(value):
     return abs(value) < EPSILON
+
+
+def significant_component_move(old, new):
+    delta = new - old
+    return abs(delta) >= MIN_ABS or (old > EPSILON and abs(delta) / old * 100 >= MIN_PCT)
 
 
 def price_text(value):
@@ -149,8 +157,16 @@ def build_changes(ledger, snapshot):
             else:
                 true_pct = ((new_blended - old_blended) / old_blended) * 100
                 kind = "increase" if new_blended > old_blended else "decrease"
-            if true_pct is not None and abs(true_pct) < 1 and abs(new_blended - old_blended) < 0.01:
-                continue
+                if abs(true_pct) < MIN_PCT and abs(new_blended - old_blended) < MIN_ABS:
+                    prompt_delta = new[0] - old[0]
+                    completion_delta = new[1] - old[1]
+                    opposite_directions = ((prompt_delta > EPSILON and completion_delta < -EPSILON) or
+                                           (prompt_delta < -EPSILON and completion_delta > EPSILON))
+                    if (opposite_directions and significant_component_move(old[0], new[0]) and
+                            significant_component_move(old[1], new[1])):
+                        kind, true_pct = "mixed", None
+                    else:
+                        continue
             pct = None if old_blended is None or old_blended < 0.01 else true_pct
             price_changes.append({"id": model_id, "name": name, "date": new_day.isoformat(), "kind": kind,
                                   "prompt": [old[0], new[0]], "completion": [old[1], new[1]], "pct": pct})
@@ -186,9 +202,19 @@ def feed_for(changes):
     for item in changes["removed_models"]:
         events.append((item["last_seen"], item["id"], "removed_model", item))
     events.sort(key=lambda event: (-parse_day(event[0], "feed event date").toordinal(), event[1], event[2]))
+    dated_events = []
+    for day, group in itertools.groupby(events, key=lambda event: event[0]):
+        day_events = list(group)
+        count = len(day_events)
+        if count > 86400:
+            fail(f"too many feed events for {day}")
+        base = dt.datetime.combine(parse_day(day, "feed event date"), dt.time(), dt.timezone.utc)
+        for index, event in enumerate(day_events):
+            updated = base + dt.timedelta(seconds=count - 1 - index)
+            dated_events.append((*event, updated.strftime("%Y-%m-%dT%H:%M:%SZ")))
     text = lambda value: html.escape(str(value), quote=True)
     entries = []
-    for day, model_id, kind, item in events[:50]:
+    for day, model_id, kind, item, updated in dated_events[:50]:
         if kind in ("new_model", "removed_model"):
             action = "new model" if kind == "new_model" else "removed model"
             title = f"{item['name']}: {action}"
@@ -203,16 +229,18 @@ def feed_for(changes):
         entries.append("  <entry>\n"
                        f"    <id>tag:openrouterlist.jvrck.com,{text(day)}:{text(kind)}:{text(tag_id)}</id>\n"
                        f"    <title>{text(title)}</title>\n"
-                       f"    <updated>{text(day)}T00:00:00Z</updated>\n"
+                       f"    <updated>{text(updated)}</updated>\n"
                        f"    <link rel=\"alternate\" href=\"{text(href)}\"/>\n"
                        f"    <summary>{text(summary)}</summary>\n"
                        "  </entry>")
+    # Fixed-format UTC ISO strings sort chronologically.
+    feed_updated = max(f"{as_of}T00:00:00Z", dated_events[0][4] if dated_events else "")
     return ("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
             "<feed xmlns=\"http://www.w3.org/2005/Atom\">\n"
             "  <title>OpenRouterList price changes</title>\n"
             "  <subtitle>Recent OpenRouter model pricing, additions, and removals</subtitle>\n"
             "  <id>tag:openrouterlist.jvrck.com,2026:feed</id>\n"
-            f"  <updated>{as_of}T00:00:00Z</updated>\n"
+            f"  <updated>{feed_updated}</updated>\n"
             "  <author><name>OpenRouterList</name></author>\n"
             f"  <link rel=\"self\" href=\"{SITE}/feed.xml\"/>\n"
             f"  <link rel=\"alternate\" href=\"{SITE}/\"/>\n"
