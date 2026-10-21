@@ -16,7 +16,7 @@
 # skipped without failing the rest of the build.
 set -euo pipefail
 
-TEMPLATE_VERSION=1
+TEMPLATE_VERSION=2
 if [ "${1:-}" = "--template-version" ]; then
     printf '%s\n' "$TEMPLATE_VERSION"
     exit 0
@@ -140,10 +140,20 @@ EOF
 
     costs=$(awk -v ap="$ap" -v ac="$ac" -v bp="$bp" -v bc="$bc" '
       function fmt(v) { return v < 0.01 ? sprintf("%.4f", v) : sprintf("%.2f", v) }
+      function fmt_diff(v, digits) { return digits == 4 ? sprintf("%.4f", v) : sprintf("%.2f", v) }
       BEGIN {
         ad = (1000 * ap + 500 * ac) * 100
         bd = (1000 * bp + 500 * bc) * 100
-        printf "%s\t%s\t%s\t%s\t%s\t%s\n", fmt(ad), fmt(ad * 30), fmt(bd), fmt(bd * 30), fmt((ad > bd ? ad - bd : bd - ad)), fmt((ad > bd ? ad - bd : bd - ad) * 30)
+        diff = ad > bd ? ad - bd : bd - ad
+        if (diff == 0) {
+          day_diff = "none"
+          month_diff = "none"
+        } else {
+          digits = diff < 0.01 ? 4 : 2
+          day_diff = fmt_diff(diff, digits)
+          month_diff = fmt_diff(diff * 30, digits)
+        }
+        printf "%s\t%s\t%s\t%s\t%s\t%s\n", fmt(ad), fmt(ad * 30), fmt(bd), fmt(bd * 30), day_diff, month_diff
       }
     ') || fail "could not calculate workload for $slug"
     IFS="$(printf '\t')" read -r aday amonth bday bmonth ddiff mdiff <<EOF
@@ -197,8 +207,12 @@ EOF
       | (if $ac == $bc then "Both models have the same completion-token price"
          elif $ac == 0 then $a.name + " has free completion tokens"
          elif $bc == 0 then $b.name + " has free completion tokens"
-         elif $ac < $bc then $a.name + " is " + (ratio($bc; $ac) | tostring) + "× cheaper per 1M completion tokens"
-         else $b.name + " is " + (ratio($ac; $bc) | tostring) + "× cheaper per 1M completion tokens"
+         elif $ac < $bc then
+           if ratio($bc; $ac) == 1 then $a.name + " is " + (fixed((($bc - $ac) / $bc * 100); 1)) + "% cheaper per 1M completion tokens"
+           else $a.name + " is " + (ratio($bc; $ac) | tostring) + "× cheaper per 1M completion tokens" end
+         else
+           if ratio($ac; $bc) == 1 then $b.name + " is " + (fixed((($ac - $bc) / $ac * 100); 1)) + "% cheaper per 1M completion tokens"
+           else $b.name + " is " + (ratio($ac; $bc) | tostring) + "× cheaper per 1M completion tokens" end
          end
          + (if $a.context_length == $b.context_length then "; both have the same context window."
             elif ($a.context_length // 0) > ($b.context_length // 0) then "; " + $a.name + " has the larger context window."
@@ -233,7 +247,7 @@ EOF
         + "</tbody></table>\n<section><h2>Sample workload</h2><p>Chat app: 1,000 prompt + 500 completion tokens × 100 requests per day.</p>"
         + "<table><thead><tr><th>Cost</th><th>" + $an + "</th><th>" + $bn + "</th></tr></thead><tbody>"
         + "<tr><th>Per day</th><td>$" + $aday + "</td><td>$" + $bday + "</td></tr><tr><th>Per 30 days</th><td>$" + $amonth + "</td><td>$" + $bmonth + "</td></tr>"
-        + "</tbody></table><p>Difference: $" + $ddiff + " per day and $" + $mdiff + " per 30 days.</p></section>\n"
+        + "</tbody></table>" + (if $ddiff == "none" then "<p>No difference.</p>" else "<p>Difference: $" + $ddiff + " per day and $" + $mdiff + " per 30 days.</p>" end) + "</section>\n"
         + "<p class=\"links\"><a href=\"/m/" + ($a.model_slug | pathuri) + "/\">" + $an + " details</a><a href=\"/m/" + ($b.model_slug | pathuri) + "/\">" + $bn + " details</a><a href=\"/?cmp=" + $a_uri + "," + $b_uri + "\">Open in the live compare view</a><a href=\"/?calc=1&amp;cm=" + $a_uri + "," + $b_uri + "&amp;cp=1000&amp;cc=500&amp;cr=100\">Try your own workload</a></p>\n"
         + "<p class=\"updated\">Data updated " + ($date | h) + "</p></main>\n</body>\n</html>"
     ' "$output" > "$page_dir/index.html" || fail "could not render $slug"
