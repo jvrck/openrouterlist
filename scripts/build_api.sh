@@ -42,7 +42,6 @@ jq -e '
     (.id | type == "string" and length > 0)
     and (.name | type == "string")
     and (.pricing | type == "object")
-    and ((.context_length == null) or (.context_length | type == "number"))
     and ((.supported_parameters == null) or (.supported_parameters | type == "array"))
     and ((.architecture == null) or (.architecture | type == "object"))
     and ((.created == null) or (.created | type == "number"))
@@ -75,7 +74,7 @@ jq -L scripts --arg updated "$iso" '
   def projected_model:
     (parsed_number(.pricing.prompt)) as $prompt
     | (parsed_number(.pricing.completion)) as $completion
-    | (if $prompt == -1 or $completion == -1 then "variable"
+    | (if (($prompt != null and $prompt < 0) or ($completion != null and $completion < 0)) then "variable"
        elif $prompt == null or $completion == null then "unavailable"
        elif $prompt == 0 and $completion == 0 then "free"
        else "fixed"
@@ -87,7 +86,7 @@ jq -L scripts --arg updated "$iso" '
         prompt_per_1m: (if $pricing_class == "fixed" then rounded_price(.pricing.prompt) elif $pricing_class == "free" then 0 else null end),
         completion_per_1m: (if $pricing_class == "fixed" then rounded_price(.pricing.completion) elif $pricing_class == "free" then 0 else null end),
         pricing: $pricing_class,
-        context_length: .context_length,
+        context_length: ((parsed_number(.context_length)) as $context | if $context == null or $context < 0 then null else ($context | floor) end),
         capabilities: capabilities,
         input_modalities: (.architecture.input_modalities // []),
         output_modalities: (.architecture.output_modalities // []),
