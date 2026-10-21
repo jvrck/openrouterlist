@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.20] - 2026-10-21
+
+### Changed
+
+- Formatted table prices and context lengths for quicker scanning while preserving raw sorting, filters, and exports
+- Replaced the default five capability columns with a compact, toggleable Capabilities badge column (closes #48)
+
 ## [0.0.19] - 2026-10-21
 
 ### Changed
