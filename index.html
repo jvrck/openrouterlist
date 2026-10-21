@@ -2376,7 +2376,10 @@
       $('.column-checkbox input:checked').each(function() {
         visibleColumns.push($(this).data('column'));
       });
-      if (visibleColumns.length < 11) {
+      const defaultVisibleColumns = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      const hasDefaultVisibleColumns = visibleColumns.length === defaultVisibleColumns.length &&
+        defaultVisibleColumns.every(column => visibleColumns.includes(column));
+      if (!hasDefaultVisibleColumns) {
         params.set('columns', visibleColumns.join(','));
       }
 
