@@ -589,6 +589,7 @@
       align-items: center;
       margin-left: 6px;
       opacity: 0;
+      pointer-events: none;
       vertical-align: middle;
     }
 
@@ -596,6 +597,7 @@
     tr:focus-within .row-actions,
     tr.actions-open .row-actions {
       opacity: 1;
+      pointer-events: auto;
     }
 
     .row-actions-toggle {
@@ -1710,11 +1712,9 @@
     const tableRowModelId = tableRow => $('<div>').html(String(tableRow[0])).text();
     const cleanModelNameExport = (data, row, column, node) => {
       if (column === 1) {
-        const link = node && node.querySelector('.model-page-link');
-        if (link) return link.textContent.trim();
-        const tableRow = dataTable && dataTable.row(row).data();
-        const model = tableRow && allData.find(item => item.id === tableRowModelId(tableRow));
-        if (model) return model.name;
+        const cell = node || $('<div>').html(String(data))[0];
+        const modelName = cell && cell.querySelector('.model-name');
+        if (modelName) return modelName.textContent.trim();
       }
       return $('<div>').html(String(data)).text().replace(/\n/g, ' ').trim();
     };
