@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.0.18] - 2026-10-21
+
+### Changed
+
+- Consolidated table controls into a compact header, toolbar, and accessible More/Columns menus; search, filters, exports, and keyboard shortcuts retain their existing behaviour (closes #46)
+
+### Fixed
+
+- Restored the Dark theme button's light-mode text contrast
+
 ## [0.0.16] - 2026-10-21
 
 ### Added
