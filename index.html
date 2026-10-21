@@ -87,7 +87,7 @@
       --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    [data-theme="dark"] {
+    html[data-theme="dark"] {
       --bg-primary: #1e1e1e;
       --bg-secondary: #2d2d2d;
       --bg-hover: #404040;
@@ -235,12 +235,41 @@
       text-decoration: underline;
     }
 
+    /* Compact controls above the data table.  The detailed controls remain in
+       their panels so their existing IDs and state wiring keep working. */
+    .header { flex-wrap: nowrap; gap: 10px; margin-bottom: 10px; }
+    .header h1 { font-size: 20px; white-space: nowrap; }
+    .header-actions { align-items: center; display: flex; flex: 1; gap: 8px; justify-content: flex-end; min-width: 0; }
+    #globalSearch { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 5px; color: var(--text-primary); font-size: 14px; min-width: 170px; padding: 8px 10px; width: min(340px, 30vw); }
+    .menu-wrap { position: relative; }
+    .popup-menu { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 7px; box-shadow: var(--card-shadow); display: none; padding: 10px; position: absolute; right: 0; top: calc(100% + 5px); z-index: 30; }
+    .popup-menu.open { display: block; }
+    #moreMenu { min-width: 275px; }
+    #moreMenu .theme-toggle, #moreMenu .density-toggle { margin-bottom: 8px; }
+    #moreMenu .dt-buttons { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+    #moreMenu .dt-button { margin: 0; }
+    .toolbar { align-items: center; display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; }
+    .toolbar .menu-wrap { position: relative; }
+    #filtersPanel { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; display: none; margin-bottom: 10px; }
+    #filtersPanel.open { display: block; }
+    #filtersPanel .capability-filters { border: 0; margin: 0; }
+    #columnsMenu { min-width: 240px; }
+    #columnsMenu .column-checkboxes { display: grid; gap: 7px; grid-template-columns: 1fr; }
+    #changesStrip { margin-bottom: 10px; padding: 8px 12px; }
+    .changes-strip-head { justify-content: flex-start; }
+    #changesToggle { background: none; border: 0; color: var(--text-primary); cursor: pointer; font-size: 14px; font-weight: 600; padding: 0; }
+    .changes-grid { display: none; }
+    #changesStrip.open .changes-grid { display: grid; }
+    .toolbar-badge { background: var(--header-bg); border-radius: 10px; color: white; font-size: 11px; margin-left: 4px; padding: 1px 6px; }
+
     #changesStrip { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 20px; padding: 12px 15px; }
     .changes-strip-head { align-items: baseline; display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; }
     .changes-strip-head h2 { font-size: 1.05em; margin: 0; }
     .changes-strip-head a, .changes-list a { color: var(--link-color); text-decoration: none; }
     .changes-strip-head a:hover, .changes-list a:hover { text-decoration: underline; }
     .changes-grid { display: grid; gap: 12px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 9px; }
+    #changesStrip .changes-grid { display: none; }
+    #changesStrip.open .changes-grid { display: grid; }
     .changes-group { min-width: 0; }
     .changes-group h3 { font-size: 13px; margin: 0 0 4px; }
     .changes-list { color: var(--text-secondary); font-size: 13px; line-height: 1.4; list-style: none; margin: 0; padding: 0; }
@@ -986,6 +1015,17 @@
       body {
         padding: 10px;
       }
+
+      .header { align-items: center; flex-direction: row; flex-wrap: wrap; }
+      .header h1 { font-size: 17px; }
+      .header-actions { flex-basis: 100%; justify-content: flex-start; }
+      #globalSearch { flex: 1; min-width: 0; width: auto; }
+      .header-actions .btn { padding: 8px 10px; }
+      .toolbar { gap: 6px; }
+      .toolbar .btn { padding: 7px 9px; }
+      #moreMenu { max-width: calc(100vw - 30px); }
+      #columnsMenu { left: 0; right: auto; }
+      .changes-grid { grid-template-columns: 1fr; }
     }
 
     /* Price history: trend badges, history button, sparkline modal, discontinued archive */
@@ -1140,7 +1180,13 @@
   <div class="container">
     <header class="header" role="banner">
       <h1>OpenRouter Model Pricing Comparison Tool</h1>
-      <div class="controls">
+      <div class="header-actions">
+        <input id="globalSearch" type="search" placeholder="Search models" aria-label="Search models">
+        <button id="calculatorBtn" class="btn" aria-label="Open cost calculator">🧮 Calculator</button>
+        <button id="finderBtn" class="btn" aria-label="Open model finder">🧭 Finder</button>
+        <div class="menu-wrap">
+          <button id="moreMenuBtn" class="btn" type="button" aria-haspopup="true" aria-expanded="false">⋯ More</button>
+          <div id="moreMenu" class="popup-menu" aria-label="More controls">
         <div class="theme-toggle">
           <button class="theme-btn" data-theme="light">☀️ Light</button>
           <button class="theme-btn" data-theme="dark">🌙 Dark</button>
@@ -1151,20 +1197,15 @@
           <button class="density-btn active" data-density="comfortable">Comfortable</button>
           <button class="density-btn" data-density="spacious">Spacious</button>
         </div>
-        <button id="favoritesToggle" class="btn">
-          <span>⭐</span>
-          <span>Favorites Only</span>
-        </button>
-        <button id="viewToggle" class="btn view-toggle">📱 Card View</button>
         <button id="discontinuedBtn" class="btn" style="display:none;" aria-label="Show discontinued models">🗑️ Discontinued</button>
-        <button id="calculatorBtn" class="btn" aria-label="Open cost calculator">🧮 Cost Calculator</button>
-        <button id="finderBtn" class="btn" aria-label="Open model finder">🧭 Model Finder</button>
         <button id="helpBtn" class="btn" aria-label="Show keyboard shortcuts">? Help</button>
+          </div>
+        </div>
       </div>
     </header>
 
     <section id="changesStrip" hidden aria-label="What changed">
-      <div class="changes-strip-head"><h2>What changed</h2><a href="/feed.xml">Feed</a></div>
+      <div class="changes-strip-head"><button id="changesToggle" type="button" aria-expanded="false">What changed: <span id="changesSummary">Updates</span></button><a href="/feed.xml">Feed</a></div>
       <div class="changes-grid">
         <div class="changes-group"><h3>Movers</h3><ul id="changesMovers" class="changes-list"></ul></div>
         <div class="changes-group"><h3>New</h3><ul id="changesNew" class="changes-list"></ul></div>
@@ -1172,13 +1213,31 @@
       </div>
     </section>
 
-    <section class="info-section" role="region" aria-label="About this tool">
-      <h2 style="font-size: 1.2em; margin-top: 0; color: var(--text-primary);">Real-Time AI Model Pricing Data</h2>
-      <p id="updatedDate"></p>
-      <p>Compare pricing across <strong><span id="modelCount">400+</span> AI language models</strong> available through <a href="https://openrouter.ai/" target="_blank" rel="noopener">OpenRouter</a>. This comprehensive pricing comparison tool helps developers and businesses find the most cost-effective AI models for their specific needs.</p>
-      <p><strong>Features:</strong> Search and filter models by name, capabilities, context length, and cost. Export data in multiple formats. Pricing shown per million tokens for both prompts and completions.</p>
-      <p>Data is automatically updated every 12 hours to ensure accuracy. Source code available on <a href="https://github.com/jvrck/openrouterlist" target="_blank" rel="noopener">GitHub</a>.</p>
-    </section>
+    <div class="toolbar" aria-label="Table controls">
+      <button id="filtersToggle" class="btn" type="button" aria-expanded="false">Filters <span id="filtersBadge" class="toolbar-badge" hidden>0</span></button>
+      <button id="favoritesToggle" class="btn"><span>⭐</span><span>Favorites Only</span></button>
+      <div class="menu-wrap"><button id="columnsMenuBtn" class="btn" type="button" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
+        <div id="columnsMenu" class="popup-menu" aria-label="Column visibility controls">
+          <div class="column-checkboxes">
+            <label class="column-checkbox"><input type="checkbox" data-column="0" checked> Model ID</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="1" checked> Model Name</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="2" checked> Created</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="3" checked> Context Length</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="4" checked> Prompt Cost</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="5" checked> Completion Cost</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="6" checked> Tool Calling</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="7" checked> Structured Outputs</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="8" checked> Reasoning</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="9" checked> Response Format</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="10" checked> Web Search</label>
+          </div>
+        </div>
+      </div>
+      <button id="viewToggle" class="btn view-toggle">📱 Card View</button>
+      <span id="toolbarModelCount" aria-live="polite"></span>
+    </div>
+
+    <div id="filtersPanel">
 
     <!-- Capability Filters Section -->
     <section class="capability-filters" role="region" aria-label="Filter models by capabilities">
@@ -1296,44 +1355,7 @@
       </div>
     </section>
 
-    <section class="column-selector" role="region" aria-label="Column visibility controls">
-      <h3>Show/Hide Columns:</h3>
-      <div class="column-checkboxes">
-        <label class="column-checkbox">
-          <input type="checkbox" data-column="0" checked> Model ID
-        </label>
-        <label class="column-checkbox">
-          <input type="checkbox" data-column="1" checked> Model Name
-        </label>
-        <label class="column-checkbox">
-          <input type="checkbox" data-column="2" checked> Created
-        </label>
-        <label class="column-checkbox">
-          <input type="checkbox" data-column="3" checked> Context Length
-        </label>
-        <label class="column-checkbox">
-          <input type="checkbox" data-column="4" checked> Prompt Cost
-        </label>
-        <label class="column-checkbox">
-          <input type="checkbox" data-column="5" checked> Completion Cost
-        </label>
-        <label class="column-checkbox">
-          <input type="checkbox" data-column="6" checked> Tool Calling
-        </label>
-        <label class="column-checkbox">
-          <input type="checkbox" data-column="7" checked> Structured Outputs
-        </label>
-        <label class="column-checkbox">
-          <input type="checkbox" data-column="8" checked> Reasoning
-        </label>
-        <label class="column-checkbox">
-          <input type="checkbox" data-column="9" checked> Response Format
-        </label>
-        <label class="column-checkbox">
-          <input type="checkbox" data-column="10" checked> Web Search
-        </label>
-      </div>
-    </section>
+    </div>
 
     <main class="table-view" role="main">
       <table id="csvTable" class="display" style="width:100%">
@@ -1348,6 +1370,9 @@
     
     <footer style="margin-top: 40px; padding: 20px 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-secondary);">
       <p>OpenRouterList - Free AI Model Pricing Comparison Tool | Updated Every 12 Hours</p>
+      <p id="updatedDate"></p>
+      <p>Compare pricing across <strong><span id="modelCount">400+</span> AI language models</strong> available through <a href="https://openrouter.ai/" target="_blank" rel="noopener" style="color: var(--link-color);">OpenRouter</a>. Search and filter models by name, capabilities, context length, and cost; pricing is shown per million tokens.</p>
+      <p>Data is automatically updated every 12 hours. Source code is available on <a href="https://github.com/jvrck/openrouterlist" target="_blank" rel="noopener" style="color: var(--link-color);">GitHub</a>.</p>
       <p>
         <a href="https://github.com/jvrck/openrouterlist" target="_blank" rel="noopener" style="color: var(--link-color);">GitHub</a> | 
         <a href="https://openrouter.ai/" target="_blank" rel="noopener" style="color: var(--link-color);">OpenRouter API</a> | 
@@ -1600,6 +1625,8 @@
     function updateAdvancedIndicators() {
       const count = activeAdvancedCount();
       $('#advancedFilterBadge').text(count ? `(${count} active)` : '');
+      const activeCount = activeCapabilityFilters.length + count;
+      $('#filtersBadge').text(activeCount).prop('hidden', !activeCount);
       const anything = count || isCapabilityFilterActive;
       $('#filterResultsInfo').toggleClass('active', !!anything);
       $('#routerPriceNote').prop('hidden', !['ppmin', 'ppmax', 'pcmin', 'pcmax'].some(key => advancedFilters[key] !== null)).text(`${allData.filter(row => !hasUsableCalculatorPrice(row)).length} n/a (variable/router pricing) hidden by price filter`);
@@ -2333,7 +2360,9 @@
       const params = new URLSearchParams(window.location.search);
       
       if (params.has('search') && dataTable) {
-        dataTable.search(params.get('search')).draw();
+        const search = params.get('search');
+        $('#globalSearch').val(search);
+        dataTable.search(search).draw();
       }
       
       if (params.has('favorites')) {
@@ -2387,6 +2416,10 @@
       [['ppmin', '#ppMinRange'], ['ppmax', '#ppMaxRange'], ['pcmin', '#pcMinRange'], ['pcmax', '#pcMaxRange']].forEach(([key, selector]) => { if (advancedFilters[key] !== null) $(selector).val(priceSliderValue(advancedFilters[key])); });
       compareModelIds = uniqueKnown(params.get('cmp'), allData.map(row => row.id)).slice(0, COMPARE_LIMIT);
       setAdvancedPanel(params.get('afx') === '1' || activeAdvancedCount() > 0);
+      if (params.get('afx') === '1' || activeAdvancedCount() > 0) {
+        $('#filtersPanel').addClass('open');
+        $('#filtersToggle').attr('aria-expanded', 'true');
+      }
       applyAdvancedFilters();
       renderCompareTray();
       
@@ -2522,6 +2555,11 @@
       });
     }
 
+    function closeControlPanels() {
+      $('#moreMenu, #columnsMenu').removeClass('open');
+      $('#moreMenuBtn, #columnsMenuBtn').attr('aria-expanded', 'false');
+    }
+
     // Keyboard shortcuts
     function setupKeyboardShortcuts() {
       $(document).on('keydown', function(e) {
@@ -2543,7 +2581,7 @@
         switch(e.key) {
           case '/':
             e.preventDefault();
-            $('.dataTables_filter input').focus();
+            $('#globalSearch').focus();
             break;
           case 'f':
             $('#favoritesToggle').click();
@@ -2569,8 +2607,9 @@
             $('.dt-button.buttons-csv').click();
             break;
           case 'c':
-            // Toggle capability filter focus
-            $('.capability-checkbox input:first').focus();
+            $('#filtersPanel').addClass('open');
+            $('#filtersToggle').attr('aria-expanded', 'true');
+            $('#filter-tool-calling').focus();
             break;
           case 'm':
             // Toggle filter mode
@@ -2595,6 +2634,7 @@
             $('#shortcutsModal').show();
             break;
           case 'Escape':
+            closeControlPanels();
             if ($('#calculatorModal').is(':visible')) closeCalculator();
             if ($('#finderModal').is(':visible')) closeFinder();
             if ($('#compareModal').is(':visible')) closeCompare();
@@ -2613,6 +2653,32 @@
       
       // Setup keyboard shortcuts
       setupKeyboardShortcuts();
+
+      function toggleControlPanel(menu, button) {
+        const open = !$(menu).hasClass('open');
+        closeControlPanels();
+        $(menu).toggleClass('open', open);
+        $(button).attr('aria-expanded', String(open));
+      }
+      $('#moreMenuBtn').on('click', function(e) { e.stopPropagation(); toggleControlPanel('#moreMenu', this); });
+      $('#columnsMenuBtn').on('click', function(e) { e.stopPropagation(); toggleControlPanel('#columnsMenu', this); });
+      $('#moreMenu, #columnsMenu').on('click', function(e) { e.stopPropagation(); });
+      $(document).on('click', function() { closeControlPanels(); });
+      $('#filtersToggle').on('click', function() {
+        const open = !$('#filtersPanel').hasClass('open');
+        $('#filtersPanel').toggleClass('open', open);
+        $(this).attr('aria-expanded', String(open));
+      });
+      $('#changesToggle').on('click', function() {
+        const open = !$('#changesStrip').hasClass('open');
+        $('#changesStrip').toggleClass('open', open);
+        $(this).attr('aria-expanded', String(open));
+      });
+      $('#globalSearch').on('input', function() {
+        if (!dataTable) return;
+        dataTable.search(this.value).draw();
+        updateURLState();
+      });
       
       // Setup mobile tooltip handling
       if ('ontouchstart' in window) {
@@ -3034,7 +3100,8 @@
         $('#changesMovers').html(listHtml(lists.movers));
         $('#changesNew').html(listHtml(lists.fresh));
         $('#changesRetiring').html(listHtml(lists.retiring));
-        if (lists.movers.length || lists.fresh.length || lists.retiring.length) strip.removeAttr('hidden');
+        $('#changesSummary').text(`${lists.movers.length} movers · ${lists.fresh.length} new · ${lists.retiring.length} retiring`);
+        if (lists.movers.length || lists.fresh.length || lists.retiring.length) strip.removeAttr('hidden').removeClass('open');
       }
 
       // Independent of history/table loading; unavailable data is optional.
@@ -3226,7 +3293,7 @@
         $.fn.dataTable.ext.type.order['price-unpriced-last-desc'] = priceUnpricedLastComparator(-1);
         dataTable = $('#csvTable').DataTable({
           paging: false,
-          dom: 'Bfrtip',
+          dom: 'Btip',
           buttons: [
             {
               extend: 'copy',
@@ -3257,8 +3324,10 @@
           drawCallback: function() {
             updateFavoriteButtons();
             renderCompareTray();
+            $('#toolbarModelCount').text(dataTable ? `${dataTable.rows({ search: 'applied' }).count()} models` : '');
           }
         });
+        dataTable.buttons().container().appendTo('#moreMenu');
         
         // Apply saved column visibility
         Object.keys(columnVisibility).forEach(column => {
@@ -3269,10 +3338,7 @@
         // Load state from URL
         loadFromURL();
         
-        // Update URL on search
-        $('.dataTables_filter input').on('keyup', function() {
-          updateURLState();
-        });
+        $('#toolbarModelCount').text(`${dataTable.rows({ search: 'applied' }).count()} models`);
       });
       }
 
