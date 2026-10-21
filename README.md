@@ -12,6 +12,12 @@ For agents and scripts, [`llms.txt`](https://openrouterlist.jvrck.com/llms.txt) 
 
 Privacy: visitor analytics for jvrck.com sites use Cloudflare Web Analytics (free tier), which is cookieless (no cookies, local storage, fingerprinting, or personal data) and injected at Cloudflare's edge rather than in this repository's code.
 
+## Demo
+
+[![OpenRouterList demo: search, filters, compare, calculator, mobile cards and pricing pages](docs/media/demo-poster.png)](https://openrouterlist.jvrck.com/docs/media/demo.mp4)
+
+[Watch the 57-second OpenRouterList demo](https://openrouterlist.jvrck.com/docs/media/demo.mp4).
+
 ## 📊 Key Features
 
 - **Real-Time Pricing Data**: Automatically updated every 12 hours from OpenRouter's API
