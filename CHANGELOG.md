@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.24] - 2026-10-22
+
+### Changed
+
+- Grouped `meta` and `meta-llama` as one provider family when selecting model comparison pairs
+- Increased sample-workload price precision below $0.10 and made the public API schema accept additive fields
+
 ## [0.0.23] - 2026-10-22
 
 ### Added
