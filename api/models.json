@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-21T22:31:34Z",
+  "updated": "2026-10-21T23:10:06Z",
   "source": "https://openrouter.ai/api/v1/models",
   "count": 468,
   "models": [
@@ -1697,8 +1697,8 @@
       "id": "deepseek/deepseek-v4-pro",
       "name": "DeepSeek: DeepSeek V4 Pro 0423",
       "url": "https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4-pro/",
-      "prompt_per_1m": 0.388716,
-      "completion_per_1m": 0.777432,
+      "prompt_per_1m": 0.383496,
+      "completion_per_1m": 0.766992,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -9640,7 +9640,7 @@
       "output_modalities": [
         "text"
       ],
-      "created": "2026-10-19T15:01:13Z",
+      "created": "2026-10-21T22:46:05Z",
       "expiration_date": null
     },
     {
@@ -11221,8 +11221,8 @@
       "id": "z-ai/glm-5.3",
       "name": "Z.ai: GLM 5.3",
       "url": "https://openrouterlist.jvrck.com/m/z-ai/glm-5.3/",
-      "prompt_per_1m": 0.079,
-      "completion_per_1m": 1.4,
+      "prompt_per_1m": 0.7,
+      "completion_per_1m": 2.2,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
