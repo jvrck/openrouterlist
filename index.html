@@ -577,6 +577,47 @@
       color: var(--favorite-color);
     }
 
+    .model-id {
+      color: var(--text-secondary);
+      font-size: 12px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .row-actions {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 6px;
+      opacity: 0;
+      pointer-events: none;
+      vertical-align: middle;
+    }
+
+    tr:hover .row-actions,
+    tr:focus-within .row-actions,
+    tr.actions-open .row-actions {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .row-actions-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      margin-left: 4px;
+      padding: 0 3px;
+    }
+
+    @media (hover: none) {
+      .row-actions-toggle { display: inline-block; }
+      .row-actions { opacity: 0; }
+      tr.actions-open .row-actions { opacity: 1; }
+    }
+
     /* Density Styles */
     table.density-compact td,
     table.density-compact th {
@@ -1219,7 +1260,7 @@
       <div class="menu-wrap"><button id="columnsMenuBtn" class="btn" type="button" aria-haspopup="true" aria-expanded="false">Columns ▾</button>
         <div id="columnsMenu" class="popup-menu" aria-label="Column visibility controls">
           <div class="column-checkboxes">
-            <label class="column-checkbox"><input type="checkbox" data-column="0" checked> Model ID</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="0"> Model ID</label>
             <label class="column-checkbox"><input type="checkbox" data-column="1" checked> Model Name</label>
             <label class="column-checkbox"><input type="checkbox" data-column="2" checked> Created</label>
             <label class="column-checkbox"><input type="checkbox" data-column="3" checked> Context Length</label>
@@ -1663,11 +1704,20 @@
     const escHtml = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     const modelPageSlug = id => String(id).replace(/[^A-Za-z0-9._\/-]/gu, '-');
     const isSafeModelPageSlug = slug => slug.split('/').every(segment => segment && segment !== '.' && segment !== '..' && !segment.startsWith('.'));
-    const modelPageLink = id => {
+    const modelPageLink = (id, text) => {
       const slug = modelPageSlug(id);
-      return isSafeModelPageSlug(slug) ? `<a class="model-page-link" href="/m/${slug}/">${escHtml(id)}</a>` : escHtml(id);
+      const label = text === undefined ? id : text;
+      return isSafeModelPageSlug(slug) ? `<a class="model-page-link" href="/m/${slug}/">${escHtml(label)}</a>` : escHtml(label);
     };
     const tableRowModelId = tableRow => $('<div>').html(String(tableRow[0])).text();
+    const cleanModelNameExport = (data, row, column, node) => {
+      if (column === 1) {
+        const cell = node || $('<div>').html(String(data))[0];
+        const modelName = cell && cell.querySelector('.model-name');
+        if (modelName) return modelName.textContent.trim();
+      }
+      return $('<div>').html(String(data)).text().replace(/\n/g, ' ').trim();
+    };
 
     // Negative or unparseable values do not represent a fixed per-token price.
     function isUnpriced(numericValue) {
@@ -2326,7 +2376,10 @@
       $('.column-checkbox input:checked').each(function() {
         visibleColumns.push($(this).data('column'));
       });
-      if (visibleColumns.length < 11) {
+      const defaultVisibleColumns = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      const hasDefaultVisibleColumns = visibleColumns.length === defaultVisibleColumns.length &&
+        defaultVisibleColumns.every(column => visibleColumns.includes(column));
+      if (!hasDefaultVisibleColumns) {
         params.set('columns', visibleColumns.join(','));
       }
 
@@ -2956,6 +3009,16 @@
         localStorage.setItem('columnVisibility', JSON.stringify(columnVisibility));
         updateURLState();
       });
+
+      $(document).on('click', '.row-actions-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const row = $(this).closest('tr');
+        const open = !row.hasClass('actions-open');
+        $('#csvTable tbody tr.actions-open').not(row).removeClass('actions-open').find('.row-actions-toggle').attr('aria-expanded', 'false');
+        row.toggleClass('actions-open', open);
+        $(this).attr('aria-expanded', open);
+      });
       
       // Listen for system theme changes
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
@@ -3223,12 +3286,13 @@
                   rowHtml += "<td>Invalid Date</td>";
                 }
               } else if (columnName === "name") {
-                // Add favorite button and hyperlink to the Model Name field
-                var favoriteBtn = `<button class="favorite-btn" data-model-id="${currentId}">☆</button>`;
-                var histBtn = priceHistory[currentId] ? `<button class="history-btn" data-model-id="${currentId}" title="Price history" aria-label="Price history">📈</button>` : '';
+                // Keep the ID in column 0 for filters/exports; show the consolidated model identity here.
+                var favoriteBtn = `<button class="favorite-btn" data-model-id="${escHtml(currentId)}" title="Favorite" aria-label="Favorite ${escHtml(cleanedValue || currentId)}">☆</button>`;
+                var histBtn = priceHistory[currentId] ? `<button class="history-btn" data-model-id="${escHtml(currentId)}" title="Price history" aria-label="Price history">📈</button>` : '';
                 var compared = compareModelIds.includes(currentId);
                 var compareBtn = `<button class="btn compare-btn ${compared ? 'selected' : ''}" data-model-id="${escHtml(currentId)}" title="Compare" aria-label="Compare ${escHtml(cleanedValue || currentId)}" aria-pressed="${compared}">⇄</button>`;
-                rowHtml += `<td>${favoriteBtn}<a href="https://openrouter.ai/models/${currentId}" target="_blank">${cleanedValue}</a>${histBtn}${compareBtn}</td>`;
+                var actionToggle = `<button class="row-actions-toggle" type="button" aria-expanded="false" aria-label="Show actions for ${escHtml(cleanedValue || currentId)}">⋯</button>`;
+                rowHtml += `<td data-search="${escHtml(cleanedValue + ' ' + currentId)}"><div class="model-name">${modelPageLink(currentId, cleanedValue)}</div><div class="model-id">${escHtml(currentId)}</div>${actionToggle}<span class="row-actions">${favoriteBtn}${histBtn}${compareBtn}</span></td>`;
               } else if (columnName === "context_length") {
                 rowData.context_length = cleanedValue;
                 rowHtml += "<td>" + cleanedValue + "</td>";
@@ -3298,27 +3362,32 @@
             {
               extend: 'copy',
               text: 'Copy',
-              className: 'buttons-copy'
+              className: 'buttons-copy',
+              exportOptions: { format: { body: cleanModelNameExport } }
             },
             {
               extend: 'csv',
               text: 'CSV',
-              className: 'buttons-csv'
+              className: 'buttons-csv',
+              exportOptions: { format: { body: cleanModelNameExport } }
             },
             {
               extend: 'excel',
               text: 'Excel',
-              className: 'buttons-excel'
+              className: 'buttons-excel',
+              exportOptions: { format: { body: cleanModelNameExport } }
             },
             {
               extend: 'print',
               text: 'Print',
-              className: 'buttons-print'
+              className: 'buttons-print',
+              exportOptions: { format: { body: cleanModelNameExport } }
             }
           ],
           responsive: true,
           searchHighlight: true,
           columnDefs: [
+            { targets: 0, visible: false },
             { targets: [4, 5], type: 'price-unpriced-last' }
           ],
           drawCallback: function() {
@@ -3327,6 +3396,11 @@
             $('#toolbarModelCount').text(dataTable ? `${dataTable.rows({ search: 'applied' }).count()} models` : '');
           }
         });
+        // Keep the programmatic DataTables export API clean too (not only the four buttons above).
+        const exportData = dataTable.buttons.exportData;
+        dataTable.buttons.exportData = function(options) {
+          return exportData.call(this, $.extend(true, { format: { body: cleanModelNameExport } }, options || {}));
+        };
         dataTable.buttons().container().appendTo('#moreMenu');
         
         // Apply saved column visibility

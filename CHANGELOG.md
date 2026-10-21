@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.19] - 2026-10-21
+
+### Changed
+
+- Combined the visible model identity into the Model Name column: model pages are linked from the name, the exact ID appears beneath it, and row actions stay out of the way until needed (closes #47)
+- Copy, CSV, Excel, and Print exports now contain a clean Model Name value without favourite, history, or compare glyphs
+
 ## [0.0.18] - 2026-10-21
 
 ### Changed
