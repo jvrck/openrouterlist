@@ -3289,7 +3289,7 @@
                 var compared = compareModelIds.includes(currentId);
                 var compareBtn = `<button class="btn compare-btn ${compared ? 'selected' : ''}" data-model-id="${escHtml(currentId)}" title="Compare" aria-label="Compare ${escHtml(cleanedValue || currentId)}" aria-pressed="${compared}">⇄</button>`;
                 var actionToggle = `<button class="row-actions-toggle" type="button" aria-expanded="false" aria-label="Show actions for ${escHtml(cleanedValue || currentId)}">⋯</button>`;
-                rowHtml += `<td><div class="model-name">${modelPageLink(currentId, cleanedValue)}</div><div class="model-id">${escHtml(currentId)}</div>${actionToggle}<span class="row-actions">${favoriteBtn}${histBtn}${compareBtn}</span></td>`;
+                rowHtml += `<td data-search="${escHtml(cleanedValue + ' ' + currentId)}"><div class="model-name">${modelPageLink(currentId, cleanedValue)}</div><div class="model-id">${escHtml(currentId)}</div>${actionToggle}<span class="row-actions">${favoriteBtn}${histBtn}${compareBtn}</span></td>`;
               } else if (columnName === "context_length") {
                 rowData.context_length = cleanedValue;
                 rowHtml += "<td>" + cleanedValue + "</td>";
