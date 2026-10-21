@@ -88,10 +88,7 @@ safe_slug() {
 
 # Case-insensitive collisions would overwrite a page on case-insensitive file
 # systems.  Check before creating any replacement output.
-collisions=$(jq -r '
-  def numeric_string: type == "string" and ([tonumber?] | length == 1);
-  .data[] | select((.pricing.prompt | numeric_string) and (.pricing.completion | numeric_string)) | .id
-' "$output" | while IFS= read -r id; do
+collisions=$(jq -r '.data[].id' "$output" | while IFS= read -r id; do
     slug=$(slug_for "$id")
     if safe_slug "$slug"; then
         printf '%s\n' "$slug" | tr '[:upper:]' '[:lower:]'
@@ -113,8 +110,7 @@ jq -r '.data[].id' "$output" | while IFS= read -r id; do
         | ((.pricing.prompt | type == "string" and ([tonumber?] | length == 1))
            and (.pricing.completion | type == "string" and ([tonumber?] | length == 1)))
     ' "$output" >/dev/null; then
-        printf '%s\n' "WARN: build_model_pages: skipping model with invalid pricing $id" >&2
-        continue
+        printf '%s\n' "WARN: build_model_pages: non-numeric pricing for $id" >&2
     fi
     page_dir="$tmp/m/$slug"
     case "$page_dir" in
@@ -127,7 +123,10 @@ jq -r '.data[].id' "$output" | while IFS= read -r id; do
     jq -r --arg id "$id" --arg slug "$slug" --argjson points "$points" '
       def h: tostring | @html;
       def pathuri: split("/") | map(@uri) | join("/");
-      def is_variable($v): ($v | tonumber) < 0;
+      def parsed_number($v):
+        [$v | select(type == "string") | tonumber?]
+        | if length == 1 then .[0] else null end;
+      def is_variable($v): (parsed_number($v)) as $n | ($n != null and $n < 0);
       def rounded_significant($n):
         if $n == 0 then 0
         else ((($n | fabs | log) / (10 | log)) | floor) as $power
@@ -138,7 +137,9 @@ jq -r '.data[].id' "$output" | while IFS= read -r id; do
         if $n < 0 then "n/a (variable pricing)"
         elif ($n | fabs) < 0.000000001 then "Free"
         else "$" + (rounded_significant($n) | tostring) end;
-      def price($v): ($v | tonumber * 1000000) | price_per_m(.);
+      def price($v):
+        (parsed_number($v)) as $n |
+        if $n == null then "n/a (unavailable)" else price_per_m($n * 1000000) end;
       def price_row($v):
         price($v) as $text |
         if $text == "Free" or ($text | startswith("n/a")) then $text else $text + " / 1M tokens" end;
@@ -179,13 +180,14 @@ jq -r '.data[].id' "$output" | while IFS= read -r id; do
       } as $m |
       ($points | map({date: .[0], day: ((.[0] + "T00:00:00Z") | fromdateiso8601), prompt: (if .[1] == null or .[1] < 0 then null else .[1] end), completion: (if .[2] == null or .[2] < 0 then null else .[2] end)})) as $points |
       (($m.prompt | is_variable(.)) or ($m.completion | is_variable(.))) as $router |
+      ((parsed_number($m.prompt) == null) or (parsed_number($m.completion) == null)) as $unavailable |
       ($m.name | h) as $name |
       ($m.id | h) as $id_html |
       ($m.id | pathuri) as $id_path |
       ($slug | pathuri) as $slug_path |
       (($m.input_modalities | if type == "array" then join(", ") else tostring end) | field(.)) as $input |
       (($m.output_modalities | if type == "array" then join(", ") else tostring end) | field(.)) as $output |
-      (if $router then "variable pricing" else (price($m.prompt) + " prompt, " + price($m.completion) + " completion") end) as $price_summary |
+      (if $router then "variable pricing" elif $unavailable then "n/a (unavailable)" else (price($m.prompt) + " prompt, " + price($m.completion) + " completion") end) as $price_summary |
       ($m.name + " (" + $m.id + "): " + $price_summary + ", " + (($m.context_length // "—") | tostring) + " context. Live OpenRouter pricing." | h) as $description |
       (if ($points | length) >= 2 then
         ([ $points[] | (.prompt, .completion) | select(type == "number" and . >= 0) ] | max // 0) as $rawmax |
@@ -213,8 +215,7 @@ jq -r --arg date "$lastmod" '
   def slug: gsub("[^A-Za-z0-9._/-]"; "-");
   def pathuri: split("/") | map(@uri) | join("/");
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url><loc>https://openrouterlist.jvrck.com/</loc><lastmod>\($date)</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>",
-  (def numeric_string: type == "string" and ([tonumber?] | length == 1);
-   .data | map(select((.pricing.prompt | numeric_string) and (.pricing.completion | numeric_string)) | .id | {slug: slug}) | map(select(.slug | split("/") | all(.[]; length > 0 and . != "." and . != ".." and (startswith(".") | not)))) | sort_by(.slug)[] | "  <url><loc>https://openrouterlist.jvrck.com/m/\(.slug | pathuri)/</loc><lastmod>\($date)</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>"),
+  (.data | map(.id | {slug: slug}) | map(select(.slug | split("/") | all(.[]; length > 0 and . != "." and . != ".." and (startswith(".") | not)))) | sort_by(.slug)[] | "  <url><loc>https://openrouterlist.jvrck.com/m/\(.slug | pathuri)/</loc><lastmod>\($date)</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>"),
   "</urlset>"
 ' "$output" > "$tmp/sitemap.xml" || fail "could not render sitemap"
 
