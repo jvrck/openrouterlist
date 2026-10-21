@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.21] - 2026-10-21
+
+### Changed
+
+- Show the first 50 models with a Show more control, and open Card View by default on phones
+- Keep Card View search live while preserving filters, exports, favourites, calculator, and compare results across all matching models
+
 ## [0.0.20] - 2026-10-21
 
 ### Changed

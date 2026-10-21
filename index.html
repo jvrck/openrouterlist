@@ -639,6 +639,15 @@
       display: none;
     }
 
+    .show-more-wrap {
+      margin: 16px 0;
+      text-align: center;
+    }
+
+    #showMoreBtn[hidden] {
+      display: none;
+    }
+
     .model-card {
       background-color: var(--bg-secondary);
       border: 1px solid var(--border-color);
@@ -1422,6 +1431,7 @@
     </main>
 
     <div class="card-view" id="cardView" role="region" aria-label="Card view of models"></div>
+    <div class="show-more-wrap"><button id="showMoreBtn" class="btn" type="button" hidden>Show more</button></div>
     
     <footer style="margin-top: 40px; padding: 20px 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-secondary);">
       <p>OpenRouterList - Free AI Model Pricing Comparison Tool | Updated Every 12 Hours</p>
@@ -1617,6 +1627,9 @@
     let currentTheme = localStorage.getItem('theme') || 'system';
     let currentDensity = localStorage.getItem('density') || 'comfortable';
     let columnVisibility = JSON.parse(localStorage.getItem('columnVisibility')) || {};
+    const PAGE_SIZE = 50;
+    let cardRowsShown = PAGE_SIZE;
+    let globalSearchTimer = null;
     let isCardView = false;
     
     // Capability filter variables
@@ -1689,8 +1702,7 @@
     }
     function applyAdvancedFilters() {
       updateAdvancedIndicators();
-      if (dataTable) dataTable.draw();
-      if (isCardView) renderCardView();
+      if (dataTable) resetVisibleResults();
       updateFilterResultsCount();
     }
     function readAdvancedControls() {
@@ -2290,14 +2302,11 @@
       if (dataTable) {
         if (showFavoritesOnly) {
           const exactIds = favorites.map(id => String(id).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-          dataTable.column(0).search(exactIds.length ? `^(?:${exactIds.join('|')})$` : '(?!)', true, false).draw();
+          dataTable.column(0).search(exactIds.length ? `^(?:${exactIds.join('|')})$` : '(?!)', true, false);
         } else {
-          dataTable.column(0).search('').draw();
+          dataTable.column(0).search('');
         }
-      }
-      
-      if (isCardView) {
-        renderCardView();
+        resetVisibleResults();
       }
     }
 
@@ -2339,11 +2348,7 @@
     
     function applyCapabilityFilters() {
       if (dataTable) {
-        dataTable.draw();
-      }
-      
-      if (isCardView) {
-        renderCardView();
+        resetVisibleResults();
       }
       
       updateFilterResultsCount();
@@ -2370,6 +2375,36 @@
       }
       const data = showFavoritesOnly ? allData.filter(row => favorites.includes(row.id)) : allData;
       return data.filter(row => rowMatchesCapabilityFilters(row) && rowMatchesAdvancedFilters(row));
+    }
+
+    function updateShowMoreButton() {
+      const button = $('#showMoreBtn');
+      if (!dataTable) {
+        button.prop('hidden', true);
+        return;
+      }
+      const total = getFilteredData().length;
+      const shown = isCardView ? Math.min(cardRowsShown, total) : Math.min(dataTable.page.len(), total);
+      const remaining = Math.max(0, total - shown);
+      button.prop('hidden', remaining === 0).text(`Show more (${remaining} more)`);
+    }
+
+    function resetVisibleResults() {
+      cardRowsShown = PAGE_SIZE;
+      if (dataTable) dataTable.page.len(PAGE_SIZE).draw();
+      if (isCardView) renderCardView();
+      else updateShowMoreButton();
+    }
+
+    function setCardView(cardView, persist) {
+      isCardView = !!cardView;
+      $('.table-view').toggle(!isCardView);
+      $('.card-view').toggle(isCardView);
+      $('.column-selector').toggle(!isCardView);
+      $('#viewToggle').html(isCardView ? '📊 Table View' : '📱 Card View');
+      if (persist) localStorage.setItem('viewMode', isCardView ? 'cards' : 'table');
+      if (isCardView) renderCardView();
+      else updateShowMoreButton();
     }
     
     function clearCapabilityFilters() {
@@ -2470,7 +2505,7 @@
       if (params.has('search') && dataTable) {
         const search = params.get('search');
         $('#globalSearch').val(search);
-        dataTable.search(search).draw();
+        dataTable.search(search);
       }
       
       if (params.has('favorites')) {
@@ -2588,11 +2623,12 @@
     }
 
     // Card view rendering
-    function renderCardView() {
+    function renderCardView(startAt) {
       const cardContainer = $('#cardView');
-      cardContainer.empty();
+      const start = Number.isInteger(startAt) ? startAt : 0;
+      if (!start) cardContainer.empty();
       
-      const dataToRender = getFilteredData();
+      const dataToRender = getFilteredData().slice(start, cardRowsShown);
       
       dataToRender.forEach(row => {
         const isFavorited = favorites.includes(row.id);
@@ -2654,13 +2690,15 @@
           </div>
         `);
         
-        card.find('.favorite-btn').on('click', function() {
+        card.find('.favorite-btn').on('click', function(e) {
+          e.stopPropagation();
           toggleFavorite(row.id);
           renderCardView();
         });
         
         cardContainer.append(card);
       });
+      updateShowMoreButton();
     }
 
     function closeControlPanels() {
@@ -2784,8 +2822,24 @@
       });
       $('#globalSearch').on('input', function() {
         if (!dataTable) return;
-        dataTable.search(this.value).draw();
-        updateURLState();
+        const search = this.value;
+        window.clearTimeout(globalSearchTimer);
+        globalSearchTimer = window.setTimeout(function() {
+          dataTable.search(search);
+          resetVisibleResults();
+          updateURLState();
+        }, 120);
+      });
+
+      $('#showMoreBtn').on('click', function() {
+        if (!dataTable) return;
+        if (isCardView) {
+          const start = cardRowsShown;
+          cardRowsShown += PAGE_SIZE;
+          renderCardView(start);
+        } else {
+          dataTable.page.len(dataTable.page.len() + PAGE_SIZE).draw(false);
+        }
       });
       
       // Setup mobile tooltip handling
@@ -2823,19 +2877,7 @@
       
       // View toggle (mobile)
       $('#viewToggle').on('click', function() {
-        isCardView = !isCardView;
-        if (isCardView) {
-          $('.table-view').hide();
-          $('.card-view').show();
-          $('.column-selector').hide();
-          $(this).html('📊 Table View');
-          renderCardView();
-        } else {
-          $('.table-view').show();
-          $('.card-view').hide();
-          $('.column-selector').show();
-          $(this).html('📱 Card View');
-        }
+        setCardView(!isCardView, true);
       });
       
       // Capability filter handlers
@@ -3415,8 +3457,9 @@
         $.fn.dataTable.ext.type.order['price-unpriced-last-asc'] = priceUnpricedLastComparator(1);
         $.fn.dataTable.ext.type.order['price-unpriced-last-desc'] = priceUnpricedLastComparator(-1);
         dataTable = $('#csvTable').DataTable({
-          paging: false,
-          dom: 'Btip',
+          paging: true,
+          pageLength: PAGE_SIZE,
+          dom: 'Brt',
           buttons: [
             {
               extend: 'copy',
@@ -3455,6 +3498,7 @@
             updateFavoriteButtons();
             renderCompareTray();
             $('#toolbarModelCount').text(dataTable ? `${dataTable.rows({ search: 'applied' }).count()} models` : '');
+            updateShowMoreButton();
           }
         });
         // Keep the programmatic DataTables export API clean too (not only the four buttons above).
@@ -3474,6 +3518,10 @@
         
         // Load state from URL
         loadFromURL();
+
+        // A phone's first visit starts on cards; an explicit mobile choice is remembered.
+        const savedViewMode = localStorage.getItem('viewMode');
+        setCardView(window.innerWidth <= 768 && savedViewMode !== 'table', false);
         
         $('#toolbarModelCount').text(`${dataTable.rows({ search: 'applied' }).count()} models`);
       });
