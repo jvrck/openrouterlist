@@ -100,7 +100,6 @@
   <url><loc>https://openrouterlist.jvrck.com/m/google/gemini-2.5-flash/</loc><lastmod>2026-10-21</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/google/gemini-2.5-flash-image/</loc><lastmod>2026-10-21</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/google/gemini-2.5-flash-lite/</loc><lastmod>2026-10-21</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/google/gemini-2.5-flash-lite-batch/</loc><lastmod>2026-10-21</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/google/gemini-2.5-pro/</loc><lastmod>2026-10-21</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/google/gemini-2.5-pro-preview/</loc><lastmod>2026-10-21</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/google/gemini-3-flash-preview/</loc><lastmod>2026-10-21</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
@@ -401,6 +400,7 @@
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3.8-max-0902/</loc><lastmod>2026-10-21</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3.8-max-prime/</loc><lastmod>2026-10-21</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3.8-omni-flash/</loc><lastmod>2026-10-21</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/m/recursive/flint-v1.0-free/</loc><lastmod>2026-10-21</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/reflection/beam-1.0-501b-a23b/</loc><lastmod>2026-10-21</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/rekaai/reka-edge/</loc><lastmod>2026-10-21</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/rekaai/reka-flash-3/</loc><lastmod>2026-10-21</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
