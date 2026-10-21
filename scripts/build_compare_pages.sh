@@ -16,7 +16,7 @@
 # skipped without failing the rest of the build.
 set -euo pipefail
 
-TEMPLATE_VERSION=2
+TEMPLATE_VERSION=3
 if [ "${1:-}" = "--template-version" ]; then
     printf '%s\n' "$TEMPLATE_VERSION"
     exit 0
@@ -153,15 +153,16 @@ EOF
           day_diff = fmt_diff(diff, digits)
           month_diff = fmt_diff(diff * 30, digits)
         }
-        printf "%s\t%s\t%s\t%s\t%s\t%s\n", fmt(ad), fmt(ad * 30), fmt(bd), fmt(bd * 30), day_diff, month_diff
+        printf "%.17g\t%.17g\t%s\t%s\t%s\t%s\t%s\t%s\n", ad, bd, fmt(ad), fmt(ad * 30), fmt(bd), fmt(bd * 30), day_diff, month_diff
       }
     ') || fail "could not calculate workload for $slug"
-    IFS="$(printf '\t')" read -r aday amonth bday bmonth ddiff mdiff <<EOF
+    IFS="$(printf '\t')" read -r araw braw aday amonth bday bmonth ddiff mdiff <<EOF
 $costs
 EOF
 
     jq -L scripts -r \
       --arg aid "$aid" --arg bid "$bid" --arg slug "$slug" --arg date "$lastmod" \
+      --arg araw "$araw" --arg braw "$braw" \
       --arg aday "$aday" --arg amonth "$amonth" --arg bday "$bday" --arg bmonth "$bmonth" \
       --arg ddiff "$ddiff" --arg mdiff "$mdiff" '
       include "capabilities";
@@ -184,7 +185,10 @@ EOF
           end;
       def money_m($raw):
         (($raw | tonumber) * 1000000) as $v
-        | "$" + (if $v < 0.01 then fixed($v; 4) else fixed($v; 2) end);
+        | "$" + (fixed($v; 4)
+          | if endswith("00") then .[0:-2]
+            elif endswith("0") then .[0:-1]
+            else . end);
       def context($v): if $v == null then "—" else (($v | group_digits) + " tokens") end;
       def modalities($v): if ($v // [] | length) == 0 then "—" else ($v | join(", ")) end;
       def mark($v): if $v then "✓" else "–" end;
@@ -199,20 +203,21 @@ EOF
       | ($a.pricing.completion | tonumber) as $ac
       | ($b.pricing.prompt | tonumber) as $bp
       | ($b.pricing.completion | tonumber) as $bc
+      | ($araw | tonumber) as $ad
+      | ($braw | tonumber) as $bd
       | ($a.name | h) as $an | ($b.name | h) as $bn
       | (($a.name + " vs " + $b.name + ": " + money_m($ap) + " vs " + money_m($bp)
           + " per 1M prompt tokens, " + money_m($ac) + " vs " + money_m($bc)
           + " per 1M completion, " + context($a.context_length) + " vs "
           + context($b.context_length) + " context. Live OpenRouter prices, updated twice daily.") | h) as $description
-      | (if $ac == $bc then "Both models have the same completion-token price"
-         elif $ac == 0 then $a.name + " has free completion tokens"
-         elif $bc == 0 then $b.name + " has free completion tokens"
-         elif $ac < $bc then
-           if ratio($bc; $ac) == 1 then $a.name + " is " + (fixed((($bc - $ac) / $bc * 100); 1)) + "% cheaper per 1M completion tokens"
-           else $a.name + " is " + (ratio($bc; $ac) | tostring) + "× cheaper per 1M completion tokens" end
+      | (if $ad == $bd or (((($ad - $bd) | fabs) / ([$ad, $bd] | max)) <= 0.01) then
+           "Both models cost about the same for the sample workload"
+         elif $ad < $bd then
+           if ratio($bd; $ad) == 1 then $a.name + " is " + (fixed((($bd - $ad) / $bd * 100); 1)) + "% cheaper for the sample workload"
+           else $a.name + " is " + (ratio($bd; $ad) | tostring) + "× cheaper for the sample workload" end
          else
-           if ratio($ac; $bc) == 1 then $b.name + " is " + (fixed((($ac - $bc) / $ac * 100); 1)) + "% cheaper per 1M completion tokens"
-           else $b.name + " is " + (ratio($ac; $bc) | tostring) + "× cheaper per 1M completion tokens" end
+           if ratio($ad; $bd) == 1 then $b.name + " is " + (fixed((($ad - $bd) / $ad * 100); 1)) + "% cheaper for the sample workload"
+           else $b.name + " is " + (ratio($ad; $bd) | tostring) + "× cheaper for the sample workload" end
          end
          + (if $a.context_length == $b.context_length then "; both have the same context window."
             elif ($a.context_length // 0) > ($b.context_length // 0) then "; " + $a.name + " has the larger context window."
