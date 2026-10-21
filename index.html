@@ -1754,7 +1754,10 @@
       const context = Number(value);
       if (!Number.isFinite(context) || context <= 0) return '—';
       if (context < 1000) return String(context);
-      if (context < 1000000) return Math.round(context / 1000) + 'K';
+      if (context < 1000000) {
+        const thousands = Math.round(context / 1000);
+        if (thousands < 1000) return thousands + 'K';
+      }
       return Number((context / 1000000).toFixed(2)).toString() + 'M';
     }
 
@@ -3457,7 +3460,9 @@
         // Keep the programmatic DataTables export API clean too (not only the four buttons above).
         const exportData = dataTable.buttons.exportData;
         dataTable.buttons.exportData = function(options) {
-          return exportData.call(this, $.extend(true, { columns: TABLE_EXPORT_COLUMNS, format: { body: cleanModelNameExport } }, options || {}));
+          const defaults = { format: { body: cleanModelNameExport } };
+          if (!options || options.columns === undefined) defaults.columns = TABLE_EXPORT_COLUMNS;
+          return exportData.call(this, $.extend(true, {}, defaults, options || {}));
         };
         dataTable.buttons().container().appendTo('#moreMenu');
         
