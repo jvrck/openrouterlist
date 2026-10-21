@@ -382,7 +382,7 @@ async function main() {
       const outputVideo = join(args.out, 'demo.mp4');
       let encoded = false;
       for (const crf of [28, 30, 32, 34]) {
-        const ffmpeg = spawn('ffmpeg', ['-y', '-framerate', String(FPS), '-i', join(framesDir, '%06d.jpg'), '-an', '-c:v', 'libx264', '-crf', String(crf), '-preset', 'medium', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', outputVideo], { stdio: 'inherit' });
+        const ffmpeg = spawn('ffmpeg', ['-y', '-framerate', String(FPS), '-i', join(framesDir, '%06d.jpg'), '-an', '-vf', 'scale=out_range=tv,format=yuv420p', '-c:v', 'libx264', '-crf', String(crf), '-preset', 'medium', '-pix_fmt', 'yuv420p', '-color_range', 'tv', '-movflags', '+faststart', outputVideo], { stdio: 'inherit' });
         const code = await new Promise(resolvePromise => ffmpeg.on('close', resolvePromise));
         if (code !== 0) throw new Error('ffmpeg failed; install ffmpeg or use --frames-only');
         if ((await stat(outputVideo)).size < 10 * 1024 * 1024) { encoded = true; break; }
