@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Models API: OpenRouterList</title>
+  <meta name="description" content="Documentation for the stable OpenRouterList models JSON API.">
+  <link rel="canonical" href="https://openrouterlist.jvrck.com/api/">
+  <link rel="alternate" type="application/json" href="/api/models.json">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "OpenRouterList models API",
+    "description": "Current OpenRouter model pricing, capabilities, modalities and context lengths in a stable JSON document.",
+    "url": "https://openrouterlist.jvrck.com/api/",
+    "license": "https://opensource.org/license/mit",
+    "isBasedOn": "https://openrouter.ai/api/v1/models",
+    "distribution": {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "https://openrouterlist.jvrck.com/api/models.json"
+    }
+  }
+  </script>
+  <style>
+    body{max-width:900px;margin:2rem auto;padding:0 1rem;font:16px/1.55 system-ui,sans-serif;color:#172033;background:#fff}a{color:#174ea6}header{border-bottom:1px solid #d8dee8;margin-bottom:1.5rem}.lede{font-size:1.1rem}table{width:100%;border-collapse:collapse;margin:1rem 0 2rem}th,td{padding:.55rem;text-align:left;vertical-align:top;border-bottom:1px solid #d8dee8}th{background:#f5f7fa}code,pre{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}pre{padding:1rem;overflow:auto;background:#f5f7fa;border-radius:.35rem}@media (prefers-color-scheme:dark){body{color:#e5e7eb;background:#111827}a{color:#93c5fd}header,th,td{border-color:#374151}th,pre{background:#1f2937}}
+  </style>
+</head>
+<body>
+  <header>
+    <p><a href="/">← OpenRouterList</a></p>
+    <h1>Models API</h1>
+  </header>
+  <main>
+    <p class="lede"><a href="/api/models.json">models.json</a> is a small, sorted projection of current OpenRouter model data for agents and scripts. It contains per-million-token prices and explicit capability flags without descriptions, provider metadata or benchmark scores.</p>
+    <p>Data is checked twice a day. The <code>updated</code> value changes only when the source data changes. Validate the document with the <a href="/api/schema.json">JSON Schema</a>.</p>
+
+    <h2>Fields</h2>
+    <table>
+      <thead><tr><th>Field</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>schema_version</code></td><td>Major schema version, currently <code>1</code>.</td></tr>
+        <tr><td><code>updated</code></td><td>UTC ISO 8601 time when the source data last changed.</td></tr>
+        <tr><td><code>source</code></td><td>Source OpenRouter public models API URL.</td></tr>
+        <tr><td><code>count</code></td><td>Number of objects in <code>models</code>.</td></tr>
+        <tr><td><code>models</code></td><td>Model objects sorted by <code>id</code>.</td></tr>
+        <tr><td><code>id</code></td><td>Exact OpenRouter model identifier.</td></tr>
+        <tr><td><code>name</code></td><td>Human-readable model name.</td></tr>
+        <tr><td><code>url</code></td><td>OpenRouterList model page, or <code>null</code> for an unsafe path.</td></tr>
+        <tr><td><code>prompt_per_1m</code></td><td>USD per 1M prompt tokens; <code>null</code> for variable or unavailable pricing.</td></tr>
+        <tr><td><code>completion_per_1m</code></td><td>USD per 1M completion tokens; <code>null</code> for variable or unavailable pricing.</td></tr>
+        <tr><td><code>pricing</code></td><td><code>fixed</code>, <code>free</code>, <code>variable</code>, or <code>unavailable</code>.</td></tr>
+        <tr><td><code>context_length</code></td><td>Maximum context window in tokens.</td></tr>
+        <tr><td><code>capabilities</code></td><td>Object containing the five boolean flags below.</td></tr>
+        <tr><td><code>tool_calling</code></td><td>Both <code>tools</code> and <code>tool_choice</code> are advertised.</td></tr>
+        <tr><td><code>structured_outputs</code></td><td><code>structured_outputs</code> is advertised.</td></tr>
+        <tr><td><code>reasoning</code></td><td><code>reasoning</code> or <code>include_reasoning</code> is advertised.</td></tr>
+        <tr><td><code>response_format</code></td><td><code>response_format</code> is advertised.</td></tr>
+        <tr><td><code>web_search</code></td><td><code>web_search_options</code> is advertised.</td></tr>
+        <tr><td><code>input_modalities</code></td><td>Accepted input modality names.</td></tr>
+        <tr><td><code>output_modalities</code></td><td>Produced output modality names.</td></tr>
+        <tr><td><code>created</code></td><td>Model creation time as UTC ISO 8601, or <code>null</code>.</td></tr>
+        <tr><td><code>expiration_date</code></td><td>Announced retirement date, or <code>null</code>.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Examples</h2>
+    <pre><code>curl -s https://openrouterlist.jvrck.com/api/models.json</code></pre>
+    <pre><code>curl -s https://openrouterlist.jvrck.com/api/models.json |
+  jq '.models[] | select(.capabilities.tool_calling)'</code></pre>
+
+    <h2>Stability</h2>
+    <p>Within <code>schema_version</code> 1, fields are only added; existing fields are never renamed or removed. Consumers should ignore fields they do not recognise.</p>
+    <p>Code is <a href="https://github.com/jvrck/openrouterlist/blob/main/LICENSE">MIT licensed</a>. Data comes from <a href="https://openrouter.ai/api/v1/models">OpenRouter’s public models API</a>; benchmark scores are not republished.</p>
+  </main>
+</body>
+</html>

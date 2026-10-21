@@ -8,6 +8,8 @@ A comprehensive, real-time pricing comparison tool for 400+ AI language models a
 
 **🔗 Live Tool: [https://openrouterlist.jvrck.com/](https://openrouterlist.jvrck.com/)**
 
+For agents and scripts, [`llms.txt`](https://openrouterlist.jvrck.com/llms.txt) maps the site and the documented [`/api/models.json`](https://openrouterlist.jvrck.com/api/) provides a stable, sorted projection with per-million-token prices, capability flags, modalities, context lengths, and model-page URLs.
+
 Privacy: visitor analytics for jvrck.com sites use Cloudflare Web Analytics (free tier), which is cookieless (no cookies, local storage, fingerprinting, or personal data) and injected at Cloudflare's edge rather than in this repository's code.
 
 ## 📊 Key Features
@@ -42,6 +44,8 @@ Privacy: visitor analytics for jvrck.com sites use Cloudflare Web Analytics (fre
 - `robots.txt` - Search engine crawler instructions
 - `sitemap.xml` - Sitemap for better SEO indexing
 - `scripts/build_model_pages.sh` - Generates static per-model pages in `m/` and the sitemap from current pricing data
+- `scripts/build_api.sh` - Generates the stable `api/models.json` projection from current pricing data
+- `api/` and `llms.txt` - Machine-readable model data, schema, documentation, and agent site map
 
 ## 🚀 Quick Start
 

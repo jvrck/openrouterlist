@@ -23,41 +23,16 @@ curl -X 'GET' \
 
 # Add headers and convert JSON to CSV, saving to the new directory
 echo "id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search,input_modalities,output_modalities" > "$output_dir/output.csv"
-jq -r '.data[] | 
-  # Check for tool calling (both tool_choice AND tools must be present)
-  (.supported_parameters as $params |
-   (if ($params | type == "array" and 
-        ($params | contains(["tool_choice"])) and 
-        ($params | contains(["tools"]))) 
-    then "Yes" else "No" end)) as $tool_calling |
-  
-  # Check for structured outputs
-  (.supported_parameters as $params |
-   (if ($params | type == "array" and 
-        ($params | contains(["structured_outputs"]))) 
-    then "Yes" else "No" end)) as $structured |
-  
-  # Check for reasoning (either reasoning OR include_reasoning)
-  (.supported_parameters as $params |
-   (if ($params | type == "array" and 
-        (($params | contains(["reasoning"])) or 
-         ($params | contains(["include_reasoning"])))) 
-    then "Yes" else "No" end)) as $reasoning |
-  
-  # Check for response format
-  (.supported_parameters as $params |
-   (if ($params | type == "array" and 
-        ($params | contains(["response_format"]))) 
-    then "Yes" else "No" end)) as $response_format |
-  
-  # Check for web search
-  (.supported_parameters as $params |
-   (if ($params | type == "array" and 
-        ($params | contains(["web_search_options"]))) 
-    then "Yes" else "No" end)) as $web_search |
-  
+jq -L scripts -r 'include "capabilities";
+  .data[] |
+  (capabilities) as $capabilities |
+  def yes_no: if . then "Yes" else "No" end;
   [.id, .name, .created, .context_length, .pricing.prompt, .pricing.completion, 
-   $tool_calling, $structured, $reasoning, $response_format, $web_search,
+   ($capabilities.tool_calling | yes_no),
+   ($capabilities.structured_outputs | yes_no),
+   ($capabilities.reasoning | yes_no),
+   ($capabilities.response_format | yes_no),
+   ($capabilities.web_search | yes_no),
    ((.architecture.input_modalities // []) | join("|")), ((.architecture.output_modalities // []) | join("|"))] | @csv' "$output_dir/output.json" >> "$output_dir/output.csv"
 
 # Check if there is an existing output.json in the data directory
@@ -65,8 +40,14 @@ if [ -f "data/output.json" ]; then
     # Compare the newly fetched data with the existing data
     if cmp -s "$output_dir/output.json" "data/output.json"; then
         echo "No change in data, skipping update."
-        # First run after merge, so the ID links never point at missing pages.
-        [ -d m ] || bash scripts/build_model_pages.sh || echo "WARN: model pages failed (non-fatal)"
+        # First run after a template change, so generated pages never stay stale.
+        expected_template_version=$(bash scripts/build_model_pages.sh --template-version)
+        current_template_version=
+        [ ! -f m/.template-version ] || current_template_version=$(tr -d '[:space:]' < m/.template-version)
+        if [ ! -d m ] || [ "$current_template_version" != "$expected_template_version" ]; then
+            bash scripts/build_model_pages.sh || echo "WARN: model pages failed (non-fatal)"
+        fi
+        [ -f api/models.json ] || bash scripts/build_api.sh || echo "WARN: api build failed (non-fatal)"
     else
         echo "Data has changed, updating files."
 
@@ -88,6 +69,7 @@ if [ -f "data/output.json" ]; then
             echo "WARN: python3 not found; skipping price-history update"
         fi
         bash scripts/build_model_pages.sh || echo "WARN: model pages failed (non-fatal)"
+        bash scripts/build_api.sh || echo "WARN: api build failed (non-fatal)"
     fi
 fi
 

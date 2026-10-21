@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.22] - 2026-10-22
+
+### Added
+
+- Added an agent-friendly `llms.txt`, a documented and versioned models JSON API, and plain-text summaries on every model page
+- Linked the API and agent map from the home page, robots file, sitemap, and generated model pages
+
 ## [0.0.21] - 2026-10-21
 
 ### Changed

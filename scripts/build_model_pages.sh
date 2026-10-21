@@ -3,6 +3,12 @@
 # dependencies beyond bash and jq: it also runs in the data-update workflow.
 set -euo pipefail
 
+TEMPLATE_VERSION=2
+if [ "${1:-}" = "--template-version" ]; then
+    printf '%s\n' "$TEMPLATE_VERSION"
+    exit 0
+fi
+
 root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 cd "$root"
 
@@ -120,7 +126,8 @@ jq -r '.data[].id' "$output" | while IFS= read -r id; do
     mkdir -p "$page_dir"
     points=$(jq -c --arg id "$id" '.models[$id].points // []' "$history") || fail "could not read price points"
 
-    jq -r --arg id "$id" --arg slug "$slug" --argjson points "$points" '
+    jq -L scripts -r --arg id "$id" --arg slug "$slug" --arg date "$lastmod" --argjson points "$points" '
+      include "capabilities";
       def h: tostring | @html;
       def pathuri: split("/") | map(@uri) | join("/");
       def parsed_number($v):
@@ -149,6 +156,19 @@ jq -r '.data[].id' "$output" | while IFS= read -r id; do
         else .[0:(length - 3)] as $head | .[(length - 3):] as $tail | ($head | group_digits) + "," + $tail
         end;
       def context_text($v): if $v == null then "—" else (($v | tostring | group_digits) + " tokens") end;
+      def capability_name:
+        if . == "tool_calling" then "tool calling"
+        elif . == "structured_outputs" then "structured outputs"
+        elif . == "reasoning" then "reasoning"
+        elif . == "response_format" then "response format"
+        elif . == "web_search" then "web search"
+        else .
+        end;
+      def natural_list:
+        if length == 1 then .[0]
+        elif length == 2 then join(" and ")
+        else ((.[0:-1] | join(", ")) + " and " + .[-1])
+        end;
       def xpos($day; $first; $last): if $last == $first then 50 else 50 + (510 * ($day - $first) / ($last - $first)) end;
       def ypos($value; $max): 160 - (132 * $value / $max);
       def chart_css: "<style>.grid{stroke:#d8dee8;stroke-width:1}@media (prefers-color-scheme:dark){.grid{stroke:#374151}}</style>";
@@ -176,7 +196,8 @@ jq -r '.data[].id' "$output" | while IFS= read -r id; do
         tokenizer: (.architecture.tokenizer // null),
         instruct_type: (.architecture.instruct_type // null),
         knowledge_cutoff, hugging_face_id, expiration_date,
-        prompt: .pricing.prompt, completion: .pricing.completion
+        prompt: .pricing.prompt, completion: .pricing.completion,
+        capabilities: capabilities
       } as $m |
       ($points | map({date: .[0], day: ((.[0] + "T00:00:00Z") | fromdateiso8601), prompt: (if .[1] == null or .[1] < 0 then null else .[1] end), completion: (if .[2] == null or .[2] < 0 then null else .[2] end)})) as $points |
       (($m.prompt | is_variable(.)) or ($m.completion | is_variable(.))) as $router |
@@ -188,6 +209,15 @@ jq -r '.data[].id' "$output" | while IFS= read -r id; do
       (($m.input_modalities | if type == "array" then join(", ") else tostring end) | field(.)) as $input |
       (($m.output_modalities | if type == "array" then join(", ") else tostring end) | field(.)) as $output |
       (if $router then "variable pricing" elif $unavailable then "n/a (unavailable)" else (price($m.prompt) + " prompt, " + price($m.completion) + " completion") end) as $price_summary |
+      ([$m.capabilities | to_entries[] | select(.value) | .key | capability_name]) as $capability_names |
+      (if $router then $m.name + " (" + $m.id + ") uses variable router pricing"
+       elif $unavailable then $m.name + " (" + $m.id + ") has unavailable pricing"
+       elif (parsed_number($m.prompt) == 0 and parsed_number($m.completion) == 0) then $m.name + " (" + $m.id + ") is free for prompt and completion tokens"
+       else $m.name + " (" + $m.id + ") costs " + price($m.prompt) + " per 1M prompt tokens and " + price($m.completion) + " per 1M completion tokens"
+       end) as $pricing_sentence |
+      (if $m.context_length == null then "has an unavailable context window" else "has a " + (($m.context_length | tostring | group_digits)) + "-token context window" end) as $context_sentence |
+      (if ($capability_names | length) == 0 then "does not advertise any tracked capabilities" else "supports " + ($capability_names | natural_list) end) as $capability_sentence |
+      ($pricing_sentence + ", " + $context_sentence + ", and " + $capability_sentence + ". Data updated " + $date + ".") as $summary |
       ($m.name + " (" + $m.id + "): " + $price_summary + ", " + (($m.context_length // "—") | tostring) + " context. Live OpenRouter pricing." | h) as $description |
       (if ($points | length) >= 2 then
         ([ $points[] | (.prompt, .completion) | select(type == "number" and . >= 0) ] | max // 0) as $rawmax |
@@ -201,9 +231,9 @@ jq -r '.data[].id' "$output" | while IFS= read -r id; do
         + ([segment_paths($completion_series; $max; "#d946ef")] | join(""))
         + "</svg></section>"
        else chart_css + "<section class=\"history\"><h2>Price history</h2><p>No price changes recorded</p></section>" end) as $chart |
-      "<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>" + $name + " pricing: OpenRouterList</title>\n<meta name=\"description\" content=\"" + $description + "\">\n<link rel=\"canonical\" href=\"https://openrouterlist.jvrck.com/m/" + $slug_path + "/\">\n<meta property=\"og:title\" content=\"" + $name + " pricing: OpenRouterList\">\n<meta property=\"og:description\" content=\"" + $description + "\">\n<meta property=\"og:url\" content=\"https://openrouterlist.jvrck.com/m/" + $slug_path + "/\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:image\" content=\"https://openrouterlist.jvrck.com/og-image.png\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">\n<meta name=\"twitter:title\" content=\"" + $name + " pricing: OpenRouterList\">\n<meta name=\"twitter:description\" content=\"" + $description + "\">\n<meta name=\"twitter:image\" content=\"https://openrouterlist.jvrck.com/og-image.png\">\n<link rel=\"icon\" href=\"/favicon.ico\" sizes=\"any\">\n<link rel=\"icon\" href=\"/favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"apple-touch-icon\" href=\"/apple-touch-icon.png\">\n<style>body{max-width:760px;margin:2rem auto;padding:0 1rem;font:16px/1.55 system-ui,sans-serif;color:#172033;background:#fff}a{color:#174ea6}header{border-bottom:1px solid #d8dee8;margin-bottom:1.5rem}.id{color:#52606d;overflow-wrap:anywhere}.badge{display:inline-block;padding:.15rem .5rem;border-radius:1rem;background:#fff3cd;color:#664d03;font-weight:600}dl{display:grid;grid-template-columns:max-content 1fr;gap:.45rem 1rem}dt{font-weight:600}dd{margin:0}.description{white-space:pre-wrap}.history{margin-top:2rem}svg{width:100%;height:auto;overflow:visible}.axis{stroke:#8795a8}.series,.legend line{fill:none;stroke-width:2}.prompt{stroke:#2563eb}.completion{stroke:#d946ef}svg text{font-size:12px;fill:#52606d}@media (prefers-color-scheme:dark){body{color:#e5e7eb;background:#111827}a{color:#93c5fd}header{border-color:#374151}.id,svg text{color:#aab6c8;fill:#aab6c8}.badge{background:#4b3b08;color:#fde68a}.axis{stroke:#64748b}}</style>\n</head>\n<body>\n<header><p><a href=\"/?search=" + ($m.id | @uri) + "\">← All models</a></p><h1>" + $name + "</h1><p class=\"id\">" + $id_html + "</p>"
+      "<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>" + $name + " pricing: OpenRouterList</title>\n<meta name=\"description\" content=\"" + $description + "\">\n<link rel=\"canonical\" href=\"https://openrouterlist.jvrck.com/m/" + $slug_path + "/\">\n<link rel=\"alternate\" type=\"application/json\" href=\"/api/models.json\">\n<meta property=\"og:title\" content=\"" + $name + " pricing: OpenRouterList\">\n<meta property=\"og:description\" content=\"" + $description + "\">\n<meta property=\"og:url\" content=\"https://openrouterlist.jvrck.com/m/" + $slug_path + "/\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:image\" content=\"https://openrouterlist.jvrck.com/og-image.png\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">\n<meta name=\"twitter:title\" content=\"" + $name + " pricing: OpenRouterList\">\n<meta name=\"twitter:description\" content=\"" + $description + "\">\n<meta name=\"twitter:image\" content=\"https://openrouterlist.jvrck.com/og-image.png\">\n<link rel=\"icon\" href=\"/favicon.ico\" sizes=\"any\">\n<link rel=\"icon\" href=\"/favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"apple-touch-icon\" href=\"/apple-touch-icon.png\">\n<style>body{max-width:760px;margin:2rem auto;padding:0 1rem;font:16px/1.55 system-ui,sans-serif;color:#172033;background:#fff}a{color:#174ea6}header{border-bottom:1px solid #d8dee8;margin-bottom:1.5rem}.id{color:#52606d;overflow-wrap:anywhere}.summary{margin-bottom:1.5rem}.badge{display:inline-block;padding:.15rem .5rem;border-radius:1rem;background:#fff3cd;color:#664d03;font-weight:600}dl{display:grid;grid-template-columns:max-content 1fr;gap:.45rem 1rem}dt{font-weight:600}dd{margin:0}.description{white-space:pre-wrap}.history{margin-top:2rem}svg{width:100%;height:auto;overflow:visible}.axis{stroke:#8795a8}.series,.legend line{fill:none;stroke-width:2}.prompt{stroke:#2563eb}.completion{stroke:#d946ef}svg text{font-size:12px;fill:#52606d}@media (prefers-color-scheme:dark){body{color:#e5e7eb;background:#111827}a{color:#93c5fd}header{border-color:#374151}.id,svg text{color:#aab6c8;fill:#aab6c8}.badge{background:#4b3b08;color:#fde68a}.axis{stroke:#64748b}}</style>\n</head>\n<body>\n<header><p><a href=\"/?search=" + ($m.id | @uri) + "\">← All models</a></p><h1>" + $name + "</h1><p class=\"id\">" + $id_html + "</p>"
       + (if $m.expiration_date == null or $m.expiration_date == "" then "" else "<p><span class=\"badge\">Retires on " + ($m.expiration_date | h) + "</span></p>" end)
-      + "</header>\n<main><dl><dt>Prompt price</dt><dd>" + price_row($m.prompt) + "</dd><dt>Completion price</dt><dd>" + price_row($m.completion) + "</dd><dt>Context</dt><dd>" + (context_text($m.context_length) | h) + "</dd><dt>Input modalities</dt><dd>" + $input + "</dd><dt>Output modalities</dt><dd>" + $output + "</dd><dt>Tokenizer</dt><dd>" + ($m.tokenizer | field(.)) + "</dd><dt>Instruct type</dt><dd>" + ($m.instruct_type | field(.)) + "</dd><dt>Knowledge cutoff</dt><dd>" + ($m.knowledge_cutoff | field(.)) + "</dd>"
+      + "</header>\n<main><section class=\"summary\"><p>" + ($summary | h) + "</p></section><dl><dt>Prompt price</dt><dd>" + price_row($m.prompt) + "</dd><dt>Completion price</dt><dd>" + price_row($m.completion) + "</dd><dt>Context</dt><dd>" + (context_text($m.context_length) | h) + "</dd><dt>Input modalities</dt><dd>" + $input + "</dd><dt>Output modalities</dt><dd>" + $output + "</dd><dt>Tokenizer</dt><dd>" + ($m.tokenizer | field(.)) + "</dd><dt>Instruct type</dt><dd>" + ($m.instruct_type | field(.)) + "</dd><dt>Knowledge cutoff</dt><dd>" + ($m.knowledge_cutoff | field(.)) + "</dd>"
       + (if $m.hugging_face_id == null or $m.hugging_face_id == "" then "<dt>Hugging Face</dt><dd>—</dd>" else "<dt>Hugging Face</dt><dd><a href=\"https://huggingface.co/" + ($m.hugging_face_id | pathuri) + "\">" + ($m.hugging_face_id | h) + "</a></dd>" end)
       + "</dl>"
       + (if ($points | length) > 0 then "<p>Last price change: " + ($points[-1].date | h) + "</p>" else "" end)
@@ -211,10 +241,14 @@ jq -r '.data[].id' "$output" | while IFS= read -r id; do
     ' "$output" > "$page_dir/index.html" || fail "could not render $id"
 done
 
+printf '%s\n' "$TEMPLATE_VERSION" > "$tmp/m/.template-version"
+
 jq -r --arg date "$lastmod" '
   def slug: gsub("[^A-Za-z0-9._/-]"; "-");
   def pathuri: split("/") | map(@uri) | join("/");
   "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n  <url><loc>https://openrouterlist.jvrck.com/</loc><lastmod>\($date)</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>",
+  "  <url><loc>https://openrouterlist.jvrck.com/llms.txt</loc><lastmod>\($date)</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>",
+  "  <url><loc>https://openrouterlist.jvrck.com/api/</loc><lastmod>\($date)</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>",
   (.data | map(.id | {slug: slug}) | map(select(.slug | split("/") | all(.[]; length > 0 and . != "." and . != ".." and (startswith(".") | not)))) | sort_by(.slug)[] | "  <url><loc>https://openrouterlist.jvrck.com/m/\(.slug | pathuri)/</loc><lastmod>\($date)</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>"),
   "</urlset>"
 ' "$output" > "$tmp/sitemap.xml" || fail "could not render sitemap"

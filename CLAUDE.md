@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-OpenRouterList is a static model-pricing site at https://openrouterlist.jvrck.com. GitHub Pages serves `main`; `CNAME` supplies the custom domain. The application is a single `index.html` with inline CSS and JavaScript. There is no build step, test suite, or pull-request CI. Related static files include `sitemap.xml`, `robots.txt`, favicons, and the static `og-image.png` share image.
+OpenRouterList is a static model-pricing site at https://openrouterlist.jvrck.com. GitHub Pages serves `main`; `CNAME` supplies the custom domain. The application is a single `index.html` with inline CSS and JavaScript. There is no site build step, test suite, or pull-request CI. Related static files include `sitemap.xml`, `robots.txt`, `llms.txt`, the documented `api/` outputs, generated model pages in `m/`, favicons, and the static `og-image.png` share image.
 
 ## Key commands
 
@@ -15,19 +15,23 @@ bash ./scripts/get_zipped.sh
 # Use a scratch copy: always writes `data/history/prices.json`; no `--help`, and unknown args run incrementally. `--rebuild` needs full history (`fetch-depth: 0`).
 python3 scripts/backfill_history.py [--rebuild]
 
+# Regenerate the stable JSON API and model pages from current data.
+bash scripts/build_api.sh
+bash scripts/build_model_pages.sh
+
 # Preview the static site locally.
 python3 -m http.server
 ```
 
 ## Data flow and files
 
-`scripts/get_zipped.sh` first creates an empty `data/output.json` when it is missing. It fetches OpenRouter's `/api/v1/models`, writes `output.json` and the jq-built 13-column `output.csv` into a timestamped `results/output_<ts>/` directory, then compares that JSON with `data/output.json`. Only when `cmp` finds a difference does the script copy both files into `data/`, write `data/updated`, and invoke the incremental `backfill_history.py` update, `build_changes.py` derivation, and `build_model_pages.sh` static-page/sitemap generation (all non-fatally). `build_changes.py` turns the ledger and current snapshot into `data/changes.json` and `feed.xml`; opposite-direction prompt/completion moves (each significant) whose 3:1 blended change is under the drop threshold are `mixed`, while larger blended moves remain `increase`/`decrease`, and feed updates use deterministic per-day second offsets. `build_model_pages.sh` writes one current-model page beneath `m/`. It then zips the results directory and deletes `results/output_<ts>/`. `results/` is local and gitignored.
+`scripts/get_zipped.sh` first creates an empty `data/output.json` when it is missing. It fetches OpenRouter's `/api/v1/models`, writes `output.json` and the jq-built 13-column `output.csv` into a timestamped `results/output_<ts>/` directory, then compares that JSON with `data/output.json`. Only when `cmp` finds a difference does the script copy both files into `data/`, write `data/updated`, and invoke the incremental `backfill_history.py` update, `build_changes.py` derivation, `build_model_pages.sh` static-page/sitemap generation, and `build_api.sh` API projection (all non-fatally). `build_changes.py` turns the ledger and current snapshot into `data/changes.json` and `feed.xml`; opposite-direction prompt/completion moves (each significant) whose 3:1 blended change is under the drop threshold are `mixed`, while larger blended moves remain `increase`/`decrease`, and feed updates use deterministic per-day second offsets. `build_model_pages.sh` writes one current-model page beneath `m/`, records its template revision in `m/.template-version`, and rebuilds on a no-change fetch when that revision is missing or stale. `build_api.sh` writes the sorted, versioned `api/models.json`; a no-change fetch bootstraps it when missing. It then zips the results directory and deletes `results/output_<ts>/`. `results/` is local and gitignored.
 
 `data/output.csv` has these 13 columns, in order:
 
 `id`, `name`, `created`, `context_length`, `pricing.prompt`, `pricing.completion`, `tool_calling`, `structured_outputs`, `reasoning`, `response_format`, `web_search`, `input_modalities`, `output_modalities`.
 
-The five capability values are derived from `supported_parameters`: `tool_calling` requires both `tools` and `tool_choice`; `structured_outputs` requires `structured_outputs`; `reasoning` accepts `reasoning` or `include_reasoning`; `response_format` requires `response_format`; and `web_search` requires `web_search_options`. The modality values are pipe-delimited. The table displays the first 11 columns; the two modality columns feed filters and cards rather than table columns.
+The five capability values are derived from `supported_parameters` through `scripts/capabilities.jq`, shared by the CSV, API, and model summaries: `tool_calling` requires both `tools` and `tool_choice`; `structured_outputs` requires `structured_outputs`; `reasoning` accepts `reasoning` or `include_reasoning`; `response_format` requires `response_format`; and `web_search` requires `web_search_options`. The modality values are pipe-delimited. The table displays the first 11 columns; the two modality columns feed filters and cards rather than table columns.
 
 `data/updated` is a UTC `YYYYMMDD_HHMMSS` stamp, changed only when the source data changes. The page fetches it independently with `$.get`. `loadHistoryThenTable` fetches `data/history/prices.json` with `.always` (so failure is non-fatal), then fetches `data/output.csv` and populates `allData`. `parseUpdatedStamp` parses the timestamp as UTC and `renderUpdatedDate` presents the relative “Updated … ago” text.
 
@@ -35,7 +39,7 @@ The five capability values are derived from `supported_parameters`: `tool_callin
 
 ## Automation
 
-`.github/workflows/daily_run.yml` runs on cron at 00:00 and 12:00 UTC, `workflow_dispatch`, and push to `main`. It runs the fetch script, which generates `m/` and sitemap `lastmod` from `data/updated` when data changes, then uses `git add .` and commits only when there is a change. Its push uses `GITHUB_TOKEN`, which does not start a loop. The workflow uploads nothing; `results/` is local and gitignored.
+`.github/workflows/daily_run.yml` runs on cron at 00:00 and 12:00 UTC, `workflow_dispatch`, and push to `main`. It runs the fetch script, which generates `m/`, `api/models.json`, and sitemap `lastmod` from `data/updated` when data changes, then uses `git add .` and commits only when there is a change. Its push uses `GITHUB_TOKEN`, which does not start a loop. The workflow uploads nothing; `results/` is local and gitignored.
 
 The data bot can commit immediately after a merge. Rebase before merging, and never hand-edit `data/`.
 
