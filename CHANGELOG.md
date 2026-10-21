@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.16] - 2026-10-21
+
+### Added
+
+- Static per-model pricing pages and a generated model sitemap (closes #30)
+
 ## [0.0.15] - 2026-10-21
 
 ### Fixed

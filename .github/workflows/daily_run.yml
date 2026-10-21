@@ -20,16 +20,6 @@ jobs:
     - name: Run get_zipped.sh script
       run: bash ./scripts/get_zipped.sh
 
-    - name: Update sitemap lastmod
-      run: |
-        stamp="$( (tr -d '[:space:]' < data/updated) 2>/dev/null || true)"
-        if [ -f sitemap.xml ] && printf '%s' "$stamp" | grep -Eq '^[0-9]{8}_[0-9]{6}$' && awk -v s="$stamp" 'BEGIN { y = substr(s,1,4)+0; m = substr(s,5,2)+0; d = substr(s,7,2)+0; H = substr(s,10,2)+0; M = substr(s,12,2)+0; S = substr(s,14,2)+0; split("31 28 31 30 31 30 31 31 30 31 30 31", L, " "); if (y % 4 == 0 && (y % 100 != 0 || y % 400 == 0)) L[2] = 29; exit !(m >= 1 && m <= 12 && d >= 1 && d <= L[m] && H < 24 && M < 60 && S < 60) }'; then
-          d="${stamp:0:4}-${stamp:4:2}-${stamp:6:2}"
-          sed -i.bak -E "s#<lastmod>[^<]*</lastmod>#<lastmod>${d}</lastmod>#" sitemap.xml && rm -f sitemap.xml.bak
-        else
-          echo "data/updated missing, malformed or invalid (or sitemap.xml missing); sitemap unchanged"
-        fi
-
     - name: Commit and push changes
       run: |
         git config --global user.name 'github-actions[bot]'
