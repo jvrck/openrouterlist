@@ -37,6 +37,8 @@ fi
 iso=${stamp:0:4}-${stamp:4:2}-${stamp:6:2}T${stamp:9:2}:${stamp:11:2}:${stamp:13:2}Z
 
 jq -e '
+  def null_or_string_array:
+    (. == null) or ((type == "array") and all(.[]; type == "string"));
   (.data | type == "array")
   and all(.data[];
     (.id | type == "string" and length > 0)
@@ -44,6 +46,8 @@ jq -e '
     and (.pricing | type == "object")
     and ((.supported_parameters == null) or (.supported_parameters | type == "array"))
     and ((.architecture == null) or (.architecture | type == "object"))
+    and (.architecture.input_modalities | null_or_string_array)
+    and (.architecture.output_modalities | null_or_string_array)
     and ((.created == null) or (.created | type == "number"))
     and ((.expiration_date == null) or (.expiration_date | type == "string"))
   )
@@ -103,6 +107,31 @@ jq -L scripts --arg updated "$iso" '
     }
 ' "$output" > "$tmp" || fail "could not build $destination"
 
-jq -e . "$tmp" >/dev/null || fail "generated invalid JSON"
+jq -e '
+  def nullable($kind): (. == null) or (type == $kind);
+  def integer_nonnegative: (type == "number") and (. >= 0) and (. == floor);
+  def string_array: (type == "array") and all(.[]; type == "string");
+  (keys == ["count", "models", "schema_version", "source", "updated"])
+  and (.schema_version == 1)
+  and (.updated | type == "string")
+  and (.source | type == "string")
+  and (.models | type == "array")
+  and (.count == (.models | length))
+  and all(.models[];
+    (keys == ["capabilities", "completion_per_1m", "context_length", "created", "expiration_date", "id", "input_modalities", "name", "output_modalities", "pricing", "prompt_per_1m", "url"])
+    and (.id | type == "string")
+    and (.name | type == "string")
+    and (.url | nullable("string"))
+    and (.prompt_per_1m | nullable("number"))
+    and (.completion_per_1m | nullable("number"))
+    and ((.pricing) as $pricing | ["fixed", "free", "variable", "unavailable"] | index($pricing) != null)
+    and (.context_length | (. == null) or integer_nonnegative)
+    and (.capabilities | (keys == ["reasoning", "response_format", "structured_outputs", "tool_calling", "web_search"]) and all(.[]; type == "boolean"))
+    and (.input_modalities | string_array)
+    and (.output_modalities | string_array)
+    and (.created | nullable("string"))
+    and (.expiration_date | nullable("string"))
+  )
+' "$tmp" >/dev/null || fail "generated output failed shape validation"
 mv "$tmp" "$destination" || fail "could not replace $destination"
 tmp=
