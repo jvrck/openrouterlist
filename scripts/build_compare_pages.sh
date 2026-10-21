@@ -5,8 +5,9 @@
 # - Eligible models have safe /m/ slugs, current text output, non-negative
 #   numeric pricing that is not entirely free, and are not routers, variants,
 #   or safety classifiers (ids containing ~, :, or "guard").
-# - Take the 10 providers with the most eligible models (provider-name tie
-#   break), then each provider's newest three (id tie break).
+# - Take the 10 provider families with the most eligible models (provider-name
+#   tie break), then each provider's newest three (id tie break). The meta and
+#   meta-llama provider names count as one Meta family.
 # - The highest 3*prompt+completion price among each newest three is its
 #   flagship. Build all 45 cross-provider flagship pairs plus every pair among
 #   each provider's newest three (up to 30), ordered by model id.
@@ -16,7 +17,7 @@
 # skipped without failing the rest of the build.
 set -euo pipefail
 
-TEMPLATE_VERSION=3
+TEMPLATE_VERSION=4
 if [ "${1:-}" = "--template-version" ]; then
     printf '%s\n' "$TEMPLATE_VERSION"
     exit 0
@@ -56,6 +57,9 @@ mkdir "$tmp/compare"
 # Keep the unfiltered candidates long enough to diagnose every collision.
 jq -c '
   def num: tonumber? // null;
+  # OpenRouter publishes Meta models under both names; pair selection treats
+  # them as one provider family.
+  def family: split("/")[0] as $p | ({"meta-llama": "meta"}[$p] // $p);
   def model_slug: gsub("[^A-Za-z0-9._/-]"; "-");
   def safe_model_slug:
     . != "" and (startswith("/") | not) and (endswith("/") | not)
@@ -73,7 +77,7 @@ jq -c '
       and ((.architecture.output_modalities // []) | index("text"))
       and (.expiration_date == null)
       and ($slug | safe_model_slug))
-    | {id, provider: (.id | split("/")[0]), created,
+    | {id, provider: (.id | family), created,
        blend: (3 * (.pricing.prompt | num) + (.pricing.completion | num))}
   ] as $eligible
   | ($eligible
@@ -139,8 +143,7 @@ $prices
 EOF
 
     costs=$(awk -v ap="$ap" -v ac="$ac" -v bp="$bp" -v bc="$bc" '
-      function fmt(v) { return v < 0.01 ? sprintf("%.4f", v) : sprintf("%.2f", v) }
-      function fmt_diff(v, digits) { return digits == 4 ? sprintf("%.4f", v) : sprintf("%.2f", v) }
+      function fmt(v) { return v < 0.10 ? sprintf("%.4f", v) : sprintf("%.2f", v) }
       BEGIN {
         ad = (1000 * ap + 500 * ac) * 100
         bd = (1000 * bp + 500 * bc) * 100
@@ -149,9 +152,8 @@ EOF
           day_diff = "none"
           month_diff = "none"
         } else {
-          digits = diff < 0.01 ? 4 : 2
-          day_diff = fmt_diff(diff, digits)
-          month_diff = fmt_diff(diff * 30, digits)
+          day_diff = fmt(diff)
+          month_diff = fmt(diff * 30)
         }
         printf "%.17g\t%.17g\t%s\t%s\t%s\t%s\t%s\t%s\n", ad, bd, fmt(ad), fmt(ad * 30), fmt(bd), fmt(bd * 30), day_diff, month_diff
       }
@@ -268,7 +270,7 @@ jq -L scripts -r --arg date "$lastmod" --slurpfile pairs "$tmp/compare/pairs.jso
       | "<li><a href=\"/compare/" + ($p.slug | @uri) + "/\">" + ($an | h) + " vs " + ($bn | h) + "</a></li>" ]
     | join("\n");
   .data as $models
-  | "<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Model price comparisons: OpenRouterList</title>\n<meta name=\"description\" content=\"Side-by-side OpenRouter model pricing, capabilities, context windows and sample workload costs for popular model pairs.\">\n<link rel=\"canonical\" href=\"https://openrouterlist.jvrck.com/compare/\">\n<meta property=\"og:title\" content=\"Model price comparisons: OpenRouterList\">\n<meta property=\"og:description\" content=\"Side-by-side OpenRouter model prices and workload costs.\">\n<meta property=\"og:url\" content=\"https://openrouterlist.jvrck.com/compare/\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:image\" content=\"https://openrouterlist.jvrck.com/og-image.png\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">\n<meta name=\"twitter:title\" content=\"Model price comparisons: OpenRouterList\">\n<meta name=\"twitter:description\" content=\"Side-by-side OpenRouter model prices and workload costs.\">\n<meta name=\"twitter:image\" content=\"https://openrouterlist.jvrck.com/og-image.png\">\n<link rel=\"icon\" href=\"/favicon.ico\" sizes=\"any\">\n<link rel=\"icon\" href=\"/favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"apple-touch-icon\" href=\"/apple-touch-icon.png\">\n<style>body{max-width:860px;margin:2rem auto;padding:0 1rem;font:16px/1.55 system-ui,sans-serif;color:#172033;background:#fff}a{color:#174ea6}header{border-bottom:1px solid #d8dee8;margin-bottom:1.5rem}.rule{padding:1rem;background:#f4f6f8;border-radius:.5rem}li{margin:.35rem 0}.updated{color:#52606d}@media(prefers-color-scheme:dark){body{color:#e5e7eb;background:#111827}a{color:#93c5fd}header{border-color:#374151}.rule{background:#1f2937}.updated{color:#aab6c8}}</style>\n</head>\n<body>\n<header><p><a href=\"/\">← Model comparison table</a></p><h1>Model price comparisons</h1><p>Static, side-by-side pricing pages for model A vs model B searches.</p></header>\n<main><section class=\"rule\"><h2>How these pairs are chosen</h2><p>From current, paid text-output models with safe IDs and numeric prices, we select the 10 providers with the most eligible models, take each provider’s newest three, and choose the highest 3:1 blended-price model as its flagship. The list contains every cross-provider flagship pair and every pair within each provider’s newest three.</p></section>\n<section><h2>Cross-provider flagships</h2><ul>\n" + links($models; "cross") + "\n</ul></section>\n<section><h2>Same-provider comparisons</h2><ul>\n" + links($models; "same") + "\n</ul></section>\n<p class=\"updated\">Data updated " + ($date | h) + "</p></main>\n</body>\n</html>"
+  | "<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Model price comparisons: OpenRouterList</title>\n<meta name=\"description\" content=\"Side-by-side OpenRouter model pricing, capabilities, context windows and sample workload costs for popular model pairs.\">\n<link rel=\"canonical\" href=\"https://openrouterlist.jvrck.com/compare/\">\n<meta property=\"og:title\" content=\"Model price comparisons: OpenRouterList\">\n<meta property=\"og:description\" content=\"Side-by-side OpenRouter model prices and workload costs.\">\n<meta property=\"og:url\" content=\"https://openrouterlist.jvrck.com/compare/\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:image\" content=\"https://openrouterlist.jvrck.com/og-image.png\">\n<meta name=\"twitter:card\" content=\"summary_large_image\">\n<meta name=\"twitter:title\" content=\"Model price comparisons: OpenRouterList\">\n<meta name=\"twitter:description\" content=\"Side-by-side OpenRouter model prices and workload costs.\">\n<meta name=\"twitter:image\" content=\"https://openrouterlist.jvrck.com/og-image.png\">\n<link rel=\"icon\" href=\"/favicon.ico\" sizes=\"any\">\n<link rel=\"icon\" href=\"/favicon.svg\" type=\"image/svg+xml\">\n<link rel=\"apple-touch-icon\" href=\"/apple-touch-icon.png\">\n<style>body{max-width:860px;margin:2rem auto;padding:0 1rem;font:16px/1.55 system-ui,sans-serif;color:#172033;background:#fff}a{color:#174ea6}header{border-bottom:1px solid #d8dee8;margin-bottom:1.5rem}.rule{padding:1rem;background:#f4f6f8;border-radius:.5rem}li{margin:.35rem 0}.updated{color:#52606d}@media(prefers-color-scheme:dark){body{color:#e5e7eb;background:#111827}a{color:#93c5fd}header{border-color:#374151}.rule{background:#1f2937}.updated{color:#aab6c8}}</style>\n</head>\n<body>\n<header><p><a href=\"/\">← Model comparison table</a></p><h1>Model price comparisons</h1><p>Static, side-by-side pricing pages for model A vs model B searches.</p></header>\n<main><section class=\"rule\"><h2>How these pairs are chosen</h2><p>From current, paid text-output models with safe IDs and numeric prices, we select the 10 providers with the most eligible models, take each provider’s newest three, and choose the highest 3:1 blended-price model as its flagship. The <code>meta</code> and <code>meta-llama</code> names count as one Meta provider. The list contains every cross-provider flagship pair and every pair within each provider’s newest three.</p></section>\n<section><h2>Cross-provider flagships</h2><ul>\n" + links($models; "cross") + "\n</ul></section>\n<section><h2>Same-provider comparisons</h2><ul>\n" + links($models; "same") + "\n</ul></section>\n<p class=\"updated\">Data updated " + ($date | h) + "</p></main>\n</body>\n</html>"
 ' "$output" > "$tmp/compare/index.html" || fail "could not render comparison index"
 
 printf '%s\n' "$TEMPLATE_VERSION" > "$tmp/compare/.template-version"

@@ -4,7 +4,6 @@
   "title": "OpenRouterList models API",
   "description": "The stable OpenRouterList projection of current OpenRouter model pricing and capabilities.",
   "type": "object",
-  "additionalProperties": false,
   "required": ["schema_version", "updated", "source", "count", "models"],
   "properties": {
     "schema_version": {
@@ -32,7 +31,6 @@
       "items": {
         "description": "A deliberately small projection of one OpenRouter model.",
         "type": "object",
-        "additionalProperties": false,
         "required": ["id", "name", "url", "prompt_per_1m", "completion_per_1m", "pricing", "context_length", "capabilities", "input_modalities", "output_modalities", "created", "expiration_date"],
         "properties": {
           "id": {
@@ -69,7 +67,6 @@
           "capabilities": {
             "description": "Five capability flags derived consistently from OpenRouter supported_parameters.",
             "type": "object",
-            "additionalProperties": false,
             "required": ["tool_calling", "structured_outputs", "reasoning", "response_format", "web_search"],
             "properties": {
               "tool_calling": {
