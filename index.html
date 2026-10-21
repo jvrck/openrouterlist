@@ -1667,6 +1667,7 @@
       const slug = modelPageSlug(id);
       return isSafeModelPageSlug(slug) ? `<a class="model-page-link" href="/m/${slug}/">${escHtml(id)}</a>` : escHtml(id);
     };
+    const tableRowModelId = tableRow => $('<div>').html(String(tableRow[0])).text();
 
     // Negative or unparseable values do not represent a fixed per-token price.
     function isUnpriced(numericValue) {
@@ -1766,7 +1767,7 @@
         .sort((a, b) => (a.prompt_usd + a.completion_usd) - (b.prompt_usd + b.completion_usd));
       if (toolRows.length) return toolRows.slice(0, 5).map(row => row.id);
       const visibleRows = dataTable ? dataTable.rows({ search: 'applied' }).data().toArray()
-        .map(tableRow => allData.find(row => row.id === String(tableRow[0])))
+        .map(tableRow => allData.find(row => row.id === tableRowModelId(tableRow)))
         .filter(Boolean) : getFilteredData();
       return visibleRows.filter(hasUsableCalculatorPrice).slice(0, 5).map(row => row.id);
     }
@@ -2259,7 +2260,7 @@
     
     function getFilteredData() {
       if (dataTable) {
-        const visibleIds = new Set(dataTable.rows({ search: 'applied' }).data().toArray().map(tableRow => String(tableRow[0])));
+        const visibleIds = new Set(dataTable.rows({ search: 'applied' }).data().toArray().map(tableRowModelId));
         return allData.filter(row => visibleIds.has(row.id));
       }
       const data = showFavoritesOnly ? allData.filter(row => favorites.includes(row.id)) : allData;

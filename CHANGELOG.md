@@ -10,6 +10,12 @@
 
 - Restored the Dark theme button's light-mode text contrast
 
+## [0.0.17] - 2026-10-21
+
+### Fixed
+
+- Card View again shows the table's visible models, and the calculator's default-model fallback resolves linked model IDs correctly (closes #45)
+
 ## [0.0.16] - 2026-10-21
 
 ### Added
