@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.23] - 2026-10-22
+
+### Added
+
+- Added static, search-friendly price comparison pages for a deterministic set of popular cross-provider and same-provider model pairs
+- Added sample-workload costs, live compare and calculator links, a comparison index, and comparison URLs in the sitemap and agent map
+
 ## [0.0.22] - 2026-10-22
 
 ### Added

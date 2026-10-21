@@ -41,11 +41,19 @@ if [ -f "data/output.json" ]; then
     if cmp -s "$output_dir/output.json" "data/output.json"; then
         echo "No change in data, skipping update."
         # First run after a template change, so generated pages never stay stale.
+        model_pages_built=0
         expected_template_version=$(bash scripts/build_model_pages.sh --template-version)
         current_template_version=
         [ ! -f m/.template-version ] || current_template_version=$(tr -d '[:space:]' < m/.template-version)
         if [ ! -d m ] || [ "$current_template_version" != "$expected_template_version" ]; then
             bash scripts/build_model_pages.sh || echo "WARN: model pages failed (non-fatal)"
+            model_pages_built=1
+        fi
+        expected_compare_template_version=$(bash scripts/build_compare_pages.sh --template-version)
+        current_compare_template_version=
+        [ ! -f compare/.template-version ] || current_compare_template_version=$(tr -d '[:space:]' < compare/.template-version)
+        if [ "$model_pages_built" = 1 ] || [ ! -d compare ] || [ "$current_compare_template_version" != "$expected_compare_template_version" ]; then
+            bash scripts/build_compare_pages.sh || echo "WARN: compare pages failed (non-fatal)"
         fi
         [ -f api/models.json ] || bash scripts/build_api.sh || echo "WARN: api build failed (non-fatal)"
     else
@@ -69,6 +77,7 @@ if [ -f "data/output.json" ]; then
             echo "WARN: python3 not found; skipping price-history update"
         fi
         bash scripts/build_model_pages.sh || echo "WARN: model pages failed (non-fatal)"
+        bash scripts/build_compare_pages.sh || echo "WARN: compare pages failed (non-fatal)"
         bash scripts/build_api.sh || echo "WARN: api build failed (non-fatal)"
     fi
 fi

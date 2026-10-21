@@ -18,6 +18,7 @@ Privacy: visitor analytics for jvrck.com sites use Cloudflare Web Analytics (fre
 - **400+ AI Models**: Comprehensive coverage of all available models including GPT-4, Claude 3, Llama 3, and more
 - **Advanced Filtering**: Filter by capabilities (tool calling, structured outputs, reasoning, web search)
 - **Context, Price & Modality Filters + Compare**: Shareable advanced filters and side-by-side comparison for up to four models
+- **Static Model Comparisons**: Search-friendly [`/compare/`](https://openrouterlist.jvrck.com/compare/) pages contrast popular model pairs, including sample workload costs
 - **Interactive Cost Calculator**: Estimate and compare raw-precision prompt/completion costs per request, day, month, year, or batch
 - **Model Finder & Use-Case Presets**: Match requirements to the lowest-priced models and copy ready-to-use API snippets
 - **Price History & Trends**: Per-model price charts, 30-day change badges, and a searchable archive of discontinued models — backfilled from 20+ months of git history
@@ -44,6 +45,7 @@ Privacy: visitor analytics for jvrck.com sites use Cloudflare Web Analytics (fre
 - `robots.txt` - Search engine crawler instructions
 - `sitemap.xml` - Sitemap for better SEO indexing
 - `scripts/build_model_pages.sh` - Generates static per-model pages in `m/` and the sitemap from current pricing data
+- `scripts/build_compare_pages.sh` - Generates deterministic static comparison pages in `compare/` and merges them into the sitemap
 - `scripts/build_api.sh` - Generates the stable `api/models.json` projection from current pricing data
 - `api/` and `llms.txt` - Machine-readable model data, schema, documentation, and agent site map
 
