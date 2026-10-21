@@ -1,0 +1,20 @@
+# OpenRouterList
+> OpenRouterList is a static, twice-daily comparison of OpenRouter model pricing, context windows, modalities and capabilities.
+
+## Data
+- [Models JSON API](https://openrouterlist.jvrck.com/api/models.json): Stable, sorted schema version 1 data with per-1M-token prices; updated changes only when the source data changes.
+- [JSON Schema](https://openrouterlist.jvrck.com/api/schema.json): Draft 2020-12 schema describing every API field.
+- [API documentation](https://openrouterlist.jvrck.com/api/): Field reference, examples and stability promise.
+
+## Pages
+- [Model comparison table](https://openrouterlist.jvrck.com/): Searchable table and card view, updated twice daily.
+- [Example filtered table](https://openrouterlist.jvrck.com/?search=mistral): The table supports queries through the `?search=` parameter.
+- [Example model page](https://openrouterlist.jvrck.com/m/mistralai/mistral-medium-3-5-batch/): Model pages follow the `/m/<slug>/` pattern and include a plain-text summary.
+- [Sitemap](https://openrouterlist.jvrck.com/sitemap.xml): Discoverable site and model-page URLs.
+
+## Feed
+- [Price changes feed](https://openrouterlist.jvrck.com/feed.xml): Atom feed of recent model additions, removals and price changes.
+
+## About
+- [Source code](https://github.com/jvrck/openrouterlist): Code is MIT licensed; data comes from OpenRouter's public models API; benchmark scores are not republished.
+- [OpenRouter models API](https://openrouter.ai/api/v1/models): Upstream public data source checked at 00:00 and 12:00 UTC.

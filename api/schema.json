@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openrouterlist.jvrck.com/api/schema.json",
+  "title": "OpenRouterList models API",
+  "description": "The stable OpenRouterList projection of current OpenRouter model pricing and capabilities.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "updated", "source", "count", "models"],
+  "properties": {
+    "schema_version": {
+      "description": "The major schema version; version 1 only receives additive field changes.",
+      "const": 1
+    },
+    "updated": {
+      "description": "The UTC time when the source model data last changed, in ISO 8601 format.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "description": "The public OpenRouter models API from which this document is derived.",
+      "type": "string",
+      "format": "uri"
+    },
+    "count": {
+      "description": "The number of entries in models.",
+      "type": "integer",
+      "minimum": 0
+    },
+    "models": {
+      "description": "Current models sorted lexicographically by id.",
+      "type": "array",
+      "items": {
+        "description": "A deliberately small projection of one OpenRouter model.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "url", "prompt_per_1m", "completion_per_1m", "pricing", "context_length", "capabilities", "input_modalities", "output_modalities", "created", "expiration_date"],
+        "properties": {
+          "id": {
+            "description": "The exact OpenRouter model identifier used in API requests.",
+            "type": "string"
+          },
+          "name": {
+            "description": "The human-readable model name supplied by OpenRouter.",
+            "type": "string"
+          },
+          "url": {
+            "description": "The absolute OpenRouterList model-page URL, or null when the id cannot form a safe static path.",
+            "type": ["string", "null"],
+            "format": "uri"
+          },
+          "prompt_per_1m": {
+            "description": "Prompt-token price in USD per one million tokens, or null for variable or unavailable pricing.",
+            "type": ["number", "null"]
+          },
+          "completion_per_1m": {
+            "description": "Completion-token price in USD per one million tokens, or null for variable or unavailable pricing.",
+            "type": ["number", "null"]
+          },
+          "pricing": {
+            "description": "Pricing classification: fixed, free, variable router pricing, or unavailable.",
+            "type": "string",
+            "enum": ["fixed", "free", "variable", "unavailable"]
+          },
+          "context_length": {
+            "description": "Maximum context-window length in tokens, or null when it is unavailable.",
+            "type": ["integer", "null"],
+            "minimum": 0
+          },
+          "capabilities": {
+            "description": "Five capability flags derived consistently from OpenRouter supported_parameters.",
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["tool_calling", "structured_outputs", "reasoning", "response_format", "web_search"],
+            "properties": {
+              "tool_calling": {
+                "description": "True when both tools and tool_choice are advertised.",
+                "type": "boolean"
+              },
+              "structured_outputs": {
+                "description": "True when structured_outputs is advertised.",
+                "type": "boolean"
+              },
+              "reasoning": {
+                "description": "True when reasoning or include_reasoning is advertised.",
+                "type": "boolean"
+              },
+              "response_format": {
+                "description": "True when response_format is advertised.",
+                "type": "boolean"
+              },
+              "web_search": {
+                "description": "True when web_search_options is advertised.",
+                "type": "boolean"
+              }
+            }
+          },
+          "input_modalities": {
+            "description": "Input modality names advertised by OpenRouter.",
+            "type": "array",
+            "items": {
+              "description": "One accepted input modality.",
+              "type": "string"
+            }
+          },
+          "output_modalities": {
+            "description": "Output modality names advertised by OpenRouter.",
+            "type": "array",
+            "items": {
+              "description": "One produced output modality.",
+              "type": "string"
+            }
+          },
+          "created": {
+            "description": "The model creation time in UTC ISO 8601 format, or null when unavailable.",
+            "type": ["string", "null"],
+            "format": "date-time"
+          },
+          "expiration_date": {
+            "description": "The retirement date reported by OpenRouter, or null when none is announced.",
+            "type": ["string", "null"]
+          }
+        }
+      }
+    }
+  }
+}

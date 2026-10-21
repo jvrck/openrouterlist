@@ -1,5 +1,6 @@
 # Robots.txt for OpenRouterList
 # https://openrouterlist.jvrck.com/
+# Agents: see https://openrouterlist.jvrck.com/llms.txt
 
 # Allow all search engines to crawl the site
 User-agent: *
