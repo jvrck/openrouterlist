@@ -1,0 +1,452 @@
+[
+  {
+    "slug": "anthropic-claude-haiku-5.5-vs-anthropic-claude-opus-5.5",
+    "a": "anthropic/claude-haiku-5.5",
+    "b": "anthropic/claude-opus-5.5",
+    "kind": "same"
+  },
+  {
+    "slug": "anthropic-claude-haiku-5.5-vs-anthropic-claude-sonnet-5.5",
+    "a": "anthropic/claude-haiku-5.5",
+    "b": "anthropic/claude-sonnet-5.5",
+    "kind": "same"
+  },
+  {
+    "slug": "anthropic-claude-opus-5.5-vs-anthropic-claude-sonnet-5.5",
+    "a": "anthropic/claude-opus-5.5",
+    "b": "anthropic/claude-sonnet-5.5",
+    "kind": "same"
+  },
+  {
+    "slug": "anthropic-claude-opus-5.5-vs-deepseek-deepseek-v4-flash-vision-exp",
+    "a": "anthropic/claude-opus-5.5",
+    "b": "deepseek/deepseek-v4-flash-vision-exp",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-opus-5.5-vs-google-gemini-4-argon",
+    "a": "anthropic/claude-opus-5.5",
+    "b": "google/gemini-4-argon",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-opus-5.5-vs-meta-llama-llama-4-maverick",
+    "a": "anthropic/claude-opus-5.5",
+    "b": "meta-llama/llama-4-maverick",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-opus-5.5-vs-meta-muse-wonder",
+    "a": "anthropic/claude-opus-5.5",
+    "b": "meta/muse-wonder",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-opus-5.5-vs-minimax-minimax-m2.7",
+    "a": "anthropic/claude-opus-5.5",
+    "b": "minimax/minimax-m2.7",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-opus-5.5-vs-mistralai-mistral-medium-3-5",
+    "a": "anthropic/claude-opus-5.5",
+    "b": "mistralai/mistral-medium-3-5",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-opus-5.5-vs-openai-gpt-6.1-sol",
+    "a": "anthropic/claude-opus-5.5",
+    "b": "openai/gpt-6.1-sol",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-opus-5.5-vs-qwen-qwen3.8-max-prime",
+    "a": "anthropic/claude-opus-5.5",
+    "b": "qwen/qwen3.8-max-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-opus-5.5-vs-z-ai-glm-5.3-prime",
+    "a": "anthropic/claude-opus-5.5",
+    "b": "z-ai/glm-5.3-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-deepseek-deepseek-v4.1-flash",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
+    "b": "deepseek/deepseek-v4.1-flash",
+    "kind": "same"
+  },
+  {
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-deepseek-deepseek-v4.1-flash-1017",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
+    "b": "deepseek/deepseek-v4.1-flash-1017",
+    "kind": "same"
+  },
+  {
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-google-gemini-4-argon",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
+    "b": "google/gemini-4-argon",
+    "kind": "cross"
+  },
+  {
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-meta-llama-llama-4-maverick",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
+    "b": "meta-llama/llama-4-maverick",
+    "kind": "cross"
+  },
+  {
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-meta-muse-wonder",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
+    "b": "meta/muse-wonder",
+    "kind": "cross"
+  },
+  {
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-minimax-minimax-m2.7",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
+    "b": "minimax/minimax-m2.7",
+    "kind": "cross"
+  },
+  {
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-mistralai-mistral-medium-3-5",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
+    "b": "mistralai/mistral-medium-3-5",
+    "kind": "cross"
+  },
+  {
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-openai-gpt-6.1-sol",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
+    "b": "openai/gpt-6.1-sol",
+    "kind": "cross"
+  },
+  {
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-qwen-qwen3.8-max-prime",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
+    "b": "qwen/qwen3.8-max-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-z-ai-glm-5.3-prime",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
+    "b": "z-ai/glm-5.3-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "deepseek-deepseek-v4.1-flash-vs-deepseek-deepseek-v4.1-flash-1017",
+    "a": "deepseek/deepseek-v4.1-flash",
+    "b": "deepseek/deepseek-v4.1-flash-1017",
+    "kind": "same"
+  },
+  {
+    "slug": "google-gemini-3.8-flash-vs-google-gemini-4-argon",
+    "a": "google/gemini-3.8-flash",
+    "b": "google/gemini-4-argon",
+    "kind": "same"
+  },
+  {
+    "slug": "google-gemini-3.8-flash-vs-google-gemini-nano-banana-2.1",
+    "a": "google/gemini-3.8-flash",
+    "b": "google/gemini-nano-banana-2.1",
+    "kind": "same"
+  },
+  {
+    "slug": "google-gemini-4-argon-vs-google-gemini-nano-banana-2.1",
+    "a": "google/gemini-4-argon",
+    "b": "google/gemini-nano-banana-2.1",
+    "kind": "same"
+  },
+  {
+    "slug": "google-gemini-4-argon-vs-meta-llama-llama-4-maverick",
+    "a": "google/gemini-4-argon",
+    "b": "meta-llama/llama-4-maverick",
+    "kind": "cross"
+  },
+  {
+    "slug": "google-gemini-4-argon-vs-meta-muse-wonder",
+    "a": "google/gemini-4-argon",
+    "b": "meta/muse-wonder",
+    "kind": "cross"
+  },
+  {
+    "slug": "google-gemini-4-argon-vs-minimax-minimax-m2.7",
+    "a": "google/gemini-4-argon",
+    "b": "minimax/minimax-m2.7",
+    "kind": "cross"
+  },
+  {
+    "slug": "google-gemini-4-argon-vs-mistralai-mistral-medium-3-5",
+    "a": "google/gemini-4-argon",
+    "b": "mistralai/mistral-medium-3-5",
+    "kind": "cross"
+  },
+  {
+    "slug": "google-gemini-4-argon-vs-openai-gpt-6.1-sol",
+    "a": "google/gemini-4-argon",
+    "b": "openai/gpt-6.1-sol",
+    "kind": "cross"
+  },
+  {
+    "slug": "google-gemini-4-argon-vs-qwen-qwen3.8-max-prime",
+    "a": "google/gemini-4-argon",
+    "b": "qwen/qwen3.8-max-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "google-gemini-4-argon-vs-z-ai-glm-5.3-prime",
+    "a": "google/gemini-4-argon",
+    "b": "z-ai/glm-5.3-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "meta-llama-llama-3.3-70b-instruct-vs-meta-llama-llama-4-maverick",
+    "a": "meta-llama/llama-3.3-70b-instruct",
+    "b": "meta-llama/llama-4-maverick",
+    "kind": "same"
+  },
+  {
+    "slug": "meta-llama-llama-3.3-70b-instruct-vs-meta-llama-llama-4-scout",
+    "a": "meta-llama/llama-3.3-70b-instruct",
+    "b": "meta-llama/llama-4-scout",
+    "kind": "same"
+  },
+  {
+    "slug": "meta-llama-llama-4-maverick-vs-meta-llama-llama-4-scout",
+    "a": "meta-llama/llama-4-maverick",
+    "b": "meta-llama/llama-4-scout",
+    "kind": "same"
+  },
+  {
+    "slug": "meta-llama-llama-4-maverick-vs-meta-muse-wonder",
+    "a": "meta-llama/llama-4-maverick",
+    "b": "meta/muse-wonder",
+    "kind": "cross"
+  },
+  {
+    "slug": "meta-llama-llama-4-maverick-vs-minimax-minimax-m2.7",
+    "a": "meta-llama/llama-4-maverick",
+    "b": "minimax/minimax-m2.7",
+    "kind": "cross"
+  },
+  {
+    "slug": "meta-llama-llama-4-maverick-vs-mistralai-mistral-medium-3-5",
+    "a": "meta-llama/llama-4-maverick",
+    "b": "mistralai/mistral-medium-3-5",
+    "kind": "cross"
+  },
+  {
+    "slug": "meta-llama-llama-4-maverick-vs-openai-gpt-6.1-sol",
+    "a": "meta-llama/llama-4-maverick",
+    "b": "openai/gpt-6.1-sol",
+    "kind": "cross"
+  },
+  {
+    "slug": "meta-llama-llama-4-maverick-vs-qwen-qwen3.8-max-prime",
+    "a": "meta-llama/llama-4-maverick",
+    "b": "qwen/qwen3.8-max-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "meta-llama-llama-4-maverick-vs-z-ai-glm-5.3-prime",
+    "a": "meta-llama/llama-4-maverick",
+    "b": "z-ai/glm-5.3-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "meta-muse-spark-1.3-contributor-vs-meta-muse-spark-open",
+    "a": "meta/muse-spark-1.3-contributor",
+    "b": "meta/muse-spark-open",
+    "kind": "same"
+  },
+  {
+    "slug": "meta-muse-spark-1.3-contributor-vs-meta-muse-wonder",
+    "a": "meta/muse-spark-1.3-contributor",
+    "b": "meta/muse-wonder",
+    "kind": "same"
+  },
+  {
+    "slug": "meta-muse-spark-open-vs-meta-muse-wonder",
+    "a": "meta/muse-spark-open",
+    "b": "meta/muse-wonder",
+    "kind": "same"
+  },
+  {
+    "slug": "meta-muse-wonder-vs-minimax-minimax-m2.7",
+    "a": "meta/muse-wonder",
+    "b": "minimax/minimax-m2.7",
+    "kind": "cross"
+  },
+  {
+    "slug": "meta-muse-wonder-vs-mistralai-mistral-medium-3-5",
+    "a": "meta/muse-wonder",
+    "b": "mistralai/mistral-medium-3-5",
+    "kind": "cross"
+  },
+  {
+    "slug": "meta-muse-wonder-vs-openai-gpt-6.1-sol",
+    "a": "meta/muse-wonder",
+    "b": "openai/gpt-6.1-sol",
+    "kind": "cross"
+  },
+  {
+    "slug": "meta-muse-wonder-vs-qwen-qwen3.8-max-prime",
+    "a": "meta/muse-wonder",
+    "b": "qwen/qwen3.8-max-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "meta-muse-wonder-vs-z-ai-glm-5.3-prime",
+    "a": "meta/muse-wonder",
+    "b": "z-ai/glm-5.3-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "minimax-minimax-m2.5-vs-minimax-minimax-m2.7",
+    "a": "minimax/minimax-m2.5",
+    "b": "minimax/minimax-m2.7",
+    "kind": "same"
+  },
+  {
+    "slug": "minimax-minimax-m2.5-vs-minimax-minimax-m3",
+    "a": "minimax/minimax-m2.5",
+    "b": "minimax/minimax-m3",
+    "kind": "same"
+  },
+  {
+    "slug": "minimax-minimax-m2.7-vs-minimax-minimax-m3",
+    "a": "minimax/minimax-m2.7",
+    "b": "minimax/minimax-m3",
+    "kind": "same"
+  },
+  {
+    "slug": "minimax-minimax-m2.7-vs-mistralai-mistral-medium-3-5",
+    "a": "minimax/minimax-m2.7",
+    "b": "mistralai/mistral-medium-3-5",
+    "kind": "cross"
+  },
+  {
+    "slug": "minimax-minimax-m2.7-vs-openai-gpt-6.1-sol",
+    "a": "minimax/minimax-m2.7",
+    "b": "openai/gpt-6.1-sol",
+    "kind": "cross"
+  },
+  {
+    "slug": "minimax-minimax-m2.7-vs-qwen-qwen3.8-max-prime",
+    "a": "minimax/minimax-m2.7",
+    "b": "qwen/qwen3.8-max-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "minimax-minimax-m2.7-vs-z-ai-glm-5.3-prime",
+    "a": "minimax/minimax-m2.7",
+    "b": "z-ai/glm-5.3-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "mistralai-mistral-large-4-0-vs-mistralai-mistral-medium-3-5",
+    "a": "mistralai/mistral-large-4-0",
+    "b": "mistralai/mistral-medium-3-5",
+    "kind": "same"
+  },
+  {
+    "slug": "mistralai-mistral-large-4-0-vs-mistralai-mistral-small-2603",
+    "a": "mistralai/mistral-large-4-0",
+    "b": "mistralai/mistral-small-2603",
+    "kind": "same"
+  },
+  {
+    "slug": "mistralai-mistral-medium-3-5-vs-mistralai-mistral-small-2603",
+    "a": "mistralai/mistral-medium-3-5",
+    "b": "mistralai/mistral-small-2603",
+    "kind": "same"
+  },
+  {
+    "slug": "mistralai-mistral-medium-3-5-vs-openai-gpt-6.1-sol",
+    "a": "mistralai/mistral-medium-3-5",
+    "b": "openai/gpt-6.1-sol",
+    "kind": "cross"
+  },
+  {
+    "slug": "mistralai-mistral-medium-3-5-vs-qwen-qwen3.8-max-prime",
+    "a": "mistralai/mistral-medium-3-5",
+    "b": "qwen/qwen3.8-max-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "mistralai-mistral-medium-3-5-vs-z-ai-glm-5.3-prime",
+    "a": "mistralai/mistral-medium-3-5",
+    "b": "z-ai/glm-5.3-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "openai-gpt-6-luna-pro-vs-openai-gpt-6.1-sol",
+    "a": "openai/gpt-6-luna-pro",
+    "b": "openai/gpt-6.1-sol",
+    "kind": "same"
+  },
+  {
+    "slug": "openai-gpt-6-luna-pro-vs-openai-gpt-6.1-sol-pro",
+    "a": "openai/gpt-6-luna-pro",
+    "b": "openai/gpt-6.1-sol-pro",
+    "kind": "same"
+  },
+  {
+    "slug": "openai-gpt-6.1-sol-vs-openai-gpt-6.1-sol-pro",
+    "a": "openai/gpt-6.1-sol",
+    "b": "openai/gpt-6.1-sol-pro",
+    "kind": "same"
+  },
+  {
+    "slug": "openai-gpt-6.1-sol-vs-qwen-qwen3.8-max-prime",
+    "a": "openai/gpt-6.1-sol",
+    "b": "qwen/qwen3.8-max-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "openai-gpt-6.1-sol-vs-z-ai-glm-5.3-prime",
+    "a": "openai/gpt-6.1-sol",
+    "b": "z-ai/glm-5.3-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "qwen-qwen3.8-max-0902-vs-qwen-qwen3.8-max-prime",
+    "a": "qwen/qwen3.8-max-0902",
+    "b": "qwen/qwen3.8-max-prime",
+    "kind": "same"
+  },
+  {
+    "slug": "qwen-qwen3.8-max-0902-vs-qwen-qwen3.8-omni-flash",
+    "a": "qwen/qwen3.8-max-0902",
+    "b": "qwen/qwen3.8-omni-flash",
+    "kind": "same"
+  },
+  {
+    "slug": "qwen-qwen3.8-max-prime-vs-qwen-qwen3.8-omni-flash",
+    "a": "qwen/qwen3.8-max-prime",
+    "b": "qwen/qwen3.8-omni-flash",
+    "kind": "same"
+  },
+  {
+    "slug": "qwen-qwen3.8-max-prime-vs-z-ai-glm-5.3-prime",
+    "a": "qwen/qwen3.8-max-prime",
+    "b": "z-ai/glm-5.3-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "z-ai-glm-5.3-flash-vs-z-ai-glm-5.3-flashx",
+    "a": "z-ai/glm-5.3-flash",
+    "b": "z-ai/glm-5.3-flashx",
+    "kind": "same"
+  },
+  {
+    "slug": "z-ai-glm-5.3-flash-vs-z-ai-glm-5.3-prime",
+    "a": "z-ai/glm-5.3-flash",
+    "b": "z-ai/glm-5.3-prime",
+    "kind": "same"
+  },
+  {
+    "slug": "z-ai-glm-5.3-flashx-vs-z-ai-glm-5.3-prime",
+    "a": "z-ai/glm-5.3-flashx",
+    "b": "z-ai/glm-5.3-prime",
+    "kind": "same"
+  }
+]

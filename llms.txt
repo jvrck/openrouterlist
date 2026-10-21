@@ -10,7 +10,8 @@
 - [Model comparison table](https://openrouterlist.jvrck.com/): Searchable table and card view, updated twice daily.
 - [Example filtered table](https://openrouterlist.jvrck.com/?search=mistral): The table supports queries through the `?search=` parameter.
 - [Example model page](https://openrouterlist.jvrck.com/m/mistralai/mistral-medium-3-5-batch/): Model pages follow the `/m/<slug>/` pattern and include a plain-text summary.
-- [Sitemap](https://openrouterlist.jvrck.com/sitemap.xml): Discoverable site and model-page URLs.
+- [Model price comparisons](https://openrouterlist.jvrck.com/compare/): Static side-by-side pages for popular model pairs, with an example at `/compare/anthropic-claude-opus-5.5-vs-openai-gpt-6.1-sol/`.
+- [Sitemap](https://openrouterlist.jvrck.com/sitemap.xml): Discoverable site, model-page and comparison-page URLs.
 
 ## Feed
 - [Price changes feed](https://openrouterlist.jvrck.com/feed.xml): Atom feed of recent model additions, removals and price changes.
