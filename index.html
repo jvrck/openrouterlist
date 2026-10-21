@@ -1086,6 +1086,19 @@
     [data-theme="dark"] .price-badge.down { color: #4ade80; }
     [data-theme="dark"] .price-badge.up   { color: #f87171; }
 
+    .cap-badge {
+      background: rgba(37,99,235,0.12);
+      border-radius: 10px;
+      color: var(--header-bg);
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      margin: 1px 3px 1px 0;
+      padding: 2px 6px;
+      white-space: nowrap;
+    }
+    [data-theme="dark"] .cap-badge { background: rgba(96,165,250,0.2); color: #bfdbfe; }
+
     .history-btn {
       cursor: pointer;
       background: none;
@@ -1266,11 +1279,12 @@
             <label class="column-checkbox"><input type="checkbox" data-column="3" checked> Context Length</label>
             <label class="column-checkbox"><input type="checkbox" data-column="4" checked> Prompt Cost</label>
             <label class="column-checkbox"><input type="checkbox" data-column="5" checked> Completion Cost</label>
-            <label class="column-checkbox"><input type="checkbox" data-column="6" checked> Tool Calling</label>
-            <label class="column-checkbox"><input type="checkbox" data-column="7" checked> Structured Outputs</label>
-            <label class="column-checkbox"><input type="checkbox" data-column="8" checked> Reasoning</label>
-            <label class="column-checkbox"><input type="checkbox" data-column="9" checked> Response Format</label>
-            <label class="column-checkbox"><input type="checkbox" data-column="10" checked> Web Search</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="6"> Tool Calling</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="7"> Structured Outputs</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="8"> Reasoning</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="9"> Response Format</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="10"> Web Search</label>
+            <label class="column-checkbox"><input type="checkbox" data-column="11" checked> Capabilities</label>
           </div>
         </div>
       </div>
@@ -1711,13 +1725,51 @@
     };
     const tableRowModelId = tableRow => $('<div>').html(String(tableRow[0])).text();
     const cleanModelNameExport = (data, row, column, node) => {
+      const cell = node || $('<div>').html(String(data))[0];
       if (column === 1) {
-        const cell = node || $('<div>').html(String(data))[0];
         const modelName = cell && cell.querySelector('.model-name');
         if (modelName) return modelName.textContent.trim();
       }
+      if ([3, 4, 5].includes(column) && cell) {
+        const rawValue = cell.getAttribute('data-order');
+        if (rawValue !== null) {
+          if (column === 3) return rawValue;
+          const badge = cell.querySelector('.price-badge');
+          return rawValue + (badge ? ' ' + badge.textContent.trim() : '');
+        }
+      }
       return $('<div>').html(String(data)).text().replace(/\n/g, ' ').trim();
     };
+
+    function formatPricePerM(raw) {
+      if (raw === 'n/a' || raw === null || raw === undefined) return 'n/a';
+      const value = Number(raw);
+      if (!Number.isFinite(value) || value < 0) return 'n/a';
+      if (value === 0) return 'Free';
+      if (Number(value.toFixed(4)) === 0) return '<$0.0001';
+      return '$' + value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 4 });
+    }
+
+    function formatContextShort(value) {
+      const context = Number(value);
+      if (!Number.isFinite(context) || context <= 0) return '—';
+      if (context < 1000) return String(context);
+      if (context < 1000000) return Math.round(context / 1000) + 'K';
+      return Number((context / 1000000).toFixed(2)).toString() + 'M';
+    }
+
+    const CAPABILITY_BADGES = [
+      ['tool_calling', '🔧 Tools', 'Tool Calling'],
+      ['structured_outputs', '📋 Structured', 'Structured Outputs'],
+      ['reasoning', '🧠 Reasoning', 'Reasoning'],
+      ['response_format', '📝 Format', 'Response Format'],
+      ['web_search', '🌐 Web', 'Web Search']
+    ];
+    const TABLE_EXPORT_COLUMNS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    function capabilityBadges(row) {
+      return CAPABILITY_BADGES.filter(([field]) => row[field] === 'Yes')
+        .map(([field, label, title]) => `<span class="cap-badge" data-cap="${field}" title="${title}">${label}</span>`).join('');
+    }
 
     // Negative or unparseable values do not represent a fixed per-token price.
     function isUnpriced(numericValue) {
@@ -2376,7 +2428,7 @@
       $('.column-checkbox input:checked').each(function() {
         visibleColumns.push($(this).data('column'));
       });
-      const defaultVisibleColumns = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      const defaultVisibleColumns = [1, 2, 3, 4, 5, 11];
       const hasDefaultVisibleColumns = visibleColumns.length === defaultVisibleColumns.length &&
         defaultVisibleColumns.every(column => visibleColumns.includes(column));
       if (!hasDefaultVisibleColumns) {
@@ -3200,7 +3252,8 @@
           "structured_outputs": "Structured Outputs",
           "reasoning": "Reasoning",
           "response_format": "Response Format",
-          "web_search": "Web Search"
+          "web_search": "Web Search",
+          "capabilities": "Capabilities"
         };
   
         // Get the headers from the first row of the CSV
@@ -3211,6 +3264,7 @@
           var newHeader = headerMapping[trimmedHeader] || trimmedHeader;
           headerHtml += "<th>" + newHeader + "</th>";
         });
+        headerHtml += "<th>" + headerMapping.capabilities + "</th>";
         $("#tableHeaders").html(headerHtml);
   
         // Function to remove quotes
@@ -3271,7 +3325,7 @@
                   }
                   
                   var pfield = isPrompt ? 'prompt' : 'completion';
-                  rowHtml += '<td data-order="' + formattedValue + '">' + formattedValue + priceBadge(currentId, pfield) + '</td>';
+                  rowHtml += '<td data-order="' + formattedValue + '" data-search="' + formattedValue + '">' + formatPricePerM(formattedValue) + priceBadge(currentId, pfield) + '</td>';
                 }
               } else if (columnName === "created") {
                 // Convert Unix timestamp to YYYY-MM-DD format
@@ -3295,7 +3349,7 @@
                 rowHtml += `<td data-search="${escHtml(cleanedValue + ' ' + currentId)}"><div class="model-name">${modelPageLink(currentId, cleanedValue)}</div><div class="model-id">${escHtml(currentId)}</div>${actionToggle}<span class="row-actions">${favoriteBtn}${histBtn}${compareBtn}</span></td>`;
               } else if (columnName === "context_length") {
                 rowData.context_length = cleanedValue;
-                rowHtml += "<td>" + cleanedValue + "</td>";
+                rowHtml += '<td data-order="' + escHtml(cleanedValue) + '" data-search="' + escHtml(cleanedValue) + '">' + formatContextShort(cleanedValue) + '</td>';
               } else if (columnName === "tool_calling") {
                 rowData.tool_calling = cleanedValue;
                 rowHtml += "<td>" + (cleanedValue === "Yes" ? "✓" : "-") + "</td>";
@@ -3315,6 +3369,8 @@
                 rowHtml += "<td>" + cleanedValue + "</td>";
               }
             });
+
+            rowHtml += '<td>' + capabilityBadges(rowData) + '</td>';
   
             rowHtml += "</tr>";
             $("#tableBody").append(rowHtml);
@@ -3363,32 +3419,34 @@
               extend: 'copy',
               text: 'Copy',
               className: 'buttons-copy',
-              exportOptions: { format: { body: cleanModelNameExport } }
+              exportOptions: { columns: TABLE_EXPORT_COLUMNS, format: { body: cleanModelNameExport } }
             },
             {
               extend: 'csv',
               text: 'CSV',
               className: 'buttons-csv',
-              exportOptions: { format: { body: cleanModelNameExport } }
+              exportOptions: { columns: TABLE_EXPORT_COLUMNS, format: { body: cleanModelNameExport } }
             },
             {
               extend: 'excel',
               text: 'Excel',
               className: 'buttons-excel',
-              exportOptions: { format: { body: cleanModelNameExport } }
+              exportOptions: { columns: TABLE_EXPORT_COLUMNS, format: { body: cleanModelNameExport } }
             },
             {
               extend: 'print',
               text: 'Print',
               className: 'buttons-print',
-              exportOptions: { format: { body: cleanModelNameExport } }
+              exportOptions: { columns: TABLE_EXPORT_COLUMNS, format: { body: cleanModelNameExport } }
             }
           ],
           responsive: true,
           searchHighlight: true,
           columnDefs: [
             { targets: 0, visible: false },
-            { targets: [4, 5], type: 'price-unpriced-last' }
+            { targets: [4, 5], type: 'price-unpriced-last' },
+            { targets: [6, 7, 8, 9, 10], visible: false },
+            { targets: 11, orderable: false }
           ],
           drawCallback: function() {
             updateFavoriteButtons();
@@ -3399,7 +3457,7 @@
         // Keep the programmatic DataTables export API clean too (not only the four buttons above).
         const exportData = dataTable.buttons.exportData;
         dataTable.buttons.exportData = function(options) {
-          return exportData.call(this, $.extend(true, { format: { body: cleanModelNameExport } }, options || {}));
+          return exportData.call(this, $.extend(true, { columns: TABLE_EXPORT_COLUMNS, format: { body: cleanModelNameExport } }, options || {}));
         };
         dataTable.buttons().container().appendTo('#moreMenu');
         
