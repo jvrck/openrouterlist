@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-21T23:10:06Z",
+  "updated": "2026-10-21T23:31:15Z",
   "source": "https://openrouter.ai/api/v1/models",
   "count": 468,
   "models": [
@@ -1697,8 +1697,8 @@
       "id": "deepseek/deepseek-v4-pro",
       "name": "DeepSeek: DeepSeek V4 Pro 0423",
       "url": "https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4-pro/",
-      "prompt_per_1m": 0.383496,
-      "completion_per_1m": 0.766992,
+      "prompt_per_1m": 0.38019,
+      "completion_per_1m": 0.76038,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -9628,7 +9628,7 @@
       "pricing": "free",
       "context_length": 262144,
       "capabilities": {
-        "tool_calling": true,
+        "tool_calling": false,
         "structured_outputs": true,
         "reasoning": true,
         "response_format": true,

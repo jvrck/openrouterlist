@@ -1,5 +1,5 @@
 id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,structured_outputs,reasoning,response_format,web_search,input_modalities,output_modalities
-"recursive/flint-v1.0:free","Recursive: Flint (free)",1792622765,262144,"0","0","Yes","Yes","Yes","Yes","No","text","text"
+"recursive/flint-v1.0:free","Recursive: Flint (free)",1792622765,262144,"0","0","No","Yes","Yes","Yes","No","text","text"
 "minimax/minimax-m3.1-flash:free","MiniMax: MiniMax M3.1 Flash (free)",1792379569,1000000,"0","0","Yes","No","Yes","Yes","No","text|image|video","text"
 "deepseek/deepseek-v4.1-flash-1017","DeepSeek: DeepSeek V4.1 Flash 1017",1792225624,1048576,"0.00000015","0.0000006","Yes","Yes","Yes","Yes","No","text|image","text"
 "elorian/glimpse","Elorian: Glimpse",1792206629,262144,"0.0000006","0.000003","Yes","Yes","Yes","Yes","No","text|image|video","text"
@@ -206,7 +206,7 @@ id,name,created,context_length,pricing.prompt,pricing.completion,tool_calling,st
 "openai/gpt-5.5-pro:batch","OpenAI: GPT-5.5 Pro (batch)",1777051896,1050000,"0.000015","0.00009","Yes","Yes","Yes","Yes","No","file|image|text","text"
 "openai/gpt-5.5","OpenAI: GPT-5.5",1777051893,1050000,"0.000005","0.00003","Yes","Yes","Yes","Yes","No","file|image|text","text"
 "openai/gpt-5.5:batch","OpenAI: GPT-5.5 (batch)",1777051893,1050000,"0.0000025","0.000015","Yes","Yes","Yes","Yes","No","file|image|text","text"
-"deepseek/deepseek-v4-pro","DeepSeek: DeepSeek V4 Pro 0423",1777000679,1048576,"0.000000383496","0.000000766992","Yes","Yes","Yes","Yes","No","text","text"
+"deepseek/deepseek-v4-pro","DeepSeek: DeepSeek V4 Pro 0423",1777000679,1048576,"0.00000038019","0.00000076038","Yes","Yes","Yes","Yes","No","text","text"
 "deepseek/deepseek-v4-flash","DeepSeek: DeepSeek V4 Flash 0423",1777000666,1048576,"0.000000091","0.000000182","Yes","Yes","Yes","Yes","No","text","text"
 "tencent/hy3-preview","Tencent: Hy3 preview",1776878150,262144,"0.00000018","0.0000006","Yes","No","Yes","No","No","text","text"
 "xiaomi/mimo-v2.5-pro","Xiaomi: MiMo-V2.5-Pro",1776874273,1050000,"0.0000003045","0.000000609","Yes","Yes","Yes","Yes","No","text","text"
