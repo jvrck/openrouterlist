@@ -252,21 +252,15 @@
     "kind": "cross"
   },
   {
-    "slug": "minimax-minimax-m2.5-vs-minimax-minimax-m2.7",
-    "a": "minimax/minimax-m2.5",
-    "b": "minimax/minimax-m2.7",
-    "kind": "same"
-  },
-  {
-    "slug": "minimax-minimax-m2.5-vs-minimax-minimax-m3",
-    "a": "minimax/minimax-m2.5",
-    "b": "minimax/minimax-m3",
-    "kind": "same"
-  },
-  {
     "slug": "minimax-minimax-m2.7-vs-minimax-minimax-m3",
     "a": "minimax/minimax-m2.7",
     "b": "minimax/minimax-m3",
+    "kind": "same"
+  },
+  {
+    "slug": "minimax-minimax-m2.7-vs-minimax-minimax-m3.1-flash",
+    "a": "minimax/minimax-m2.7",
+    "b": "minimax/minimax-m3.1-flash",
     "kind": "same"
   },
   {
@@ -298,6 +292,12 @@
     "a": "minimax/minimax-m2.7",
     "b": "z-ai/glm-5.3-prime",
     "kind": "cross"
+  },
+  {
+    "slug": "minimax-minimax-m3-vs-minimax-minimax-m3.1-flash",
+    "a": "minimax/minimax-m3",
+    "b": "minimax/minimax-m3.1-flash",
+    "kind": "same"
   },
   {
     "slug": "mistralai-mistral-large-4-0-vs-mistralai-mistral-medium-3-5",

@@ -178,7 +178,7 @@
   <url><loc>https://openrouterlist.jvrck.com/m/minimax/minimax-m2.5/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/minimax/minimax-m2.7/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/minimax/minimax-m3/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/minimax/minimax-m3.1-flash-free/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/m/minimax/minimax-m3.1-flash/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/codestral-2508/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/codestral-2508-batch/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/devstral-2512/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
@@ -514,14 +514,14 @@
   <url><loc>https://openrouterlist.jvrck.com/compare/meta-muse-wonder-vs-openai-gpt-6.1-sol/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/meta-muse-wonder-vs-qwen-qwen3.8-max-prime/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/meta-muse-wonder-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m2.5-vs-minimax-minimax-m2.7/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m2.5-vs-minimax-minimax-m3/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m2.7-vs-minimax-minimax-m3/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m2.7-vs-minimax-minimax-m3.1-flash/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m2.7-vs-mistralai-mistral-medium-3-5/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m2.7-vs-moonshotai-kimi-k3/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m2.7-vs-openai-gpt-6.1-sol/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m2.7-vs-qwen-qwen3.8-max-prime/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m2.7-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m3-vs-minimax-minimax-m3.1-flash/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/mistralai-mistral-large-4-0-vs-mistralai-mistral-medium-3-5/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/mistralai-mistral-large-4-0-vs-mistralai-mistral-small-2603/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/mistralai-mistral-medium-3-5-vs-mistralai-mistral-small-2603/</loc><lastmod>2026-10-22</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
