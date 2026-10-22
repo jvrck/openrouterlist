@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.25] - 2026-10-22
+
+### Added
+
+- Added a short, reproducible demo video covering search, filters, model comparison, cost estimates, mobile Card View, model and comparison pages, and the price-change feed
+- Added a dependency-free Chrome DevTools recorder with frames-only verification and documented Node, Chrome, and ffmpeg requirements
+
 ## [0.0.24] - 2026-10-22
 
 ### Changed
