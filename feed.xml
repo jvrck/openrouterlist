@@ -58,10 +58,10 @@
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-10-22:decrease:z-ai/glm-5.3-flash</id>
-    <title>Z.ai: GLM 5.3 Flash: prompt $0.15 → $0.0372 /1M; completion $0.50 → $0.0773 /1M</title>
+    <title>Z.ai: GLM 5.3 Flash: prompt $0.15 → $0.0353 /1M; completion $0.50 → $0.0773 /1M</title>
     <updated>2026-10-22T00:00:04Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=z-ai%2Fglm-5.3-flash"/>
-    <summary>decrease: prompt $0.15 → $0.0372 /1M; completion $0.50 → $0.0773 /1M</summary>
+    <summary>decrease: prompt $0.15 → $0.0353 /1M; completion $0.50 → $0.0773 /1M</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-10-22:increase:~deepseek/deepseek-pro-latest</id>
@@ -86,10 +86,10 @@
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-10-22:decrease:~z-ai/glm-flash-latest</id>
-    <title>Z.ai: GLM Flash Latest: prompt $0.0413 → $0.0372 /1M</title>
+    <title>Z.ai: GLM Flash Latest: prompt $0.0413 → $0.0353 /1M</title>
     <updated>2026-10-22T00:00:00Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=~z-ai%2Fglm-flash-latest"/>
-    <summary>decrease: prompt $0.0413 → $0.0372 /1M</summary>
+    <summary>decrease: prompt $0.0413 → $0.0353 /1M</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-10-21:decrease:deepseek/deepseek-v4-flash-0731</id>
