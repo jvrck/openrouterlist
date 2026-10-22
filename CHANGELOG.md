@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.27] - 2026-10-22
+
+### Fixed
+
+- Fixed the garbled Models JSON API description in `llms.txt`
+
 ## [0.0.26] - 2026-10-22
 
 ### Added
