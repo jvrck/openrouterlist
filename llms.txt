@@ -2,7 +2,7 @@
 > OpenRouterList is a static, twice-daily comparison of OpenRouter model pricing, context windows, modalities and capabilities.
 
 ## Data
-- [Models JSON API](https://openrouterlist.jvrck.com/api/models.json): Stable, sorted schema version 1 data with per-1M-token prices; updated changes only when the source data changes.
+- [Models JSON API](https://openrouterlist.jvrck.com/api/models.json): Stable, sorted schema version 1 data with per-1M-token prices; it only changes when the source data changes.
 - [JSON Schema](https://openrouterlist.jvrck.com/api/schema.json): Draft 2020-12 schema describing every API field.
 - [API documentation](https://openrouterlist.jvrck.com/api/): Field reference, examples and stability promise.
 
