@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-22T00:22:32Z",
+  "updated": "2026-10-22T00:44:56Z",
   "source": "https://openrouter.ai/api/v1/models",
   "count": 468,
   "models": [
@@ -11245,8 +11245,8 @@
       "id": "z-ai/glm-5.3-flash",
       "name": "Z.ai: GLM 5.3 Flash",
       "url": "https://openrouterlist.jvrck.com/m/z-ai/glm-5.3-flash/",
-      "prompt_per_1m": 0.0353,
-      "completion_per_1m": 0.0773,
+      "prompt_per_1m": 0.0335,
+      "completion_per_1m": 0.083,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -11837,8 +11837,8 @@
       "id": "~z-ai/glm-flash-latest",
       "name": "Z.ai: GLM Flash Latest",
       "url": "https://openrouterlist.jvrck.com/m/-z-ai/glm-flash-latest/",
-      "prompt_per_1m": 0.0353,
-      "completion_per_1m": 0.0773,
+      "prompt_per_1m": 0.0335,
+      "completion_per_1m": 0.083,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
