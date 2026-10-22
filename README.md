@@ -4,13 +4,7 @@
 [![GitHub Actions](https://img.shields.io/badge/Updated-Every%2012%20Hours-blue.svg)](https://github.com/jvrck/openrouterlist/actions)
 [![Website](https://img.shields.io/badge/Website-Live-brightgreen.svg)](https://openrouterlist.jvrck.com/)
 
-A comprehensive, real-time pricing comparison tool for 400+ AI language models available through the [OpenRouter API](https://openrouter.ai/). Compare costs across GPT-4, Claude, Llama, Mistral, and hundreds of other models to find the most cost-effective solution for your AI needs.
-
-**🔗 Live Tool: [https://openrouterlist.jvrck.com/](https://openrouterlist.jvrck.com/)**
-
-For agents and scripts, [`llms.txt`](https://openrouterlist.jvrck.com/llms.txt) maps the site and the documented [`/api/models.json`](https://openrouterlist.jvrck.com/api/) provides a stable, sorted projection with per-million-token prices, capability flags, modalities, context lengths, and model-page URLs.
-
-Privacy: visitor analytics for jvrck.com sites use Cloudflare Web Analytics (free tier), which is cookieless (no cookies, local storage, fingerprinting, or personal data) and injected at Cloudflare's edge rather than in this repository's code.
+[OpenRouterList](https://openrouterlist.jvrck.com/) is a static pricing and capability comparison for the models available through the [OpenRouter API](https://openrouter.ai/). It currently covers 468 models and is updated at least twice a day for developers, researchers and teams choosing a model or estimating a workload.
 
 ## Demo
 
@@ -18,126 +12,128 @@ Privacy: visitor analytics for jvrck.com sites use Cloudflare Web Analytics (fre
 
 [Watch the 57-second OpenRouterList demo](https://openrouterlist.jvrck.com/docs/media/demo.mp4).
 
-## 📊 Key Features
+## Features
 
-- **Real-Time Pricing Data**: Automatically updated every 12 hours from OpenRouter's API
-- **400+ AI Models**: Comprehensive coverage of all available models including GPT-4, Claude 3, Llama 3, and more
-- **Advanced Filtering**: Filter by capabilities (tool calling, structured outputs, reasoning, web search)
-- **Context, Price & Modality Filters + Compare**: Shareable advanced filters and side-by-side comparison for up to four models
-- **Static Model Comparisons**: Search-friendly [`/compare/`](https://openrouterlist.jvrck.com/compare/) pages contrast popular model pairs, including sample workload costs
-- **Interactive Cost Calculator**: Estimate and compare raw-precision prompt/completion costs per request, day, month, year, or batch
-- **Model Finder & Use-Case Presets**: Match requirements to the lowest-priced models and copy ready-to-use API snippets
-- **Price History & Trends**: Per-model price charts, 30-day change badges, and a searchable archive of discontinued models — backfilled from 20+ months of git history
-- **Price Changes Feed**: Recent pricing moves, new models, and removals in the [Atom feed](https://openrouterlist.jvrck.com/feed.xml) and on-page “What changed” strip
-- **Export Options**: Download data as CSV or Excel, or print for offline analysis
-- **Dark Mode**: Eye-friendly dark theme for extended use
-- **Mobile Responsive**: Optimized for all devices with card and table views
+### Find a model
 
-## 🔍 Use Cases
+- Search by model name or ID and filter by capabilities, context length, prompt or completion price, input and output modality, or text-only support. Filter state can be shared in the URL.
+- Use Model Finder presets for support, coding, RAG, extraction, reasoning, web research and free models, then copy a curl, JavaScript or Python API snippet for the selected model.
+- Switch between the desktop table and mobile-friendly Card View. The first 50 matches are shown, with **Show more** paging through the rest.
+- Save favourites, choose light, dark or system theme, adjust display density, and use the built-in keyboard shortcuts (`?` opens the shortcut list).
 
-- **Developers**: Find the most cost-effective model for your application
-- **Businesses**: Compare enterprise AI solution costs
-- **Researchers**: Analyze pricing trends across different model families
-- **Budget Planning**: Estimate token costs for your AI projects
+### Compare and estimate
 
-## 📁 Project Structure
+- Add up to four models to the compare tray for side-by-side prices, context, capabilities, modalities and 30-day price changes.
+- Estimate prompt and completion costs for a request, day, 30-day month, 365-day year or one-off batch in the cost calculator, with up to ten models at once.
+- Open static, shareable [`/compare/`](https://openrouterlist.jvrck.com/compare/) pages for popular pairs, including a sample workload comparison.
 
-- `index.html` - Interactive web interface with advanced filtering and search
-- `scripts/get_zipped.sh` - Data fetching script that pulls latest pricing from OpenRouter API
-- `scripts/backfill_history.py` - Builds/maintains the price-history ledger (incremental daily; `--rebuild` walks full git history)
-- `.github/workflows/daily_run.yml` - Automated GitHub Actions workflow for data updates
-- `data/` - Current model pricing data in JSON and CSV formats
-- `data/history/prices.json` - Compact per-model price-history ledger (change-points + first/last seen)
-- `robots.txt` - Search engine crawler instructions
-- `sitemap.xml` - Sitemap for better SEO indexing
-- `scripts/build_model_pages.sh` - Generates static per-model pages in `m/` and the sitemap from current pricing data
-- `scripts/build_compare_pages.sh` - Generates deterministic static comparison pages in `compare/` and merges them into the sitemap
-- `scripts/build_api.sh` - Generates the stable `api/models.json` projection from current pricing data
-- `api/` and `llms.txt` - Machine-readable model data, schema, documentation, and agent site map
+### Track changes
 
-## 🚀 Quick Start
+- Follow additions, removals and price changes in the on-page **What changed** strip or the [Atom price-changes feed](https://openrouterlist.jvrck.com/feed.xml).
+- Open a model's price-history chart and 30-day change badges, or search the discontinued-model archive.
+- Use each model's static [`/m/<model-id>/`](https://openrouterlist.jvrck.com/m/anthropic/claude-opus-5.5/) page for current prices, context, modalities, capabilities and tracked price history.
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/jvrck/openrouterlist.git
-    cd openrouterlist
-    ```
+### Use the data
 
-2. Make sure you have `jq`, `curl`, and `zip` installed:
-    ```bash
-    sudo apt-get install jq curl zip
-    ```
+- Export the current view with Copy, CSV, Excel or Print.
+- Give an agent [`llms.txt`](https://openrouterlist.jvrck.com/llms.txt) as a map of the site's data and pages.
+- Read the documented, versioned [`/api/models.json`](https://openrouterlist.jvrck.com/api/) projection, sorted by model ID with per-million-token prices and explicit capability flags:
 
-    On macOS:
-    ```bash
-    brew install jq curl zip
-    ```
+  ```bash
+  curl -s https://openrouterlist.jvrck.com/api/models.json | jq '.models[] | select(.capabilities.tool_calling)'
+  ```
 
-3. Run the script manually:
-    ```bash
-    bash ./scripts/get_zipped.sh
-    ```
+## Screenshots
 
-4. View the results in the `results` folder or on the `output.csv` and `output.json` files.
+Light theme — the default pricing table with linked model names, exact IDs and capability badges.
 
-## 🤖 Automated Updates
+![OpenRouterList pricing table in the light theme](docs/screenshots/readme-light.png)
 
-The pricing data is automatically refreshed every 12 hours using GitHub Actions:
+Dark theme — the same live table in the dark colour scheme.
 
-- Updates run at midnight and noon UTC daily
-- Latest pricing data is fetched directly from OpenRouter's API
-- Changes are automatically committed to the repository
-- The price-history ledger (`data/history/prices.json`) is updated incrementally on every change
-- Historical data is archived in timestamped zip files
+![OpenRouterList pricing table in the dark theme](docs/screenshots/readme-dark.png)
 
-## 📈 Data Fields
+Filters — capability, context, price and modality controls with a live match count.
 
-The comparison tool displays the following information for each model:
+![OpenRouterList capability and advanced filters](docs/screenshots/readme-filters.png)
+
+Compare — three models side by side in the interactive comparison.
+
+![OpenRouterList interactive model comparison](docs/screenshots/readme-compare.png)
+
+Calculator — token and request inputs, workload presets and model selection.
+
+![OpenRouterList cost calculator](docs/screenshots/readme-calculator.png)
+
+Phone Card View — model details and actions at 390 px wide.
+
+![OpenRouterList Card View on a phone](docs/screenshots/readme-phone-cards.png)
+
+Model page — a static model summary with pricing and history.
+
+![An OpenRouterList static model page](docs/screenshots/readme-model-page.png)
+
+Comparison page — a shareable static price comparison for a model pair.
+
+![An OpenRouterList static model comparison page](docs/screenshots/readme-compare-page.png)
+
+## How the data updates
+
+The [Daily Run workflow](.github/workflows/daily_run.yml) runs at 00:00 and 12:00 UTC, when manually dispatched, and on pushes to `main`. It fetches OpenRouter's public model list, builds the JSON and CSV snapshots, detects changes, updates the price-history ledger and change feed, and generates model pages, comparison pages and the documented API.
+
+The GitHub Actions bot commits only when the working tree changed. Durable history lives in git and in [`data/history/prices.json`](data/history/prices.json); the timestamped zip made by the fetch script is a local, gitignored run artifact.
+
+## Hosting
+
+GitHub Pages serves the `main` branch at [openrouterlist.jvrck.com](https://openrouterlist.jvrck.com/) (custom domain via [`CNAME`](CNAME)); the domain is proxied through Cloudflare, which also adds cookieless Web Analytics at the edge. There is no server-side code.
+
+## Data fields
+
+The current table shows these columns. The Capabilities column combines five badges; see the [/api/ field reference](https://openrouterlist.jvrck.com/api/) for the full machine-readable field list, including modalities and expiration dates.
 
 | Field | Description |
-|-------|-------------|
-| **Model ID** | Unique identifier for API calls |
-| **Model Name** | Human-readable model name |
-| **Created Date** | Model release date (YYYY-MM-DD) |
-| **Context Length** | Maximum token context window |
-| **Prompt Cost** | USD per 1M input tokens |
-| **Completion Cost** | USD per 1M output tokens |
-| **Tool Calling** | Supports function/API calls |
-| **Structured Outputs** | Returns formatted JSON/XML |
-| **Reasoning** | Shows step-by-step thinking |
-| **Response Format** | Custom output formatting |
-| **Web Search** | Can search the internet |
+|---|---|
+| **Model** | Model name linked to its static page, with the exact OpenRouter ID below |
+| **Created** | Model creation date |
+| **Context** | Maximum context window in tokens |
+| **Prompt cost** | USD per 1M prompt tokens |
+| **Completion cost** | USD per 1M completion tokens |
+| **Capabilities** | Badges for Tool Calling, Structured Outputs, Reasoning, Response Format and Web Search |
 
-## 🌐 Live Website
+## Quick start and local development
 
-Access the tool online: **[https://openrouterlist.jvrck.com/](https://openrouterlist.jvrck.com/)**
+Clone the repository and install `jq`, `curl`, `zip` and Python 3. Run the fetcher from a scratch checkout because it calls the live API and can update tracked data:
 
-The website features:
-- Real-time search and filtering
-- Export to CSV or Excel, or print
-- Dark/light theme toggle
-- Mobile-responsive design
-- Keyboard shortcuts for power users
-- Price-history charts and a discontinued-models archive
+```bash
+git clone https://github.com/jvrck/openrouterlist.git
+cd openrouterlist
+bash ./scripts/get_zipped.sh
+```
 
-## 🤝 Contributing
+When OpenRouter's data changed, the script writes the current snapshots and generated outputs under `data/`, `m/`, `compare/` and `api/`. Every run also writes a timestamped zip under the local, gitignored `results/` directory.
 
-Contributions are welcome! Feel free to:
+Serve the static site locally from the repository root:
 
-- Report bugs or request features via [Issues](https://github.com/jvrck/openrouterlist/issues)
-- Submit pull requests with improvements
-- Share the tool with others who might find it useful
+```bash
+python3 -m http.server
+```
 
-## 📄 License
+Then open [http://localhost:8000/](http://localhost:8000/).
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## Contributing
 
-## 🔗 Related Links
+[Issues](https://github.com/jvrck/openrouterlist/issues) and pull requests are welcome. Keep each pull request to one focused change and add the corresponding patch entry to [`CHANGELOG.md`](CHANGELOG.md).
+
+## License
+
+This project is licensed under the MIT License — see [LICENSE](LICENSE).
+
+## Related links
 
 - [OpenRouter API](https://openrouter.ai/)
-- [OpenRouter Documentation](https://openrouter.ai/docs)
-- [API Pricing](https://openrouter.ai/docs#pricing)
+- [OpenRouter documentation](https://openrouter.ai/docs)
+- [OpenRouter model pricing](https://openrouter.ai/models)
 
 ---
 
-**Keywords**: OpenRouter pricing, AI model costs, LLM pricing comparison, GPT-4 pricing, Claude pricing, Llama pricing, AI API costs, model comparison tool, token pricing calculator, language model costs, OpenRouter models
+**Keywords**: OpenRouter pricing, AI model costs, LLM pricing comparison, Claude pricing, Llama pricing, AI API costs, model comparison tool, token pricing calculator, language model costs, OpenRouter models

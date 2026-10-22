@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.0.26] - 2026-10-22
+
+### Added
+
+- Added eight fresh live-site screenshots covering the main views, interactive tools and static pages
+
+### Changed
+
+- Rewrote the README around the live search, filtering, comparison, calculator, tracking, static pages and agent-data features, with accurate update and hosting details
+- Corrected stale internal and demo-tool documentation
+
 ## [0.0.25] - 2026-10-22
 
 ### Added
