@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-22T00:44:56Z",
+  "updated": "2026-10-22T03:58:39Z",
   "source": "https://openrouter.ai/api/v1/models",
   "count": 468,
   "models": [
@@ -1721,8 +1721,8 @@
       "id": "deepseek/deepseek-v4-pro-0813",
       "name": "DeepSeek: DeepSeek V4 Pro 0813",
       "url": "https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4-pro-0813/",
-      "prompt_per_1m": 0.66,
-      "completion_per_1m": 1.98,
+      "prompt_per_1m": 1.32,
+      "completion_per_1m": 3.96,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -1770,8 +1770,8 @@
       "id": "deepseek/deepseek-v4.1-flash-1017",
       "name": "DeepSeek: DeepSeek V4.1 Flash 1017",
       "url": "https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4.1-flash-1017/",
-      "prompt_per_1m": 0.15,
-      "completion_per_1m": 0.6,
+      "prompt_per_1m": 0.3,
+      "completion_per_1m": 1.2,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -9134,8 +9134,8 @@
       "id": "qwen/qwen3.5-397b-a17b",
       "name": "Qwen: Qwen3.5 397B A17B",
       "url": "https://openrouterlist.jvrck.com/m/qwen/qwen3.5-397b-a17b/",
-      "prompt_per_1m": 0.39,
-      "completion_per_1m": 2.34,
+      "prompt_per_1m": 0.5,
+      "completion_per_1m": 3.6,
       "pricing": "fixed",
       "context_length": 262144,
       "capabilities": {
@@ -11245,8 +11245,8 @@
       "id": "z-ai/glm-5.3-flash",
       "name": "Z.ai: GLM 5.3 Flash",
       "url": "https://openrouterlist.jvrck.com/m/z-ai/glm-5.3-flash/",
-      "prompt_per_1m": 0.0335,
-      "completion_per_1m": 0.083,
+      "prompt_per_1m": 0.0162,
+      "completion_per_1m": 0.1443,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -11551,7 +11551,7 @@
       "name": "DeepSeek: DeepSeek V4 Flash Latest",
       "url": "https://openrouterlist.jvrck.com/m/-deepseek/deepseek-v4-flash-latest/",
       "prompt_per_1m": 0.0475,
-      "completion_per_1m": 0.1602,
+      "completion_per_1m": 0.1568,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -11837,8 +11837,8 @@
       "id": "~z-ai/glm-flash-latest",
       "name": "Z.ai: GLM Flash Latest",
       "url": "https://openrouterlist.jvrck.com/m/-z-ai/glm-flash-latest/",
-      "prompt_per_1m": 0.0335,
-      "completion_per_1m": 0.083,
+      "prompt_per_1m": 0.0162,
+      "completion_per_1m": 0.1443,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
