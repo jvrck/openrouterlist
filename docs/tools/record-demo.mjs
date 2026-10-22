@@ -65,12 +65,12 @@ async function exists(path) {
 }
 
 async function findChrome(explicit) {
+  if (explicit) return explicit;
   const candidates = [
-    explicit,
     '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
     'google-chrome',
     'chromium',
-  ].filter(Boolean);
+  ];
   for (const candidate of candidates) {
     if (candidate.includes('/') && await exists(candidate)) return candidate;
     if (!candidate.includes('/')) {
@@ -152,8 +152,11 @@ async function startChrome(executable, profile) {
     `--user-data-dir=${profile}`,
     'about:blank',
   ], { stdio: 'ignore' });
+  let launchError;
+  chrome.once('error', error => { launchError = error; });
   const portFile = join(profile, 'DevToolsActivePort');
   for (let tries = 0; tries < 150; tries += 1) {
+    if (launchError) throw new Error(`Could not start Chrome at "${executable}": ${launchError.message}. Pass --chrome PATH or set $CHROME.`);
     if (chrome.exitCode !== null) throw new Error(`Chrome exited early with status ${chrome.exitCode}`);
     try {
       const [port] = (await readFile(portFile, 'utf8')).trim().split('\n');
@@ -383,12 +386,17 @@ async function main() {
       let encoded = false;
       for (const crf of [28, 30, 32, 34]) {
         const ffmpeg = spawn('ffmpeg', ['-y', '-framerate', String(FPS), '-i', join(framesDir, '%06d.jpg'), '-an', '-vf', 'scale=out_range=tv,format=yuv420p', '-c:v', 'libx264', '-crf', String(crf), '-preset', 'medium', '-pix_fmt', 'yuv420p', '-color_range', 'tv', '-movflags', '+faststart', outputVideo], { stdio: 'inherit' });
-        const code = await new Promise(resolvePromise => ffmpeg.on('close', resolvePromise));
+        const code = await new Promise((resolvePromise, reject) => {
+          ffmpeg.once('error', error => reject(new Error(`ffmpeg failed to start: ${error.message}; install ffmpeg or use --frames-only`)));
+          ffmpeg.once('close', resolvePromise);
+        });
         if (code !== 0) throw new Error('ffmpeg failed; install ffmpeg or use --frames-only');
         if ((await stat(outputVideo)).size < 10 * 1024 * 1024) { encoded = true; break; }
       }
       if (!encoded) throw new Error('Encoded video is still 10 MB or larger at CRF 34');
       await copyFile(join(args.out, 'poster.png'), join(args.out, 'demo-poster.png'));
+      await rm(framesDir, { recursive: true, force: true });
+      await rm(join(args.out, 'poster.png'), { force: true });
       console.log(`Wrote ${outputVideo} and ${join(args.out, 'demo-poster.png')}`);
     } else {
       console.log(`Frames-only proof complete: ${frameNumber} frames, ${frameNumber / FPS}s, no page errors`);
