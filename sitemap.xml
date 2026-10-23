@@ -475,7 +475,7 @@
   <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-haiku-5.5-vs-anthropic-claude-opus-5.5/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-haiku-5.5-vs-anthropic-claude-sonnet-5.5/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-anthropic-claude-sonnet-5.5/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-deepseek-deepseek-v4.1-flash-1017/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-deepseek-deepseek-v4.1-flash/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-google-gemini-4-argon/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-meta-muse-wonder/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-minimax-minimax-m2.7/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
@@ -486,15 +486,15 @@
   <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4-flash-vision-exp-vs-deepseek-deepseek-v4.1-flash/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4-flash-vision-exp-vs-deepseek-deepseek-v4.1-flash-1017/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-1017-vs-google-gemini-4-argon/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-1017-vs-meta-muse-wonder/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-1017-vs-minimax-minimax-m2.7/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-1017-vs-mistralai-mistral-medium-3-5/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-1017-vs-moonshotai-kimi-k3/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-1017-vs-openai-gpt-6.1-sol/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-1017-vs-qwen-qwen3.8-max-prime/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-1017-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-vs-deepseek-deepseek-v4.1-flash-1017/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-vs-google-gemini-4-argon/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-vs-meta-muse-wonder/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-vs-minimax-minimax-m2.7/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-vs-mistralai-mistral-medium-3-5/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-vs-moonshotai-kimi-k3/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-vs-openai-gpt-6.1-sol/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-vs-qwen-qwen3.8-max-prime/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/google-gemini-3.8-flash-vs-google-gemini-4-argon/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/google-gemini-3.8-flash-vs-google-gemini-nano-banana-2.1/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/google-gemini-4-argon-vs-google-gemini-nano-banana-2.1/</loc><lastmod>2026-10-23</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
