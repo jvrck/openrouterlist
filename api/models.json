@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-25T03:55:27Z",
+  "updated": "2026-10-25T15:56:22Z",
   "source": "https://openrouter.ai/api/v1/models",
   "count": 467,
   "models": [
@@ -1648,8 +1648,8 @@
       "id": "deepseek/deepseek-v4-flash-0731",
       "name": "DeepSeek: DeepSeek V4 Flash 0731",
       "url": "https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4-flash-0731/",
-      "prompt_per_1m": 0.0422,
-      "completion_per_1m": 0.1694,
+      "prompt_per_1m": 0.04444,
+      "completion_per_1m": 0.13332,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -11529,7 +11529,7 @@
       "name": "DeepSeek: DeepSeek V4 Flash Latest",
       "url": "https://openrouterlist.jvrck.com/m/-deepseek/deepseek-v4-flash-latest/",
       "prompt_per_1m": 0.0422,
-      "completion_per_1m": 0.1694,
+      "completion_per_1m": 0.1763,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -11608,8 +11608,8 @@
       "id": "~moonshotai/kimi-latest",
       "name": "MoonshotAI: Kimi Latest",
       "url": "https://openrouterlist.jvrck.com/m/-moonshotai/kimi-latest/",
-      "prompt_per_1m": 0.19,
-      "completion_per_1m": 8.94,
+      "prompt_per_1m": 0.1919,
+      "completion_per_1m": 8.1113,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -11815,8 +11815,8 @@
       "id": "~z-ai/glm-flash-latest",
       "name": "Z.ai: GLM Flash Latest",
       "url": "https://openrouterlist.jvrck.com/m/-z-ai/glm-flash-latest/",
-      "prompt_per_1m": 0.043,
-      "completion_per_1m": 0.0914,
+      "prompt_per_1m": 0.0513,
+      "completion_per_1m": 0.0701,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
