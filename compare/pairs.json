@@ -18,9 +18,9 @@
     "kind": "same"
   },
   {
-    "slug": "anthropic-claude-opus-5.5-vs-deepseek-deepseek-v4.1-flash-1017",
+    "slug": "anthropic-claude-opus-5.5-vs-deepseek-deepseek-v4-flash-vision-exp",
     "a": "anthropic/claude-opus-5.5",
-    "b": "deepseek/deepseek-v4.1-flash-1017",
+    "b": "deepseek/deepseek-v4-flash-vision-exp",
     "kind": "cross"
   },
   {
@@ -84,50 +84,50 @@
     "kind": "same"
   },
   {
-    "slug": "deepseek-deepseek-v4.1-flash-1017-vs-google-gemini-4-argon",
-    "a": "deepseek/deepseek-v4.1-flash-1017",
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-google-gemini-4-argon",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
     "b": "google/gemini-4-argon",
     "kind": "cross"
   },
   {
-    "slug": "deepseek-deepseek-v4.1-flash-1017-vs-meta-muse-wonder",
-    "a": "deepseek/deepseek-v4.1-flash-1017",
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-meta-muse-wonder",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
     "b": "meta/muse-wonder",
     "kind": "cross"
   },
   {
-    "slug": "deepseek-deepseek-v4.1-flash-1017-vs-minimax-minimax-m2.7",
-    "a": "deepseek/deepseek-v4.1-flash-1017",
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-minimax-minimax-m2.7",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
     "b": "minimax/minimax-m2.7",
     "kind": "cross"
   },
   {
-    "slug": "deepseek-deepseek-v4.1-flash-1017-vs-mistralai-mistral-medium-3-5",
-    "a": "deepseek/deepseek-v4.1-flash-1017",
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-mistralai-mistral-medium-3-5",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
     "b": "mistralai/mistral-medium-3-5",
     "kind": "cross"
   },
   {
-    "slug": "deepseek-deepseek-v4.1-flash-1017-vs-moonshotai-kimi-k3",
-    "a": "deepseek/deepseek-v4.1-flash-1017",
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-moonshotai-kimi-k3",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
     "b": "moonshotai/kimi-k3",
     "kind": "cross"
   },
   {
-    "slug": "deepseek-deepseek-v4.1-flash-1017-vs-openai-gpt-6.1-sol",
-    "a": "deepseek/deepseek-v4.1-flash-1017",
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-openai-gpt-6.1-sol",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
     "b": "openai/gpt-6.1-sol",
     "kind": "cross"
   },
   {
-    "slug": "deepseek-deepseek-v4.1-flash-1017-vs-qwen-qwen3.8-max-prime",
-    "a": "deepseek/deepseek-v4.1-flash-1017",
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-qwen-qwen3.8-max-prime",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
     "b": "qwen/qwen3.8-max-prime",
     "kind": "cross"
   },
   {
-    "slug": "deepseek-deepseek-v4.1-flash-1017-vs-z-ai-glm-5.3-prime",
-    "a": "deepseek/deepseek-v4.1-flash-1017",
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-z-ai-glm-5.3-prime",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
     "b": "z-ai/glm-5.3-prime",
     "kind": "cross"
   },
@@ -378,21 +378,21 @@
     "kind": "cross"
   },
   {
-    "slug": "openai-gpt-6-luna-pro-vs-openai-gpt-6.1-sol",
-    "a": "openai/gpt-6-luna-pro",
-    "b": "openai/gpt-6.1-sol",
-    "kind": "same"
-  },
-  {
-    "slug": "openai-gpt-6-luna-pro-vs-openai-gpt-6.1-sol-pro",
-    "a": "openai/gpt-6-luna-pro",
-    "b": "openai/gpt-6.1-sol-pro",
+    "slug": "openai-gpt-6.1-sol-pro-vs-openai-gpt-6.1-terra",
+    "a": "openai/gpt-6.1-sol-pro",
+    "b": "openai/gpt-6.1-terra",
     "kind": "same"
   },
   {
     "slug": "openai-gpt-6.1-sol-vs-openai-gpt-6.1-sol-pro",
     "a": "openai/gpt-6.1-sol",
     "b": "openai/gpt-6.1-sol-pro",
+    "kind": "same"
+  },
+  {
+    "slug": "openai-gpt-6.1-sol-vs-openai-gpt-6.1-terra",
+    "a": "openai/gpt-6.1-sol",
+    "b": "openai/gpt-6.1-terra",
     "kind": "same"
   },
   {
