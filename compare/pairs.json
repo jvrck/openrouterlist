@@ -54,9 +54,9 @@
     "kind": "cross"
   },
   {
-    "slug": "anthropic-claude-opus-5.5-vs-openai-gpt-6.1-sol",
+    "slug": "anthropic-claude-opus-5.5-vs-openai-gpt-6.1-sol-pro",
     "a": "anthropic/claude-opus-5.5",
-    "b": "openai/gpt-6.1-sol",
+    "b": "openai/gpt-6.1-sol-pro",
     "kind": "cross"
   },
   {
@@ -114,9 +114,9 @@
     "kind": "cross"
   },
   {
-    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-openai-gpt-6.1-sol",
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-openai-gpt-6.1-sol-pro",
     "a": "deepseek/deepseek-v4-flash-vision-exp",
-    "b": "openai/gpt-6.1-sol",
+    "b": "openai/gpt-6.1-sol-pro",
     "kind": "cross"
   },
   {
@@ -180,9 +180,9 @@
     "kind": "cross"
   },
   {
-    "slug": "google-gemini-4-argon-vs-openai-gpt-6.1-sol",
+    "slug": "google-gemini-4-argon-vs-openai-gpt-6.1-sol-pro",
     "a": "google/gemini-4-argon",
-    "b": "openai/gpt-6.1-sol",
+    "b": "openai/gpt-6.1-sol-pro",
     "kind": "cross"
   },
   {
@@ -234,9 +234,9 @@
     "kind": "cross"
   },
   {
-    "slug": "meta-muse-wonder-vs-openai-gpt-6.1-sol",
+    "slug": "meta-muse-wonder-vs-openai-gpt-6.1-sol-pro",
     "a": "meta/muse-wonder",
-    "b": "openai/gpt-6.1-sol",
+    "b": "openai/gpt-6.1-sol-pro",
     "kind": "cross"
   },
   {
@@ -276,9 +276,9 @@
     "kind": "cross"
   },
   {
-    "slug": "minimax-minimax-m2.7-vs-openai-gpt-6.1-sol",
+    "slug": "minimax-minimax-m2.7-vs-openai-gpt-6.1-sol-pro",
     "a": "minimax/minimax-m2.7",
-    "b": "openai/gpt-6.1-sol",
+    "b": "openai/gpt-6.1-sol-pro",
     "kind": "cross"
   },
   {
@@ -324,9 +324,9 @@
     "kind": "cross"
   },
   {
-    "slug": "mistralai-mistral-medium-3-5-vs-openai-gpt-6.1-sol",
+    "slug": "mistralai-mistral-medium-3-5-vs-openai-gpt-6.1-sol-pro",
     "a": "mistralai/mistral-medium-3-5",
-    "b": "openai/gpt-6.1-sol",
+    "b": "openai/gpt-6.1-sol-pro",
     "kind": "cross"
   },
   {
@@ -360,9 +360,9 @@
     "kind": "same"
   },
   {
-    "slug": "moonshotai-kimi-k3-vs-openai-gpt-6.1-sol",
+    "slug": "moonshotai-kimi-k3-vs-openai-gpt-6.1-sol-pro",
     "a": "moonshotai/kimi-k3",
-    "b": "openai/gpt-6.1-sol",
+    "b": "openai/gpt-6.1-sol-pro",
     "kind": "cross"
   },
   {
@@ -384,28 +384,28 @@
     "kind": "same"
   },
   {
-    "slug": "openai-gpt-6.1-sol-vs-openai-gpt-6.1-sol-pro",
-    "a": "openai/gpt-6.1-sol",
-    "b": "openai/gpt-6.1-sol-pro",
+    "slug": "openai-gpt-6.1-sol-pro-vs-openai-gpt-6.1-terra-pro",
+    "a": "openai/gpt-6.1-sol-pro",
+    "b": "openai/gpt-6.1-terra-pro",
     "kind": "same"
   },
   {
-    "slug": "openai-gpt-6.1-sol-vs-openai-gpt-6.1-terra",
-    "a": "openai/gpt-6.1-sol",
-    "b": "openai/gpt-6.1-terra",
-    "kind": "same"
-  },
-  {
-    "slug": "openai-gpt-6.1-sol-vs-qwen-qwen3.8-max-prime",
-    "a": "openai/gpt-6.1-sol",
+    "slug": "openai-gpt-6.1-sol-pro-vs-qwen-qwen3.8-max-prime",
+    "a": "openai/gpt-6.1-sol-pro",
     "b": "qwen/qwen3.8-max-prime",
     "kind": "cross"
   },
   {
-    "slug": "openai-gpt-6.1-sol-vs-z-ai-glm-5.3-prime",
-    "a": "openai/gpt-6.1-sol",
+    "slug": "openai-gpt-6.1-sol-pro-vs-z-ai-glm-5.3-prime",
+    "a": "openai/gpt-6.1-sol-pro",
     "b": "z-ai/glm-5.3-prime",
     "kind": "cross"
+  },
+  {
+    "slug": "openai-gpt-6.1-terra-vs-openai-gpt-6.1-terra-pro",
+    "a": "openai/gpt-6.1-terra",
+    "b": "openai/gpt-6.1-terra-pro",
+    "kind": "same"
   },
   {
     "slug": "qwen-qwen3.8-max-0902-vs-qwen-qwen3.8-max-prime",
