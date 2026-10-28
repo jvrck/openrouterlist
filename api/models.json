@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-28T04:51:12Z",
+  "updated": "2026-10-28T18:14:45Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "count": 464,
+  "count": 456,
   "models": [
     {
       "id": "aion-labs/aion-2.0",
@@ -1600,8 +1600,8 @@
       "id": "deepseek/deepseek-v4-flash",
       "name": "DeepSeek: DeepSeek V4 Flash 0423",
       "url": "https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4-flash/",
-      "prompt_per_1m": 0.14,
-      "completion_per_1m": 0.28,
+      "prompt_per_1m": 0.091,
+      "completion_per_1m": 0.182,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -1673,8 +1673,8 @@
       "id": "deepseek/deepseek-v4-pro",
       "name": "DeepSeek: DeepSeek V4 Pro 0423",
       "url": "https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4-pro/",
-      "prompt_per_1m": 0.95526,
-      "completion_per_1m": 1.91052,
+      "prompt_per_1m": 0.888966,
+      "completion_per_1m": 1.777932,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -2824,8 +2824,8 @@
       "id": "google/gemma-4-26b-a4b-it",
       "name": "Google: Gemma 4 26B A4B ",
       "url": "https://openrouterlist.jvrck.com/m/google/gemma-4-26b-a4b-it/",
-      "prompt_per_1m": 0.0765,
-      "completion_per_1m": 0.255,
+      "prompt_per_1m": 0.09,
+      "completion_per_1m": 0.3,
       "pricing": "fixed",
       "context_length": 262144,
       "capabilities": {
@@ -3366,8 +3366,8 @@
       "id": "meta-llama/llama-3.1-8b-instruct",
       "name": "Meta: Llama 3.1 8B Instruct",
       "url": "https://openrouterlist.jvrck.com/m/meta-llama/llama-3.1-8b-instruct/",
-      "prompt_per_1m": 0.02,
-      "completion_per_1m": 0.04,
+      "prompt_per_1m": 0.05,
+      "completion_per_1m": 0.08,
       "pricing": "fixed",
       "context_length": 131072,
       "capabilities": {
@@ -3832,9 +3832,9 @@
       "context_length": 204800,
       "capabilities": {
         "tool_calling": true,
-        "structured_outputs": true,
+        "structured_outputs": false,
         "reasoning": true,
-        "response_format": true,
+        "response_format": false,
         "web_search": false
       },
       "input_modalities": [
@@ -4724,7 +4724,7 @@
       "id": "moonshotai/kimi-k3",
       "name": "MoonshotAI: Kimi K3",
       "url": "https://openrouterlist.jvrck.com/m/moonshotai/kimi-k3/",
-      "prompt_per_1m": 0.159,
+      "prompt_per_1m": 0.201,
       "completion_per_1m": 20,
       "pricing": "fixed",
       "context_length": 1048576,
@@ -5023,8 +5023,8 @@
       "id": "nvidia/nemotron-3-super-120b-a12b",
       "name": "NVIDIA: Nemotron 3 Super",
       "url": "https://openrouterlist.jvrck.com/m/nvidia/nemotron-3-super-120b-a12b/",
-      "prompt_per_1m": 0.08,
-      "completion_per_1m": 0.45,
+      "prompt_per_1m": 0.3,
+      "completion_per_1m": 2.4,
       "pricing": "fixed",
       "context_length": 262144,
       "capabilities": {
@@ -5323,7 +5323,7 @@
       "context_length": 8191,
       "capabilities": {
         "tool_calling": true,
-        "structured_outputs": true,
+        "structured_outputs": false,
         "reasoning": false,
         "response_format": true,
         "web_search": false
@@ -5335,31 +5335,6 @@
         "text"
       ],
       "created": "2023-05-28T00:00:00Z",
-      "expiration_date": null
-    },
-    {
-      "id": "openai/gpt-4-turbo",
-      "name": "OpenAI: GPT-4 Turbo",
-      "url": "https://openrouterlist.jvrck.com/m/openai/gpt-4-turbo/",
-      "prompt_per_1m": 10,
-      "completion_per_1m": 30,
-      "pricing": "fixed",
-      "context_length": 128000,
-      "capabilities": {
-        "tool_calling": true,
-        "structured_outputs": true,
-        "reasoning": false,
-        "response_format": true,
-        "web_search": false
-      },
-      "input_modalities": [
-        "text",
-        "image"
-      ],
-      "output_modalities": [
-        "text"
-      ],
-      "created": "2024-04-09T00:00:00Z",
       "expiration_date": null
     },
     {
@@ -7691,58 +7666,6 @@
       "expiration_date": null
     },
     {
-      "id": "openai/o1",
-      "name": "OpenAI: o1",
-      "url": "https://openrouterlist.jvrck.com/m/openai/o1/",
-      "prompt_per_1m": 15,
-      "completion_per_1m": 60,
-      "pricing": "fixed",
-      "context_length": 200000,
-      "capabilities": {
-        "tool_calling": true,
-        "structured_outputs": true,
-        "reasoning": true,
-        "response_format": true,
-        "web_search": false
-      },
-      "input_modalities": [
-        "text",
-        "image",
-        "file"
-      ],
-      "output_modalities": [
-        "text"
-      ],
-      "created": "2024-12-17T18:26:39Z",
-      "expiration_date": null
-    },
-    {
-      "id": "openai/o1-pro",
-      "name": "OpenAI: o1-pro",
-      "url": "https://openrouterlist.jvrck.com/m/openai/o1-pro/",
-      "prompt_per_1m": 150,
-      "completion_per_1m": 600,
-      "pricing": "fixed",
-      "context_length": 200000,
-      "capabilities": {
-        "tool_calling": false,
-        "structured_outputs": true,
-        "reasoning": true,
-        "response_format": true,
-        "web_search": false
-      },
-      "input_modalities": [
-        "text",
-        "image",
-        "file"
-      ],
-      "output_modalities": [
-        "text"
-      ],
-      "created": "2025-03-19T22:26:51Z",
-      "expiration_date": null
-    },
-    {
       "id": "openai/o3",
       "name": "OpenAI: o3",
       "url": "https://openrouterlist.jvrck.com/m/openai/o3/",
@@ -7766,56 +7689,6 @@
         "text"
       ],
       "created": "2025-04-16T17:10:57Z",
-      "expiration_date": null
-    },
-    {
-      "id": "openai/o3-mini",
-      "name": "OpenAI: o3 Mini",
-      "url": "https://openrouterlist.jvrck.com/m/openai/o3-mini/",
-      "prompt_per_1m": 1.1,
-      "completion_per_1m": 4.4,
-      "pricing": "fixed",
-      "context_length": 200000,
-      "capabilities": {
-        "tool_calling": true,
-        "structured_outputs": true,
-        "reasoning": true,
-        "response_format": true,
-        "web_search": false
-      },
-      "input_modalities": [
-        "text",
-        "file"
-      ],
-      "output_modalities": [
-        "text"
-      ],
-      "created": "2025-01-31T19:28:41Z",
-      "expiration_date": null
-    },
-    {
-      "id": "openai/o3-mini-high",
-      "name": "OpenAI: o3 Mini High",
-      "url": "https://openrouterlist.jvrck.com/m/openai/o3-mini-high/",
-      "prompt_per_1m": 1.1,
-      "completion_per_1m": 4.4,
-      "pricing": "fixed",
-      "context_length": 200000,
-      "capabilities": {
-        "tool_calling": true,
-        "structured_outputs": true,
-        "reasoning": true,
-        "response_format": true,
-        "web_search": false
-      },
-      "input_modalities": [
-        "text",
-        "file"
-      ],
-      "output_modalities": [
-        "text"
-      ],
-      "created": "2025-02-12T15:03:31Z",
       "expiration_date": null
     },
     {
@@ -7893,58 +7766,6 @@
         "text"
       ],
       "created": "2025-04-16T17:10:57Z",
-      "expiration_date": null
-    },
-    {
-      "id": "openai/o4-mini",
-      "name": "OpenAI: o4 Mini",
-      "url": "https://openrouterlist.jvrck.com/m/openai/o4-mini/",
-      "prompt_per_1m": 1.1,
-      "completion_per_1m": 4.4,
-      "pricing": "fixed",
-      "context_length": 200000,
-      "capabilities": {
-        "tool_calling": true,
-        "structured_outputs": true,
-        "reasoning": true,
-        "response_format": true,
-        "web_search": false
-      },
-      "input_modalities": [
-        "image",
-        "text",
-        "file"
-      ],
-      "output_modalities": [
-        "text"
-      ],
-      "created": "2025-04-16T16:29:02Z",
-      "expiration_date": null
-    },
-    {
-      "id": "openai/o4-mini-high",
-      "name": "OpenAI: o4 Mini High",
-      "url": "https://openrouterlist.jvrck.com/m/openai/o4-mini-high/",
-      "prompt_per_1m": 1.1,
-      "completion_per_1m": 4.4,
-      "pricing": "fixed",
-      "context_length": 200000,
-      "capabilities": {
-        "tool_calling": true,
-        "structured_outputs": true,
-        "reasoning": true,
-        "response_format": true,
-        "web_search": false
-      },
-      "input_modalities": [
-        "image",
-        "text",
-        "file"
-      ],
-      "output_modalities": [
-        "text"
-      ],
-      "created": "2025-04-16T17:23:32Z",
       "expiration_date": null
     },
     {
@@ -8834,30 +8655,6 @@
         "text"
       ],
       "created": "2025-09-11T17:36:53Z",
-      "expiration_date": null
-    },
-    {
-      "id": "qwen/qwen3-next-80b-a3b-thinking",
-      "name": "Qwen: Qwen3 Next 80B A3B Thinking",
-      "url": "https://openrouterlist.jvrck.com/m/qwen/qwen3-next-80b-a3b-thinking/",
-      "prompt_per_1m": 0.15,
-      "completion_per_1m": 1.2,
-      "pricing": "fixed",
-      "context_length": 262144,
-      "capabilities": {
-        "tool_calling": true,
-        "structured_outputs": true,
-        "reasoning": true,
-        "response_format": true,
-        "web_search": false
-      },
-      "input_modalities": [
-        "text"
-      ],
-      "output_modalities": [
-        "text"
-      ],
-      "created": "2025-09-11T17:38:04Z",
       "expiration_date": null
     },
     {
@@ -10052,8 +9849,8 @@
       "id": "tencent/hy3",
       "name": "Tencent: Hy3",
       "url": "https://openrouterlist.jvrck.com/m/tencent/hy3/",
-      "prompt_per_1m": 0.132,
-      "completion_per_1m": 0.528,
+      "prompt_per_1m": 0.0825,
+      "completion_per_1m": 0.33,
       "pricing": "fixed",
       "context_length": 262144,
       "capabilities": {
@@ -10100,8 +9897,8 @@
       "id": "tencent/hy4-preview",
       "name": "Tencent: Hy4 preview",
       "url": "https://openrouterlist.jvrck.com/m/tencent/hy4-preview/",
-      "prompt_per_1m": 0.834,
-      "completion_per_1m": 2.501,
+      "prompt_per_1m": 0.7506,
+      "completion_per_1m": 2.2509,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -11105,7 +10902,7 @@
       "id": "z-ai/glm-5.2",
       "name": "Z.ai: GLM 5.2",
       "url": "https://openrouterlist.jvrck.com/m/z-ai/glm-5.2/",
-      "prompt_per_1m": 0.0341,
+      "prompt_per_1m": 0.0106,
       "completion_per_1m": 7,
       "pricing": "fixed",
       "context_length": 1048576,
@@ -11153,8 +10950,8 @@
       "id": "z-ai/glm-5.3-flash",
       "name": "Z.ai: GLM 5.3 Flash",
       "url": "https://openrouterlist.jvrck.com/m/z-ai/glm-5.3-flash/",
-      "prompt_per_1m": 0.0454,
-      "completion_per_1m": 0.0737,
+      "prompt_per_1m": 0.15,
+      "completion_per_1m": 0.5,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -11409,7 +11206,7 @@
       "id": "~deepseek/deepseek-flash-latest",
       "name": "DeepSeek: DeepSeek Flash Latest",
       "url": "https://openrouterlist.jvrck.com/m/-deepseek/deepseek-flash-latest/",
-      "prompt_per_1m": 0.0151,
+      "prompt_per_1m": 0.0115,
       "completion_per_1m": 1.8,
       "pricing": "fixed",
       "context_length": 1048576,
@@ -11434,7 +11231,7 @@
       "id": "~deepseek/deepseek-pro-latest",
       "name": "DeepSeek: DeepSeek Pro Latest",
       "url": "https://openrouterlist.jvrck.com/m/-deepseek/deepseek-pro-latest/",
-      "prompt_per_1m": 0.2542,
+      "prompt_per_1m": 0.1472,
       "completion_per_1m": 8,
       "pricing": "fixed",
       "context_length": 1048576,
@@ -11458,8 +11255,8 @@
       "id": "~deepseek/deepseek-v4-flash-latest",
       "name": "DeepSeek: DeepSeek V4 Flash Latest",
       "url": "https://openrouterlist.jvrck.com/m/-deepseek/deepseek-v4-flash-latest/",
-      "prompt_per_1m": 0.0475,
-      "completion_per_1m": 0.1568,
+      "prompt_per_1m": 0.0422,
+      "completion_per_1m": 0.1694,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -11538,8 +11335,8 @@
       "id": "~moonshotai/kimi-latest",
       "name": "MoonshotAI: Kimi Latest",
       "url": "https://openrouterlist.jvrck.com/m/-moonshotai/kimi-latest/",
-      "prompt_per_1m": 0.159,
-      "completion_per_1m": 20,
+      "prompt_per_1m": 0.1995,
+      "completion_per_1m": 8.504,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -11745,8 +11542,8 @@
       "id": "~z-ai/glm-flash-latest",
       "name": "Z.ai: GLM Flash Latest",
       "url": "https://openrouterlist.jvrck.com/m/-z-ai/glm-flash-latest/",
-      "prompt_per_1m": 0.0454,
-      "completion_per_1m": 0.0737,
+      "prompt_per_1m": 0.0259,
+      "completion_per_1m": 0.1042,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {

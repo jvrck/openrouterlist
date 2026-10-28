@@ -232,7 +232,6 @@
   <url><loc>https://openrouterlist.jvrck.com/m/openai/gpt-3.5-turbo-0613/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/openai/gpt-3.5-turbo-16k/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/openai/gpt-4/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/openai/gpt-4-turbo/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/openai/gpt-4-turbo-batch/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/openai/gpt-4.1/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/openai/gpt-4.1-batch/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
@@ -323,17 +322,11 @@
   <url><loc>https://openrouterlist.jvrck.com/m/openai/gpt-oss-20b/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/openai/gpt-oss-20b-batch/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/openai/gpt-oss-safeguard-20b/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/openai/o1/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/openai/o1-pro/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/openai/o3/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/openai/o3-batch/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/openai/o3-mini/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/openai/o3-mini-batch/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/openai/o3-mini-high/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/openai/o3-pro/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/openai/o4-mini/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/openai/o4-mini-batch/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/openai/o4-mini-high/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/openrouter/auto/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/openrouter/auto-beta/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/openrouter/bodybuilder/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
@@ -369,7 +362,6 @@
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3-coder-flash/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3-coder-next/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3-next-80b-a3b-instruct/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3-next-80b-a3b-thinking/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3-vl-235b-a22b-instruct/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3-vl-30b-a3b-instruct/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3-vl-30b-a3b-thinking/</loc><lastmod>2026-10-28</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>

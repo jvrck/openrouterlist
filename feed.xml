@@ -3,142 +3,149 @@
   <title>OpenRouterList price changes</title>
   <subtitle>Recent OpenRouter model pricing, additions, and removals</subtitle>
   <id>tag:openrouterlist.jvrck.com,2026:feed</id>
-  <updated>2026-10-28T00:00:18Z</updated>
+  <updated>2026-10-28T00:00:19Z</updated>
   <author><name>OpenRouterList</name></author>
   <link rel="self" href="https://openrouterlist.jvrck.com/feed.xml"/>
   <link rel="alternate" href="https://openrouterlist.jvrck.com/"/>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-10-28:increase:deepseek/deepseek-v4-flash</id>
-    <title>DeepSeek: DeepSeek V4 Flash 0423: prompt $0.04732 → $0.14 /1M; completion $0.09464 → $0.28 /1M</title>
-    <updated>2026-10-28T00:00:18Z</updated>
+    <title>DeepSeek: DeepSeek V4 Flash 0423: prompt $0.04732 → $0.091 /1M; completion $0.09464 → $0.182 /1M</title>
+    <updated>2026-10-28T00:00:19Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=deepseek%2Fdeepseek-v4-flash"/>
-    <summary>increase: prompt $0.04732 → $0.14 /1M; completion $0.09464 → $0.28 /1M</summary>
+    <summary>increase: prompt $0.04732 → $0.091 /1M; completion $0.09464 → $0.182 /1M</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-10-28:increase:deepseek/deepseek-v4-pro</id>
-    <title>DeepSeek: DeepSeek V4 Pro 0423: prompt $0.88044 → $0.95526 /1M; completion $1.76088 → $1.91052 /1M</title>
-    <updated>2026-10-28T00:00:17Z</updated>
+    <title>DeepSeek: DeepSeek V4 Pro 0423: prompt $0.88044 → $0.888966 /1M; completion $1.76088 → $1.777932 /1M</title>
+    <updated>2026-10-28T00:00:18Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=deepseek%2Fdeepseek-v4-pro"/>
-    <summary>increase: prompt $0.88044 → $0.95526 /1M; completion $1.76088 → $1.91052 /1M</summary>
+    <summary>increase: prompt $0.88044 → $0.888966 /1M; completion $1.76088 → $1.777932 /1M</summary>
   </entry>
   <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-10-28:decrease:google/gemma-4-26b-a4b-it</id>
-    <title>Google: Gemma 4 26B A4B : prompt $0.09 → $0.0765 /1M; completion $0.30 → $0.255 /1M</title>
+    <id>tag:openrouterlist.jvrck.com,2026-10-28:removed_model:openai/gpt-4-turbo</id>
+    <title>OpenAI: GPT-4 Turbo: removed model</title>
+    <updated>2026-10-28T00:00:17Z</updated>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=openai%2Fgpt-4-turbo"/>
+    <summary>OpenAI: GPT-4 Turbo: removed model</summary>
+  </entry>
+  <entry>
+    <id>tag:openrouterlist.jvrck.com,2026-10-28:removed_model:openai/o1</id>
+    <title>OpenAI: o1: removed model</title>
     <updated>2026-10-28T00:00:16Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=google%2Fgemma-4-26b-a4b-it"/>
-    <summary>decrease: prompt $0.09 → $0.0765 /1M; completion $0.30 → $0.255 /1M</summary>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=openai%2Fo1"/>
+    <summary>OpenAI: o1: removed model</summary>
   </entry>
   <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-10-28:decrease:meta-llama/llama-3.1-8b-instruct</id>
-    <title>Meta: Llama 3.1 8B Instruct: prompt $0.05 → $0.02 /1M; completion $0.08 → $0.04 /1M</title>
+    <id>tag:openrouterlist.jvrck.com,2026-10-28:removed_model:openai/o1-pro</id>
+    <title>OpenAI: o1-pro: removed model</title>
     <updated>2026-10-28T00:00:15Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=meta-llama%2Fllama-3.1-8b-instruct"/>
-    <summary>decrease: prompt $0.05 → $0.02 /1M; completion $0.08 → $0.04 /1M</summary>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=openai%2Fo1-pro"/>
+    <summary>OpenAI: o1-pro: removed model</summary>
   </entry>
   <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-10-28:decrease:moonshotai/kimi-k3</id>
-    <title>MoonshotAI: Kimi K3: prompt $0.189 → $0.159 /1M</title>
+    <id>tag:openrouterlist.jvrck.com,2026-10-28:removed_model:openai/o3-mini</id>
+    <title>OpenAI: o3 Mini: removed model</title>
     <updated>2026-10-28T00:00:14Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=moonshotai%2Fkimi-k3"/>
-    <summary>decrease: prompt $0.189 → $0.159 /1M</summary>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=openai%2Fo3-mini"/>
+    <summary>OpenAI: o3 Mini: removed model</summary>
   </entry>
   <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-10-28:decrease:nvidia/nemotron-3-super-120b-a12b</id>
-    <title>NVIDIA: Nemotron 3 Super: prompt $0.30 → $0.08 /1M; completion $2.40 → $0.45 /1M</title>
+    <id>tag:openrouterlist.jvrck.com,2026-10-28:removed_model:openai/o3-mini-high</id>
+    <title>OpenAI: o3 Mini High: removed model</title>
     <updated>2026-10-28T00:00:13Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=nvidia%2Fnemotron-3-super-120b-a12b"/>
-    <summary>decrease: prompt $0.30 → $0.08 /1M; completion $2.40 → $0.45 /1M</summary>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=openai%2Fo3-mini-high"/>
+    <summary>OpenAI: o3 Mini High: removed model</summary>
+  </entry>
+  <entry>
+    <id>tag:openrouterlist.jvrck.com,2026-10-28:removed_model:openai/o4-mini</id>
+    <title>OpenAI: o4 Mini: removed model</title>
+    <updated>2026-10-28T00:00:12Z</updated>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=openai%2Fo4-mini"/>
+    <summary>OpenAI: o4 Mini: removed model</summary>
+  </entry>
+  <entry>
+    <id>tag:openrouterlist.jvrck.com,2026-10-28:removed_model:openai/o4-mini-high</id>
+    <title>OpenAI: o4 Mini High: removed model</title>
+    <updated>2026-10-28T00:00:11Z</updated>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=openai%2Fo4-mini-high"/>
+    <summary>OpenAI: o4 Mini High: removed model</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-10-28:new_model:prism-ml/ternary-bonsai-2-9b</id>
     <title>PrismML: Ternary Bonsai 2 9B: new model</title>
-    <updated>2026-10-28T00:00:12Z</updated>
+    <updated>2026-10-28T00:00:10Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=prism-ml%2Fternary-bonsai-2-9b"/>
     <summary>PrismML: Ternary Bonsai 2 9B: new model</summary>
   </entry>
   <entry>
+    <id>tag:openrouterlist.jvrck.com,2026-10-28:removed_model:qwen/qwen3-next-80b-a3b-thinking</id>
+    <title>Qwen: Qwen3 Next 80B A3B Thinking: removed model</title>
+    <updated>2026-10-28T00:00:09Z</updated>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=qwen%2Fqwen3-next-80b-a3b-thinking"/>
+    <summary>Qwen: Qwen3 Next 80B A3B Thinking: removed model</summary>
+  </entry>
+  <entry>
     <id>tag:openrouterlist.jvrck.com,2026-10-28:decrease:qwen/qwen3.6-27b</id>
     <title>Qwen: Qwen3.6 27B: prompt $0.32 → $0.45 /1M; completion $3.20 → $2.70 /1M</title>
-    <updated>2026-10-28T00:00:11Z</updated>
+    <updated>2026-10-28T00:00:08Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=qwen%2Fqwen3.6-27b"/>
     <summary>decrease: prompt $0.32 → $0.45 /1M; completion $3.20 → $2.70 /1M</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-10-28:decrease:qwen/qwen3.6-35b-a3b</id>
     <title>Qwen: Qwen3.6 35B A3B: completion $0.95 → $0.90 /1M</title>
-    <updated>2026-10-28T00:00:10Z</updated>
+    <updated>2026-10-28T00:00:07Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=qwen%2Fqwen3.6-35b-a3b"/>
     <summary>decrease: completion $0.95 → $0.90 /1M</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-10-28:decrease:qwen/qwen3.8-27b</id>
     <title>Qwen: Qwen3.8 27B: prompt $0.20 → $0.039 /1M; completion $2.50 → $1.25 /1M</title>
-    <updated>2026-10-28T00:00:09Z</updated>
+    <updated>2026-10-28T00:00:06Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=qwen%2Fqwen3.8-27b"/>
     <summary>decrease: prompt $0.20 → $0.039 /1M; completion $2.50 → $1.25 /1M</summary>
   </entry>
   <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-10-28:increase:tencent/hy3</id>
-    <title>Tencent: Hy3: prompt $0.0825 → $0.132 /1M; completion $0.33 → $0.528 /1M</title>
-    <updated>2026-10-28T00:00:08Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=tencent%2Fhy3"/>
-    <summary>increase: prompt $0.0825 → $0.132 /1M; completion $0.33 → $0.528 /1M</summary>
-  </entry>
-  <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-10-28:increase:tencent/hy4-preview</id>
-    <title>Tencent: Hy4 preview: prompt $0.7506 → $0.834 /1M; completion $2.2509 → $2.501 /1M</title>
-    <updated>2026-10-28T00:00:07Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=tencent%2Fhy4-preview"/>
-    <summary>increase: prompt $0.7506 → $0.834 /1M; completion $2.2509 → $2.501 /1M</summary>
-  </entry>
-  <entry>
     <id>tag:openrouterlist.jvrck.com,2026-10-28:increase:z-ai/glm-5.1</id>
     <title>Z.ai: GLM 5.1: prompt $0.966 → $1.40 /1M; completion $3.036 → $4.40 /1M</title>
-    <updated>2026-10-28T00:00:06Z</updated>
+    <updated>2026-10-28T00:00:05Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=z-ai%2Fglm-5.1"/>
     <summary>increase: prompt $0.966 → $1.40 /1M; completion $3.036 → $4.40 /1M</summary>
   </entry>
   <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-10-28:decrease:z-ai/glm-5.3-flash</id>
-    <title>Z.ai: GLM 5.3 Flash: prompt $0.15 → $0.0454 /1M; completion $0.50 → $0.0737 /1M</title>
-    <updated>2026-10-28T00:00:05Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=z-ai%2Fglm-5.3-flash"/>
-    <summary>decrease: prompt $0.15 → $0.0454 /1M; completion $0.50 → $0.0737 /1M</summary>
+    <id>tag:openrouterlist.jvrck.com,2026-10-28:decrease:z-ai/glm-5.2</id>
+    <title>Z.ai: GLM 5.2: prompt $0.0341 → $0.0106 /1M</title>
+    <updated>2026-10-28T00:00:04Z</updated>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=z-ai%2Fglm-5.2"/>
+    <summary>decrease: prompt $0.0341 → $0.0106 /1M</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-10-28:increase:~deepseek/deepseek-flash-latest</id>
-    <title>DeepSeek: DeepSeek Flash Latest: prompt $0.022 → $0.0151 /1M; completion $1.21 → $1.80 /1M</title>
-    <updated>2026-10-28T00:00:04Z</updated>
+    <title>DeepSeek: DeepSeek Flash Latest: prompt $0.022 → $0.0115 /1M; completion $1.21 → $1.80 /1M</title>
+    <updated>2026-10-28T00:00:03Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=~deepseek%2Fdeepseek-flash-latest"/>
-    <summary>increase: prompt $0.022 → $0.0151 /1M; completion $1.21 → $1.80 /1M</summary>
+    <summary>increase: prompt $0.022 → $0.0115 /1M; completion $1.21 → $1.80 /1M</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-10-28:increase:~deepseek/deepseek-pro-latest</id>
-    <title>DeepSeek: DeepSeek Pro Latest: prompt $0.1259 → $0.2542 /1M</title>
-    <updated>2026-10-28T00:00:03Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=~deepseek%2Fdeepseek-pro-latest"/>
-    <summary>increase: prompt $0.1259 → $0.2542 /1M</summary>
-  </entry>
-  <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-10-28:increase:~deepseek/deepseek-v4-flash-latest</id>
-    <title>DeepSeek: DeepSeek V4 Flash Latest: prompt $0.0422 → $0.0475 /1M; completion $0.1694 → $0.1568 /1M</title>
+    <title>DeepSeek: DeepSeek Pro Latest: prompt $0.1259 → $0.1472 /1M</title>
     <updated>2026-10-28T00:00:02Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=~deepseek%2Fdeepseek-v4-flash-latest"/>
-    <summary>increase: prompt $0.0422 → $0.0475 /1M; completion $0.1694 → $0.1568 /1M</summary>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=~deepseek%2Fdeepseek-pro-latest"/>
+    <summary>increase: prompt $0.1259 → $0.1472 /1M</summary>
   </entry>
   <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-10-28:increase:~moonshotai/kimi-latest</id>
-    <title>MoonshotAI: Kimi Latest: prompt $0.1795 → $0.159 /1M; completion $10.5634 → $20.00 /1M</title>
+    <id>tag:openrouterlist.jvrck.com,2026-10-28:decrease:~moonshotai/kimi-latest</id>
+    <title>MoonshotAI: Kimi Latest: prompt $0.1795 → $0.1995 /1M; completion $10.5634 → $8.504 /1M</title>
     <updated>2026-10-28T00:00:01Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=~moonshotai%2Fkimi-latest"/>
-    <summary>increase: prompt $0.1795 → $0.159 /1M; completion $10.5634 → $20.00 /1M</summary>
+    <summary>decrease: prompt $0.1795 → $0.1995 /1M; completion $10.5634 → $8.504 /1M</summary>
   </entry>
   <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-10-28:increase:~z-ai/glm-flash-latest</id>
-    <title>Z.ai: GLM Flash Latest: prompt $0.0345 → $0.0454 /1M; completion $0.0823 → $0.0737 /1M</title>
+    <id>tag:openrouterlist.jvrck.com,2026-10-28:decrease:~z-ai/glm-flash-latest</id>
+    <title>Z.ai: GLM Flash Latest: prompt $0.0345 → $0.0259 /1M; completion $0.0823 → $0.1042 /1M</title>
     <updated>2026-10-28T00:00:00Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=~z-ai%2Fglm-flash-latest"/>
-    <summary>increase: prompt $0.0345 → $0.0454 /1M; completion $0.0823 → $0.0737 /1M</summary>
+    <summary>decrease: prompt $0.0345 → $0.0259 /1M; completion $0.0823 → $0.1042 /1M</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-10-27:decrease:deepseek/deepseek-v4-flash</id>
@@ -349,12 +356,5 @@
     <updated>2026-10-26T00:00:10Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=openai%2Fgpt-6.1-terra%3Abatch"/>
     <summary>OpenAI: GPT-6.1 Terra (batch): new model</summary>
-  </entry>
-  <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-10-26:increase:qwen/qwen3-30b-a3b-instruct-2507</id>
-    <title>Qwen: Qwen3 30B A3B Instruct 2507: prompt $0.09 → $0.10 /1M</title>
-    <updated>2026-10-26T00:00:09Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=qwen%2Fqwen3-30b-a3b-instruct-2507"/>
-    <summary>increase: prompt $0.09 → $0.10 /1M</summary>
   </entry>
 </feed>
