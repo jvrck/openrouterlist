@@ -214,8 +214,6 @@
   <url><loc>https://openrouterlist.jvrck.com/m/morph/morph-v3-large/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/nex-agi/nex-n2.5-mini/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/nex-agi/nex-n2.5-pro/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/nousresearch/hermes-3-llama-3.1-405b/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/nousresearch/hermes-3-llama-3.1-70b/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/nousresearch/hermes-4-405b/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/nvidia/nemotron-3-nano-30b-a3b/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning-free/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
@@ -453,6 +451,7 @@
   <url><loc>https://openrouterlist.jvrck.com/m/z-ai/glm-5.3-flash/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/z-ai/glm-5.3-flash-batch/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/z-ai/glm-5.3-flashx/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/m/z-ai/glm-5.3-flashx-legal/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/z-ai/glm-5.3-prime/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/z-ai/glm-5v-turbo/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
@@ -528,7 +527,7 @@
   <url><loc>https://openrouterlist.jvrck.com/compare/qwen-qwen3.8-max-0902-vs-qwen-qwen3.8-omni-flash/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/qwen-qwen3.8-max-prime-vs-qwen-qwen3.8-omni-flash/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/qwen-qwen3.8-max-prime-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/z-ai-glm-5.3-flash-vs-z-ai-glm-5.3-flashx/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/z-ai-glm-5.3-flash-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/z-ai-glm-5.3-flashx-legal-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/z-ai-glm-5.3-flashx-vs-z-ai-glm-5.3-flashx-legal/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/z-ai-glm-5.3-flashx-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-02</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
 </urlset>

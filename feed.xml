@@ -8,11 +8,11 @@
   <link rel="self" href="https://openrouterlist.jvrck.com/feed.xml"/>
   <link rel="alternate" href="https://openrouterlist.jvrck.com/"/>
   <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-11-02:decrease:google/gemma-4-26b-a4b-it</id>
-    <title>Google: Gemma 4 26B A4B : prompt $0.0675 → $0.029 /1M; completion $0.225 → $0.088 /1M</title>
+    <id>tag:openrouterlist.jvrck.com,2026-11-02:increase:google/gemma-4-26b-a4b-it</id>
+    <title>Google: Gemma 4 26B A4B : prompt $0.0675 → $0.0765 /1M; completion $0.225 → $0.255 /1M</title>
     <updated>2026-11-02T00:00:06Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=google%2Fgemma-4-26b-a4b-it"/>
-    <summary>decrease: prompt $0.0675 → $0.029 /1M; completion $0.225 → $0.088 /1M</summary>
+    <summary>increase: prompt $0.0675 → $0.0765 /1M; completion $0.225 → $0.255 /1M</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-11-02:increase:meta-llama/llama-3.2-3b-instruct</id>
@@ -22,39 +22,39 @@
     <summary>increase: prompt $0.05 → $0.0509 /1M; completion $0.33 → $0.335 /1M</summary>
   </entry>
   <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-11-02:increase:minimax/minimax-m3.1-flash</id>
-    <title>MiniMax: MiniMax M3.1 Flash: prompt $0.075 → $0.15 /1M; completion $0.30 → $0.60 /1M</title>
+    <id>tag:openrouterlist.jvrck.com,2026-11-02:removed_model:nousresearch/hermes-3-llama-3.1-405b</id>
+    <title>Nous: Hermes 3 405B Instruct: removed model</title>
     <updated>2026-11-02T00:00:04Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=minimax%2Fminimax-m3.1-flash"/>
-    <summary>increase: prompt $0.075 → $0.15 /1M; completion $0.30 → $0.60 /1M</summary>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=nousresearch%2Fhermes-3-llama-3.1-405b"/>
+    <summary>Nous: Hermes 3 405B Instruct: removed model</summary>
+  </entry>
+  <entry>
+    <id>tag:openrouterlist.jvrck.com,2026-11-02:removed_model:nousresearch/hermes-3-llama-3.1-70b</id>
+    <title>Nous: Hermes 3 70B Instruct: removed model</title>
+    <updated>2026-11-02T00:00:03Z</updated>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=nousresearch%2Fhermes-3-llama-3.1-70b"/>
+    <summary>Nous: Hermes 3 70B Instruct: removed model</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-11-02:increase:openai/gpt-oss-120b</id>
-    <title>OpenAI: gpt-oss-120b: prompt $0.012 → $0.15 /1M; completion $0.043 → $0.60 /1M</title>
-    <updated>2026-11-02T00:00:03Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=openai%2Fgpt-oss-120b"/>
-    <summary>increase: prompt $0.012 → $0.15 /1M; completion $0.043 → $0.60 /1M</summary>
-  </entry>
-  <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-11-02:increase:qwen/qwen3-coder-30b-a3b-instruct</id>
-    <title>Qwen: Qwen3 Coder 30B A3B Instruct: prompt $0.07 → $0.15 /1M; completion $0.28 → $0.60 /1M</title>
+    <title>OpenAI: gpt-oss-120b: prompt $0.012 → $0.029 /1M; completion $0.043 → $0.107 /1M</title>
     <updated>2026-11-02T00:00:02Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=qwen%2Fqwen3-coder-30b-a3b-instruct"/>
-    <summary>increase: prompt $0.07 → $0.15 /1M; completion $0.28 → $0.60 /1M</summary>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=openai%2Fgpt-oss-120b"/>
+    <summary>increase: prompt $0.012 → $0.029 /1M; completion $0.043 → $0.107 /1M</summary>
   </entry>
   <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-11-02:increase:tencent/hy3</id>
-    <title>Tencent: Hy3: prompt $0.0825 → $0.132 /1M; completion $0.33 → $0.528 /1M</title>
+    <id>tag:openrouterlist.jvrck.com,2026-11-02:new_model:z-ai/glm-5.3-flashx-legal</id>
+    <title>Z.ai: GLM 5.3 FlashX Legal: new model</title>
     <updated>2026-11-02T00:00:01Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=tencent%2Fhy3"/>
-    <summary>increase: prompt $0.0825 → $0.132 /1M; completion $0.33 → $0.528 /1M</summary>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=z-ai%2Fglm-5.3-flashx-legal"/>
+    <summary>Z.ai: GLM 5.3 FlashX Legal: new model</summary>
   </entry>
   <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-11-02:increase:tencent/hy4-preview</id>
-    <title>Tencent: Hy4 preview: prompt $0.7506 → $0.834 /1M; completion $2.2509 → $2.501 /1M</title>
+    <id>tag:openrouterlist.jvrck.com,2026-11-02:decrease:~deepseek/deepseek-v4-flash-latest</id>
+    <title>DeepSeek: DeepSeek V4 Flash Latest: prompt $0.059 → $0.0448 /1M</title>
     <updated>2026-11-02T00:00:00Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=tencent%2Fhy4-preview"/>
-    <summary>increase: prompt $0.7506 → $0.834 /1M; completion $2.2509 → $2.501 /1M</summary>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=~deepseek%2Fdeepseek-v4-flash-latest"/>
+    <summary>decrease: prompt $0.059 → $0.0448 /1M</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-11-01:increase:deepseek/deepseek-v4-pro-0813</id>

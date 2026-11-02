@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "updated": "2026-11-02T05:12:05Z",
+  "updated": "2026-11-02T21:37:53Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "count": 452,
+  "count": 451,
   "models": [
     {
       "id": "aion-labs/aion-2.0",
@@ -2824,8 +2824,8 @@
       "id": "google/gemma-4-26b-a4b-it",
       "name": "Google: Gemma 4 26B A4B ",
       "url": "https://openrouterlist.jvrck.com/m/google/gemma-4-26b-a4b-it/",
-      "prompt_per_1m": 0.029,
-      "completion_per_1m": 0.088,
+      "prompt_per_1m": 0.0765,
+      "completion_per_1m": 0.255,
       "pricing": "fixed",
       "context_length": 262144,
       "capabilities": {
@@ -3972,8 +3972,8 @@
       "id": "minimax/minimax-m3.1-flash",
       "name": "MiniMax: MiniMax M3.1 Flash",
       "url": "https://openrouterlist.jvrck.com/m/minimax/minimax-m3.1-flash/",
-      "prompt_per_1m": 0.15,
-      "completion_per_1m": 0.6,
+      "prompt_per_1m": 0.075,
+      "completion_per_1m": 0.3,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -4895,54 +4895,6 @@
       ],
       "created": "2026-09-08T17:54:10Z",
       "expiration_date": null
-    },
-    {
-      "id": "nousresearch/hermes-3-llama-3.1-405b",
-      "name": "Nous: Hermes 3 405B Instruct",
-      "url": "https://openrouterlist.jvrck.com/m/nousresearch/hermes-3-llama-3.1-405b/",
-      "prompt_per_1m": 1,
-      "completion_per_1m": 1,
-      "pricing": "fixed",
-      "context_length": 131072,
-      "capabilities": {
-        "tool_calling": false,
-        "structured_outputs": true,
-        "reasoning": false,
-        "response_format": true,
-        "web_search": false
-      },
-      "input_modalities": [
-        "text"
-      ],
-      "output_modalities": [
-        "text"
-      ],
-      "created": "2024-08-16T00:00:00Z",
-      "expiration_date": "2026-11-02"
-    },
-    {
-      "id": "nousresearch/hermes-3-llama-3.1-70b",
-      "name": "Nous: Hermes 3 70B Instruct",
-      "url": "https://openrouterlist.jvrck.com/m/nousresearch/hermes-3-llama-3.1-70b/",
-      "prompt_per_1m": 0.7,
-      "completion_per_1m": 0.7,
-      "pricing": "fixed",
-      "context_length": 131072,
-      "capabilities": {
-        "tool_calling": false,
-        "structured_outputs": true,
-        "reasoning": false,
-        "response_format": false,
-        "web_search": false
-      },
-      "input_modalities": [
-        "text"
-      ],
-      "output_modalities": [
-        "text"
-      ],
-      "created": "2024-08-18T00:00:00Z",
-      "expiration_date": "2026-11-02"
     },
     {
       "id": "nousresearch/hermes-4-405b",
@@ -7549,8 +7501,8 @@
       "id": "openai/gpt-oss-120b",
       "name": "OpenAI: gpt-oss-120b",
       "url": "https://openrouterlist.jvrck.com/m/openai/gpt-oss-120b/",
-      "prompt_per_1m": 0.15,
-      "completion_per_1m": 0.6,
+      "prompt_per_1m": 0.029,
+      "completion_per_1m": 0.107,
       "pricing": "fixed",
       "context_length": 131072,
       "capabilities": {
@@ -8494,8 +8446,8 @@
       "id": "qwen/qwen3-coder-30b-a3b-instruct",
       "name": "Qwen: Qwen3 Coder 30B A3B Instruct",
       "url": "https://openrouterlist.jvrck.com/m/qwen/qwen3-coder-30b-a3b-instruct/",
-      "prompt_per_1m": 0.15,
-      "completion_per_1m": 0.6,
+      "prompt_per_1m": 0.07,
+      "completion_per_1m": 0.28,
       "pricing": "fixed",
       "context_length": 262144,
       "capabilities": {
@@ -9129,7 +9081,7 @@
       "prompt_per_1m": 0.15,
       "completion_per_1m": 1.875,
       "pricing": "fixed",
-      "context_length": 1000000,
+      "context_length": 1024000,
       "capabilities": {
         "tool_calling": true,
         "structured_outputs": true,
@@ -9778,8 +9730,8 @@
       "id": "tencent/hy3",
       "name": "Tencent: Hy3",
       "url": "https://openrouterlist.jvrck.com/m/tencent/hy3/",
-      "prompt_per_1m": 0.132,
-      "completion_per_1m": 0.528,
+      "prompt_per_1m": 0.0825,
+      "completion_per_1m": 0.33,
       "pricing": "fixed",
       "context_length": 262144,
       "capabilities": {
@@ -9826,8 +9778,8 @@
       "id": "tencent/hy4-preview",
       "name": "Tencent: Hy4 preview",
       "url": "https://openrouterlist.jvrck.com/m/tencent/hy4-preview/",
-      "prompt_per_1m": 0.834,
-      "completion_per_1m": 2.501,
+      "prompt_per_1m": 0.7506,
+      "completion_per_1m": 2.2509,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -9994,7 +9946,7 @@
         "text"
       ],
       "created": "2026-07-30T20:25:17Z",
-      "expiration_date": null
+      "expiration_date": "2026-11-04"
     },
     {
       "id": "thinkingmachines/inkling:free",
@@ -10020,7 +9972,7 @@
         "text"
       ],
       "created": "2026-07-17T22:05:56Z",
-      "expiration_date": null
+      "expiration_date": "2026-11-04"
     },
     {
       "id": "typesafe/jev-router",
@@ -10930,6 +10882,32 @@
       "expiration_date": null
     },
     {
+      "id": "z-ai/glm-5.3-flashx-legal",
+      "name": "Z.ai: GLM 5.3 FlashX Legal",
+      "url": "https://openrouterlist.jvrck.com/m/z-ai/glm-5.3-flashx-legal/",
+      "prompt_per_1m": 0.37,
+      "completion_per_1m": 1.25,
+      "pricing": "fixed",
+      "context_length": 1048576,
+      "capabilities": {
+        "tool_calling": true,
+        "structured_outputs": true,
+        "reasoning": true,
+        "response_format": true,
+        "web_search": false
+      },
+      "input_modalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "created": "2026-11-02T13:29:14Z",
+      "expiration_date": null
+    },
+    {
       "id": "z-ai/glm-5.3-prime",
       "name": "Z.ai: GLM 5.3 Prime",
       "url": "https://openrouterlist.jvrck.com/m/z-ai/glm-5.3-prime/",
@@ -11160,7 +11138,7 @@
       "id": "~deepseek/deepseek-v4-flash-latest",
       "name": "DeepSeek: DeepSeek V4 Flash Latest",
       "url": "https://openrouterlist.jvrck.com/m/-deepseek/deepseek-v4-flash-latest/",
-      "prompt_per_1m": 0.059,
+      "prompt_per_1m": 0.0448,
       "completion_per_1m": 0.3,
       "pricing": "fixed",
       "context_length": 1048576,

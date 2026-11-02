@@ -432,15 +432,15 @@
     "kind": "cross"
   },
   {
-    "slug": "z-ai-glm-5.3-flash-vs-z-ai-glm-5.3-flashx",
-    "a": "z-ai/glm-5.3-flash",
-    "b": "z-ai/glm-5.3-flashx",
+    "slug": "z-ai-glm-5.3-flashx-legal-vs-z-ai-glm-5.3-prime",
+    "a": "z-ai/glm-5.3-flashx-legal",
+    "b": "z-ai/glm-5.3-prime",
     "kind": "same"
   },
   {
-    "slug": "z-ai-glm-5.3-flash-vs-z-ai-glm-5.3-prime",
-    "a": "z-ai/glm-5.3-flash",
-    "b": "z-ai/glm-5.3-prime",
+    "slug": "z-ai-glm-5.3-flashx-vs-z-ai-glm-5.3-flashx-legal",
+    "a": "z-ai/glm-5.3-flashx",
+    "b": "z-ai/glm-5.3-flashx-legal",
     "kind": "same"
   },
   {
