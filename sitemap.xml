@@ -427,7 +427,9 @@
   <url><loc>https://openrouterlist.jvrck.com/m/x-ai/grok-4.3-batch/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/x-ai/grok-4.5/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/x-ai/grok-4.6/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/m/x-ai/grok-4.6-batch/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/x-ai/grok-4.7/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/m/x-ai/grok-4.7-batch/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/x-ai/grok-build-0.1/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/xiaomi/mimo-v2.5/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/xiaomi/mimo-v2.5-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
@@ -461,72 +463,72 @@
   <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-deepseek-deepseek-v4-flash-vision-exp/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-google-gemini-4-argon/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-meta-muse-wonder/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-minimax-minimax-m2.7/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-mistralai-mistral-medium-3-5/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-moonshotai-kimi-k3.1-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-openai-gpt-6.1-sol-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-qwen-qwen3.8-max-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-tencent-hy4-preview/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/anthropic-claude-opus-5.5-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4-flash-vision-exp-vs-deepseek-deepseek-v4.1-flash/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4-flash-vision-exp-vs-deepseek-deepseek-v4.1-flash-1017/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4-flash-vision-exp-vs-google-gemini-4-argon/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4-flash-vision-exp-vs-meta-muse-wonder/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4-flash-vision-exp-vs-minimax-minimax-m2.7/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4-flash-vision-exp-vs-mistralai-mistral-medium-3-5/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4-flash-vision-exp-vs-moonshotai-kimi-k3.1-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4-flash-vision-exp-vs-openai-gpt-6.1-sol-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4-flash-vision-exp-vs-qwen-qwen3.8-max-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4-flash-vision-exp-vs-tencent-hy4-preview/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4-flash-vision-exp-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/deepseek-deepseek-v4.1-flash-vs-deepseek-deepseek-v4.1-flash-1017/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/google-gemini-3.8-flash-vs-google-gemini-4-argon/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/google-gemini-3.8-flash-vs-google-gemini-nano-banana-2.1/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/google-gemini-4-argon-vs-google-gemini-nano-banana-2.1/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/google-gemini-4-argon-vs-meta-muse-wonder/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/google-gemini-4-argon-vs-minimax-minimax-m2.7/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/google-gemini-4-argon-vs-mistralai-mistral-medium-3-5/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/google-gemini-4-argon-vs-moonshotai-kimi-k3.1-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/google-gemini-4-argon-vs-openai-gpt-6.1-sol-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/google-gemini-4-argon-vs-qwen-qwen3.8-max-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/google-gemini-4-argon-vs-tencent-hy4-preview/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/google-gemini-4-argon-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/meta-muse-spark-1.3-contributor-vs-meta-muse-spark-open/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/meta-muse-spark-1.3-contributor-vs-meta-muse-wonder/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/meta-muse-spark-open-vs-meta-muse-wonder/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/meta-muse-wonder-vs-minimax-minimax-m2.7/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/meta-muse-wonder-vs-mistralai-mistral-medium-3-5/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/meta-muse-wonder-vs-moonshotai-kimi-k3.1-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/meta-muse-wonder-vs-openai-gpt-6.1-sol-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/meta-muse-wonder-vs-qwen-qwen3.8-max-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/meta-muse-wonder-vs-tencent-hy4-preview/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/meta-muse-wonder-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m2.7-vs-minimax-minimax-m3/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m2.7-vs-minimax-minimax-m3.1-flash/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m2.7-vs-mistralai-mistral-medium-3-5/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m2.7-vs-moonshotai-kimi-k3.1-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m2.7-vs-openai-gpt-6.1-sol-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m2.7-vs-qwen-qwen3.8-max-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m2.7-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/minimax-minimax-m3-vs-minimax-minimax-m3.1-flash/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/mistralai-mistral-large-4-0-vs-mistralai-mistral-medium-3-5/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/mistralai-mistral-large-4-0-vs-mistralai-mistral-small-2603/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/mistralai-mistral-medium-3-5-vs-mistralai-mistral-small-2603/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/mistralai-mistral-medium-3-5-vs-moonshotai-kimi-k3.1-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/mistralai-mistral-medium-3-5-vs-openai-gpt-6.1-sol-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/mistralai-mistral-medium-3-5-vs-qwen-qwen3.8-max-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/mistralai-mistral-medium-3-5-vs-tencent-hy4-preview/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/mistralai-mistral-medium-3-5-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/moonshotai-kimi-k2.7-code-vs-moonshotai-kimi-k3/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/moonshotai-kimi-k2.7-code-vs-moonshotai-kimi-k3.1-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/moonshotai-kimi-k3-vs-moonshotai-kimi-k3.1-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/moonshotai-kimi-k3.1-pro-vs-openai-gpt-6.1-sol-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/moonshotai-kimi-k3.1-pro-vs-qwen-qwen3.8-max-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/moonshotai-kimi-k3.1-pro-vs-tencent-hy4-preview/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/moonshotai-kimi-k3.1-pro-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/openai-gpt-6.1-sol-pro-vs-openai-gpt-6.1-terra/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/openai-gpt-6.1-sol-pro-vs-openai-gpt-6.1-terra-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/openai-gpt-6.1-sol-pro-vs-qwen-qwen3.8-max-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/openai-gpt-6.1-sol-pro-vs-tencent-hy4-preview/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/openai-gpt-6.1-sol-pro-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/openai-gpt-6.1-terra-vs-openai-gpt-6.1-terra-pro/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/qwen-qwen3.8-max-0902-vs-qwen-qwen3.8-max-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/qwen-qwen3.8-max-0902-vs-qwen-qwen3.8-omni-flash/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/qwen-qwen3.8-max-prime-vs-qwen-qwen3.8-omni-flash/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/qwen-qwen3.8-max-prime-vs-tencent-hy4-preview/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/qwen-qwen3.8-max-prime-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/tencent-hy-mt2-1.8b-vs-tencent-hy-mt2-30b-a3b/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/tencent-hy-mt2-1.8b-vs-tencent-hy4-preview/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/tencent-hy-mt2-30b-a3b-vs-tencent-hy4-preview/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/tencent-hy4-preview-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/z-ai-glm-5.3-flashx-legal-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/z-ai-glm-5.3-flashx-vs-z-ai-glm-5.3-flashx-legal/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/z-ai-glm-5.3-flashx-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-03</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>

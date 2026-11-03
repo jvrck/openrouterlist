@@ -36,12 +36,6 @@
     "kind": "cross"
   },
   {
-    "slug": "anthropic-claude-opus-5.5-vs-minimax-minimax-m2.7",
-    "a": "anthropic/claude-opus-5.5",
-    "b": "minimax/minimax-m2.7",
-    "kind": "cross"
-  },
-  {
     "slug": "anthropic-claude-opus-5.5-vs-mistralai-mistral-medium-3-5",
     "a": "anthropic/claude-opus-5.5",
     "b": "mistralai/mistral-medium-3-5",
@@ -63,6 +57,12 @@
     "slug": "anthropic-claude-opus-5.5-vs-qwen-qwen3.8-max-prime",
     "a": "anthropic/claude-opus-5.5",
     "b": "qwen/qwen3.8-max-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-opus-5.5-vs-tencent-hy4-preview",
+    "a": "anthropic/claude-opus-5.5",
+    "b": "tencent/hy4-preview",
     "kind": "cross"
   },
   {
@@ -96,12 +96,6 @@
     "kind": "cross"
   },
   {
-    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-minimax-minimax-m2.7",
-    "a": "deepseek/deepseek-v4-flash-vision-exp",
-    "b": "minimax/minimax-m2.7",
-    "kind": "cross"
-  },
-  {
     "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-mistralai-mistral-medium-3-5",
     "a": "deepseek/deepseek-v4-flash-vision-exp",
     "b": "mistralai/mistral-medium-3-5",
@@ -123,6 +117,12 @@
     "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-qwen-qwen3.8-max-prime",
     "a": "deepseek/deepseek-v4-flash-vision-exp",
     "b": "qwen/qwen3.8-max-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-tencent-hy4-preview",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
+    "b": "tencent/hy4-preview",
     "kind": "cross"
   },
   {
@@ -162,12 +162,6 @@
     "kind": "cross"
   },
   {
-    "slug": "google-gemini-4-argon-vs-minimax-minimax-m2.7",
-    "a": "google/gemini-4-argon",
-    "b": "minimax/minimax-m2.7",
-    "kind": "cross"
-  },
-  {
     "slug": "google-gemini-4-argon-vs-mistralai-mistral-medium-3-5",
     "a": "google/gemini-4-argon",
     "b": "mistralai/mistral-medium-3-5",
@@ -189,6 +183,12 @@
     "slug": "google-gemini-4-argon-vs-qwen-qwen3.8-max-prime",
     "a": "google/gemini-4-argon",
     "b": "qwen/qwen3.8-max-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "google-gemini-4-argon-vs-tencent-hy4-preview",
+    "a": "google/gemini-4-argon",
+    "b": "tencent/hy4-preview",
     "kind": "cross"
   },
   {
@@ -216,12 +216,6 @@
     "kind": "same"
   },
   {
-    "slug": "meta-muse-wonder-vs-minimax-minimax-m2.7",
-    "a": "meta/muse-wonder",
-    "b": "minimax/minimax-m2.7",
-    "kind": "cross"
-  },
-  {
     "slug": "meta-muse-wonder-vs-mistralai-mistral-medium-3-5",
     "a": "meta/muse-wonder",
     "b": "mistralai/mistral-medium-3-5",
@@ -246,58 +240,16 @@
     "kind": "cross"
   },
   {
+    "slug": "meta-muse-wonder-vs-tencent-hy4-preview",
+    "a": "meta/muse-wonder",
+    "b": "tencent/hy4-preview",
+    "kind": "cross"
+  },
+  {
     "slug": "meta-muse-wonder-vs-z-ai-glm-5.3-prime",
     "a": "meta/muse-wonder",
     "b": "z-ai/glm-5.3-prime",
     "kind": "cross"
-  },
-  {
-    "slug": "minimax-minimax-m2.7-vs-minimax-minimax-m3",
-    "a": "minimax/minimax-m2.7",
-    "b": "minimax/minimax-m3",
-    "kind": "same"
-  },
-  {
-    "slug": "minimax-minimax-m2.7-vs-minimax-minimax-m3.1-flash",
-    "a": "minimax/minimax-m2.7",
-    "b": "minimax/minimax-m3.1-flash",
-    "kind": "same"
-  },
-  {
-    "slug": "minimax-minimax-m2.7-vs-mistralai-mistral-medium-3-5",
-    "a": "minimax/minimax-m2.7",
-    "b": "mistralai/mistral-medium-3-5",
-    "kind": "cross"
-  },
-  {
-    "slug": "minimax-minimax-m2.7-vs-moonshotai-kimi-k3.1-pro",
-    "a": "minimax/minimax-m2.7",
-    "b": "moonshotai/kimi-k3.1-pro",
-    "kind": "cross"
-  },
-  {
-    "slug": "minimax-minimax-m2.7-vs-openai-gpt-6.1-sol-pro",
-    "a": "minimax/minimax-m2.7",
-    "b": "openai/gpt-6.1-sol-pro",
-    "kind": "cross"
-  },
-  {
-    "slug": "minimax-minimax-m2.7-vs-qwen-qwen3.8-max-prime",
-    "a": "minimax/minimax-m2.7",
-    "b": "qwen/qwen3.8-max-prime",
-    "kind": "cross"
-  },
-  {
-    "slug": "minimax-minimax-m2.7-vs-z-ai-glm-5.3-prime",
-    "a": "minimax/minimax-m2.7",
-    "b": "z-ai/glm-5.3-prime",
-    "kind": "cross"
-  },
-  {
-    "slug": "minimax-minimax-m3-vs-minimax-minimax-m3.1-flash",
-    "a": "minimax/minimax-m3",
-    "b": "minimax/minimax-m3.1-flash",
-    "kind": "same"
   },
   {
     "slug": "mistralai-mistral-large-4-0-vs-mistralai-mistral-medium-3-5",
@@ -333,6 +285,12 @@
     "slug": "mistralai-mistral-medium-3-5-vs-qwen-qwen3.8-max-prime",
     "a": "mistralai/mistral-medium-3-5",
     "b": "qwen/qwen3.8-max-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "mistralai-mistral-medium-3-5-vs-tencent-hy4-preview",
+    "a": "mistralai/mistral-medium-3-5",
+    "b": "tencent/hy4-preview",
     "kind": "cross"
   },
   {
@@ -372,6 +330,12 @@
     "kind": "cross"
   },
   {
+    "slug": "moonshotai-kimi-k3.1-pro-vs-tencent-hy4-preview",
+    "a": "moonshotai/kimi-k3.1-pro",
+    "b": "tencent/hy4-preview",
+    "kind": "cross"
+  },
+  {
     "slug": "moonshotai-kimi-k3.1-pro-vs-z-ai-glm-5.3-prime",
     "a": "moonshotai/kimi-k3.1-pro",
     "b": "z-ai/glm-5.3-prime",
@@ -393,6 +357,12 @@
     "slug": "openai-gpt-6.1-sol-pro-vs-qwen-qwen3.8-max-prime",
     "a": "openai/gpt-6.1-sol-pro",
     "b": "qwen/qwen3.8-max-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "openai-gpt-6.1-sol-pro-vs-tencent-hy4-preview",
+    "a": "openai/gpt-6.1-sol-pro",
+    "b": "tencent/hy4-preview",
     "kind": "cross"
   },
   {
@@ -426,8 +396,38 @@
     "kind": "same"
   },
   {
+    "slug": "qwen-qwen3.8-max-prime-vs-tencent-hy4-preview",
+    "a": "qwen/qwen3.8-max-prime",
+    "b": "tencent/hy4-preview",
+    "kind": "cross"
+  },
+  {
     "slug": "qwen-qwen3.8-max-prime-vs-z-ai-glm-5.3-prime",
     "a": "qwen/qwen3.8-max-prime",
+    "b": "z-ai/glm-5.3-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "tencent-hy-mt2-1.8b-vs-tencent-hy-mt2-30b-a3b",
+    "a": "tencent/hy-mt2-1.8b",
+    "b": "tencent/hy-mt2-30b-a3b",
+    "kind": "same"
+  },
+  {
+    "slug": "tencent-hy-mt2-1.8b-vs-tencent-hy4-preview",
+    "a": "tencent/hy-mt2-1.8b",
+    "b": "tencent/hy4-preview",
+    "kind": "same"
+  },
+  {
+    "slug": "tencent-hy-mt2-30b-a3b-vs-tencent-hy4-preview",
+    "a": "tencent/hy-mt2-30b-a3b",
+    "b": "tencent/hy4-preview",
+    "kind": "same"
+  },
+  {
+    "slug": "tencent-hy4-preview-vs-z-ai-glm-5.3-prime",
+    "a": "tencent/hy4-preview",
     "b": "z-ai/glm-5.3-prime",
     "kind": "cross"
   },

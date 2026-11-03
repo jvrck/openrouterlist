@@ -3,86 +3,121 @@
   <title>OpenRouterList price changes</title>
   <subtitle>Recent OpenRouter model pricing, additions, and removals</subtitle>
   <id>tag:openrouterlist.jvrck.com,2026:feed</id>
-  <updated>2026-11-03T00:00:10Z</updated>
+  <updated>2026-11-03T00:00:15Z</updated>
   <author><name>OpenRouterList</name></author>
   <link rel="self" href="https://openrouterlist.jvrck.com/feed.xml"/>
   <link rel="alternate" href="https://openrouterlist.jvrck.com/"/>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-11-03:decrease:deepseek/deepseek-v4-flash-0731</id>
     <title>DeepSeek: DeepSeek V4 Flash 0731: prompt $0.119 → $0.059 /1M; completion $0.238 → $0.30 /1M</title>
-    <updated>2026-11-03T00:00:10Z</updated>
+    <updated>2026-11-03T00:00:15Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=deepseek%2Fdeepseek-v4-flash-0731"/>
     <summary>decrease: prompt $0.119 → $0.059 /1M; completion $0.238 → $0.30 /1M</summary>
   </entry>
   <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-11-03:decrease:google/gemma-4-26b-a4b-it</id>
-    <title>Google: Gemma 4 26B A4B : prompt $0.0765 → $0.051 /1M; completion $0.255 → $0.153 /1M</title>
-    <updated>2026-11-03T00:00:09Z</updated>
+    <id>tag:openrouterlist.jvrck.com,2026-11-03:increase:google/gemma-4-26b-a4b-it</id>
+    <title>Google: Gemma 4 26B A4B : prompt $0.0765 → $0.088 /1M; completion $0.255 → $0.263 /1M</title>
+    <updated>2026-11-03T00:00:14Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=google%2Fgemma-4-26b-a4b-it"/>
-    <summary>decrease: prompt $0.0765 → $0.051 /1M; completion $0.255 → $0.153 /1M</summary>
+    <summary>increase: prompt $0.0765 → $0.088 /1M; completion $0.255 → $0.263 /1M</summary>
   </entry>
   <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-11-03:increase:minimax/minimax-m3.1-flash</id>
-    <title>MiniMax: MiniMax M3.1 Flash: prompt $0.075 → $0.15 /1M; completion $0.30 → $0.60 /1M</title>
-    <updated>2026-11-03T00:00:08Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=minimax%2Fminimax-m3.1-flash"/>
-    <summary>increase: prompt $0.075 → $0.15 /1M; completion $0.30 → $0.60 /1M</summary>
+    <id>tag:openrouterlist.jvrck.com,2026-11-03:increase:meta-llama/llama-3.1-70b-instruct</id>
+    <title>Meta: Llama 3.1 70B Instruct: prompt $0.40 → $0.72 /1M; completion $0.40 → $0.72 /1M</title>
+    <updated>2026-11-03T00:00:13Z</updated>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=meta-llama%2Fllama-3.1-70b-instruct"/>
+    <summary>increase: prompt $0.40 → $0.72 /1M; completion $0.40 → $0.72 /1M</summary>
+  </entry>
+  <entry>
+    <id>tag:openrouterlist.jvrck.com,2026-11-03:increase:meta-llama/llama-3.3-70b-instruct</id>
+    <title>Meta: Llama 3.3 70B Instruct: prompt $0.10 → $0.20 /1M; completion $0.32 → $0.52 /1M</title>
+    <updated>2026-11-03T00:00:12Z</updated>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=meta-llama%2Fllama-3.3-70b-instruct"/>
+    <summary>increase: prompt $0.10 → $0.20 /1M; completion $0.32 → $0.52 /1M</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-11-03:increase:openai/gpt-oss-120b</id>
     <title>OpenAI: gpt-oss-120b: prompt $0.029 → $0.15 /1M; completion $0.107 → $0.60 /1M</title>
-    <updated>2026-11-03T00:00:07Z</updated>
+    <updated>2026-11-03T00:00:11Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=openai%2Fgpt-oss-120b"/>
     <summary>increase: prompt $0.029 → $0.15 /1M; completion $0.107 → $0.60 /1M</summary>
   </entry>
   <entry>
+    <id>tag:openrouterlist.jvrck.com,2026-11-03:decrease:openai/gpt-oss-20b</id>
+    <title>OpenAI: gpt-oss-20b: prompt $0.03 → $0.018 /1M; completion $0.13 → $0.09 /1M</title>
+    <updated>2026-11-03T00:00:10Z</updated>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=openai%2Fgpt-oss-20b"/>
+    <summary>decrease: prompt $0.03 → $0.018 /1M; completion $0.13 → $0.09 /1M</summary>
+  </entry>
+  <entry>
+    <id>tag:openrouterlist.jvrck.com,2026-11-03:increase:qwen/qwen3-235b-a22b-2507</id>
+    <title>Qwen: Qwen3 235B A22B Instruct 2507: prompt $0.09 → $0.14 /1M; completion $0.55 → $0.80 /1M</title>
+    <updated>2026-11-03T00:00:09Z</updated>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=qwen%2Fqwen3-235b-a22b-2507"/>
+    <summary>increase: prompt $0.09 → $0.14 /1M; completion $0.55 → $0.80 /1M</summary>
+  </entry>
+  <entry>
     <id>tag:openrouterlist.jvrck.com,2026-11-03:increase:qwen/qwen3-coder-30b-a3b-instruct</id>
     <title>Qwen: Qwen3 Coder 30B A3B Instruct: prompt $0.07 → $0.15 /1M; completion $0.28 → $0.60 /1M</title>
-    <updated>2026-11-03T00:00:06Z</updated>
+    <updated>2026-11-03T00:00:08Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=qwen%2Fqwen3-coder-30b-a3b-instruct"/>
     <summary>increase: prompt $0.07 → $0.15 /1M; completion $0.28 → $0.60 /1M</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-11-03:increase:qwen/qwen3-next-80b-a3b-instruct</id>
     <title>Qwen: Qwen3 Next 80B A3B Instruct: prompt $0.09 → $0.10 /1M</title>
-    <updated>2026-11-03T00:00:05Z</updated>
+    <updated>2026-11-03T00:00:07Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=qwen%2Fqwen3-next-80b-a3b-instruct"/>
     <summary>increase: prompt $0.09 → $0.10 /1M</summary>
   </entry>
   <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-11-03:increase:tencent/hy3</id>
-    <title>Tencent: Hy3: prompt $0.0825 → $0.132 /1M; completion $0.33 → $0.528 /1M</title>
-    <updated>2026-11-03T00:00:04Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=tencent%2Fhy3"/>
-    <summary>increase: prompt $0.0825 → $0.132 /1M; completion $0.33 → $0.528 /1M</summary>
+    <id>tag:openrouterlist.jvrck.com,2026-11-03:new_model:x-ai/grok-4.6:batch</id>
+    <title>SpaceXAI: Grok 4.6 (batch): new model</title>
+    <updated>2026-11-03T00:00:06Z</updated>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=x-ai%2Fgrok-4.6%3Abatch"/>
+    <summary>SpaceXAI: Grok 4.6 (batch): new model</summary>
   </entry>
   <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-11-03:increase:tencent/hy4-preview</id>
-    <title>Tencent: Hy4 preview: prompt $0.7506 → $0.834 /1M; completion $2.2509 → $2.501 /1M</title>
-    <updated>2026-11-03T00:00:03Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=tencent%2Fhy4-preview"/>
-    <summary>increase: prompt $0.7506 → $0.834 /1M; completion $2.2509 → $2.501 /1M</summary>
+    <id>tag:openrouterlist.jvrck.com,2026-11-03:new_model:x-ai/grok-4.7:batch</id>
+    <title>SpaceXAI: Grok 4.7 (batch): new model</title>
+    <updated>2026-11-03T00:00:05Z</updated>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=x-ai%2Fgrok-4.7%3Abatch"/>
+    <summary>SpaceXAI: Grok 4.7 (batch): new model</summary>
+  </entry>
+  <entry>
+    <id>tag:openrouterlist.jvrck.com,2026-11-03:mixed:z-ai/glm-5.3-flash</id>
+    <title>Z.ai: GLM 5.3 Flash: prompt $0.0285 → $0.0313 /1M; completion $0.0923 → $0.0846 /1M</title>
+    <updated>2026-11-03T00:00:04Z</updated>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=z-ai%2Fglm-5.3-flash"/>
+    <summary>mixed: prompt $0.0285 → $0.0313 /1M; completion $0.0923 → $0.0846 /1M</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-11-03:decrease:~deepseek/deepseek-flash-latest</id>
     <title>DeepSeek: DeepSeek Flash Latest: completion $0.50 → $0.315 /1M</title>
-    <updated>2026-11-03T00:00:02Z</updated>
+    <updated>2026-11-03T00:00:03Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=~deepseek%2Fdeepseek-flash-latest"/>
     <summary>decrease: completion $0.50 → $0.315 /1M</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-11-03:increase:~deepseek/deepseek-v4-flash-latest</id>
     <title>DeepSeek: DeepSeek V4 Flash Latest: prompt $0.0448 → $0.059 /1M</title>
-    <updated>2026-11-03T00:00:01Z</updated>
+    <updated>2026-11-03T00:00:02Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=~deepseek%2Fdeepseek-v4-flash-latest"/>
     <summary>increase: prompt $0.0448 → $0.059 /1M</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-11-03:increase:~moonshotai/kimi-latest</id>
-    <title>MoonshotAI: Kimi Latest: prompt $0.1495 → $0.1719 /1M; completion $7.15 → $10.5539 /1M</title>
-    <updated>2026-11-03T00:00:00Z</updated>
+    <title>MoonshotAI: Kimi Latest: prompt $0.1495 → $0.1596 /1M; completion $7.15 → $8.532 /1M</title>
+    <updated>2026-11-03T00:00:01Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=~moonshotai%2Fkimi-latest"/>
-    <summary>increase: prompt $0.1495 → $0.1719 /1M; completion $7.15 → $10.5539 /1M</summary>
+    <summary>increase: prompt $0.1495 → $0.1596 /1M; completion $7.15 → $8.532 /1M</summary>
+  </entry>
+  <entry>
+    <id>tag:openrouterlist.jvrck.com,2026-11-03:mixed:~z-ai/glm-flash-latest</id>
+    <title>Z.ai: GLM Flash Latest: prompt $0.0285 → $0.0313 /1M; completion $0.0923 → $0.0846 /1M</title>
+    <updated>2026-11-03T00:00:00Z</updated>
+    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=~z-ai%2Fglm-flash-latest"/>
+    <summary>mixed: prompt $0.0285 → $0.0313 /1M; completion $0.0923 → $0.0846 /1M</summary>
   </entry>
   <entry>
     <id>tag:openrouterlist.jvrck.com,2026-11-02:increase:google/gemma-4-26b-a4b-it</id>
@@ -321,40 +356,5 @@
     <updated>2026-10-31T00:00:00Z</updated>
     <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=~z-ai%2Fglm-flash-latest"/>
     <summary>increase: prompt $0.018 → $0.0163 /1M; completion $0.1402 → $0.1479 /1M</summary>
-  </entry>
-  <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-10-30:decrease:deepseek/deepseek-v3.2</id>
-    <title>DeepSeek: DeepSeek V3.2: prompt $0.28 → $0.26 /1M; completion $0.42 → $0.38 /1M</title>
-    <updated>2026-10-30T00:00:14Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=deepseek%2Fdeepseek-v3.2"/>
-    <summary>decrease: prompt $0.28 → $0.26 /1M; completion $0.42 → $0.38 /1M</summary>
-  </entry>
-  <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-10-30:increase:deepseek/deepseek-v4-pro</id>
-    <title>DeepSeek: DeepSeek V4 Pro 0423: prompt $0.863562 → $0.9483 /1M; completion $1.727124 → $1.8966 /1M</title>
-    <updated>2026-10-30T00:00:13Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=deepseek%2Fdeepseek-v4-pro"/>
-    <summary>increase: prompt $0.863562 → $0.9483 /1M; completion $1.727124 → $1.8966 /1M</summary>
-  </entry>
-  <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-10-30:decrease:minimax/minimax-m3.1-flash</id>
-    <title>MiniMax: MiniMax M3.1 Flash: prompt $0.15 → $0.075 /1M; completion $0.60 → $0.30 /1M</title>
-    <updated>2026-10-30T00:00:12Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=minimax%2Fminimax-m3.1-flash"/>
-    <summary>decrease: prompt $0.15 → $0.075 /1M; completion $0.60 → $0.30 /1M</summary>
-  </entry>
-  <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-10-30:increase:moonshotai/kimi-k2.7-code</id>
-    <title>MoonshotAI: Kimi K2.7 Code: prompt $0.56 → $0.60 /1M; completion $3.10 → $3.50 /1M</title>
-    <updated>2026-10-30T00:00:11Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=moonshotai%2Fkimi-k2.7-code"/>
-    <summary>increase: prompt $0.56 → $0.60 /1M; completion $3.10 → $3.50 /1M</summary>
-  </entry>
-  <entry>
-    <id>tag:openrouterlist.jvrck.com,2026-10-30:increase:moonshotai/kimi-k3</id>
-    <title>MoonshotAI: Kimi K3: prompt $0.239 → $0.192 /1M; completion $10.80 → $15.00 /1M</title>
-    <updated>2026-10-30T00:00:10Z</updated>
-    <link rel="alternate" href="https://openrouterlist.jvrck.com/?search=moonshotai%2Fkimi-k3"/>
-    <summary>increase: prompt $0.239 → $0.192 /1M; completion $10.80 → $15.00 /1M</summary>
   </entry>
 </feed>
