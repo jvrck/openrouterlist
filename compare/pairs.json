@@ -42,9 +42,9 @@
     "kind": "cross"
   },
   {
-    "slug": "anthropic-claude-opus-5.5-vs-moonshotai-kimi-k3.1-pro",
+    "slug": "anthropic-claude-opus-5.5-vs-moonshotai-kimi-k3",
     "a": "anthropic/claude-opus-5.5",
-    "b": "moonshotai/kimi-k3.1-pro",
+    "b": "moonshotai/kimi-k3",
     "kind": "cross"
   },
   {
@@ -102,9 +102,9 @@
     "kind": "cross"
   },
   {
-    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-moonshotai-kimi-k3.1-pro",
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-moonshotai-kimi-k3",
     "a": "deepseek/deepseek-v4-flash-vision-exp",
-    "b": "moonshotai/kimi-k3.1-pro",
+    "b": "moonshotai/kimi-k3",
     "kind": "cross"
   },
   {
@@ -168,9 +168,9 @@
     "kind": "cross"
   },
   {
-    "slug": "google-gemini-4-argon-vs-moonshotai-kimi-k3.1-pro",
+    "slug": "google-gemini-4-argon-vs-moonshotai-kimi-k3",
     "a": "google/gemini-4-argon",
-    "b": "moonshotai/kimi-k3.1-pro",
+    "b": "moonshotai/kimi-k3",
     "kind": "cross"
   },
   {
@@ -222,9 +222,9 @@
     "kind": "cross"
   },
   {
-    "slug": "meta-muse-wonder-vs-moonshotai-kimi-k3.1-pro",
+    "slug": "meta-muse-wonder-vs-moonshotai-kimi-k3",
     "a": "meta/muse-wonder",
-    "b": "moonshotai/kimi-k3.1-pro",
+    "b": "moonshotai/kimi-k3",
     "kind": "cross"
   },
   {
@@ -270,9 +270,9 @@
     "kind": "same"
   },
   {
-    "slug": "mistralai-mistral-medium-3-5-vs-moonshotai-kimi-k3.1-pro",
+    "slug": "mistralai-mistral-medium-3-5-vs-moonshotai-kimi-k3",
     "a": "mistralai/mistral-medium-3-5",
-    "b": "moonshotai/kimi-k3.1-pro",
+    "b": "moonshotai/kimi-k3",
     "kind": "cross"
   },
   {
@@ -318,26 +318,26 @@
     "kind": "same"
   },
   {
-    "slug": "moonshotai-kimi-k3.1-pro-vs-openai-gpt-6.1-sol-pro",
-    "a": "moonshotai/kimi-k3.1-pro",
+    "slug": "moonshotai-kimi-k3-vs-openai-gpt-6.1-sol-pro",
+    "a": "moonshotai/kimi-k3",
     "b": "openai/gpt-6.1-sol-pro",
     "kind": "cross"
   },
   {
-    "slug": "moonshotai-kimi-k3.1-pro-vs-qwen-qwen3.8-max-prime",
-    "a": "moonshotai/kimi-k3.1-pro",
+    "slug": "moonshotai-kimi-k3-vs-qwen-qwen3.8-max-prime",
+    "a": "moonshotai/kimi-k3",
     "b": "qwen/qwen3.8-max-prime",
     "kind": "cross"
   },
   {
-    "slug": "moonshotai-kimi-k3.1-pro-vs-tencent-hy4-preview",
-    "a": "moonshotai/kimi-k3.1-pro",
+    "slug": "moonshotai-kimi-k3-vs-tencent-hy4-preview",
+    "a": "moonshotai/kimi-k3",
     "b": "tencent/hy4-preview",
     "kind": "cross"
   },
   {
-    "slug": "moonshotai-kimi-k3.1-pro-vs-z-ai-glm-5.3-prime",
-    "a": "moonshotai/kimi-k3.1-pro",
+    "slug": "moonshotai-kimi-k3-vs-z-ai-glm-5.3-prime",
+    "a": "moonshotai/kimi-k3",
     "b": "z-ai/glm-5.3-prime",
     "kind": "cross"
   },
@@ -408,9 +408,9 @@
     "kind": "cross"
   },
   {
-    "slug": "tencent-hy-mt2-1.8b-vs-tencent-hy-mt2-30b-a3b",
+    "slug": "tencent-hy-mt2-1.8b-vs-tencent-hy4",
     "a": "tencent/hy-mt2-1.8b",
-    "b": "tencent/hy-mt2-30b-a3b",
+    "b": "tencent/hy4",
     "kind": "same"
   },
   {
@@ -420,16 +420,16 @@
     "kind": "same"
   },
   {
-    "slug": "tencent-hy-mt2-30b-a3b-vs-tencent-hy4-preview",
-    "a": "tencent/hy-mt2-30b-a3b",
-    "b": "tencent/hy4-preview",
-    "kind": "same"
-  },
-  {
     "slug": "tencent-hy4-preview-vs-z-ai-glm-5.3-prime",
     "a": "tencent/hy4-preview",
     "b": "z-ai/glm-5.3-prime",
     "kind": "cross"
+  },
+  {
+    "slug": "tencent-hy4-vs-tencent-hy4-preview",
+    "a": "tencent/hy4",
+    "b": "tencent/hy4-preview",
+    "kind": "same"
   },
   {
     "slug": "z-ai-glm-5.3-flashx-legal-vs-z-ai-glm-5.3-prime",
