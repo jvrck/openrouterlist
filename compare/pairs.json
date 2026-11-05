@@ -138,21 +138,15 @@
     "kind": "same"
   },
   {
-    "slug": "google-gemini-3.8-flash-vs-google-gemini-4-argon",
-    "a": "google/gemini-3.8-flash",
-    "b": "google/gemini-4-argon",
-    "kind": "same"
-  },
-  {
-    "slug": "google-gemini-3.8-flash-vs-google-gemini-nano-banana-2.1",
-    "a": "google/gemini-3.8-flash",
-    "b": "google/gemini-nano-banana-2.1",
-    "kind": "same"
-  },
-  {
-    "slug": "google-gemini-4-argon-vs-google-gemini-nano-banana-2.1",
+    "slug": "google-gemini-4-argon-vs-google-gemini-omni-1.1-flash",
     "a": "google/gemini-4-argon",
-    "b": "google/gemini-nano-banana-2.1",
+    "b": "google/gemini-omni-1.1-flash",
+    "kind": "same"
+  },
+  {
+    "slug": "google-gemini-4-argon-vs-google-gemini-omni-1.2-flash",
+    "a": "google/gemini-4-argon",
+    "b": "google/gemini-omni-1.2-flash",
     "kind": "same"
   },
   {
@@ -196,6 +190,12 @@
     "a": "google/gemini-4-argon",
     "b": "z-ai/glm-5.3-prime",
     "kind": "cross"
+  },
+  {
+    "slug": "google-gemini-omni-1.1-flash-vs-google-gemini-omni-1.2-flash",
+    "a": "google/gemini-omni-1.1-flash",
+    "b": "google/gemini-omni-1.2-flash",
+    "kind": "same"
   },
   {
     "slug": "meta-muse-spark-1.3-contributor-vs-meta-muse-spark-open",
