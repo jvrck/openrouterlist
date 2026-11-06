@@ -87,6 +87,7 @@
   <url><loc>https://openrouterlist.jvrck.com/m/deepseek/deepseek-v3.2-exp/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4-flash/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4-flash-0731/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4-flash-0731-batch/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4-flash-vision-exp/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4-pro/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4-pro-0813/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
@@ -164,6 +165,7 @@
   <url><loc>https://openrouterlist.jvrck.com/m/meta-llama/llama-4-scout/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/meta-llama/llama-guard-4-12b/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/meta/muse-glimmer-30b/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/m/meta/muse-glimmer-30b-batch/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/meta/muse-spark-1.1/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/meta/muse-spark-1.2/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/meta/muse-spark-1.2-contributor/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
@@ -176,6 +178,7 @@
   <url><loc>https://openrouterlist.jvrck.com/m/minimax/minimax-m2.5/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/minimax/minimax-m2.7/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/minimax/minimax-m3/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/m/minimax/minimax-m3-batch/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/minimax/minimax-m3.1-flash/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/codestral-2508/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/devstral-2512/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
@@ -220,7 +223,6 @@
   <url><loc>https://openrouterlist.jvrck.com/m/nvidia/nemotron-3-ultra-550b-a55b/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/nvidia/nemotron-3-ultra-550b-a55b-free/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/nvidia/nemotron-3.5-content-safety/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/nvidia/nemotron-3.5-content-safety-free/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/nvidia/nemotron-3.5-lightning/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/nvidia/nemotron-3.5-lightning-free/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/nvidia/nemotron-3.5-super-vl/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
@@ -379,6 +381,7 @@
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3.7-plus-batch/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3.8-2.4t-a95b/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3.8-27b/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3.8-27b-batch/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3.8-flash/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3.8-max-0902/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3.8-max-prime/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
@@ -415,6 +418,7 @@
   <url><loc>https://openrouterlist.jvrck.com/m/thedrummer/unslopnemo-12b/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/thinkingmachines/inkling/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/thinkingmachines/inkling-small/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/m/thinkingmachines/inkling-small-batch/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/typesafe/jev-router/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/unbiased/pareto-26.10/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/unbiased/pareto-26.9/</loc><lastmod>2026-11-06</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
