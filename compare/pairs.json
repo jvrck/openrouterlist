@@ -1,75 +1,75 @@
 [
   {
-    "slug": "anthropic-claude-haiku-5.5-vs-anthropic-claude-opus-5.5",
-    "a": "anthropic/claude-haiku-5.5",
-    "b": "anthropic/claude-opus-5.5",
+    "slug": "anthropic-claude-fable-5.2-vs-anthropic-claude-haiku-5.5",
+    "a": "anthropic/claude-fable-5.2",
+    "b": "anthropic/claude-haiku-5.5",
     "kind": "same"
+  },
+  {
+    "slug": "anthropic-claude-fable-5.2-vs-anthropic-claude-sonnet-5.5",
+    "a": "anthropic/claude-fable-5.2",
+    "b": "anthropic/claude-sonnet-5.5",
+    "kind": "same"
+  },
+  {
+    "slug": "anthropic-claude-fable-5.2-vs-deepseek-deepseek-v4-flash-vision-exp",
+    "a": "anthropic/claude-fable-5.2",
+    "b": "deepseek/deepseek-v4-flash-vision-exp",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-fable-5.2-vs-google-gemini-4-argon",
+    "a": "anthropic/claude-fable-5.2",
+    "b": "google/gemini-4-argon",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-fable-5.2-vs-meta-muse-wonder",
+    "a": "anthropic/claude-fable-5.2",
+    "b": "meta/muse-wonder",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-fable-5.2-vs-mistralai-mistral-medium-3-5",
+    "a": "anthropic/claude-fable-5.2",
+    "b": "mistralai/mistral-medium-3-5",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-fable-5.2-vs-moonshotai-kimi-k3",
+    "a": "anthropic/claude-fable-5.2",
+    "b": "moonshotai/kimi-k3",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-fable-5.2-vs-openai-gpt-6.1-sol-pro",
+    "a": "anthropic/claude-fable-5.2",
+    "b": "openai/gpt-6.1-sol-pro",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-fable-5.2-vs-qwen-qwen3.8-max-prime",
+    "a": "anthropic/claude-fable-5.2",
+    "b": "qwen/qwen3.8-max-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-fable-5.2-vs-tencent-hy4-preview",
+    "a": "anthropic/claude-fable-5.2",
+    "b": "tencent/hy4-preview",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-fable-5.2-vs-z-ai-glm-5.3-prime",
+    "a": "anthropic/claude-fable-5.2",
+    "b": "z-ai/glm-5.3-prime",
+    "kind": "cross"
   },
   {
     "slug": "anthropic-claude-haiku-5.5-vs-anthropic-claude-sonnet-5.5",
     "a": "anthropic/claude-haiku-5.5",
     "b": "anthropic/claude-sonnet-5.5",
     "kind": "same"
-  },
-  {
-    "slug": "anthropic-claude-opus-5.5-vs-anthropic-claude-sonnet-5.5",
-    "a": "anthropic/claude-opus-5.5",
-    "b": "anthropic/claude-sonnet-5.5",
-    "kind": "same"
-  },
-  {
-    "slug": "anthropic-claude-opus-5.5-vs-deepseek-deepseek-v4-flash-vision-exp",
-    "a": "anthropic/claude-opus-5.5",
-    "b": "deepseek/deepseek-v4-flash-vision-exp",
-    "kind": "cross"
-  },
-  {
-    "slug": "anthropic-claude-opus-5.5-vs-google-gemini-4-argon",
-    "a": "anthropic/claude-opus-5.5",
-    "b": "google/gemini-4-argon",
-    "kind": "cross"
-  },
-  {
-    "slug": "anthropic-claude-opus-5.5-vs-meta-muse-wonder",
-    "a": "anthropic/claude-opus-5.5",
-    "b": "meta/muse-wonder",
-    "kind": "cross"
-  },
-  {
-    "slug": "anthropic-claude-opus-5.5-vs-mistralai-mistral-medium-3-5",
-    "a": "anthropic/claude-opus-5.5",
-    "b": "mistralai/mistral-medium-3-5",
-    "kind": "cross"
-  },
-  {
-    "slug": "anthropic-claude-opus-5.5-vs-moonshotai-kimi-k3",
-    "a": "anthropic/claude-opus-5.5",
-    "b": "moonshotai/kimi-k3",
-    "kind": "cross"
-  },
-  {
-    "slug": "anthropic-claude-opus-5.5-vs-openai-gpt-6.1-sol-pro",
-    "a": "anthropic/claude-opus-5.5",
-    "b": "openai/gpt-6.1-sol-pro",
-    "kind": "cross"
-  },
-  {
-    "slug": "anthropic-claude-opus-5.5-vs-qwen-qwen3.8-max-prime",
-    "a": "anthropic/claude-opus-5.5",
-    "b": "qwen/qwen3.8-max-prime",
-    "kind": "cross"
-  },
-  {
-    "slug": "anthropic-claude-opus-5.5-vs-tencent-hy4-preview",
-    "a": "anthropic/claude-opus-5.5",
-    "b": "tencent/hy4-preview",
-    "kind": "cross"
-  },
-  {
-    "slug": "anthropic-claude-opus-5.5-vs-z-ai-glm-5.3-prime",
-    "a": "anthropic/claude-opus-5.5",
-    "b": "z-ai/glm-5.3-prime",
-    "kind": "cross"
   },
   {
     "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-deepseek-deepseek-v4.1-flash",
@@ -198,14 +198,14 @@
     "kind": "same"
   },
   {
-    "slug": "meta-muse-spark-1.3-contributor-vs-meta-muse-spark-open",
-    "a": "meta/muse-spark-1.3-contributor",
+    "slug": "meta-muse-ember-vs-meta-muse-spark-open",
+    "a": "meta/muse-ember",
     "b": "meta/muse-spark-open",
     "kind": "same"
   },
   {
-    "slug": "meta-muse-spark-1.3-contributor-vs-meta-muse-wonder",
-    "a": "meta/muse-spark-1.3-contributor",
+    "slug": "meta-muse-ember-vs-meta-muse-wonder",
+    "a": "meta/muse-ember",
     "b": "meta/muse-wonder",
     "kind": "same"
   },
