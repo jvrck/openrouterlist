@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "updated": "2026-11-11T05:26:31Z",
+  "updated": "2026-11-11T19:28:04Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "count": 469,
+  "count": 466,
   "models": [
     {
       "id": "aion-labs/aion-2.0",
@@ -1131,12 +1131,12 @@
       "expiration_date": null
     },
     {
-      "id": "baidu/ernie-5.5-flash-preview",
-      "name": "Baidu: ERNIE-5.5-Flash-Preview",
-      "url": "https://openrouterlist.jvrck.com/m/baidu/ernie-5.5-flash-preview/",
-      "prompt_per_1m": 0.28,
-      "completion_per_1m": 1.13,
-      "pricing": "fixed",
+      "id": "baidu/ernie-5.5-flash-preview:free",
+      "name": "Baidu: ERNIE-5.5-Flash-Preview (free)",
+      "url": "https://openrouterlist.jvrck.com/m/baidu/ernie-5.5-flash-preview-free/",
+      "prompt_per_1m": 0,
+      "completion_per_1m": 0,
+      "pricing": "free",
       "context_length": 1024000,
       "capabilities": {
         "tool_calling": true,
@@ -1179,58 +1179,6 @@
       "expiration_date": null
     },
     {
-      "id": "bytedance-seed/seed-1.6",
-      "name": "ByteDance Seed: Seed 1.6",
-      "url": "https://openrouterlist.jvrck.com/m/bytedance-seed/seed-1.6/",
-      "prompt_per_1m": 0.25,
-      "completion_per_1m": 2,
-      "pricing": "fixed",
-      "context_length": 262144,
-      "capabilities": {
-        "tool_calling": true,
-        "structured_outputs": true,
-        "reasoning": true,
-        "response_format": true,
-        "web_search": false
-      },
-      "input_modalities": [
-        "image",
-        "text",
-        "video"
-      ],
-      "output_modalities": [
-        "text"
-      ],
-      "created": "2025-12-23T15:49:57Z",
-      "expiration_date": "2026-11-11"
-    },
-    {
-      "id": "bytedance-seed/seed-1.6-flash",
-      "name": "ByteDance Seed: Seed 1.6 Flash",
-      "url": "https://openrouterlist.jvrck.com/m/bytedance-seed/seed-1.6-flash/",
-      "prompt_per_1m": 0.075,
-      "completion_per_1m": 0.3,
-      "pricing": "fixed",
-      "context_length": 262144,
-      "capabilities": {
-        "tool_calling": true,
-        "structured_outputs": true,
-        "reasoning": true,
-        "response_format": true,
-        "web_search": false
-      },
-      "input_modalities": [
-        "image",
-        "text",
-        "video"
-      ],
-      "output_modalities": [
-        "text"
-      ],
-      "created": "2025-12-23T15:50:11Z",
-      "expiration_date": "2026-11-11"
-    },
-    {
       "id": "bytedance-seed/seed-2-1-turbo",
       "name": "ByteDance Seed: Seed 2.1 Turbo",
       "url": "https://openrouterlist.jvrck.com/m/bytedance-seed/seed-2-1-turbo/",
@@ -1255,32 +1203,6 @@
       ],
       "created": "2026-08-12T16:29:36Z",
       "expiration_date": null
-    },
-    {
-      "id": "bytedance-seed/seed-2.0-code",
-      "name": "ByteDance Seed: Seed-2.0-Code",
-      "url": "https://openrouterlist.jvrck.com/m/bytedance-seed/seed-2.0-code/",
-      "prompt_per_1m": 0.5,
-      "completion_per_1m": 3,
-      "pricing": "fixed",
-      "context_length": 262144,
-      "capabilities": {
-        "tool_calling": true,
-        "structured_outputs": true,
-        "reasoning": true,
-        "response_format": true,
-        "web_search": false
-      },
-      "input_modalities": [
-        "text",
-        "image",
-        "video"
-      ],
-      "output_modalities": [
-        "text"
-      ],
-      "created": "2026-08-12T16:05:01Z",
-      "expiration_date": "2026-11-11"
     },
     {
       "id": "bytedance-seed/seed-2.0-lite",
@@ -1797,8 +1719,8 @@
       "id": "deepseek/deepseek-v4-pro",
       "name": "DeepSeek: DeepSeek V4 Pro 0423",
       "url": "https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4-pro/",
-      "prompt_per_1m": 0.95526,
-      "completion_per_1m": 1.91052,
+      "prompt_per_1m": 0.88044,
+      "completion_per_1m": 1.76088,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -3034,7 +2956,7 @@
       "name": "Google: Gemma 3 27B",
       "url": "https://openrouterlist.jvrck.com/m/google/gemma-3-27b-it/",
       "prompt_per_1m": 0.08,
-      "completion_per_1m": 0.45,
+      "completion_per_1m": 0.35,
       "pricing": "fixed",
       "context_length": 131072,
       "capabilities": {
@@ -3367,9 +3289,9 @@
       "context_length": 1000000,
       "capabilities": {
         "tool_calling": true,
-        "structured_outputs": true,
+        "structured_outputs": false,
         "reasoning": true,
-        "response_format": true,
+        "response_format": false,
         "web_search": false
       },
       "input_modalities": [
@@ -4113,8 +4035,8 @@
       "id": "minimax/minimax-m2.5",
       "name": "MiniMax: MiniMax M2.5",
       "url": "https://openrouterlist.jvrck.com/m/minimax/minimax-m2.5/",
-      "prompt_per_1m": 0.3,
-      "completion_per_1m": 1.2,
+      "prompt_per_1m": 0.27,
+      "completion_per_1m": 1.08,
       "pricing": "fixed",
       "context_length": 200000,
       "capabilities": {
@@ -4187,8 +4109,8 @@
       "id": "minimax/minimax-m3.1-flash",
       "name": "MiniMax: MiniMax M3.1 Flash",
       "url": "https://openrouterlist.jvrck.com/m/minimax/minimax-m3.1-flash/",
-      "prompt_per_1m": 0.15,
-      "completion_per_1m": 0.6,
+      "prompt_per_1m": 0.075,
+      "completion_per_1m": 0.3,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -5316,7 +5238,7 @@
       "prompt_per_1m": 0.075,
       "completion_per_1m": 0.4,
       "pricing": "fixed",
-      "context_length": 1048576,
+      "context_length": 262144,
       "capabilities": {
         "tool_calling": true,
         "structured_outputs": true,
@@ -6015,7 +5937,7 @@
         "text"
       ],
       "created": "2025-08-07T17:23:33Z",
-      "expiration_date": null
+      "expiration_date": "2026-12-11"
     },
     {
       "id": "openai/gpt-5-image",
@@ -6042,7 +5964,7 @@
         "text"
       ],
       "created": "2025-10-14T13:19:46Z",
-      "expiration_date": null
+      "expiration_date": "2026-12-11"
     },
     {
       "id": "openai/gpt-5-image-mini",
@@ -6095,7 +6017,7 @@
         "text"
       ],
       "created": "2025-08-07T17:23:27Z",
-      "expiration_date": null
+      "expiration_date": "2026-12-11"
     },
     {
       "id": "openai/gpt-5-mini:batch",
@@ -6121,7 +6043,7 @@
         "text"
       ],
       "created": "2025-08-07T17:23:27Z",
-      "expiration_date": null
+      "expiration_date": "2026-12-11"
     },
     {
       "id": "openai/gpt-5-nano",
@@ -6147,7 +6069,7 @@
         "text"
       ],
       "created": "2025-08-07T17:23:22Z",
-      "expiration_date": null
+      "expiration_date": "2026-12-11"
     },
     {
       "id": "openai/gpt-5-nano:batch",
@@ -6173,7 +6095,7 @@
         "text"
       ],
       "created": "2025-08-07T17:23:22Z",
-      "expiration_date": null
+      "expiration_date": "2026-12-11"
     },
     {
       "id": "openai/gpt-5-pro",
@@ -6199,7 +6121,7 @@
         "text"
       ],
       "created": "2025-10-06T18:51:03Z",
-      "expiration_date": null
+      "expiration_date": "2026-12-11"
     },
     {
       "id": "openai/gpt-5-pro:batch",
@@ -6225,7 +6147,7 @@
         "text"
       ],
       "created": "2025-10-06T18:51:03Z",
-      "expiration_date": null
+      "expiration_date": "2026-12-11"
     },
     {
       "id": "openai/gpt-5.1",
@@ -7210,7 +7132,7 @@
         "text"
       ],
       "created": "2025-08-07T17:23:33Z",
-      "expiration_date": null
+      "expiration_date": "2026-12-11"
     },
     {
       "id": "openai/gpt-6-astra",
@@ -7954,7 +7876,7 @@
         "text"
       ],
       "created": "2025-04-16T17:10:57Z",
-      "expiration_date": null
+      "expiration_date": "2026-12-11"
     },
     {
       "id": "openai/o3-mini:batch",
@@ -8005,7 +7927,7 @@
         "text"
       ],
       "created": "2025-06-10T23:32:32Z",
-      "expiration_date": null
+      "expiration_date": "2026-12-11"
     },
     {
       "id": "openai/o3:batch",
@@ -8031,7 +7953,7 @@
         "text"
       ],
       "created": "2025-04-16T17:10:57Z",
-      "expiration_date": null
+      "expiration_date": "2026-12-11"
     },
     {
       "id": "openai/o4-mini:batch",
@@ -10124,8 +10046,8 @@
       "id": "tencent/hy3",
       "name": "Tencent: Hy3",
       "url": "https://openrouterlist.jvrck.com/m/tencent/hy3/",
-      "prompt_per_1m": 0.132,
-      "completion_per_1m": 0.528,
+      "prompt_per_1m": 0.0825,
+      "completion_per_1m": 0.33,
       "pricing": "fixed",
       "context_length": 262144,
       "capabilities": {
@@ -10197,8 +10119,8 @@
       "id": "tencent/hy4-preview",
       "name": "Tencent: Hy4 preview",
       "url": "https://openrouterlist.jvrck.com/m/tencent/hy4-preview/",
-      "prompt_per_1m": 0.834,
-      "completion_per_1m": 2.501,
+      "prompt_per_1m": 0.7506,
+      "completion_per_1m": 2.2509,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -11303,7 +11225,7 @@
       "id": "z-ai/glm-5.3-flash:batch",
       "name": "Z.ai: GLM 5.3 Flash (batch)",
       "url": "https://openrouterlist.jvrck.com/m/z-ai/glm-5.3-flash-batch/",
-      "prompt_per_1m": 0.042,
+      "prompt_per_1m": 0.047,
       "completion_per_1m": 0.061,
       "pricing": "fixed",
       "context_length": 1048576,
