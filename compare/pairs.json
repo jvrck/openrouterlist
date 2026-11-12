@@ -138,9 +138,9 @@
     "kind": "same"
   },
   {
-    "slug": "google-gemini-4-carbon-vs-google-gemini-omni-1.1-flash",
+    "slug": "google-gemini-4-carbon-vs-google-gemini-4-hydrogen",
     "a": "google/gemini-4-carbon",
-    "b": "google/gemini-omni-1.1-flash",
+    "b": "google/gemini-4-hydrogen",
     "kind": "same"
   },
   {
@@ -192,8 +192,8 @@
     "kind": "cross"
   },
   {
-    "slug": "google-gemini-omni-1.1-flash-vs-google-gemini-omni-1.2-flash",
-    "a": "google/gemini-omni-1.1-flash",
+    "slug": "google-gemini-4-hydrogen-vs-google-gemini-omni-1.2-flash",
+    "a": "google/gemini-4-hydrogen",
     "b": "google/gemini-omni-1.2-flash",
     "kind": "same"
   },
