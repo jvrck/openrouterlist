@@ -371,7 +371,6 @@
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3-next-80b-a3b-instruct/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3-vl-235b-a22b-instruct/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3-vl-30b-a3b-instruct/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3-vl-30b-a3b-thinking/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3-vl-8b-instruct/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3.5-122b-a10b/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/qwen/qwen3.5-27b/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
@@ -412,10 +411,8 @@
   <url><loc>https://openrouterlist.jvrck.com/m/sao10k/l3.1-euryale-70b/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/scaledown/extract/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/scaledown/summarize/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/stepfun/step-3.5-flash/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/stepfun/step-3.7-flash/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/stepfun/step-5-preview/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/tencent/hunyuan-a13b-instruct/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/tencent/hy-mt2-1.8b/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/tencent/hy-mt2-30b-a3b/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/tencent/hy-mt2-7b/</loc><lastmod>2026-11-15</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
