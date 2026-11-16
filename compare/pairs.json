@@ -408,14 +408,8 @@
     "kind": "same"
   },
   {
-    "slug": "tencent-hy-mt2-1.8b-vs-tencent-hy4",
-    "a": "tencent/hy-mt2-1.8b",
-    "b": "tencent/hy4",
-    "kind": "same"
-  },
-  {
-    "slug": "tencent-hy-mt2-1.8b-vs-tencent-hy4-preview",
-    "a": "tencent/hy-mt2-1.8b",
+    "slug": "tencent-hy4-flash-vs-tencent-hy4-preview",
+    "a": "tencent/hy4-flash",
     "b": "tencent/hy4-preview",
     "kind": "same"
   },
@@ -424,6 +418,12 @@
     "a": "tencent/hy4-preview",
     "b": "z-ai/glm-5.3-prime",
     "kind": "cross"
+  },
+  {
+    "slug": "tencent-hy4-vs-tencent-hy4-flash",
+    "a": "tencent/hy4",
+    "b": "tencent/hy4-flash",
+    "kind": "same"
   },
   {
     "slug": "tencent-hy4-vs-tencent-hy4-preview",

@@ -420,6 +420,7 @@
   <url><loc>https://openrouterlist.jvrck.com/m/tencent/hy3/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/tencent/hy3-preview/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/tencent/hy4/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/m/tencent/hy4-flash/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/tencent/hy4-preview/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/thedrummer/cydonia-24b-v4.1/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/thedrummer/skyfall-36b-v2/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
@@ -540,9 +541,9 @@
   <url><loc>https://openrouterlist.jvrck.com/compare/qwen-qwen3.8-max-prime-vs-tencent-hy4-preview/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/qwen-qwen3.8-max-prime-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/qwen-qwen3.8-omni-flash-vs-qwen-qwen4-max/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/tencent-hy-mt2-1.8b-vs-tencent-hy4/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/compare/tencent-hy-mt2-1.8b-vs-tencent-hy4-preview/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/tencent-hy4-flash-vs-tencent-hy4-preview/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/tencent-hy4-preview-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/compare/tencent-hy4-vs-tencent-hy4-flash/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/tencent-hy4-vs-tencent-hy4-preview/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/z-ai-glm-5.3-flashx-legal-vs-z-ai-glm-5.3-prime/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/compare/z-ai-glm-5.3-flashx-vs-z-ai-glm-5.3-flashx-legal/</loc><lastmod>2026-11-16</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
