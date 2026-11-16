@@ -378,21 +378,15 @@
     "kind": "same"
   },
   {
-    "slug": "qwen-qwen3.8-max-0902-vs-qwen-qwen3.8-max-prime",
-    "a": "qwen/qwen3.8-max-0902",
-    "b": "qwen/qwen3.8-max-prime",
-    "kind": "same"
-  },
-  {
-    "slug": "qwen-qwen3.8-max-0902-vs-qwen-qwen3.8-omni-flash",
-    "a": "qwen/qwen3.8-max-0902",
-    "b": "qwen/qwen3.8-omni-flash",
-    "kind": "same"
-  },
-  {
     "slug": "qwen-qwen3.8-max-prime-vs-qwen-qwen3.8-omni-flash",
     "a": "qwen/qwen3.8-max-prime",
     "b": "qwen/qwen3.8-omni-flash",
+    "kind": "same"
+  },
+  {
+    "slug": "qwen-qwen3.8-max-prime-vs-qwen-qwen4-max",
+    "a": "qwen/qwen3.8-max-prime",
+    "b": "qwen/qwen4-max",
     "kind": "same"
   },
   {
@@ -406,6 +400,12 @@
     "a": "qwen/qwen3.8-max-prime",
     "b": "z-ai/glm-5.3-prime",
     "kind": "cross"
+  },
+  {
+    "slug": "qwen-qwen3.8-omni-flash-vs-qwen-qwen4-max",
+    "a": "qwen/qwen3.8-omni-flash",
+    "b": "qwen/qwen4-max",
+    "kind": "same"
   },
   {
     "slug": "tencent-hy-mt2-1.8b-vs-tencent-hy4",
