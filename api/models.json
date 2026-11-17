@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "updated": "2026-11-16T21:53:00Z",
+  "updated": "2026-11-17T07:15:00Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "count": 469,
+  "count": 470,
   "models": [
     {
       "id": "aion-labs/aion-2.0",
@@ -1817,8 +1817,8 @@
       "id": "deepseek/deepseek-v4.1-flash-1017:batch",
       "name": "DeepSeek: DeepSeek V4.1 Flash 1017 (batch)",
       "url": "https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4.1-flash-1017-batch/",
-      "prompt_per_1m": 0.037,
-      "completion_per_1m": 0.331,
+      "prompt_per_1m": 0.036,
+      "completion_per_1m": 0.15,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -3061,8 +3061,8 @@
       "id": "google/gemma-4-26b-a4b-it",
       "name": "Google: Gemma 4 26B A4B ",
       "url": "https://openrouterlist.jvrck.com/m/google/gemma-4-26b-a4b-it/",
-      "prompt_per_1m": 0.0765,
-      "completion_per_1m": 0.255,
+      "prompt_per_1m": 0.09,
+      "completion_per_1m": 0.3,
       "pricing": "fixed",
       "context_length": 262144,
       "capabilities": {
@@ -3803,8 +3803,8 @@
       "id": "meta/muse-glimmer-30b",
       "name": "Meta: Muse Glimmer 30B",
       "url": "https://openrouterlist.jvrck.com/m/meta/muse-glimmer-30b/",
-      "prompt_per_1m": 0.3,
-      "completion_per_1m": 1.2,
+      "prompt_per_1m": 0.35,
+      "completion_per_1m": 1.5,
       "pricing": "fixed",
       "context_length": 131072,
       "capabilities": {
@@ -4142,8 +4142,8 @@
       "id": "minimax/minimax-m3.1-flash",
       "name": "MiniMax: MiniMax M3.1 Flash",
       "url": "https://openrouterlist.jvrck.com/m/minimax/minimax-m3.1-flash/",
-      "prompt_per_1m": 0.075,
-      "completion_per_1m": 0.3,
+      "prompt_per_1m": 0.15,
+      "completion_per_1m": 0.6,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -4972,8 +4972,8 @@
       "id": "moonshotai/kimi-k3.1-pro:batch",
       "name": "MoonshotAI: Kimi K3.1 Pro (batch)",
       "url": "https://openrouterlist.jvrck.com/m/moonshotai/kimi-k3.1-pro-batch/",
-      "prompt_per_1m": 0.378,
-      "completion_per_1m": 5.672,
+      "prompt_per_1m": 0.372,
+      "completion_per_1m": 5.583,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -5318,8 +5318,8 @@
       "id": "nvidia/nemotron-3-ultra-550b-a55b",
       "name": "NVIDIA: Nemotron 3 Ultra",
       "url": "https://openrouterlist.jvrck.com/m/nvidia/nemotron-3-ultra-550b-a55b/",
-      "prompt_per_1m": 0.6,
-      "completion_per_1m": 2.4,
+      "prompt_per_1m": 0.5,
+      "completion_per_1m": 2.2,
       "pricing": "fixed",
       "context_length": 262144,
       "capabilities": {
@@ -5394,7 +5394,7 @@
       "prompt_per_1m": 0.07,
       "completion_per_1m": 0.2,
       "pricing": "fixed",
-      "context_length": 262144,
+      "context_length": 1048576,
       "capabilities": {
         "tool_calling": true,
         "structured_outputs": true,
@@ -7843,8 +7843,8 @@
       "id": "openai/gpt-oss-20b",
       "name": "OpenAI: gpt-oss-20b",
       "url": "https://openrouterlist.jvrck.com/m/openai/gpt-oss-20b/",
-      "prompt_per_1m": 0.075,
-      "completion_per_1m": 0.3,
+      "prompt_per_1m": 0.03,
+      "completion_per_1m": 0.13,
       "pricing": "fixed",
       "context_length": 131072,
       "capabilities": {
@@ -10083,8 +10083,8 @@
       "id": "tencent/hy3",
       "name": "Tencent: Hy3",
       "url": "https://openrouterlist.jvrck.com/m/tencent/hy3/",
-      "prompt_per_1m": 0.0825,
-      "completion_per_1m": 0.33,
+      "prompt_per_1m": 0.132,
+      "completion_per_1m": 0.528,
       "pricing": "fixed",
       "context_length": 262144,
       "capabilities": {
@@ -10156,8 +10156,8 @@
       "id": "tencent/hy4-flash",
       "name": "Tencent: Hy4 flash",
       "url": "https://openrouterlist.jvrck.com/m/tencent/hy4-flash/",
-      "prompt_per_1m": 0.04375,
-      "completion_per_1m": 0.175625,
+      "prompt_per_1m": 0.035,
+      "completion_per_1m": 0.1405,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -10181,8 +10181,8 @@
       "id": "tencent/hy4-preview",
       "name": "Tencent: Hy4 preview",
       "url": "https://openrouterlist.jvrck.com/m/tencent/hy4-preview/",
-      "prompt_per_1m": 0.7506,
-      "completion_per_1m": 2.2509,
+      "prompt_per_1m": 0.834,
+      "completion_per_1m": 2.501,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -11260,6 +11260,30 @@
       "expiration_date": null
     },
     {
+      "id": "z-ai/glm-5.2:batch",
+      "name": "Z.ai: GLM 5.2 (batch)",
+      "url": "https://openrouterlist.jvrck.com/m/z-ai/glm-5.2-batch/",
+      "prompt_per_1m": 0.322,
+      "completion_per_1m": 0.989,
+      "pricing": "fixed",
+      "context_length": 1048576,
+      "capabilities": {
+        "tool_calling": true,
+        "structured_outputs": true,
+        "reasoning": true,
+        "response_format": true,
+        "web_search": false
+      },
+      "input_modalities": [
+        "text"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "created": "2026-06-16T17:45:30Z",
+      "expiration_date": null
+    },
+    {
       "id": "z-ai/glm-5.3",
       "name": "Z.ai: GLM 5.3",
       "url": "https://openrouterlist.jvrck.com/m/z-ai/glm-5.3/",
@@ -11287,8 +11311,8 @@
       "id": "z-ai/glm-5.3-flash",
       "name": "Z.ai: GLM 5.3 Flash",
       "url": "https://openrouterlist.jvrck.com/m/z-ai/glm-5.3-flash/",
-      "prompt_per_1m": 0.15,
-      "completion_per_1m": 0.5,
+      "prompt_per_1m": 0.0399,
+      "completion_per_1m": 0.0784,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -11313,8 +11337,8 @@
       "id": "z-ai/glm-5.3-flash:batch",
       "name": "Z.ai: GLM 5.3 Flash (batch)",
       "url": "https://openrouterlist.jvrck.com/m/z-ai/glm-5.3-flash-batch/",
-      "prompt_per_1m": 0.05,
-      "completion_per_1m": 0.18,
+      "prompt_per_1m": 0.024,
+      "completion_per_1m": 0.069,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -11415,8 +11439,8 @@
       "id": "z-ai/glm-5.3:batch",
       "name": "Z.ai: GLM 5.3 (batch)",
       "url": "https://openrouterlist.jvrck.com/m/z-ai/glm-5.3-batch/",
-      "prompt_per_1m": 0.45,
-      "completion_per_1m": 2,
+      "prompt_per_1m": 0.281,
+      "completion_per_1m": 1.25,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
