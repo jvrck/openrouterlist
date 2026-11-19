@@ -18,9 +18,9 @@
     "kind": "cross"
   },
   {
-    "slug": "anthropic-claude-fable-5.2-vs-google-gemini-4-carbon",
+    "slug": "anthropic-claude-fable-5.2-vs-google-gemini-4-neon",
     "a": "anthropic/claude-fable-5.2",
-    "b": "google/gemini-4-carbon",
+    "b": "google/gemini-4-neon",
     "kind": "cross"
   },
   {
@@ -84,9 +84,9 @@
     "kind": "same"
   },
   {
-    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-google-gemini-4-carbon",
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-google-gemini-4-neon",
     "a": "deepseek/deepseek-v4-flash-vision-exp",
-    "b": "google/gemini-4-carbon",
+    "b": "google/gemini-4-neon",
     "kind": "cross"
   },
   {
@@ -144,58 +144,58 @@
     "kind": "same"
   },
   {
-    "slug": "google-gemini-4-carbon-vs-google-gemini-omni-1.2-flash",
+    "slug": "google-gemini-4-carbon-vs-google-gemini-4-neon",
     "a": "google/gemini-4-carbon",
-    "b": "google/gemini-omni-1.2-flash",
+    "b": "google/gemini-4-neon",
     "kind": "same"
   },
   {
-    "slug": "google-gemini-4-carbon-vs-meta-muse-wonder",
-    "a": "google/gemini-4-carbon",
+    "slug": "google-gemini-4-hydrogen-vs-google-gemini-4-neon",
+    "a": "google/gemini-4-hydrogen",
+    "b": "google/gemini-4-neon",
+    "kind": "same"
+  },
+  {
+    "slug": "google-gemini-4-neon-vs-meta-muse-wonder",
+    "a": "google/gemini-4-neon",
     "b": "meta/muse-wonder",
     "kind": "cross"
   },
   {
-    "slug": "google-gemini-4-carbon-vs-mistralai-mistral-large-4-0",
-    "a": "google/gemini-4-carbon",
+    "slug": "google-gemini-4-neon-vs-mistralai-mistral-large-4-0",
+    "a": "google/gemini-4-neon",
     "b": "mistralai/mistral-large-4-0",
     "kind": "cross"
   },
   {
-    "slug": "google-gemini-4-carbon-vs-moonshotai-kimi-k3",
-    "a": "google/gemini-4-carbon",
+    "slug": "google-gemini-4-neon-vs-moonshotai-kimi-k3",
+    "a": "google/gemini-4-neon",
     "b": "moonshotai/kimi-k3",
     "kind": "cross"
   },
   {
-    "slug": "google-gemini-4-carbon-vs-openai-gpt-6.2-astra",
-    "a": "google/gemini-4-carbon",
+    "slug": "google-gemini-4-neon-vs-openai-gpt-6.2-astra",
+    "a": "google/gemini-4-neon",
     "b": "openai/gpt-6.2-astra",
     "kind": "cross"
   },
   {
-    "slug": "google-gemini-4-carbon-vs-qwen-qwen3.8-max-prime",
-    "a": "google/gemini-4-carbon",
+    "slug": "google-gemini-4-neon-vs-qwen-qwen3.8-max-prime",
+    "a": "google/gemini-4-neon",
     "b": "qwen/qwen3.8-max-prime",
     "kind": "cross"
   },
   {
-    "slug": "google-gemini-4-carbon-vs-tencent-hy4-preview",
-    "a": "google/gemini-4-carbon",
+    "slug": "google-gemini-4-neon-vs-tencent-hy4-preview",
+    "a": "google/gemini-4-neon",
     "b": "tencent/hy4-preview",
     "kind": "cross"
   },
   {
-    "slug": "google-gemini-4-carbon-vs-z-ai-glm-5.3-prime",
-    "a": "google/gemini-4-carbon",
+    "slug": "google-gemini-4-neon-vs-z-ai-glm-5.3-prime",
+    "a": "google/gemini-4-neon",
     "b": "z-ai/glm-5.3-prime",
     "kind": "cross"
-  },
-  {
-    "slug": "google-gemini-4-hydrogen-vs-google-gemini-omni-1.2-flash",
-    "a": "google/gemini-4-hydrogen",
-    "b": "google/gemini-omni-1.2-flash",
-    "kind": "same"
   },
   {
     "slug": "meta-muse-ember-vs-meta-muse-spark-open",
