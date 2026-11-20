@@ -30,9 +30,9 @@
     "kind": "cross"
   },
   {
-    "slug": "anthropic-claude-fable-5.2-vs-mistralai-mistral-large-4-0",
+    "slug": "anthropic-claude-fable-5.2-vs-mistralai-pixtral-large-2502",
     "a": "anthropic/claude-fable-5.2",
-    "b": "mistralai/mistral-large-4-0",
+    "b": "mistralai/pixtral-large-2502",
     "kind": "cross"
   },
   {
@@ -96,9 +96,9 @@
     "kind": "cross"
   },
   {
-    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-mistralai-mistral-large-4-0",
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-mistralai-pixtral-large-2502",
     "a": "deepseek/deepseek-v4-flash-vision-exp",
-    "b": "mistralai/mistral-large-4-0",
+    "b": "mistralai/pixtral-large-2502",
     "kind": "cross"
   },
   {
@@ -162,9 +162,9 @@
     "kind": "cross"
   },
   {
-    "slug": "google-gemini-4-neon-vs-mistralai-mistral-large-4-0",
+    "slug": "google-gemini-4-neon-vs-mistralai-pixtral-large-2502",
     "a": "google/gemini-4-neon",
-    "b": "mistralai/mistral-large-4-0",
+    "b": "mistralai/pixtral-large-2502",
     "kind": "cross"
   },
   {
@@ -216,9 +216,9 @@
     "kind": "same"
   },
   {
-    "slug": "meta-muse-wonder-vs-mistralai-mistral-large-4-0",
+    "slug": "meta-muse-wonder-vs-mistralai-pixtral-large-2502",
     "a": "meta/muse-wonder",
-    "b": "mistralai/mistral-large-4-0",
+    "b": "mistralai/pixtral-large-2502",
     "kind": "cross"
   },
   {
@@ -252,50 +252,50 @@
     "kind": "cross"
   },
   {
-    "slug": "mistralai-devstral-2512-vs-mistralai-mistral-large-4-0",
-    "a": "mistralai/devstral-2512",
-    "b": "mistralai/mistral-large-4-0",
-    "kind": "same"
-  },
-  {
-    "slug": "mistralai-devstral-2512-vs-mistralai-mistral-small-2603",
-    "a": "mistralai/devstral-2512",
-    "b": "mistralai/mistral-small-2603",
-    "kind": "same"
-  },
-  {
     "slug": "mistralai-mistral-large-4-0-vs-mistralai-mistral-small-2603",
     "a": "mistralai/mistral-large-4-0",
     "b": "mistralai/mistral-small-2603",
     "kind": "same"
   },
   {
-    "slug": "mistralai-mistral-large-4-0-vs-moonshotai-kimi-k3",
+    "slug": "mistralai-mistral-large-4-0-vs-mistralai-pixtral-large-2502",
     "a": "mistralai/mistral-large-4-0",
+    "b": "mistralai/pixtral-large-2502",
+    "kind": "same"
+  },
+  {
+    "slug": "mistralai-mistral-small-2603-vs-mistralai-pixtral-large-2502",
+    "a": "mistralai/mistral-small-2603",
+    "b": "mistralai/pixtral-large-2502",
+    "kind": "same"
+  },
+  {
+    "slug": "mistralai-pixtral-large-2502-vs-moonshotai-kimi-k3",
+    "a": "mistralai/pixtral-large-2502",
     "b": "moonshotai/kimi-k3",
     "kind": "cross"
   },
   {
-    "slug": "mistralai-mistral-large-4-0-vs-openai-gpt-6.2-astra",
-    "a": "mistralai/mistral-large-4-0",
+    "slug": "mistralai-pixtral-large-2502-vs-openai-gpt-6.2-astra",
+    "a": "mistralai/pixtral-large-2502",
     "b": "openai/gpt-6.2-astra",
     "kind": "cross"
   },
   {
-    "slug": "mistralai-mistral-large-4-0-vs-qwen-qwen3.8-max-prime",
-    "a": "mistralai/mistral-large-4-0",
+    "slug": "mistralai-pixtral-large-2502-vs-qwen-qwen3.8-max-prime",
+    "a": "mistralai/pixtral-large-2502",
     "b": "qwen/qwen3.8-max-prime",
     "kind": "cross"
   },
   {
-    "slug": "mistralai-mistral-large-4-0-vs-tencent-hy4-preview",
-    "a": "mistralai/mistral-large-4-0",
+    "slug": "mistralai-pixtral-large-2502-vs-tencent-hy4-preview",
+    "a": "mistralai/pixtral-large-2502",
     "b": "tencent/hy4-preview",
     "kind": "cross"
   },
   {
-    "slug": "mistralai-mistral-large-4-0-vs-z-ai-glm-5.3-prime",
-    "a": "mistralai/mistral-large-4-0",
+    "slug": "mistralai-pixtral-large-2502-vs-z-ai-glm-5.3-prime",
+    "a": "mistralai/pixtral-large-2502",
     "b": "z-ai/glm-5.3-prime",
     "kind": "cross"
   },
