@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-11-20T19:54:09Z",
+  "updated": "2026-11-21T06:20:09Z",
   "source": "https://openrouter.ai/api/v1/models",
   "count": 476,
   "models": [
@@ -1743,8 +1743,8 @@
       "id": "deepseek/deepseek-v4.1-flash",
       "name": "DeepSeek: DeepSeek V4.1 Flash",
       "url": "https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4.1-flash/",
-      "prompt_per_1m": 0.3,
-      "completion_per_1m": 1.2,
+      "prompt_per_1m": 0.0498,
+      "completion_per_1m": 0.1992,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -1768,8 +1768,8 @@
       "id": "deepseek/deepseek-v4.1-flash-1017",
       "name": "DeepSeek: DeepSeek V4.1 Flash 1017",
       "url": "https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4.1-flash-1017/",
-      "prompt_per_1m": 0.036,
-      "completion_per_1m": 0.5,
+      "prompt_per_1m": 0.15,
+      "completion_per_1m": 0.6,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -1838,31 +1838,6 @@
       ],
       "created": "2026-09-10T06:21:25Z",
       "expiration_date": null
-    },
-    {
-      "id": "dots-studio/dots-3-note-preview:free",
-      "name": "Dots Studio: Dots3-Note Preview (free)",
-      "url": "https://openrouterlist.jvrck.com/m/dots-studio/dots-3-note-preview-free/",
-      "prompt_per_1m": 0,
-      "completion_per_1m": 0,
-      "pricing": "free",
-      "context_length": 512000,
-      "capabilities": {
-        "tool_calling": true,
-        "structured_outputs": true,
-        "reasoning": true,
-        "response_format": true,
-        "web_search": false
-      },
-      "input_modalities": [
-        "text",
-        "image"
-      ],
-      "output_modalities": [
-        "text"
-      ],
-      "created": "2026-08-14T04:06:01Z",
-      "expiration_date": "2026-12-31"
     },
     {
       "id": "elorian/glimpse",
@@ -3585,30 +3560,6 @@
       "expiration_date": null
     },
     {
-      "id": "meituan/longcat-2.0",
-      "name": "Meituan: LongCat 2.0",
-      "url": "https://openrouterlist.jvrck.com/m/meituan/longcat-2.0/",
-      "prompt_per_1m": 0.3,
-      "completion_per_1m": 1.2,
-      "pricing": "fixed",
-      "context_length": 1048756,
-      "capabilities": {
-        "tool_calling": true,
-        "structured_outputs": false,
-        "reasoning": true,
-        "response_format": false,
-        "web_search": false
-      },
-      "input_modalities": [
-        "text"
-      ],
-      "output_modalities": [
-        "text"
-      ],
-      "created": "2026-07-20T13:37:38Z",
-      "expiration_date": null
-    },
-    {
       "id": "meta-llama/llama-3.1-70b-instruct",
       "name": "Meta: Llama 3.1 70B Instruct",
       "url": "https://openrouterlist.jvrck.com/m/meta-llama/llama-3.1-70b-instruct/",
@@ -4076,8 +4027,8 @@
       "id": "minimax/minimax-m2.5",
       "name": "MiniMax: MiniMax M2.5",
       "url": "https://openrouterlist.jvrck.com/m/minimax/minimax-m2.5/",
-      "prompt_per_1m": 0.295,
-      "completion_per_1m": 1.2,
+      "prompt_per_1m": 0.27,
+      "completion_per_1m": 0.95,
       "pricing": "fixed",
       "context_length": 198000,
       "capabilities": {
@@ -4150,8 +4101,8 @@
       "id": "minimax/minimax-m3.1-flash",
       "name": "MiniMax: MiniMax M3.1 Flash",
       "url": "https://openrouterlist.jvrck.com/m/minimax/minimax-m3.1-flash/",
-      "prompt_per_1m": 0.075,
-      "completion_per_1m": 0.3,
+      "prompt_per_1m": 0.15,
+      "completion_per_1m": 0.6,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -5473,7 +5424,7 @@
       "name": "NVIDIA: Nemotron 3.5 Super VL",
       "url": "https://openrouterlist.jvrck.com/m/nvidia/nemotron-3.5-super-vl/",
       "prompt_per_1m": 0.15,
-      "completion_per_1m": 0.5,
+      "completion_per_1m": 0.47,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -8084,8 +8035,8 @@
       "id": "openai/gpt-oss-20b",
       "name": "OpenAI: gpt-oss-20b",
       "url": "https://openrouterlist.jvrck.com/m/openai/gpt-oss-20b/",
-      "prompt_per_1m": 0.018,
-      "completion_per_1m": 0.09,
+      "prompt_per_1m": 0.017,
+      "completion_per_1m": 0.085,
       "pricing": "fixed",
       "context_length": 131072,
       "capabilities": {
@@ -9011,8 +8962,8 @@
       "id": "qwen/qwen3-coder-30b-a3b-instruct",
       "name": "Qwen: Qwen3 Coder 30B A3B Instruct",
       "url": "https://openrouterlist.jvrck.com/m/qwen/qwen3-coder-30b-a3b-instruct/",
-      "prompt_per_1m": 0.15,
-      "completion_per_1m": 0.6,
+      "prompt_per_1m": 0.07,
+      "completion_per_1m": 0.28,
       "pricing": "fixed",
       "context_length": 262144,
       "capabilities": {
@@ -9824,6 +9775,31 @@
       "expiration_date": null
     },
     {
+      "id": "radixark/daisyrose-27b",
+      "name": "RadixArk: DaisyRose 27B",
+      "url": "https://openrouterlist.jvrck.com/m/radixark/daisyrose-27b/",
+      "prompt_per_1m": 0.15,
+      "completion_per_1m": 1.875,
+      "pricing": "fixed",
+      "context_length": 262144,
+      "capabilities": {
+        "tool_calling": true,
+        "structured_outputs": true,
+        "reasoning": true,
+        "response_format": true,
+        "web_search": false
+      },
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "created": "2026-11-21T00:49:48Z",
+      "expiration_date": null
+    },
+    {
       "id": "recursive/flint-v1.0:free",
       "name": "Recursive: Flint (free)",
       "url": "https://openrouterlist.jvrck.com/m/recursive/flint-v1.0-free/",
@@ -10324,8 +10300,8 @@
       "id": "tencent/hy3",
       "name": "Tencent: Hy3",
       "url": "https://openrouterlist.jvrck.com/m/tencent/hy3/",
-      "prompt_per_1m": 0.0825,
-      "completion_per_1m": 0.33,
+      "prompt_per_1m": 0.132,
+      "completion_per_1m": 0.528,
       "pricing": "fixed",
       "context_length": 262144,
       "capabilities": {
@@ -10398,8 +10374,8 @@
       "id": "tencent/hy4-preview",
       "name": "Tencent: Hy4 preview",
       "url": "https://openrouterlist.jvrck.com/m/tencent/hy4-preview/",
-      "prompt_per_1m": 0.7506,
-      "completion_per_1m": 2.2509,
+      "prompt_per_1m": 0.834,
+      "completion_per_1m": 2.501,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -10514,6 +10490,31 @@
         "text"
       ],
       "created": "2026-07-17T22:05:56Z",
+      "expiration_date": null
+    },
+    {
+      "id": "thinkingmachines/inkling-2-mini",
+      "name": "Thinking Machines: Inkling 2 Mini",
+      "url": "https://openrouterlist.jvrck.com/m/thinkingmachines/inkling-2-mini/",
+      "prompt_per_1m": 0.1,
+      "completion_per_1m": 0.4,
+      "pricing": "fixed",
+      "context_length": 1048576,
+      "capabilities": {
+        "tool_calling": true,
+        "structured_outputs": true,
+        "reasoning": true,
+        "response_format": true,
+        "web_search": false
+      },
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ],
+      "created": "2026-11-21T02:19:45Z",
       "expiration_date": null
     },
     {
