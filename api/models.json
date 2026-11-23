@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "updated": "2026-11-23T06:40:20Z",
+  "updated": "2026-11-23T23:43:00Z",
   "source": "https://openrouter.ai/api/v1/models",
-  "count": 477,
+  "count": 476,
   "models": [
     {
       "id": "aion-labs/aion-2.0",
@@ -1719,8 +1719,8 @@
       "id": "deepseek/deepseek-v4-pro-0813",
       "name": "DeepSeek: DeepSeek V4 Pro 0813",
       "url": "https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4-pro-0813/",
-      "prompt_per_1m": 1.32,
-      "completion_per_1m": 3.96,
+      "prompt_per_1m": 0.111,
+      "completion_per_1m": 4.44,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -1743,8 +1743,8 @@
       "id": "deepseek/deepseek-v4.1-flash",
       "name": "DeepSeek: DeepSeek V4.1 Flash",
       "url": "https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4.1-flash/",
-      "prompt_per_1m": 0.0498,
-      "completion_per_1m": 0.1992,
+      "prompt_per_1m": 0.3,
+      "completion_per_1m": 1.2,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -1768,8 +1768,8 @@
       "id": "deepseek/deepseek-v4.1-flash-1017",
       "name": "DeepSeek: DeepSeek V4.1 Flash 1017",
       "url": "https://openrouterlist.jvrck.com/m/deepseek/deepseek-v4.1-flash-1017/",
-      "prompt_per_1m": 0.3,
-      "completion_per_1m": 1.2,
+      "prompt_per_1m": 0.03,
+      "completion_per_1m": 0.2,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -3093,8 +3093,8 @@
       "id": "google/gemma-4-26b-a4b-it",
       "name": "Google: Gemma 4 26B A4B ",
       "url": "https://openrouterlist.jvrck.com/m/google/gemma-4-26b-a4b-it/",
-      "prompt_per_1m": 0.09,
-      "completion_per_1m": 0.3,
+      "prompt_per_1m": 0.0765,
+      "completion_per_1m": 0.255,
       "pricing": "fixed",
       "context_length": 262144,
       "capabilities": {
@@ -3374,12 +3374,12 @@
       "prompt_per_1m": 0.06,
       "completion_per_1m": 0.18,
       "pricing": "fixed",
-      "context_length": 1000000,
+      "context_length": 1048576,
       "capabilities": {
         "tool_calling": true,
-        "structured_outputs": false,
+        "structured_outputs": true,
         "reasoning": true,
-        "response_format": false,
+        "response_format": true,
         "web_search": false
       },
       "input_modalities": [
@@ -4126,8 +4126,8 @@
       "id": "minimax/minimax-m3.1-flash",
       "name": "MiniMax: MiniMax M3.1 Flash",
       "url": "https://openrouterlist.jvrck.com/m/minimax/minimax-m3.1-flash/",
-      "prompt_per_1m": 0.15,
-      "completion_per_1m": 0.6,
+      "prompt_per_1m": 0.075,
+      "completion_per_1m": 0.3,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -10399,8 +10399,8 @@
       "id": "tencent/hy4-preview",
       "name": "Tencent: Hy4 preview",
       "url": "https://openrouterlist.jvrck.com/m/tencent/hy4-preview/",
-      "prompt_per_1m": 0.834,
-      "completion_per_1m": 2.501,
+      "prompt_per_1m": 0.7506,
+      "completion_per_1m": 2.2509,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -10498,7 +10498,7 @@
       "prompt_per_1m": 1,
       "completion_per_1m": 4.05,
       "pricing": "fixed",
-      "context_length": 524288,
+      "context_length": 1048576,
       "capabilities": {
         "tool_calling": true,
         "structured_outputs": false,
@@ -11080,30 +11080,6 @@
       "expiration_date": null
     },
     {
-      "id": "xiaomi/mimo-v2.5-pro",
-      "name": "Xiaomi: MiMo-V2.5-Pro",
-      "url": "https://openrouterlist.jvrck.com/m/xiaomi/mimo-v2.5-pro/",
-      "prompt_per_1m": 0.48,
-      "completion_per_1m": 1.8,
-      "pricing": "fixed",
-      "context_length": 262144,
-      "capabilities": {
-        "tool_calling": true,
-        "structured_outputs": true,
-        "reasoning": true,
-        "response_format": true,
-        "web_search": false
-      },
-      "input_modalities": [
-        "text"
-      ],
-      "output_modalities": [
-        "text"
-      ],
-      "created": "2026-04-22T16:11:13Z",
-      "expiration_date": null
-    },
-    {
       "id": "xiaomi/mimo-v2.6-flash",
       "name": "Xiaomi: MiMo-V2.6-Flash",
       "url": "https://openrouterlist.jvrck.com/m/xiaomi/mimo-v2.6-flash/",
@@ -11503,8 +11479,8 @@
       "id": "z-ai/glm-5.3-flash",
       "name": "Z.ai: GLM 5.3 Flash",
       "url": "https://openrouterlist.jvrck.com/m/z-ai/glm-5.3-flash/",
-      "prompt_per_1m": 0.0399,
-      "completion_per_1m": 0.0784,
+      "prompt_per_1m": 0.15,
+      "completion_per_1m": 0.5,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -11785,8 +11761,8 @@
       "id": "~deepseek/deepseek-flash-latest",
       "name": "DeepSeek: DeepSeek Flash Latest",
       "url": "https://openrouterlist.jvrck.com/m/-deepseek/deepseek-flash-latest/",
-      "prompt_per_1m": 0.036,
-      "completion_per_1m": 0.5,
+      "prompt_per_1m": 0.03,
+      "completion_per_1m": 0.2,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
@@ -11810,7 +11786,7 @@
       "id": "~deepseek/deepseek-pro-latest",
       "name": "DeepSeek: DeepSeek Pro Latest",
       "url": "https://openrouterlist.jvrck.com/m/-deepseek/deepseek-pro-latest/",
-      "prompt_per_1m": 0.1188,
+      "prompt_per_1m": 0.0999,
       "completion_per_1m": 5,
       "pricing": "fixed",
       "context_length": 1048576,
@@ -12121,8 +12097,8 @@
       "id": "~z-ai/glm-flash-latest",
       "name": "Z.ai: GLM Flash Latest",
       "url": "https://openrouterlist.jvrck.com/m/-z-ai/glm-flash-latest/",
-      "prompt_per_1m": 0.0399,
-      "completion_per_1m": 0.0784,
+      "prompt_per_1m": 0.0356,
+      "completion_per_1m": 0.0815,
       "pricing": "fixed",
       "context_length": 1048576,
       "capabilities": {
