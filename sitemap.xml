@@ -184,13 +184,16 @@
   <url><loc>https://openrouterlist.jvrck.com/m/minimax/minimax-m3-batch/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/minimax/minimax-m3.1-flash/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/codestral-2508/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/m/mistralai/codestral-2508-batch/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/devstral-2512/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/ministral-14b-2512/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/ministral-3b-2512/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/ministral-8b-2512/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/m/mistralai/ministral-8b-2512-batch/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/mistral-large/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/mistral-large-2407/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/mistral-large-2512/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/m/mistralai/mistral-large-2512-batch/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/mistral-large-4-0/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/mistral-medium-3-5/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/mistral-medium-3-5-batch/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
@@ -198,6 +201,7 @@
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/mistral-saba/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/mistral-small-24b-instruct-2501/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/mistral-small-2603/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/m/mistralai/mistral-small-2603-batch/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/mistral-small-3.1-24b-instruct/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/mistral-small-3.2-24b-instruct/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/mistralai/mixtral-8x22b-instruct/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
@@ -432,10 +436,8 @@
   <url><loc>https://openrouterlist.jvrck.com/m/thinkingmachines/inkling-2-small/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/thinkingmachines/inkling-small/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/thinkingmachines/inkling-small-batch/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
+  <url><loc>https://openrouterlist.jvrck.com/m/tngtech/deepseek-r1t2-chimera/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/typesafe/jev-router/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/unbiased/pareto-26.10/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/unbiased/pareto-26.10-preview/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
-  <url><loc>https://openrouterlist.jvrck.com/m/unbiased/pareto-26.9/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/undi95/remm-slerp-l2-13b/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/upstage/solar-mini-4-5/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
   <url><loc>https://openrouterlist.jvrck.com/m/upstage/solar-mini4/</loc><lastmod>2026-11-25</lastmod><changefreq>daily</changefreq><priority>0.6</priority></url>
