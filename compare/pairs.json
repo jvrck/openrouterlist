@@ -1,77 +1,5 @@
 [
   {
-    "slug": "aion-labs-aion-3.0-mini-vs-aion-labs-aion-3.5",
-    "a": "aion-labs/aion-3.0-mini",
-    "b": "aion-labs/aion-3.5",
-    "kind": "same"
-  },
-  {
-    "slug": "aion-labs-aion-3.0-mini-vs-aion-labs-aion-3.5-mini",
-    "a": "aion-labs/aion-3.0-mini",
-    "b": "aion-labs/aion-3.5-mini",
-    "kind": "same"
-  },
-  {
-    "slug": "aion-labs-aion-3.5-vs-aion-labs-aion-3.5-mini",
-    "a": "aion-labs/aion-3.5",
-    "b": "aion-labs/aion-3.5-mini",
-    "kind": "same"
-  },
-  {
-    "slug": "aion-labs-aion-3.5-vs-anthropic-claude-fable-5.2",
-    "a": "aion-labs/aion-3.5",
-    "b": "anthropic/claude-fable-5.2",
-    "kind": "cross"
-  },
-  {
-    "slug": "aion-labs-aion-3.5-vs-deepseek-deepseek-v4-flash-vision-exp",
-    "a": "aion-labs/aion-3.5",
-    "b": "deepseek/deepseek-v4-flash-vision-exp",
-    "kind": "cross"
-  },
-  {
-    "slug": "aion-labs-aion-3.5-vs-google-gemini-4-neon",
-    "a": "aion-labs/aion-3.5",
-    "b": "google/gemini-4-neon",
-    "kind": "cross"
-  },
-  {
-    "slug": "aion-labs-aion-3.5-vs-meta-muse-wonder",
-    "a": "aion-labs/aion-3.5",
-    "b": "meta/muse-wonder",
-    "kind": "cross"
-  },
-  {
-    "slug": "aion-labs-aion-3.5-vs-mistralai-pixtral-large-2502",
-    "a": "aion-labs/aion-3.5",
-    "b": "mistralai/pixtral-large-2502",
-    "kind": "cross"
-  },
-  {
-    "slug": "aion-labs-aion-3.5-vs-openai-gpt-6.2-astra",
-    "a": "aion-labs/aion-3.5",
-    "b": "openai/gpt-6.2-astra",
-    "kind": "cross"
-  },
-  {
-    "slug": "aion-labs-aion-3.5-vs-qwen-qwen3.8-max-prime",
-    "a": "aion-labs/aion-3.5",
-    "b": "qwen/qwen3.8-max-prime",
-    "kind": "cross"
-  },
-  {
-    "slug": "aion-labs-aion-3.5-vs-tencent-hy4-preview",
-    "a": "aion-labs/aion-3.5",
-    "b": "tencent/hy4-preview",
-    "kind": "cross"
-  },
-  {
-    "slug": "aion-labs-aion-3.5-vs-z-ai-glm-5.3-prime",
-    "a": "aion-labs/aion-3.5",
-    "b": "z-ai/glm-5.3-prime",
-    "kind": "cross"
-  },
-  {
     "slug": "anthropic-claude-fable-5.2-vs-anthropic-claude-haiku-5.5",
     "a": "anthropic/claude-fable-5.2",
     "b": "anthropic/claude-haiku-5.5",
@@ -105,6 +33,12 @@
     "slug": "anthropic-claude-fable-5.2-vs-mistralai-pixtral-large-2502",
     "a": "anthropic/claude-fable-5.2",
     "b": "mistralai/pixtral-large-2502",
+    "kind": "cross"
+  },
+  {
+    "slug": "anthropic-claude-fable-5.2-vs-moonshotai-kimi-k3",
+    "a": "anthropic/claude-fable-5.2",
+    "b": "moonshotai/kimi-k3",
     "kind": "cross"
   },
   {
@@ -168,6 +102,12 @@
     "kind": "cross"
   },
   {
+    "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-moonshotai-kimi-k3",
+    "a": "deepseek/deepseek-v4-flash-vision-exp",
+    "b": "moonshotai/kimi-k3",
+    "kind": "cross"
+  },
+  {
     "slug": "deepseek-deepseek-v4-flash-vision-exp-vs-openai-gpt-6.2-astra",
     "a": "deepseek/deepseek-v4-flash-vision-exp",
     "b": "openai/gpt-6.2-astra",
@@ -228,6 +168,12 @@
     "kind": "cross"
   },
   {
+    "slug": "google-gemini-4-neon-vs-moonshotai-kimi-k3",
+    "a": "google/gemini-4-neon",
+    "b": "moonshotai/kimi-k3",
+    "kind": "cross"
+  },
+  {
     "slug": "google-gemini-4-neon-vs-openai-gpt-6.2-astra",
     "a": "google/gemini-4-neon",
     "b": "openai/gpt-6.2-astra",
@@ -276,6 +222,12 @@
     "kind": "cross"
   },
   {
+    "slug": "meta-muse-wonder-vs-moonshotai-kimi-k3",
+    "a": "meta/muse-wonder",
+    "b": "moonshotai/kimi-k3",
+    "kind": "cross"
+  },
+  {
     "slug": "meta-muse-wonder-vs-openai-gpt-6.2-astra",
     "a": "meta/muse-wonder",
     "b": "openai/gpt-6.2-astra",
@@ -318,6 +270,12 @@
     "kind": "same"
   },
   {
+    "slug": "mistralai-pixtral-large-2502-vs-moonshotai-kimi-k3",
+    "a": "mistralai/pixtral-large-2502",
+    "b": "moonshotai/kimi-k3",
+    "kind": "cross"
+  },
+  {
     "slug": "mistralai-pixtral-large-2502-vs-openai-gpt-6.2-astra",
     "a": "mistralai/pixtral-large-2502",
     "b": "openai/gpt-6.2-astra",
@@ -338,6 +296,48 @@
   {
     "slug": "mistralai-pixtral-large-2502-vs-z-ai-glm-5.3-prime",
     "a": "mistralai/pixtral-large-2502",
+    "b": "z-ai/glm-5.3-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "moonshotai-kimi-k2.7-code-vs-moonshotai-kimi-k3",
+    "a": "moonshotai/kimi-k2.7-code",
+    "b": "moonshotai/kimi-k3",
+    "kind": "same"
+  },
+  {
+    "slug": "moonshotai-kimi-k2.7-code-vs-moonshotai-kimi-k3.1-pro",
+    "a": "moonshotai/kimi-k2.7-code",
+    "b": "moonshotai/kimi-k3.1-pro",
+    "kind": "same"
+  },
+  {
+    "slug": "moonshotai-kimi-k3-vs-moonshotai-kimi-k3.1-pro",
+    "a": "moonshotai/kimi-k3",
+    "b": "moonshotai/kimi-k3.1-pro",
+    "kind": "same"
+  },
+  {
+    "slug": "moonshotai-kimi-k3-vs-openai-gpt-6.2-astra",
+    "a": "moonshotai/kimi-k3",
+    "b": "openai/gpt-6.2-astra",
+    "kind": "cross"
+  },
+  {
+    "slug": "moonshotai-kimi-k3-vs-qwen-qwen3.8-max-prime",
+    "a": "moonshotai/kimi-k3",
+    "b": "qwen/qwen3.8-max-prime",
+    "kind": "cross"
+  },
+  {
+    "slug": "moonshotai-kimi-k3-vs-tencent-hy4-preview",
+    "a": "moonshotai/kimi-k3",
+    "b": "tencent/hy4-preview",
+    "kind": "cross"
+  },
+  {
+    "slug": "moonshotai-kimi-k3-vs-z-ai-glm-5.3-prime",
+    "a": "moonshotai/kimi-k3",
     "b": "z-ai/glm-5.3-prime",
     "kind": "cross"
   },
